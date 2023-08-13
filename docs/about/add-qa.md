@@ -1,3 +1,18 @@
+# Внесите лепту в развите данного FAQ
+
+<p>Вы можете предложить корректировку любого или добавление нового вопроса-ответа используя форму ниже</p>
+<p>Также можете воспользоваться средствами GitHub-a:  <i>fork -> edit -> create PR</i></p>
+
+<div class="form-container" action="action_page.php">
+  <label for="fname">Ваше имя и/или контакты (опционально)</label>
+  <input id="fname" v-model="form.name" type="text" name="firstname" placeholder="" />
+  <label for="subject">Вопрос/ответ или сообщение</label>
+  <textarea id="subject" v-model="form.message" name="subject" placeholder=""></textarea>
+  <label for="check">Введите слово "vue"</label>
+  <input id="check" v-model="form.check" type="text" name="check" placeholder="" />
+  <input ref="submit" type="submit" value="Отправить" @click="submitForm" />
+</div>
+
 <script setup>
 import { ref } from "vue";
 // import Message from "vue-m-message";
@@ -39,19 +54,6 @@ async function submitForm() {
   submit.value.removeAttribute("disabled");
 }
 </script>
-
-  <p>Вы можете предложить корректировку любого или добавление нового вопроса-ответа используя данную форму</p>
-  <p>Также можете воспользоваться средствами GitHub-a:  <i>fork -> edit -> create PR</i></p>
-  
-  <div class="form-container" action="action_page.php">
-    <label for="fname">Ваше имя и/или контакты (опционально)</label>
-    <input id="fname" v-model="form.name" type="text" name="firstname" placeholder="" />
-    <label for="subject">Вопрос/ответ или сообщение</label>
-    <textarea id="subject" v-model="form.message" name="subject" placeholder=""></textarea>
-    <label for="check">Введите слово "vue"</label>
-    <input id="check" v-model="form.check" type="text" name="check" placeholder="" />
-    <input ref="submit" type="submit" value="Отправить" @click="submitForm" />
-  </div>
 
 <style>
 .form-container {

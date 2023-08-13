@@ -12,21 +12,25 @@ export default defineConfig({
     ],
 
     sidebar: [
+      { text: "Предисловие", link: "/introduction" },
       {
-        text: "Front-end разработка",
+        text: "Front-end",
         items: [
-          { text: "О Vue.js фреймворке", link: "/vue/about-framework" },
-          { text: "Как изучать?", link: "/vue/learning" },
+          { text: "О фронтенд фреймворках", link: "/frontend/about-frameworks" },
+          { text: "Как изучать?", link: "/frontend/learning" },
           { text: "SPA, PWA, SSG и SSR", link: "/spa-pwa-ssr-ssg" },
-          { text: "Какой IDE взять?", link: "/ide" },
+          { text: "Какой IDE выбрать?", link: "/ide" },
           { text: "CSS и UI библиотеки", link: "/css-ui-libs" },
+          { text: "Архитектура фронтенд приложений", link: "/frontend/architecture" },
         ],
       },
       {
-        text: "Сборка",
+        text: "Разработка",
         items: [
-          { text: "О Vite", link: "/builder/about-vite" },
-          { text: "Как вставлять картинки и другие ресурсы?", link: "/builder/assets" },
+          { text: "Сборка приложения. Vite", link: "/development/about-vite" },
+          { text: "Как вставлять картинки и другие ресурсы?", link: "/development/assets" },
+          { text: "Pinia, Vuex и все-все-все", link: "/development/state-management" },
+          { text: "Тестирование", link: "/development/testing" },
         ],
       },
       {
@@ -39,8 +43,8 @@ export default defineConfig({
       {
         text: "Деплой на сервере",
         items: [
-          { text: "О Vite", link: "/builder/about-vite" },
-          { text: "Docker", link: "/builder/docker" },
+          { text: "О Vite", link: "/deployment/about-vite" },
+          { text: "Docker", link: "/deployment/docker" },
         ],
       },
       { text: "Дополнить этот FAQ", link: "/about/add-qa" },
@@ -52,6 +56,6 @@ export default defineConfig({
       // },
     ],
 
-    socialLinks: [{ icon: "github", link: "" }],
+    socialLinks: [{ icon: "github", link: "https://github.com/vuesence/vue-faq" }],
   },
 });
