@@ -2,7 +2,7 @@ name: Build and Deploy
 on: [push]
 permissions:
   contents: write
-  pages: write
+  # pages: write
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
