@@ -2,6 +2,7 @@ name: Build and Deploy
 on: [push]
 permissions:
   contents: write
+  pages: write
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -26,7 +27,11 @@ jobs:
       - run: mv $ENV_FILE .env
       - run: pnpm docs:build
 
+      - name: List website files
+        run: ls docs/.vitepress/dist
+
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: docs/.vitepress/dist # The folder the action should deploy.
+          branch: gh-pages
