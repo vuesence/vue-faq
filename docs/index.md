@@ -16,9 +16,9 @@ hero:
 
 features:
   - title: Vue 3
-    details: В основном вопросы-ответы касаются последней версии Vue и технологий последних лет
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+    details: Затронутые темы касаются в целом фронтенд разработки, Vue 3 и его экосистемы последних лет
+  - title: Nuxt-free
+    details: Nuxt - отдельный фреймворк, достойный своего FAQ
+  # - title: Feature C
+  #   details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
 ---
