@@ -18,9 +18,9 @@ export default defineConfig({
         items: [
           { text: "О фронтенд фреймворках", link: "/frontend/about-frameworks" },
           { text: "Как изучать?", link: "/frontend/learning" },
-          { text: "SPA, PWA, SSG и SSR", link: "/spa-pwa-ssr-ssg" },
-          { text: "Какой IDE выбрать?", link: "/ide" },
-          { text: "CSS и UI библиотеки", link: "/css-ui-libs" },
+          { text: "SPA, PWA, SSG и SSR", link: "/frontend/spa-pwa-ssr-ssg" },
+          { text: "Какой IDE выбрать?", link: "/frontend/ide" },
+          { text: "CSS и UI библиотеки", link: "/frontend/css-ui-libs" },
           { text: "Архитектура фронтенд приложений", link: "/frontend/architecture" },
         ],
       },
@@ -36,8 +36,9 @@ export default defineConfig({
       {
         text: "Общение с бэкендом",
         items: [
+          { text: "Авторизация и аутентификация", link: "/backend/auth" },
+          { text: "Протоколы. To REST или не REST?", link: "/backend/protocols" },
           { text: "CORS", link: "/backend/cors" },
-          { text: "Протоколы", link: "/backend/protocols" },
         ],
       },
       {
