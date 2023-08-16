@@ -1,5 +1,9 @@
 name: Build and Deploy
-on: [push]
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    # branches: [ "main", "development" ]
 permissions:
   contents: write
   # pages: write
