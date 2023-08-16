@@ -28,7 +28,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - run: mv $ENV_FILE .env
       - run: pnpm docs:build
 
       - name: List website files
