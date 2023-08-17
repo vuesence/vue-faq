@@ -48,7 +48,7 @@ export default defineConfig({
           { text: "Docker", link: "/deployment/docker" },
         ],
       },
-      { text: "Cheat sheets", link: "/misc/cheat-sheets" },
+      { text: "Шпаргалки", link: "/misc/cheat-sheets" },
       { text: "Дополнить этот FAQ", link: "/about/add-qa" },
       // {
       //   text: "Добавить вопрос к FAQ",
