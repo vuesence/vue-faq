@@ -10,13 +10,15 @@ hero:
     - theme: brand
       text: Начать
       link: /introduction
-    # - theme: alt
-    #   text: API Examples
-    #   link: /api-examples
+    - theme: alt
+      text: Почему Vue?
+      link: /frontend/about-frameworks
 
 features:
+  - title: Frontend
+    details: Рассматриваются общие вопросы фронтенд разработки - архитектура, шаблоны, лучшие практики
   - title: Vue 3
-    details: Затронутые темы касаются в целом фронтенд разработки, Vue 3 и его экосистемы последних лет
+    details: Основное внимание уделено Vue 3, Composition API и экосистеме Vue последних лет
   - title: Nuxt-free
     details: Nuxt - отдельный самостоятельный фреймворк, заслуживающий свой собственный FAQ
   # - title: Feature C

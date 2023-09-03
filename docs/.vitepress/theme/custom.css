@@ -7,3 +7,24 @@
   line-height: 44px;
   font-size: 38px;
 }
+.vp-doc .custom-block {
+  margin: 2em 0;
+}
+.vp-doc .custom-block p {
+  margin: 14px 0;
+}
+.vp-doc h1 {
+  margin-bottom: 1em;
+}
+.custom-block.details summary {
+  /* margin-bottom: 1em; */
+  font-size: 1.3em;
+}
+
+.custom-block.details[open] summary {
+  margin-bottom: 1.3em;
+}
+body {
+  overflow-y: scroll;
+  /* --vp-custom-block-details-text: red; */
+}

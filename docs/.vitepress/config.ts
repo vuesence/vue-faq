@@ -5,6 +5,9 @@ export default defineConfig({
   title: "Vue FAQ",
   description: "Vue JavaScript фреймворк FAQ",
   themeConfig: {
+    search: {
+      provider: "local",
+    },
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: "Главная", link: "/" },
@@ -17,7 +20,7 @@ export default defineConfig({
         text: "Front-end",
         items: [
           { text: "О фронтенд фреймворках", link: "/frontend/about-frameworks" },
-          { text: "Как изучать?", link: "/frontend/learning" },
+          { text: "Как изучать Vue?", link: "/frontend/learning" },
           { text: "SPA, PWA, SSG и SSR", link: "/frontend/spa-pwa-ssr-ssg" },
           { text: "Какой IDE выбрать?", link: "/frontend/ide" },
           { text: "CSS и UI библиотеки", link: "/frontend/css-ui-libs" },
@@ -49,6 +52,7 @@ export default defineConfig({
         ],
       },
       { text: "Шпаргалки", link: "/misc/cheat-sheets" },
+      { text: "Глоссарий", link: "/misc/glossary" },
       { text: "Дополнить этот FAQ", link: "/about/add-qa" },
       // {
       //   text: "Добавить вопрос к FAQ",
