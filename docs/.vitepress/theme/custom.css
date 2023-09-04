@@ -27,4 +27,5 @@
 body {
   overflow-y: scroll;
   /* --vp-custom-block-details-text: red; */
+  --vp-custom-block-code-font-size: 14px;
 }

@@ -21,8 +21,7 @@ export default defineConfig({
         items: [
           { text: "О фронтенд фреймворках", link: "/frontend/about-frameworks" },
           { text: "Как изучать Vue?", link: "/frontend/learning" },
-          { text: "SPA, PWA, SSG и SSR", link: "/frontend/spa-pwa-ssr-ssg" },
-          { text: "Какой IDE выбрать?", link: "/frontend/ide" },
+          { text: "SPA, PWA, SSG, SSR и CEO", link: "/frontend/spa-pwa-ssr-ssg" },
           { text: "CSS и UI библиотеки", link: "/frontend/css-ui-libs" },
           { text: "Архитектура фронтенд приложений", link: "/frontend/architecture" },
         ],
@@ -30,9 +29,11 @@ export default defineConfig({
       {
         text: "Разработка",
         items: [
-          { text: "Сборка приложения. Vite", link: "/development/about-vite" },
+          { text: "Какой IDE выбрать?", link: "/development/ide" },
+          { text: "Сборка приложения. Vite", link: "/development/vite" },
+          { text: "Создание проекта", link: "/development/new-project" },
           { text: "Как вставлять картинки и другие ресурсы?", link: "/development/assets" },
-          { text: "Pinia, Vuex и все-все-все", link: "/development/state-management" },
+          { text: "Pinia, Vuex и все-все-все", link: "/development/stores" },
           { text: "Тестирование", link: "/development/testing" },
         ],
       },
