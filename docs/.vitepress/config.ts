@@ -17,7 +17,7 @@ export default defineConfig({
     sidebar: [
       { text: "Предисловие", link: "/introduction" },
       {
-        text: "Front-end",
+        text: "Фронтенд",
         items: [
           { text: "О фронтенд фреймворках", link: "/frontend/about-frameworks" },
           { text: "Как изучать Vue?", link: "/frontend/learning" },
@@ -30,8 +30,8 @@ export default defineConfig({
         text: "Разработка",
         items: [
           { text: "Какой IDE выбрать?", link: "/development/ide" },
-          { text: "Сборка приложения. Vite", link: "/development/vite" },
-          { text: "Создание проекта", link: "/development/new-project" },
+          { text: "Создание и сборка приложения", link: "/development/building" },
+          // { text: "Создание проекта", link: "/development/new-project" },
           { text: "Как вставлять картинки и другие ресурсы?", link: "/development/assets" },
           { text: "Pinia, Vuex и все-все-все", link: "/development/stores" },
           { text: "Тестирование", link: "/development/testing" },
@@ -48,7 +48,7 @@ export default defineConfig({
       {
         text: "Деплой на сервере",
         items: [
-          { text: "О Vite", link: "/deployment/about-vite" },
+          { text: "CI/CD", link: "/deployment/ci-cd" },
           { text: "Docker", link: "/deployment/docker" },
         ],
       },

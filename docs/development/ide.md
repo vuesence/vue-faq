@@ -294,3 +294,11 @@ VS Code позволяет очень тонкую настройку. Напр�
 К сожалению, форматирование `<style>` блока во `.vue` файлах не работает, поэтому приходится еще и включать Prettier в ручном режиме.
 
 :::
+
+::: details Онлайн песочницы для Vue 3
+
+- [Vue SFC Playground](https://play.vuejs.org/)
+- [StackBlitz](https://stackblitz.com/edit/vitejs-vite-usvaqn?file=index.html&terminal=dev)
+- [Codesandbox](https://codesandbox.io/s/vue-3-glziy)
+
+:::
