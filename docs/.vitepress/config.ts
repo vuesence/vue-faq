@@ -4,6 +4,17 @@ import { defineConfig } from "vitepress";
 export default defineConfig({
   title: "Vue FAQ",
   description: "Vue JavaScript фреймворк FAQ",
+  head: [
+    ["script", { async: "", src: "https://www.googletagmanager.com/gtag/js?id=G-JL65GWRNZZ" }],
+    [
+      "script",
+      {},
+      `window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JL65GWRNZZ');`,
+    ],
+  ],
   themeConfig: {
     search: {
       provider: "local",
