@@ -38,6 +38,8 @@ Vite.
 pnpm create vite
 ```
 
-Либо в [онлайн песочнице](https://vitejs.dev/guide/)
+Либо в онлайн песочнице.
+
+Подробнее - на [сайте Vite](https://vitejs.dev/guide/)
 
 :::

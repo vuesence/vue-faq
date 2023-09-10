@@ -46,6 +46,7 @@ export default defineConfig({
           { text: "Как вставлять картинки и другие ресурсы?", link: "/development/assets" },
           { text: "Pinia, Vuex и все-все-все", link: "/development/stores" },
           { text: "Тестирование", link: "/development/testing" },
+          { text: "Разное", link: "/development/misc" },
         ],
       },
       {
@@ -53,6 +54,7 @@ export default defineConfig({
         items: [
           { text: "Авторизация и аутентификация", link: "/backend/auth" },
           { text: "Протоколы. To REST или не REST?", link: "/backend/protocols" },
+          { text: "Выделение API сервиса", link: "/backend/api" },
           { text: "CORS", link: "/backend/cors" },
         ],
       },
