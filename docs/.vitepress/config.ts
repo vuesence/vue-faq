@@ -55,6 +55,7 @@ export default defineConfig({
           { text: "Авторизация и аутентификация", link: "/backend/auth" },
           { text: "Протоколы. To REST или не REST?", link: "/backend/protocols" },
           { text: "Выделение API сервиса", link: "/backend/api" },
+          { text: "Варианты сделать бэкенд", link: "/backend/backend" },
           { text: "CORS", link: "/backend/cors" },
         ],
       },
