@@ -63,7 +63,8 @@ export default defineConfig({
         text: "Деплой на сервере",
         items: [
           { text: "CI/CD", link: "/deployment/ci-cd" },
-          { text: "Docker", link: "/deployment/docker" },
+          { text: "Варианты размещения сайта", link: "/deployment/hosting" },
+          // { text: "Docker", link: "/deployment/docker" },
         ],
       },
       { text: "Шпаргалки", link: "/misc/cheat-sheets" },
