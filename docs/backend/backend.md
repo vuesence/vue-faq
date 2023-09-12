@@ -6,7 +6,7 @@
 
 Например, [jsonplaceholder.typicode.com](https://jsonplaceholder.typicode.com/)
 
-Гуглить по `json placeholder`
+Гуглить по `"json placeholder"`
 
 :::
 
@@ -14,7 +14,7 @@
 
 Полно. Например, [тут](https://github.com/public-apis/public-apis)
 
-Гуглить по `public api`
+Гуглить по `"public api"`
 
 Также можно похакать релевантные сайты в DevTools / Network на предмет эндпойнтов с данными в подходящем формате
 
