@@ -46,7 +46,7 @@ export default defineConfig({
           { text: "Как вставлять картинки и другие ресурсы", link: "/development/assets" },
           { text: "Сторы - Vuex, Pinia и Composition API", link: "/development/stores" },
           { text: "Тестирование", link: "/development/testing" },
-          { text: "Разное", link: "/development/misc" },
+          { text: "Полезные советы", link: "/development/misc" },
         ],
       },
       {

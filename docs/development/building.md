@@ -43,3 +43,55 @@ pnpm create vite
 Подробнее - на [сайте Vite](https://vitejs.dev/guide/)
 
 :::
+
+::: details Как настроить алиас @?
+
+Алиасы - настройка сборщика, и для каждого сборщика устанавливается по-своему.
+
+Для того, чтобы использовать алиас @ в путях в проекте с Vite
+
+```js
+import BaseIcon from "@/components/ui/BaseIcon.vue";
+```
+
+нужно настроить его в `vite.config.j(t)s`:
+
+```js
+// vite.config.js
+import path from "node:path";
+
+export default defineConfig({
+  build: {
+    target: "esnext",
+  },
+  plugins: [...],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
+
+
+// package.json
+"devDependencies": {
+    "@types/node": "^20.3.1",
+    ...
+}
+
+```
+
+Если проект с поддержкой TypeScript, то и в `tsconfig.json`:
+
+```js
+// tsconfig.json
+{
+  "compilerOptions": {
+    "paths": { "@/*": ["./src/*"] },
+    ...
+  }
+}
+```
+
+Также может требуеться настройка алиаса в ESLint конфиге для плагинов типа `eslint-plugin-import` и `eslint-import-resolver-typescript`, если они используются.
+
+:::
