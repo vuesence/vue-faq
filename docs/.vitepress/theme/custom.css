@@ -21,6 +21,9 @@
   font-size: 1.3em;
 }
 
+.custom-block.details[open] p {
+  font-size: 1.1em;
+}
 .custom-block.details[open] summary {
   margin-bottom: 1.3em;
 }
@@ -28,4 +31,9 @@ body {
   overflow-y: scroll;
   /* --vp-custom-block-details-text: red; */
   --vp-custom-block-code-font-size: 14px;
+  /* --vp-custom-block-details-text: #54545c; */
+}
+
+:not(.dark) body {
+  --vp-custom-block-details-text: #54545c;
 }
