@@ -95,3 +95,17 @@ export default defineConfig({
 Также может требуеться настройка алиаса в ESLint конфиге для плагинов типа `eslint-plugin-import` и `eslint-import-resolver-typescript`, если они используются.
 
 :::
+
+::: details Как посмотреть, сколько в моем js бандле занимают разные библиотеки?
+
+[rollup-plugin-visualizer](https://github.com/btd/rollup-plugin-visualizer) - отличное средство для этого
+
+Запускается генерация статистики из командной строки так (один из вариантов):
+
+```sh
+npx vite-bundle-visualizer
+npx vite-bundle-visualizer -t list
+npx vite-bundle-visualizer -t raw-data
+```
+
+:::

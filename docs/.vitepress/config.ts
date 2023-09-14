@@ -40,7 +40,7 @@ export default defineConfig({
       {
         text: "Разработка",
         items: [
-          { text: "Какой IDE выбрать?", link: "/development/ide" },
+          { text: "Настройка IDE", link: "/development/ide" },
           { text: "Создание и сборка приложения", link: "/development/building" },
           // { text: "Создание проекта", link: "/development/new-project" },
           { text: "Как вставлять картинки и другие ресурсы", link: "/development/assets" },
