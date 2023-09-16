@@ -38,10 +38,16 @@ Composition API.
 
 Также классический ресурс по JavaScript - [learn.javascript.ru](https://learn.javascript.ru/)
 
+[70 вопросов по JavaScript для подготовки к собеседованию](https://habr.com/ru/articles/486820/#21) - отличный тест, проверить себя по знанию языка.
+
 ---
 
 ::: tip Совет
 Также абсолютно необходимый предварительный скилл - умение гуглить.
+:::
+
+::: details Есть ли сертификация по Vue?
+[Vue.js Certification](https://certificates.dev/vuejs)
 :::
 
 ::: details Vue Style Guide

@@ -22,6 +22,19 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: "Главная", link: "/" },
+      {
+        text: "v 1.1",
+        items: [
+          {
+            text: "Changelog",
+            link: "CHANGELOG.md",
+          },
+          {
+            text: "Помощь",
+            link: "/about/add-qa.md",
+          },
+        ],
+      },
       // { text: "Examples", link: "/markdown-examples" },
     ],
 
