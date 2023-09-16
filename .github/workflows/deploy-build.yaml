@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - run: pnpm docs:build
+      - run: pnpm build
 
       - name: List website files
         run: ls docs/.vitepress/dist
