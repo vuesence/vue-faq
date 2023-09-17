@@ -1,25 +1,25 @@
-# Настройка IDE
+# Customizing the IDE
 
-::: details Какой IDE выбрать?
+::: Which IDE should I choose?
 
-Vue рекомендует Microsoft VS Code. Второй по популярности - WebStorm
+Vue is recommended by Microsoft VS Code. The second most popular is WebStorm
 
-В VS Code намного раньше появляются новые официальные расширения для Vue, и вообще эта среда очень удобна для разработки в целом, есть множество полезных расширений, - например, можно запустить GitHub Action и посмотреть его вывод прямо в редакторе.
+In VS Code, new official extensions for Vue appear much earlier, and in general this environment is very convenient for development in general, there are a lot of useful extensions - for example, you can run a GitHub Action and see its output right in the editor.
 
-WebStorm даёт больше возможностей по работе в js, html, но глючит с TypeScript и не только в SFC script setup, и вообще не очень успевает за изменениями во Vue.
+WebStorm gives more possibilities to work in js, html, but it glitches with TypeScript and not only in SFC script setup, and in general it doesn't keep up with changes in Vue.
 
-Для начинающих однозначно VS Code
+For beginners VS Code is the best choice
 
 :::
 
-::: details Необходимые расширения VS Code
+:::: details Necessary VS Code extensions
 
-При работе с Vite и Vue 3:
+When working with Vite and Vue 3:
 
 - ESlint
 - Volar
 
-Могут пригодиться:
+Could be useful:
 
 - Typescript Vue Plugin
 - Codeium
@@ -28,9 +28,9 @@ WebStorm даёт больше возможностей по работе в js,
 
 :::
 
-::: details Настройка VS Code
+:::: VS Code Customization
 
-VS Code позволяет делать очень тонкую настройку. Например, попробуйте создать вот этот файл локальных настроек `.vscode/setting.json` и посмотрите как изменится редактор.
+VS Code allows you to do very fine customization. For example, try creating this local customization file `.vscode/setting.json` and see how the editor changes.
 
 ::: details settings.json
 
@@ -38,21 +38,21 @@ VS Code позволяет делать очень тонкую настройк
 
 :::
 
-::: details ESlint
+:::: details ESlint
 
-Линтер - правая рука кодера. Он проверяет ошибки, форматирует код, делает еще много полезного
+Linter is a coder's right hand. It checks for errors, formats code, and does many other useful things
 
-В то же время, хорошо настроить ESlint - довольно нетривиальная задача. Множество плагинов к нему, часть устаревшие, многие конфликтуют между собой.
+At the same time, it is quite a nontrivial task to set up ESlint well. There are a lot of plugins for it, some of them are outdated, many of them conflict with each other.
 
-Поэтому для не очень изощренных знатоков ESlint-a самое лучшее воспользоваться готовым решением. Второй человек в экосистеме Vue Antony Fu поделился [своим конфигом](https://github.com/antfu/eslint-config)
+That's why for not very sophisticated ESlint connoisseurs it's best to use a ready-made solution. The second person in Vue ecosystem Antony Fu shared [his config](https://github.com/antfu/eslint-config).
 
-Для его установки достаточно добавить `@antfu/eslint-config` пакет в `package.json` `devDependencies`. Если заглянуть внутрь, там будет десятки подобранных пакетов и настроек.
+To install it, just add the `@antfu/eslint-config` package to `package.json` `devDependencies`. If you look inside, there are dozens of picked packages and configurations.
 
-К сожалению, форматирование `<style>` блока во `.vue` файлах не работает, поэтому приходится еще и включать `Prettier` в ручном режиме.
+Unfortunately, formatting the `<style>` block in `.vue` files doesn't work, so you have to enable `Prettier` in manual mode as well.
 
 :::
 
-::: details Онлайн песочницы для Vue 3
+:::: details Online sandboxes for Vue 3
 
 - [Vue SFC Playground](https://play.vuejs.org/)
 - [StackBlitz](https://stackblitz.com/edit/vitejs-vite-usvaqn?file=index.html&terminal=dev)
@@ -60,22 +60,22 @@ VS Code позволяет делать очень тонкую настройк
 
 :::
 
-::: details Еще программы, полезные в веб разработке
+::::: details More programs useful in web development
 
-- [Postman](https://www.postman.com/) - запросы к API, создание API
-- [Xshell](https://www.netsarang.com/en/xshell/) - удобный SSH клиент
-- [HeidiSQL](https://www.heidisql.com/) - клиент для доступа к SQL базам данных
+- [Postman](https://www.postman.com/) - API requests, API creation
+- [Xshell](https://www.netsarang.com/en/xshell/) - handy SSH client
+- [HeidiSQL](https://www.heidisql.com/) - client for accessing SQL databases
 
 :::
 
-::: details Какая конфигурация компьютера подходит для фронтенд разработки?
+:::: details What computer configuration is suitable for frontend development?
 
-Оперативной памяти минимум 16Гб и хороший (быстрый) SSD диск, всё остальное вторично, включая процессор. Потратьте лучше деньги на качественный второй монитор 22+ дюймов, удобную клавиатуру и мышку.
+At least 16GB RAM and a good (fast) SSD disk, everything else is secondary, including the processor. Spend your money on a quality second 22+ inch monitor, a comfortable keyboard and mouse.
 
-Для фулстек разработки (и не только) удобно еще иметь мини-ПК, куда переносится база данных, вебсервер и другие [микро]сервисы. Он может работать как сервер, без монитора и клавиатуры.
+For fullstack development (and not only) it is convenient to have a mini-PC where you can transfer database, webserver and other [micro]services. It can work as a server, without a monitor and keyboard.
 
-Также на него можно поставить репозиторий исходного кода. С основной машины подсоединение идет в VS Code через SSH Remote connection. В итоге и бэк, и фронт (Node.js) запускаются на твоем минисервере, и твой ноут больше не греется и не пытается взлететь с помощью бешено вращающихся вентиляторов.
+You can also put a source code repository on it. From the main machine the connection goes to VS Code via SSH Remote connection. As a result, both back and front end (Node.js) run on your miniserver, and your laptop no longer gets warm and tries to take off with the help of frantically spinning fans.
 
-Работать так значительно производительней (MySQL, вебсервера, Docker крутятся на Linux быстрей и надёжней, как и Nodе.js), комфортней и тише. Кулер мини-ПК в штатном режиме включается только на пару секунд при загрузке ОС.
+It is much more productive (MySQL, webservers, Docker run faster and more reliably on Linux, as does Node.js), comfortable and quieter. The cooler of the mini-PC in normal mode is turned on only for a couple of seconds when the OS is booting.
 
 :::

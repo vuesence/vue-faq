@@ -1,34 +1,34 @@
 # CI/CD
 
-::: details Что такое CI/CD?
+:::: What is CI/CD?
 
-CI/CD (Continuous Integration, Continuous Delivery — непрерывная интеграция и доставка) — это технология автоматизации билда, тестирования и развертывания разрабатываемого проекта.
+CI/CD (Continuous Integration, Continuous Delivery) is a technology for automating the build, testing and deployment of a project under development.
 
-Другими словами, процесс перехода лежащего в репозитории кода в рабочий продукт на облачном сервере, например.
+In other words, the process of transition of code lying in a repository into a working product on a cloud server, for example.
 
-Элементы CI/CD полезны не только девопс инженеру, но и простому фронтендеру, позволяя ему после git commit/push изменений кода получить рабочий сайт, например, на GitHub Pages без дополнительных действий.
+CI/CD elements are useful not only for a devops engineer, but also for a simple front-end developer, allowing him after git commit/push code changes to get a working site, for example, on GitHub Pages without additional actions.
 
-Основные инструменты для CI/CD: GitHub Actions, GitLab CI/CD, Jenkins, Trevis
+Main tools for CI/CD: GitHub Actions, GitLab CI/CD, Jenkins, Trevis
 
 :::
 
-::: details GitHub Actions
+:::: details GitHub Actions
 
-`GitHub Actions` популярны и удобны, так что советуется их изучить для применения как в пет, так и в больших коммерческих проектах.
+GitHub Actions are popular and convenient, so it is recommended to learn them for use in both pet and large commercial projects.
 
-Ваш код должен быть на GitHub, естественно.
+Your code should be on GitHub, of course.
 
-Добавьте в корень репозитория файл `.github/workflows/deploy.yaml`
+Add the `.github/workflows/deploy.yaml` file to the root of your repository
 
-В нем будут GitHub Actions инструкции.
+This will have the GitHub Actions instructions in it.
 
-Образец конфигурационного файла данного проекта (Vue-Faq)
+Sample configuration file for this project (Vue-Faq)
 
 ```yaml
 name: Build and Deploy
 on:
   push:
-    branches: [main]
+    branches: [main].
   workflow_dispatch:
     # branches: [ "main", "development" ]
 permissions:
@@ -56,14 +56,14 @@ jobs:
         run: ls docs/.vitepress/dist
 
       - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
+        uses: jamesIves/github-pages-deploy-action@v4
         with:
           folder: docs/.vitepress/dist
           branch: gh-pages
 ```
 
-После каждого пуша в репозиторий будет происходить сборка проекта и деплой новой версии на GitHub pages.
+After each push to the repository, the project will be built and the new version will be deployed to GitHub pages.
 
-В общем случае возможна различная полезная автоматизация. Можно иметь несколько окружений (dev, staging, prod) и деплоить в нужное со своими параметрами. Можно бэкапить предыдущую версию сайта. Можно во время сборки билдить сайты с разными UI темами.
+In general, various useful automation is possible. You can have several environments (dev, staging, prod), and deploy to the right one with your own parameters. You can backup the previous version of the site. You can build sites with different UI themes during the build.
 
 :::

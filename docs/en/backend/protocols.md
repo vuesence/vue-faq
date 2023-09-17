@@ -1,43 +1,43 @@
-# Протоколы. To REST или не REST?
+# Protocols. To REST or not to REST?
 
 ::: details REST, WebSockets, JSON-RPC
 
-Для новичка, конечно, удобнее начинать с `REST` - запросы на сервер абы как.
+For a beginner, of course, it's more convenient to start with `REST` - requests to the server in any way.
 
-Для более опытных, особенно, фулстеков, предлагаю взглянуть на `JSON-RPC`
+For the more experienced, especially fullstackers, I suggest to take a look at `JSON-RPC`.
 
-`WebSockets` удобен тем, что дает двунаправленную связь (сервер может посылать сообщения на клиент), но требует специального программного обеспечения на бэкенде.
-
-:::
-
-::: details Почему JSON-RPC?
-
-После опыта с JSON-RPC общение с бэком обычно уже никогда не бывает прежним.
-
-Он дает порядок, четкость, строгость и вместе с тем гибкость. Сильно упрощает и делает понятным код как на фронте, так и на бэке.
-
-Вот две мои статьи на эту тему - [Популяризация JSON-RPC (часть 1)](https://habr.com/ru/articles/709362/) и [Популяризация JSON-RPC (часть 2)](https://habr.com/ru/articles/710652/)
-
-Вариант TypeScript реализации фронтэнд api сервиса на JSON-RPC - [здесь](https://github.com/vuesence/utilities/blob/main/src/services/json-rpc/jsonrpc.ts)
-
-При использовании `JSON-RPC` переход на `WebSockets` или другие транспортные протоколы не вызовет никаких трудностей из-за унификации формата сообщений.
+`WebSockets` is convenient because it gives bidirectional communication (the server can send messages to the client), but requires special software on the backend.
 
 :::
 
-::: details Как организовать реконнект WebSocket соединения на фронте?
+::::: details Why JSON-RPC?
 
-Нужна шина, или `Еvent bus`, которая будет работать как прокси для приходящих сообщений.
+After an experience with JSON-RPC, communication with back end is usually never the same again.
 
-Можно использовать [mitt](https://github.com/developit/mitt).
+It gives order, clarity, rigor and at the same time flexibility. It greatly simplifies and makes code understandable both on the frontend and backend.
+
+Here are two of my articles on this topic - [Popularizing JSON-RPC (part 1)](https://habr.com/ru/articles/709362/) and [Popularizing JSON-RPC (part 2)](https://habr.com/ru/articles/710652/).
+
+A variant of TypeScript implementation of frontend api service on JSON-RPC - [here](https://github.com/vuesence/utilities/blob/main/src/services/json-rpc/jsonrpc.ts).
+
+When using `JSON-RPC`, switching to `WebSockets` or other transport protocols will not cause any difficulties due to the unification of the message format.
 
 :::
 
-::: details Что такое GraphGL?
+::::: details How to organize reconnection of WebSocket connection on the front?
 
-Сложная штука, попытка перевести язык запросов SQL для клиент-серверных запросов в интернете.
+You need a bus, or `Event bus`, which will work as a proxy for incoming messages.
 
-Имеет довольно специфичное применение, преимущественно у сторонних поставщиков данных через API.
+You can use [mitt](https://github.com/developit/mitt).
 
-Для своего фулстек приложения - на 99% ненужное решение.
+:::
+
+:::: details What is GraphGL?
+
+A complex thing, an attempt to translate SQL query language for client-server queries on the web.
+
+It has a rather specific use, mostly with third-party data providers via APIs.
+
+For your own fullstack application - 99% unnecessary solution.
 
 :::

@@ -1,83 +1,83 @@
-# Архитектура фронтэнд приложений
+# Frontend application architecture
 
-::: details Что такое хорошая архитектура веб-приложения
+::: details What is a good web application architecture
 
-Есть разные теоретические определения и обоснования данного понятия, но грубо говоря это следующее.
+There are different theoretical definitions and justifications for this concept, but roughly speaking it is the following.
 
-Допустим ты разрабатываешь проект, уже на финальном этапе. К тебе подходит заказчик и говорит что-то типа: я хочу добавить тень ко всем кнопкам, я хочу изменить UI библиотеку, мы решили поддерживать несколько языков, мы решили заменить вот этот модуль на другой, нужно сделать более детальную адаптивность для разных разрешений, мы решили добавить темы, мы меняем провайдера услуг по обработке платежей, у нас повышается число пользователей / сайт тормозит / надо его ускорить, надо повысить уровень безопасности сайта, мы взяли мидл программиста, введи его в курс дела быстро, и пусть он добавляет функционал или фиксит баги и т.п.
+Let's say you are developing a project, already at the final stage. A customer comes to you and says something like: I want to add a shadow to all buttons, I want to change the UI library, we decided to support multiple languages, we decided to replace this module with another, we need to make more detailed adaptability for different resolutions, we decided to add themes, we are changing the provider of payment processing services, we have an increasing number of users / the site is slowing down / need to speed it up, need to increase the level of security of the site, we took a middle programmer, bring him up to speed quickly, and let him add functionality or fix the b
 
-Хорошая архитектура фронтенд приложения позволяет выполнить всё это наиболее эффективно с наименьшими затратами.
-
-:::
-
-::: details ООП на фронтенде
-
-Многие приходя из разработки на объектно-ориентированных языках пытаются использовать концепции ООП и на фронте и программировать с классами, наследованием, полиморфизмом и прочим.
-
-Это ошибка. Основные вычисления на фронте связаны с UI - показ данных, обработка взаимодействия с пользователем. Системы классов и микросервисов на них просто не нужны. Конечно, можно создать базовую кнопку, обернуть ее в два кастомных компонента и считать это наследованием, но в коде этого не получается. Поэтому надо учиться мыслить другими категориями - компоненты, композаблы, js модули. И использовать свою мощь JavaScript-a, а не пытаться натянуть его на ООП.
-
-В то же время неплохой аналогией объекта с глобальным ("статичным") и локальным ("объектным") состоянием является композабл функция. Это можно использовать в определённых ситуациях.
+A good frontend application architecture allows you to accomplish all of this most efficiently with the least amount of effort.
 
 :::
 
-::: details Подходящая архитектура для Vue 3 веб-приложения
+:::: details OOP on the frontend
 
-Самая удобная архитектура для Vue 3 приложения - модульная.
+Many people coming from development in object-oriented languages try to use OOP concepts on the frontend and program with classes, inheritance, polymorphism and other things.
 
-Изначально, приложение разбивается на логические модули, слабо связанные друг с другом. Например, для онлайн магазина это могут быть модуль каталога товаров, модуль отдельного товара, модуль личного кабинета / аккаунта пользователя.
+This is a mistake. The main computations on the front end are related to UI - displaying data, handling user interaction. Class systems and microservices are simply not needed on them. Of course, you can create a basic button, wrap it in two custom components and consider it inheritance, but you can't do it in code. That's why you have to learn to think in other categories - components, compozables, js modules. And use your JavaScript power, not trying to stretch it on OOP.
 
-Кроме того, есть модуль оболочки - то, что иногда называет `app shell`. Шаблон с хедером, футером, боковым меню и главным окном. В этот модуль целесообразно поместить утилиты и ресурсы, используемые по всему приложению - например, `api`, `useI18n`, `BaseButton` и `stringHelpers`.
-
-В каждом модуле свои `components`, `composables`, `assets`, `utils`; возможно, `api`, `routes`, `views`, `layouts`.
-
-Слабая связанность позволяет разрабатывать каждый модуль достаточно независимо, что значительно повышает вероятность успешности проекта.
+At the same time, a good analogy of an object with a global ("static") and local ("object") state is a compsable function. It can be used in certain situations.
 
 :::
 
-::: details Полезные советы
+:::: details Suitable architecture for Vue 3 web application
 
-###### Избегайте зависимостей
+The most suitable architecture for a Vue 3 application is modular.
 
-Если есть возможность не вводить новую зависимость (не подключать новый npm пакет) - не делайте это. Это может немного сэкономит ваше время, но сторонняя библиотека рано или поздно устареет, перестанет поддерживаться, в ней могут обнаружить уязвимость. Кроме того она увеличивает размер вашего бандла, что напрямую влияет на производительность вашего приложения. Tree shaking хорош в рекламных зазываниях, но работает реально далеко не всегда.
+Initially, the application is divided into logical modules that are loosely related to each other. For example, for an online store, it can be a product catalog module, a module of a single product, a module of a personal cabinet / user account.
 
-Если вам нужна, например, функция `debounce`, не торопитесь подключать её вместе с какой-либо библиотекой. Загуглите её реализацию и скопируйте 15 строк кода, сделав свою функцию.
+In addition, there is a shell module - what is sometimes called an `app shell'. A template with a header, footer, side menu and main window. It is wise to put utilities and resources used throughout the application into this module - for example, `api`, `useI18n`, `BaseButton` and `stringHelpers`.
 
----
+Each module has its own `components`, `composables`, `assets`, `utils`; perhaps `api`, `routes`, `views`, `layouts`.
 
-###### Используйте обертки над компонентами UI библиотек и сторонних утилит
+Loose coupling allows each module to be developed fairly independently, which greatly increases the likelihood of project success.
 
-Если вы используете компоненты какой-то UI библиотеки, не используйте их напрямую - сделайте обертки для них. Например, `BaseButton` или `BaseInput`. Это намного облегчит стилизацию компонент, а также сильно упростит переход на другую библиотеку, или замену на свои компоненты.
+:::
 
-То же самое с утилитами.
+:::: details Useful tips
 
----
+###### Avoid addictions
 
-###### Регулярный рефакторинг
+If there is a possibility not to introduce a new dependency (not to plug in a new npm package) - don't do it. It may save you a bit of time, but a third-party library will sooner or later become obsolete, no longer supported, and may have a vulnerability. Besides, it increases the size of your bundle, which directly affects the performance of your application. Tree shaking is good in advertising, but it doesn't always work in reality.
 
-Время от времени делайте рефакторинг кода, перемещая компоненты и модули туда, где они должны быть логически, переименовывая их, и структурируя и улучшая сам код. Это полезно и для кода, и для вашего профессионального роста.
-
----
-
-###### Используйте CSS3
-
-Старайтесь использовать для адаптивноcти чистый CSS3. Не привязывайтесь к колоночным моделям CSS и UI библиотек, если только это не проект из разряда: "сделал и забыл, пусть заказчик дальше с ним мучается".
-
-Потратьте пару дней на изучение Флексбокса и вы сможете верстать на нём быстрей и лучше, чем на любом Тайлвинде.
+If you need, for example, the `debounce` function, don't hurry to plug it together with some library. Google its implementation and copy 15 lines of code and make your own function.
 
 ---
 
-###### Используйте современные стандарты и возможности языков
+###### Use wrappers over components of UI libraries and third-party utilities
 
-Например, семантические элементы HTML5 - aside, header, section, article, details и.т.д.
+If you use components of some UI library, don't use them directly - make wrappers for them. For example, `BaseButton` or `BaseInput`. This will make styling the components much easier, and will also make it much easier to switch to another library, or replace them with your own components.
 
-CSS3 - Flexbox и Grid, Container query
+The same goes for utilities.
 
 ---
 
-###### Документируйте проект
+###### Regular refactoring
 
-Рисуйте use-case и другие диаграммы, описывайте основной функционал проекта и важные детали его реализации - это как минимум повысит ваш уровень как разработчика ПО.
+Do code refactoring from time to time, moving components and modules to where they should logically be, renaming them, and structuring and improving the code itself. This is good for both the code and your professional growth.
 
-VitePress - очень удобный инструмент для технического документирования.
+---
+
+###### Use CSS3
+
+Try to use pure CSS3 for adaptability. Do not be tied to columnar models of CSS and UI libraries, unless it is a "done and forgotten, let the customer continue to suffer with it" project.
+
+Spend a couple of days to learn Flexbox and you will be able to layout on it faster and better than on any Tailwind.
+
+---
+
+###### Use modern standards and language features
+
+For example, HTML5 semantic elements - aside, header, section, article, details, etc.
+
+CSS3 - Flexbox and Grid, Container query
+
+---
+
+###### Document the project
+
+Draw use-case and other diagrams, describe the main functionality of the project and important details of its implementation - this will at least raise your level as a software developer.
+
+VitePress is a very handy tool for technical documentation.
 
 :::

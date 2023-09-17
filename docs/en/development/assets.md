@@ -1,22 +1,22 @@
 <!-- TODO: -->
 
-# Ресурсы приложения
+# Application Resources
 
-::: details Ресурсы приложения
+::: details Application Resources
 
-Под ресурсами понимаются изображения, иконки, аудио, видео, json, pdf и прочие файлы, которые может использовать ваше приложение либо внутри себя, либо для показа на странице.
+Resources refer to images, icons, audio, video, json, pdf and other files that your application can use either internally or to display on a page.
 
 :::
 
-::: details Картинки класть в папку public или assets?
+:::: details Should I put images in the public or assets folder?
 
-Из папки `public` ресурсы (например, изображения) подключаются в вашем приложении по протоколу HTTP(S), загружаясь по необходимости с сервера - как они это делали всегда.
+From the `public` folder, resources (e.g. images) are connected in your application via HTTP(S), downloaded as needed from the server - as they have always been.
 
-Ресурсы в папке `assets` (и вообще из любой поддиректории в `src/`) при билде приложения переименовываются (добавляется хэш - типа `social-banner-e88a22df.png`) и помещаются в папку `dist/assets`, либо, если это картинки маленького размера, они могут кодироваться в Base64 и помещаться в ваш js бандл. В приложении в браузере они доступны, получается, сразу, но размер js бандла увеличивается на размер ресурсов, что увеличивает скорость загрузки.
+Resources in the `assets` folder (and in general from any subdirectory in `src/`) are renamed (a hash is added - like `social-banner-e88a22df.png`) and placed in the `dist/assets` folder, or, if they are small images, they can be Base64 encoded and placed in your js bandle. In the browser application they are available immediately, but the size of the js bandle is increased by the size of the resources, which increases the loading speed.
 
-Доступ к ресурсам осущестляется через import:
+The resources are accessed via import:
 
-```js
+``js
 // gets url to the resource
 import imageUrl from "./image.img";
 
@@ -24,47 +24,47 @@ import imageUrl from "./image.img";
 import imageRaw from "./image.img?raw";
 ```
 
-Если вам не нужно импортировать/обрабатывать картинки в js, вы можете положить их в папку `public` и использовать их в HTML шаблоне с их обычными именами.
+If you don't need to import/process the images in js, you can put them in the `public` folder and use them in the HTML template with their normal names.
 
-Более подробно в [документации Vite](https://vitejs.dev/guide/assets.html)
+See [Vite documentation](https://vitejs.dev/guide/assets.html) for more details.
 
 :::
 
-::: details Как подключать картинки из assets?
+:::: details How to connect images from assets?
 
-Использовать картинки из папки `public/images` - элементарно
+Using images from the `public/images` folder is easy.
 
-```html
+``html
 // static image name
 <img src="/images/someImage.png" />
 
 // dynamic image name
-<img :src="`/images/${imageNameInVariable}.png`" />
+<img :src="`/images/${imageNameInVariable}.png` />" />
 ```
 
-Картинки (как и другие ресурсы) из `assets` должны быть перед использованием импортированы в JavaScript
+Pictures (as well as other resources) from `assets` must be imported into JavaScript before use
 
-```js
+````js
 import imgUrl from './img.png'
 // ...
 <img :src="imgUrl" />
 ```
 
-При этом возвращается url до ресурса.
+This returns the url to the resource.
 
 :::
 
-::: details Универсальный компонент для работы с иконками
+::: details Universal component for working with icons
 
-Импортировать иконки по одной неудобно, когда их много, и часто иконку нужно менять динамично в зависимости от условий. Чтобы решить эту проблему можно создать универсальный класс `BaseIcon`, который будет отображать иконку по её имени:
+Importing icons one by one is inconvenient when there are many of them, and often the icon needs to be changed dynamically depending on the conditions. To solve this problem you can create a universal class `BaseIcon`, which will display an icon by its name:
 
-```vue
+``vue
 <BaseIcon name="account" size="26" />
 ```
 
 #### BaseIcon
 
-```vue
+````vue
 <script setup>
 import { computed } from "vue";
 import { getImageUrl, getSvgIcon } from "@/app/utils/icons";
@@ -75,24 +75,24 @@ const props = defineProps({
     default: "",
   },
   size: {
-    type: String,
-    default: "24",
+    { type: String,
+    default: "24"
   },
   color: {
     type: String,
-    default: "currentColor",
+    default: "currentColor"
   },
   width: {
-    type: String,
-    default: "24",
+    { type: String,
+    default: "24"
   },
   height: {
     type: String,
-    default: "auto",
+    default: "auto"
   },
   type: {
     type: String,
-    default: "svg",
+    default: "svg"
   },
 });
 
@@ -139,7 +139,7 @@ const height = computed(() => {
 </style>
 ```
 
-Файл `/app/utils/icons` использует функцию Vite `import.meta.glob` для импорта файлов из директорий по маске:
+The `/app/utils/icons` file uses Vite's `import.meta.glob` function to import files from masked directories:
 
 #### icons.js
 
@@ -178,19 +178,19 @@ function getImageUrl(name) {
 export { loadIcons, getSvgIcon, getImageUrl, svgResources };
 ```
 
-Сперва компонент попробует поискать `svg` с именем `account`, затем `png`.
+The component will first try to look for the `svg` named `account`, then `png`.
 
 :::
 
-::: details Какой формат для картинок лучше - jpg или png?
+:::: details What is the best format for pictures - jpg or png?
 
-Попробуйте современный `webp`. Действительно сильное сжатие без видимой потери качества. Есть прозрачный фон.
+Try modern `webp`. Really strong compression with no apparent loss of quality. There is a transparent background.
 
-Не поддерживается только IE, для него нужна fallback картинка в другом формате (если вы вообще заботитесь о десятилетнем IE11).
+Only IE is not supported, it requires a fallback picture in a different format (if you even care about the decade-old IE11).
 
 :::
 
-::: details Как импортировать JSON?
+::::: details How to import JSON?
 
 ```js
 // import the entire object

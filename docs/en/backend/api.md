@@ -1,12 +1,12 @@
-# Абстракция канала связи с бэкендом
+# Backend link abstraction
 
-## API сервис
+## API service
 
-Для осуществления вызовов на бэк удобно выделить код, связанный с транспортным уровнем (формирование и отправка запроса) в отдельный js модуль.
+To make calls to the backend, it is convenient to separate the code related to the transport layer (forming and sending a request) into a separate js module.
 
-Тогда в вашем компоненте доступ к вашему бэкенду будет выглядеть примерно так:
+Then in your component access to your backend will look like this:
 
-```js
+``js
 import { api } from "@/services/api";
 
 // loading.value = true;
@@ -14,9 +14,9 @@ const userData = await api.users.getUserData({ userId });
 // loading.value = false;
 ```
 
-Вся сложность связи с бэкендом спрятана в модуль `api`.
+All the complexity of backend communication is hidden in the `api` module.
 
-Пример `api.js`:
+Example `api.js`:
 
 ```js
 import auth from "./auth";
@@ -42,11 +42,11 @@ const api = {
   },
 };
 
-export { api };
+export { api }
 export default api;
 ```
 
-Пример `users.js`
+Example `users.js`
 
 ```js
 import http from "./http";
@@ -58,8 +58,8 @@ const users = {
 };
 ```
 
-`http.js` - обертка вокруг запросов на сервер через вашу любимую библиотеку.
+``http.js` is a wrapper around requests to the server via your favorite library.
 
-Чем удобно абстрагирование кода связи с бэкендом от основного кода приложения в отдельный сервис?
+What is the convenience of abstracting the backend communication code from the main application code into a separate service?
 
-Можно легко заменить `axios` на `fetch` или `XHR`, `REST` на `JSON-RPC` или `WebSockets`. Код в компонентах не меняется и остается простым и явным.
+You can easily replace `axios` with `fetch` or `XHR`, `REST` with `JSON-RPC` or `WebSockets`. The code in the components does not change and remains simple and explicit.

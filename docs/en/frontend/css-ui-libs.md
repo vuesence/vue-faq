@@ -1,28 +1,28 @@
-# CSS и UI библиотеки
+# CSS and UI libraries
 
-::: details Что такое CSS и UI библиотеки?
+::: What are CSS and UI libraries?
 
-CSS и UI библиотеки либо предоставляют свои, либо помогают создавать кастомные UI компоненты типа Button или Select? что может значительно ускорить разработку.
+CSS and UI libraries either provide their own or help you create custom UI components like Button or Select? which can speed up your development.
 
-CSS библиотеки не содержат JavaScript кода и, соответственно, имеют ограничения для сложных компонент типа Select или Dropdown.
+CSS libraries do not contain JavaScript code and therefore have limitations for complex components like Select or Dropdown.
 
-Есть отдельный тип Headless-UI библиотек, которые предлагают компоненты без стилизованной визуализации - только логику компонента и Accessibility требования. Разработчику нужно самому добавить CSS стили.
-
-:::
-
-::: details Плюсы и минусы UI библиотек?
-
-Плюсы: укоряет разработку, если пользоваться ей на проекте максимально, вносит в приложение единый стиль
-
-Минусы: как и любая зависимость может устареть (трагедия Vuetify 2), добавляет веса в итоговый бандл.
-
-В [этой статье](https://habr.com/ru/articles/745012/) хорошо сравниваются 10 Vue 3 UI библиотек.
+There is a separate type of Headless-UI libraries that offer components without stylized visualization - only component logic and Accessibility requirements. The developer needs to add CSS styles himself.
 
 :::
 
-::: details Как снизить зависимость от чужих библиотек?
+:::: details Pros and cons of UI libraries?
 
-Оборачивайте компоненты UI библиотеки в свои.
+Pros: shortens the development, if you use it on the project as much as possible, brings a unified style to the application
+
+Cons: as any dependency can become obsolete (Vuetify 2 tragedy), adds weight to the final bundle.
+
+In [this article](https://habr.com/ru/articles/745012/) there is a good comparison of 10 Vue 3 UI libraries.
+
+:::
+
+::::: details How to reduce dependency on foreign libraries?
+
+Wrap UI library components in your own.
 
 ```vue
 <!-- BaseButton.vue -->
@@ -31,20 +31,20 @@ CSS библиотеки не содержат JavaScript кода и, соот�
 </template>
 ```
 
-и используйте в своем коде `BaseButton`. Таким образом в дальнейшем вам будет намного проще проапгрейдиться, заменить библиотеку или заменить данный компонент на самописный. И даже просто изменить у компонента стили.
+and use ``BaseButton`` in your code. This way it will be much easier for you to upgrade, replace the library or replace this component with a self-designed one. And even just change the styles of the component.
 
 :::
 
-::: details Лэйаут и адаптивность страниц средствами CSS и UI библиотек
+:::: details Layout and adaptability of pages by means of CSS and UI libraries
 
-Использование колоночной системы и иного функционала CSS и UI библиотек типа распространенного Tailwind удобно для небольших проектов и иногда ускоряет верстку, однако очень сильно ухудшает качество кода в целом, включая его поддерживаемость и расширяемость. Как будто мир вновь вернулся во времена IE6, когда все стили и JavaScript также располагались в аттрибутах тэгов, и вся эволюция CSS в понятную, удобную, красивую иерарxичную модель классов была зря, как и разделение веба на документ (шаблон), презентационный слой (CSS стили) и логику (JavaScript).
+Using the column system and other functionality of CSS and UI libraries like the popular Tailwind is convenient for small projects and sometimes speeds up layout, but very much worsens the quality of the code as a whole, including its maintainability and extensibility. It's as if the world went back to the days of IE6, when all styles and JavaScript were also located in tag attributes, and the whole evolution of CSS into a clear, convenient, beautiful hierarchical class model was for nothing, just like the division of the web into document (template), presentation layer (CSS styles) and logic (JavaScript).
 
-В интернете полно статей, почему подход подобный Tailwind это плохо. Можно отметить только, что при должном умении верстать на чистом CSS3 также быстро и намного удобней и приятней в плане DX, чем через средства CSS и UI библиотек.
+The web is full of articles why an approach like Tailwind is a bad thing. We can only note that with proper skill, layout on pure CSS3 is also fast and much more convenient and pleasant in terms of DX than through CSS and UI libraries.
 
-::: tip Цитата
+::: tip Quote
 
-Хорошие разработчики знают причины, по которым стандарты, паттерны и хорошие практики стали таковыми.
+Good developers know the reasons why standards, patterns and good practices have become the way they are.
 
-Плохие разработчики придерживаются любой новой тенденции, которая может сэкономить им немного времени на обучение.
+Bad developers stick to whatever new trend that might save them some learning curve.
 
 :::

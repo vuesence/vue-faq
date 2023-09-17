@@ -1,84 +1,84 @@
-# Изучение Vue
+# Learning Vue
 
-::: details Источники информации по Vue
+::: Sources of information on Vue
 
-Почему-то считается, что на фронтенде есть всего два варианта получать знания - документация Vue и обучающие видео с Ютюба и всевозможных курсов.
+For some reason, it is believed that there are only two ways to get knowledge on frontend - Vue documentation and tutorial videos from YouTube and all kinds of courses.
 
-Но документация это не учебник, а справочник, и отделить зерна от плевел на Ютюбе очень сложно. Я встречал полезные видео, но все они предназначались для уже неплохо знающих Vue разработчиков, и показывали какие-то новые или нестандартные моменты.
+But documentation is not a textbook, but a reference book, and it is very difficult to separate grains from chaff on YouTube. I met some useful videos, but all of them were intended for developers who already know Vue quite well and showed some new or non-standard moments.
 
 ---
 
-Главным учителем должна быть книга, которая именно учит, а не даёт справочную информацию.
+The main teacher should be a book that teaches, not a reference book.
 
-Прекрасный учебник по Vue на английском языке - вышедшая в мае 2023 года [Vue.js 3 Design Patterns and Best Practices](https://www.oreilly.com/library/view/vuejs-3-design/9781803238074/). Можно зарегистрироваться на oReilly и читать 10 дней бесплатно. Даже скачать. Несмотря на название, книга учит именно программированию, причем, довольно с таки начального уровня.
+An excellent Vue tutorial in English is the May 2023 [Vue.js 3 Design Patterns and Best Practices](https://www.oreilly.com/library/view/vuejs-3-design/9781803238074/). You can register on oReilly and read for 10 days for free. Even download it. In spite of the title, the book teaches programming, and from a fairly basic level.
 
-На русском, к сожалению, почти ничего нет, но, во-первых, есть Google translate, а во-вторых, стать уверенным разработчиком без хотя бы среднего знания технического английского вряд ли получится.
+Unfortunately, there is almost nothing in Russian, but, firstly, there is Google translate, and secondly, it is unlikely to become a confident developer without at least an average knowledge of technical English.
 
-Так же надо отметить, что документация Vue на русском порой сильно отстает от документации на английском.
+It should also be noted that Vue documentation in Russian sometimes lags behind the documentation in English.
 
 :::
 
-::: details Vue 2 или Vue 3?
+::: details Vue 2 or Vue 3?
 
 Vue 3.
 <br />
 Composition API.
 
-Если вам нужен будет Vue 2 для поддержки существующего проекта, то вы сами будете знать ответ на этот вопрос.
+If you need Vue 2 to support an existing project, you'll know the answer to that question yourself.
 
-Разница между Vue 2 и Vue 3 большая. Это не тот случай, когда надо выучить предварительно предыдущую версию, чтобы лучше и легче понять следующую.
+The difference between Vue 2 and Vue 3 is big. It's not a case of learning the previous version beforehand to better and more easily understand the next one.
 
 :::
 
-::: details Нужно ли знать JavaScript предварительно?
+:::: details Do I need to know JavaScript beforehand?
 
-Обязательно, минимум на среднем уровне. Если этого нет, я бы предложил сперва пройти короткий курс javascript-a, чтобы человек знал об объекте document, умел обращаться с методами массива и не очень боялся промисов. Также, HTML и CSS как минимум на базовом уровне.
+Absolutely, at least an intermediate level. If not, I would suggest taking a short javascript course first, so that the person knows about the document object, knows how to handle array methods and is not too afraid of promises. Also, HTML and CSS at least at a basic level.
 
-Вот легко читаемая книжка - ["Морган Н. - JavaScript для детей. Самоучитель по программированию - 2016](https://drive.google.com/file/d/1H6HDJeRx2SAXLPJ8Rw0SqchkFZYNiZ9h/view?usp=sharing). Перед началом изучения Vue желательно понимать 70% первой части, а также параграфы 10 и 12.
+Here is an easy to read book - ["Morgan N. - JavaScript for Kids. A Programming Self-Tutorial - 2016](https://drive.google.com/file/d/1H6HDJeRx2SAXLPJ8Rw0SqchkFZYNiZ9h/view?usp=sharing). Before you start learning Vue, it is advisable to understand 70% of the first part as well as paragraphs 10 and 12.
 
-Также классический ресурс по JavaScript - [learn.javascript.ru](https://learn.javascript.ru/)
+Also a classic resource on JavaScript - [learn.javascript.ru](https://learn.javascript.ru/)
 
-[70 вопросов по JavaScript для подготовки к собеседованию](https://habr.com/ru/articles/486820/#21) - отличный тест, проверить себя по знанию языка.
+[70 JavaScript interview preparation questions](https://habr.com/ru/articles/486820/#21) - a great test to test yourself on your knowledge of the language.
 
 ---
 
-::: tip Совет
-Также абсолютно необходимый предварительный скилл - умение гуглить.
+::: tip tip
+Also an absolutely necessary pre-skill is the ability to google.
 :::
 
-::: details Есть ли сертификация по Vue?
+:::: details Is there a certification for Vue?
 [Vue.js Certification](https://certificates.dev/vuejs)
 :::
 
 ::: details Vue Style Guide
 
-Обязательно ознакомьтесь с [Vue Style Guide](https://vuejs.org/style-guide/) и старайтесь придерживаться его лучших практик при написании кода.
+Be sure to check out the [Vue Style Guide](https://vuejs.org/style-guide/) and try to follow its best practices when writing code.
 
-Время от времени возвращайтесь к этому источнику и улучшайте свой код.
+Go back to this source from time to time and improve your code.
 
-ESlint также помогает держать свой код в соответствии с лучшими практиками.
+ESlint also helps you keep your code in line with best practices.
 :::
 
-::: details Нужен ли ментор?
+:::: details Do I need a mentor?
 
-Ментор полезен и начинающему, и опытному разработчику. Можно бесполезно убить два дня на решение проблемы, которую за 20 минут может объяснить более опытный человек. Причем, этот двухдневный "опыт" больше никогда не пригодится.
+A mentor is useful for both a beginner and an experienced developer. You can uselessly kill two days to solve a problem that can be explained in 20 minutes by a more experienced person. And this two-day "experience" will never be useful again.
 
-В компаниях эту роль обычно выполняют более компетентные доброжелательные коллеги.
+In companies, this role is usually played by more competent and friendly colleagues.
 
-В интернете есть сервисы типа [Solvery](https://solvery.io/), которые могут помочь в этом вопросе.
-
-:::
-
-::: details Всё равно хочу видео
-
-Есть качественные у `Vue Mastery`, однако большинство устарели.
+There are services like [Solvery](https://solvery.io/) on the Internet that can help in this matter.
 
 :::
 
-::: details Что еще посмотреть кроме Vue? React?
+::::: details I still want the video
 
-Можно и React, если есть реальный вариант использования этих знаний, однако намного лучше расширить свой кругозор разработчика. Попробуйте написать простой API на бэкенде. Самый легкий и удобный язык для этого - PHP, но можно и на Node.js или Python. Попробуйте транспортные протоколы JSON-RPC и WebSockets. Захостите свое приложение на GitHub Pages или другой аналогичный сервис, поэкспериментируйте с GitHub Actions - они очень помогают с автоматизацией деплоя и CI/CD в целом. Поработайте с Cloud провайдерами (многие предлагают бесплатные ресурсы), настройте виртуальный сервер. Зарегистрируйте домен, сделайте продуктовый законченный сайт - даже если это будет просто ваш сайт-резюме или что-то элементарное на VitePress (используется данным сайтом). Поработайте с FireStore и открытыми API для различных данных. Посмотрите Swagger. Поизучайте SQL, установите MySQL и поиграйте с ним, либо сделайте это на SupaBase. Понимание, как данные хранятся и обрабатываются на бэкенде, сильно поможет в выборе правильных стратегий на фронте.
+There are quality ones from `Vue Mastery`, but most are outdated.
 
-Изучайте, как работает современный Интернет, и какие технологии и лучшие практики распространены в нем сейчас.
+:::
+
+:::: details What else to look at besides Vue? React?
+
+You can do React if you have a real option to use that knowledge, but it's much better to expand your developer horizons. Try to write a simple API on the backend. The easiest and most convenient language for this is PHP, but you can also use Node.js or Python. Try JSON-RPC and WebSockets transport protocols. Upload your application to GitHub Pages or another similar service, experiment with GitHub Actions - they help a lot with deploy automation and CI/CD in general. Work with Cloud providers (many offer free resources), set up a virtual server. Register a domain, make a product finished site - even if it's just your resume site or something basic on VitePress (used by this site). Work with FireStore and open APIs for various data. Check out Swagger. Learn SQL, install MySQL and play around with it, or do it on SupaBase. Understanding how data is stored and processed on the backend will help a lot in choosing the right strategies on the frontend.
+
+Study how the modern internet works and what technologies and best practices are prevalent on it now.
 
 :::

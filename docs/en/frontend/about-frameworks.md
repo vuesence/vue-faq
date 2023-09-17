@@ -1,48 +1,48 @@
-# О фронтенд фреймворках
+# About frontend frameworks
 
-::: details Что такое "реактивность"?
+:::: What is "reactivity"?
 
-Наверное, самое фундаментальное отличие программы для фронта от программы для бэка, микросервиса и даже отдельного приложения с GUI, это понятие "**реактивности**".
+Probably the most fundamental difference between a frontend program and a backend program, a microservice or even a standalone GUI application is the concept of "**reactivity**".
 
-При работе на бэке программист имеет хорошие возможности управлять потоком данных. Он контролирует откуда их брать, куда передавать, кто их может изменить, всё это хоть в одном потоке, хоть в многопоточной системе.
+When working on a back end, the programmer is in a good position to control the flow of data. He controls where to get it from, where to send it to, who can change it, all this in a single thread or in a multithreaded system.
 
-На фронте большую роль играет фактор интерактивности UI - данные надо динамично показывать пользователю, пользователь может изменять данные, данные могут изменяться различными контрагентами (пользователь, бэкенд, внутренние вычисления). В принципе, возможно использовать обычные программистские подходы как и на бэке, - то есть, самому следить за изменениями данных в каждом месте, и проводить обновление всех зависимостей. Это даст очень много бойлерплейта - рутинного повторяющегося кода. Реактивные фреймворки сильно облегчили жизнь программистам, взяв на себя заботу об этом обновлении зависимостей переменной при её изменении.
+On the front, the UI interactivity factor plays a big role - data should be dynamically shown to the user, the user can change the data, data can be changed by different counterparties (user, backend, internal calculations). In principle, it is possible to use the usual programmer approaches as on the backend - i.e., self-monitor the data changes in each place, and perform updates of all dependencies. This will give a lot of boilerplate - routine repetitive code. Reactive frameworks have made programmers' lives a lot easier by taking care of this updating of a variable's dependencies when it changes.
 
-В реактивном фреймворке достаточно задать реактивную переменную и указать, что она является, например, значением input поля. При вводе пользователем в это поле значения переменная автоматически обновится, и все другие переменные, зависящие от нее, тоже. Кода писать для этого не надо.
+In a reactive framework, all you need to do is define a reactive variable and specify that it is, for example, the value of an input field. When the user enters a value into this field, the variable will be automatically updated, and all other variables that depend on it will be updated as well. You don't need to write any code for this.
 
-Упрощенно говоря, под капотом реактивная переменная это прокси-обертка над обычной, которая следит за её изменениями и регистрирует всех слушателей, которых надо оповестить об изменении переменной, чтобы они себя пересчитали.
-
-:::
-
-::: details Какие реактивные фронтенд фреймворки существуют
-
-React, Vue, Angular - самые распространенные. Есть множество других, не взлетевших.
-
-Angular используется обычно для больших проектов (больших команд разного уровня программистов) и жестко зажимает разработку в свои правила.
-
-React и Vue более гибки и схожи, но есть существенные отличия.
-
-Vue быстрей, меньше, эффективней, не смешивает HTML и JS, имеет меньший порог входа. Активно развивается.
-
-За React-ом Цукерберг и бо&#x301;льшая распространенность. Больше предложений о работе, но и больше кандидатов на одно место.
+Simplistically speaking, under the hood, a reactive variable is a proxy wrapper over an ordinary variable, which keeps track of its changes and registers all the listeners who need to be notified of the variable's change so that they can recalculate themselves.
 
 :::
 
-::: details Почему Vue?
+:::: details What reactive frontend frameworks exist
 
-Чтобы можно было разрабатывать и управлять большими сложными программными системами, было изобретено ООП - объектно-ориентированное программирование, где для иерархичного разбиения сложности вводились новые сущности - объекты. Они инкапсулировали в себе данные и поведение (логику).
+React, Vue, Angular are the most common. There are many others that have not taken off.
 
-На фронтенде немного иная ситуация из-за наличия кода на нескольких языках программирования - HTML, CSS, JavaScript. И в данном случае SFC компоненты во Vue отлично служат для разбиения сложности системы. Каждый компонент инкапсулирует HTML шаблон, его стилизацию и логику.
+Angular is usually used for large projects (large teams of different levels of programmers) and tightly clamps development into its rules.
 
-Vue делает это намного лучше, чем тот же React, который сваливает всё в одну кучу. В этом аспекте Vue однозначно является флагманом компонентно-ориентированного программирования (КОП) на фронтэнде.
+React and Vue are more flexible and similar, but there are significant differences.
 
-Кроме того, во Vue 3 появилась реактивность за пределами компонент - `ref` и `reactive` переменные можно задать в простом `js` модуле. Это используется в `composable` функциях. Стало возможно отделить от представления не только реактивный сервис (`useI18n`, `useScreenSize` например), но и бизнес-логику (`useShoppingCart`, `useNewsWidget`). Это позволяет использовать на фронтенде [MVC шаблон](https://ru.wikipedia.org/wiki/Model-View-Controller), где роли `View` и частично `Controller` выполняют компоненты, отвечающие преимущественно за визуализацию, а логика и модель (`Model` и частично `Controller`) приходятся на композабл функции и их реактивный стейт.
+Vue is faster, smaller, more efficient, doesn't mix HTML and JS, has a lower threshold of entry. Actively evolving.
 
-Это даёт возможность сделать, например, смену дизайна сайта или замену UI библиотеки намного более легкой задачей.
+Behind React- Zuckerberg and a greater&#x301;l prevalence. More job offers, but also more applicants per job.
 
-Данная особенность также сильно выделяет Vue на фоне других реактивных фреймворков-аналогов.
+:::
+
+:::: details Why Vue?
+
+To be able to develop and manage large complex software systems, OOP - object-oriented programming - was invented, where new entities - objects - were introduced to hierarchize complexity. They encapsulated data and behavior (logic).
+
+On the frontend, the situation is a bit different due to the presence of code in several programming languages - HTML, CSS, JavaScript. And in this case, the SFC components in Vue serve perfectly to break down the complexity of the system. Each component encapsulates the HTML template, its styling and logic.
+
+Vue does this much better than the same React, which lumps everything together. In this aspect, Vue is unequivocally the flagship of component-oriented programming (COP) on the frontend.
+
+In addition, Vue 3 introduced reactivity beyond components - `ref` and `reactive` variables can be set in a simple `js` module. This is used in `composable` functions. It has become possible to separate not only the reactive service (`useI18n`, `useScreenSize` for example) but also the business logic (`useShoppingCart`, `useNewsWidget`) from the view. This allows to use [MVC pattern](https://ru.wikipedia.org/wiki/Model-View-Controller) on the frontend, where the roles of `View` and partially `Controller` are performed by components responsible mainly for visualization, and the logic and model (`Model` and partially `Controller`) fall on composeable functions and their reactive state.
+
+This makes it possible to make, for example, changing the site design or replacing the UI library a much easier task.
+
+This feature also makes Vue stand out from other reactive frameworks.
 
 ::: tip
-Реактивностью Vue можно пользоваться совсем без UI. Например, в [этом расширении VS Code](https://github.com/soerenuhrbach/vscode-deepl/blob/main/src/state.ts) элементы Vue 3 `reactive`, `ref` и `watch` используются для организации реактивности в коде без визуальных компонент.
+Vue's reactivity can be used without UIs at all. For example, [this VS Code extension](https://github.com/soerenuhrbach/vscode-deepl/blob/main/src/state.ts) uses the Vue 3 elements `reactive`, `ref`, and `watch` to organize reactivity in code without visual components.
 
 :::

@@ -1,15 +1,13 @@
-# Предисловие
+# Preface
 
-EN
+This FAQ (Frequently Asked Questions) is created on the most frequently touched topics in Telegram chat [@vuejs_ru : Vue.js - Russian speaking community](https://t.me/vuejs_ru).
 
-Данный FAQ (Frequently Asked Questions - Часто задаваемые вопросы) создан по наиболее часто затрагиваемым темам в Телеграм чате [@vuejs_ru : Vue.js — русскоговорящее сообщество](https://t.me/vuejs_ru)
+The level of questions and answers covers both beginners and experienced frontend developers.
 
-Уровень вопросов и ответов охватывает как начинающих так и опытных фронтэнд разработчиков.
+As answers are used both generally recognized, verified and objective information, and subjective opinion of the author.
 
-В качестве ответов используется как общепризнанная, проверенная и объективная информация, так и субъективное мнение составителя.
+The increase in complexity does not come from the top down. The first questions and answers describe non-obvious points that may be interesting for experienced programmers.
 
-Повышение сложности не идет сверху вниз. И в первых вопросах-ответах описываются неочевидные моменты, могущие быть интересными для опытных программистов.
+The main sources of information - official documentation of Vue 3 and Vite, telegram chat [@vuejs_ru](https://t.me/vuejs_ru).
 
-Основные источники информации - официальная документация Vue 3 и Vite, телеграм чат [@vuejs_ru](https://t.me/vuejs_ru)
-
-Актуальность информации - 2022-2023 года.
+Relevance of information - 2022-2023.

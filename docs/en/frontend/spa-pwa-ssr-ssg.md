@@ -1,94 +1,94 @@
-# SPA, PWA, SSG, SSR и CEO
+# SPA, PWA, SSG, SSR and CEO
 
 ::: details Web 1.0 -> Web 2.0
 
-Сперва был статичный HTML и браузеры показывали его. Чуть позже придумали немножко JavaScript-а, чтобы обрабатывать формочки и делать небольшую анимацию. Потом появился CSS, и все увидели, что это красиво. После кто-то предложил идею JSON для формата данных, а затем Микрософт подарила миру XMLHttpRequest, и JavaScript-у разрешили отправлять и получать данные с сервера.
+First there was static HTML and browsers showed it. A little bit later a little bit of JavaScript was invented to process forms and do a little animation. Then CSS came along and everyone saw that it was beautiful. Then someone proposed the idea of JSON for data format, and then Microsoft gave the world XMLHttpRequest, and JavaScript was allowed to send and receive data from the server.
 
-Так родился SPA.
+That's how SPA was born.
 
 :::
 
-::: details SPA
+:::: details SPA
 
-SPA (Single Page Application) работает примерно как обычное десктоп/мобильное приложение - при первом обращении на сервер получает програмную оболочку, необходимую для отображения сайта, а затем уже пересылает на/с сервера данные, обычно в JSON формате. Так получается намного эффективней способа, когда с каждым запросом с сервера приходила новая HTML страница с всеми ресурсами.
+SPA (Single Page Application) works like a regular desktop/mobile application - when first accessing the server, it receives the shell necessary to display the site, and then sends data to/from the server, usually in JSON format. This is much more efficient than the way when with each request from the server came a new HTML page with all the resources.
 
-Для пользователя UX повышается значительно.
+For the user UX increases significantly.
 
 ![spa-vs-mpa](../assets/images/spa-vs-mpa.png)
 
 :::
 
-::: details PWA
+:::: details PWA
 
-PWA (Progressive Web Application) - еще один шаг, чтобы улучшить пользовательский опыт и максимально приблизить веб приложения по ощущениям пользователя к нативным.
+PWA (Progressive Web Application) is another step to improve user experience and make web applications as close as possible to native web applications.
 
-При PWA к SPA добавляются два элемента:
+With PWA, two elements are added to the SPA:
 
-1. `Манифест`. Текстовый файл со свойствами приложения. Благодаря ему иконка веб-приложения может быть установлена также как и у нативных приложений на домашний экран смартфона. Кроме того, при запуске PWA может не показывать элементы браузера и казаться обычным приложением.
+1. `Manifest`. A text file with the properties of the application. With this, the icon of the web application can be set as well as native applications to the home screen of the smartphone. In addition, when PWA is launched, it may not show browser elements and appear to be a normal application.
 
-2. `Service worker`. Это прослойка в браузере между сервером и самим браузером, которая позволяет сделать управляемое кэширование. Другими словами, сохранить приложение со всеми ресурсами на смартфоне/компьютере, чтобы при запуске оно сразу запускалось. Если не нужны данные с сервера, то приложение может работать оффлайн (например, Заметки).
+2. `Service worker`. This is a layer in the browser between the server and the browser itself that allows you to do managed caching. In other words, store the app with all the resources on the smartphone/computer so that when you start it, it will run immediately. If you don't need data from the server, the app can run offline (e.g. Notes).
 
-Больше о PWA можно прочесть на сайте, созданном командой Chrome - [https://web.dev/](https://web.dev/progressive-web-apps/)
+You can read more about PWA on the website created by the Chrome team - [https://web.dev/](https://web.dev/progressive-web-apps/)
 
-Апгрейд SPA до PWA очень небольшой по трудозатратам, но очень значительный по выгоде. Разрабатывать SPA и не делать его PWA - это как снять люксовый номер в гостинице, но лечь спать на его входе в коридоре на коврике, потому что до спальни лень дойти.
-
-:::
-
-::: details PWA -> Workbox и vite-plugin-pwa
-
-`Манифест` и `Service worker` настолько просты, что создание обертки над SW - `Workbox`, и плагина для Vite `vite-plugin-pwa` логическому объяснению не поддается. Кода получается в несколько раз больше, нужно грузить дополнительные зависимости и разбираться в конфигурациях оберток. Простое сделали сложным.
-
-Лучше задействовать `Манифест` и `Service worker` как они созданы изначально, и написать два этих простых файла по шаблонам из спецификаций.
+Upgrading SPA to PWA is very small in labor cost, but very significant in benefit. Developing SPA and not making it a PWA is like renting a luxury hotel room but sleeping on a mat at its entrance in the corridor because it's too lazy to walk to the bedroom.
 
 :::
 
-::: details SSG
+:::: details PWA -> Workbox and vite-plugin-pwa
 
-SSG (Static Site Generation) — подход, когда содержимое сайта предварительно генерируется в html-файлы, которые потом раздаются с сервера.
+`Manifest` and `Service worker` are so simple that creating a wrapper over SW - `Workbox`, and a plugin for Vite - `vite-plugin-pwa` is not logical. You get several times more code, need to load additional dependencies and understand wrapper configurations. Simple things have been made complex.
 
-<!-- Пример такого - VitePress и данный сайт. -->
-
-Сразу подходит для индексации поисковиками.
+It is better to use `Manifest` and `Service worker` as they were created originally, and write these two simple files using templates from the specifications.
 
 :::
 
-::: details SSR
+:::: details SSG
 
-SSR (Server Side Rendering), способ генерации html на стороне сервера, когда генерация происходит в момент обращения.
-После запроса клиентом странички, сервер на своей стороне выполняет API-запросы, а затем формирует html-страницу. Соответственно, на сервере нужен Node.js сервер, который довольно сильно нагружает "железо".
+SSG (Static Site Generation) is an approach where the content of a website is pre-generated into html files, which are then distributed from the server.
 
-Кроме того, есть множество ограничений при написании кода и использования тех или иных JavaScript и Vue возможностей. Как [пишет Google](https://web.dev/rendering-on-the-web/) относительно SSR - _"A rehydration problem: one app for the price of two"_.
+<!-- An example of this is VitePress and this site. -->
+
+Immediately suitable for indexing by search engines.
 
 :::
 
-::: details CEO оптимизация
+:::: details SSR
 
-Для того, чтобы поисковик мог проиндексировать страницу вашего сайта, при обращении к ней он должен получить HTML с контентом (текст, картинки, видео). Со SPA сайтами, в которых контент подгружается динамически JavaScript-ом, такое часто не получается.
+SSR (Server Side Rendering), a way of generating html on the server side, when generation occurs at the moment of request.
+After the client requests a page, the server executes API requests on its side and then generates the html page. Accordingly, the server needs a Node.js server, which is quite a heavy load on the hardware.
 
-Самым популярным и неэффективным методом для обхода этого является использование SSR (SSG подходит для несложных по структуре сайтов без бэкенда, вроде документаций).
+In addition, there are a lot of restrictions when writing code and using certain JavaScript and Vue features. As [Google writes](https://web.dev/rendering-on-the-web/) regarding SSR - _"A rehydration problem: one app for the price of two"_.
 
-Google позволяет [посмотреть](https://search.google.com/test/mobile-friendly), как ваш сайт выглядит/индексируется его кроулером, который как-то всё-таки работает со скриптами, поэтому для начала проверьте, нужно ли вам усложняться вообще.
+:::
 
-Если проблемы обнаружились, то можно воспользоваться [динамической отрисовкой](https://developers.google.com/search/docs/crawling-indexing/javascript/dynamic-rendering)
+:::: details CEO optimization
+
+In order for a search engine to index a page on your site, it must receive HTML with content (text, images, video) when accessing it. With SPA sites, where content is loaded dynamically by JavaScript, this is often not possible.
+
+The most popular and inefficient method to bypass this is to use SSR (SSG is suitable for simple structured sites without backend, like documentation).
+
+Google allows you to [see](https://search.google.com/test/mobile-friendly) how your site looks/indexed by its crawler, which somehow still works with scripts, so first check if you need to get complicated at all.
+
+If you find problems, you can use [dynamic rendering](https://developers.google.com/search/docs/crawling-indexing/javascript/dynamic-rendering)
 
 ![dynamic-rendering](../assets/images/dynamic-rendering.png)
 
-Смысл в том, чтобы обрабатывать запросы обычных пользователей и поисковых ботов по-разному и отдавать им разные страницы. Для пользователей - SPA, для поисковиков - сгенеренные налету либо заранее страницы. Распределение может вести вебсервер или точка входа на ваш сайт (`index.php` вместо `index.html`).
+The point is to handle requests from normal users and search bots differently and give them different pages. For users - SPA, for search bots - pages generated on the fly or in advance. Distribution can be handled by a webserver or an entry point to your site (`index.php` instead of `index.html`).
 
-На картинке выше подразумевается некий Prerenderer (которые тоже есть в качестве стороннего сервиса или своего решения), однако в большинстве случаев намного проще генерить HTML страницу для бота напрямую.
+The above picture implies some kind of Prerenderer (which are also available as a third-party service or their own solution), but in most cases it is much easier to generate HTML page for the bot directly.
 
-То есть, например, для страницы товара в онлайн магазине это может быть его текстовое описание с картинками и отзывами покупателей в любом HTML форматировании. Для этого достаточно скрипта на PHP/Express/Python и т.д. в 100-200 строк, что намного менее трудозатратней SSR решений, а так же снижает требования в серверному "железу" на порядки (вывод можно закэшировать в статичный HTML файл).
+That is, for example, for a product page in an online store it can be its text description with pictures and customer reviews in any HTML formatting. For this purpose it is enough a script on PHP/Express/Python, etc. in 100-200 lines, which is much less labor-intensive than SSR solutions, and also reduces the requirements in the server "hardware" by orders of magnitude (the output can be cached in a static HTML file).
 
-При совпадении фактического контента (текст, картинки) такой страницы с контентом SPA в браузере, Google не рассматривает упрощенную для его бота версию как обман. Данная метода была еще до появления всяких SSR. Проверено многолетним использованием.
+When the actual content (text, images) of such a page coincides with the content of SPA in the browser, Google does not consider the simplified version for its bot as a deception. This method has been around since before the advent of SSRs. Verified by many years of use.
 
 :::
 
-::: details PageSpeed и другие тесты производительности
+::: details PageSpeed and other performance tests
 
-[PageSpeed](https://pagespeed.web.dev/) и подобные инструменты очень полезны в выявлении неоптимизированных мест в вашем веб-приложении, однако для SPA и PWA он не совсем верен.
+[PageSpeed](https://pagespeed.web.dev/) and similar tools are very useful in identifying unoptimized places in your web application, but it is not quite right for SPA and PWA.
 
-Точней, некоторые его метрики не учитывают UX в целом. Нормально сделанный PWA при самой первой загрузке и установке, конечно, проиграет по FCP метрике аналогу на SSR, но после размещения всех своих ресурсов локально на браузере клиента, никакой SSR и близко не сравнится с ним по скорости работы и комфорту для пользователя, не говоря уже о прочих возможностях типа оффлайн работы и установке как нативного приложения.
+More precisely, some of its metrics don't take into account UX as a whole. A well-built PWA, when first downloaded and installed, will of course lose by FCP metrics to its SSR counterpart, but after placing all its resources locally on the client's browser, no SSR will come close to it in terms of speed and user comfort, not to mention other features like offline operation and installation as a native application.
 
-SSR может быть, наверное, полезен для каких-то исключительных случаев, но в целом он выглядит тупиковой ветвью во фронтенд разработке.
+SSR can probably be useful for some exceptional cases, but in general it looks like a dead-end branch in frontend development.
 
 :::

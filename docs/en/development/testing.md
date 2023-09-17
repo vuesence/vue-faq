@@ -1,27 +1,27 @@
-# Тестирование
+# Testing
 
-::: details Нужно ли тестирование на фронтенде?
+::: Do I need testing on the frontend?
 
-Тесты бывают нескольких типов, среди них - unit тесты и интеграционные (e2e) теcты
+There are several types of tests, among them are unit tests and integration (e2e) tests
 
-Unit тестированием во Vue занимаются [Vitest](https://vitest.dev/), [Jest](https://jestjs.io/)
+Unit testing in Vue is done by [Vitest](https://vitest.dev/), [Jest](https://jestjs.io/).
 
-С тестированием на фронте нужно быть аккуратней, так как написание и переписывание тестов зачастую может занять время, сопоставимое с самой разработкой. В то же время, полезность этих тестов будет под большим вопросом. Их целесообразность проявляется на больших проектах с большим количеством разработчиков. Там unit тесты также отнимают время, но снижают вероятность, что кто-то что-то испортит. В то же время на стартапе unit тесты далеко не самый нужный ингридиент для быстрого создания MVP.
+You should be more careful with front-end testing, as writing and rewriting tests can often take time comparable to the development itself. At the same time, the usefulness of these tests will be highly questionable. Their expediency appears on large projects with a large number of developers. There unit tests also take time but reduce the probability that someone will mess something up. At the same time, unit tests are not the most necessary ingredient for quick MVP creation at a startup.
 
-Фронтенд разработка в этом аспекте очень сильно отличается от бэкенд разработки, где unit тесты действительно полезны.
+Frontend development in this aspect is very different from backend development, where unit tests are really useful.
 
 :::
 
-::: details Что такое e2e тесты?
+::::: details What are e2e tests?
 
-На фронте, особенно для веб приложения, которое уже в продакшне и должно время от времени обновляться, важны e2e тесты.
+On the front end, especially for a web application that is already in production and needs to be updated from time to time, e2e tests are important.
 
-e2e (end-to-end) тестирование — это процесс тестирования программного обеспечения, который имитирует реальные действия пользователей на уровне интерфейса.
+e2e (end-to-end) testing is a software testing process that simulates real user actions at the interface level.
 
-При этом будет запущен браузер (обычно, в headless режиме - без UI), и он по написанным скриптам будет проверять работу сайта - наличие элементов на странице, возможность логина и т.п.
+In this case, a browser will be launched (usually in headless mode - without UI), and it will use the scripts written to check the work of the site - the presence of elements on the page, the possibility of login, etc.
 
-Основные средства для e2e тестирования - [Cypress](https://www.cypress.io/), [WebdriverIO](https://webdriver.io/)
+The main tools for e2e testing are [Cypress](https://www.cypress.io/), [WebdriverIO](https://webdriver.io/).
 
-При CI/CD проекта прогон тестов - один из основных моментов наряду с линтингом и билдом.
+In CI/CD projects, running tests is one of the main moments along with linting and build.
 
 :::

@@ -1,60 +1,60 @@
-# Создание и сборка приложения
+# Create and build an application
 
-::: details Сборка приложения
+::: # Building an application
 
-Чтобы собрать Vue проект в файлы, понятные браузеру, нужен сборщик. Самые популярные - `Vite` и `Webpack`
+To build a Vue project into browser-friendly files, you need a builder. The most popular ones are `Vite` and `Webpack`.
 
-Vite более новый и использует современные технологии, включая `esbuild` для `dev` сборок для транспиляции TypeScript в JavaScript, который в 20~30 раз быстрее чем обычный tsc, что делает HMR в десятки раз быстрей, чем на Webpack. Для билда JavaScript для `production` используется сборщик `Rollup`.
+Vite is newer and uses modern technologies including `esbuild` for `dev` builds to transpile TypeScript to JavaScript, which is 20~30 times faster than regular tsc, making HMR dozens of times faster than on Webpack. The `Rollup` builder is used to build JavaScript for `production`.
 
-Нужно учитывать, что каждый сборщик собирает ресурсы приложения (иконки, SVG и пр.) по-своему, используя свои плагины, и требует в этом настройки.
+Note that each builder collects application resources (icons, SVGs, etc.) in its own way, using its own plugins, and requires customization.
 
-Оба сборщика позволяют расширять свои возможности кастомными плагинами.
+Both builders allow you to extend their capabilities with custom plugins.
 
 :::
 
-::: details Vite или Webpack?
+::: details Vite or Webpack?
 
 Vite.
 
-Если вам понадобится Webpack, вы будете знать это сами.
+If you need Webpack, you'll know it yourself.
 
 :::
 
-::: details npm, yarn или pnpm?
+::: details npm, yarn or pnpm?
 
-Рекомендуется `pnpm` как наиболее современный
+We recommend `pnpm` as the most up-to-date one
 
-Кроме того, он, используя жесткие ссылки вместо копирования файлов, очень сильно сохраняет дисковое пространство на компьютере в случае нескольких проектов с `node_modules` и одинаковыми пакетами в них.
+Also, by using hard links instead of copying files, it saves a lot of disk space on your computer in case of multiple projects with `node_modules` and the same packages in them.
 
 :::
 
-::: details Создание Vue приложения
+:::: details Creating a Vue application
 
-`Vue-cli` - устаревший способ
+`Vue-cli` is an obsolete method
 
-Создание напрямую через Vite:
+Create directly through Vite:
 
 ```
 pnpm create vite
 ```
 
-Либо в онлайн песочнице.
+Or in an online sandbox.
 
-Подробнее - на [сайте Vite](https://vitejs.dev/guide/)
+See [Vite's website](https://vitejs.dev/guide/) for more information.
 
 :::
 
-::: details Как настроить алиас @?
+:::: details How to customize the @ alias?
 
-Алиасы - настройка сборщика, и для каждого сборщика устанавливается по-своему.
+Alias is a builder setting, and is set differently for each builder.
 
-Для того, чтобы использовать алиас @ в путях в проекте с Vite
+To use the @ alias in paths in a project with Vite
 
 ```js
 import BaseIcon from "@/components/ui/BaseIcon.vue";
 ```
 
-нужно настроить его в `vite.config.j(t)s`:
+you need to configure it in `vite.config.j(t)s`:
 
 ```js
 // vite.config.js
@@ -73,36 +73,36 @@ export default defineConfig({
 
 
 // package.json
-"devDependencies": {
-    "@types/node": "^20.3.1",
+}, "devDependencies": {
+    "@types/node":"^20.3.1",
     ...
 }
 
 ```
 
-Если проект с поддержкой TypeScript, то и в `tsconfig.json`:
+If the project supports TypeScript, then also in `tsconfig.json`:
 
 ```js
 // tsconfig.json
 {
   "compilerOptions": {
-    "paths": { "@/*": ["./src/*"] },
+    { "paths": { "@/*": ["./src/*"] },
     ...
   }
 }
 ```
 
-Также может требуеться настройка алиаса в ESLint конфиге для плагинов типа `eslint-plugin-import` и `eslint-import-resolver-typescript`, если они используются.
+You may also need to set alias in ESLint config for plugins like `eslint-plugin-import` and `eslint-import-resolver-typescript` if they are used.
 
 :::
 
-::: details Как посмотреть, сколько в моем js бандле занимают разные библиотеки?
+:::::: details How can I see how much my js bundle has different libraries?
 
-[rollup-plugin-visualizer](https://github.com/btd/rollup-plugin-visualizer) - отличное средство для этого
+[rollup-plugin-visualizer](https://github.com/btd/rollup-plugin-visualizer) is a great tool to do this
 
-Запускается генерация статистики из командной строки так (один из вариантов):
+Generating statistics from the command line works like this (one of the options):
 
-```sh
+``sh
 npx vite-bundle-visualizer
 npx vite-bundle-visualizer -t list
 npx vite-bundle-visualizer -t raw-data

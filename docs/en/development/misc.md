@@ -1,38 +1,38 @@
-# Полезные советы
+# Helpful hints
 
-::: details Как поймать момент когда пользователь доскролил до определенного места?
+::: details How to catch the moment when the user scrolls to a certain place?
 
 Intersection Observer
 
 :::
 
-<!-- В тройке есть только один кейс протекания. -->
-<!-- Когда классы корневого элемента компонента совпадают с классами родителя. -->
+<!-- There is only one percolation case in the triple. -->
+<!-- When the classes of the component's root element are the same as the parent's classes. -->
 
-::: details i18n - интернационализация приложения
+::: details i18n - application internationalization
 
-NPM библиотека для интернационализации и локализации i18n очень популярна, однако за последние годы она сильно располнела. В ней много возможностей для локализации дат, чисел, установки нужных склонений, поддержки RTL языков, загрузки локалей с сервера и кучи еще чего. На сайте i18next она называется уже даже "интернационализационным фреймворком".
+The NPM library for internationalization and localization i18n is very popular, but it has grown very large in recent years. It has a lot of features for localizing dates, numbers, setting the right declensions, RTL language support, downloading locales from the server and a bunch of other things. The i18next site even calls it an "internationalization framework".
 
-В то же время часто для локализации сайта в большинстве случаев требуются очень простые вещи, занимающие всего пару процентов от всего функционала тяжеловеса i18n.
+At the same time, localization of a site often requires very simple things that take up only a couple of percent of the entire functionality of the i18n heavyweight.
 
-По сути обычно нужна реактивная функция, по ключу и текущей локали возвращающая строку.
+In fact, you usually need a reactive function that returns a string based on the key and the current locale.
 
-Вариант реализации через композабл - в [этой статье](https://habr.com/ru/articles/736530/)
+A variant of implementation via composable is in [this article](https://habr.com/ru/articles/736530/).
 
-Ваш бандл "похудеет" на 50Кб.
+Your bundle will be "thinner" by 50Kb.
 :::
 
-::: details Options API или Composition API?
+::: details Options API or Composition API?
 
-Советуется Composition API (script setup) как более логичный и удобный, в котором программист контролирует поток выполнения программы средствами JavaScript, а не просто задает какие-то магические опции.
+We recommend Composition API (script setup) as more logical and convenient, in which the programmer controls the flow of program execution by means of JavaScript, and not just by setting some magic options.
 
 :::
 
-::: details Ref или Reactive?
+:::: details Ref or Reactive?
 
-Отличие в плане использования - Reactive работает только с объектами и не отслеживает замену объекта. Ref работает со всем и отслеживает замену переменной:
+Difference in terms of usage - Reactive only works with objects and does not track object replacement. Ref works with everything and tracks variable replacement:
 
-```js
+``js
 const a = Ref(1);
 const b = Reactive({ x: 1 });
 
@@ -43,26 +43,26 @@ a.value = 2;
 b = { x: 2 };
 ```
 
-Реализации реактивных переменных в Vue 2 и Vue 3 отличаются. Во Vue 2 была своя (фреймворка) реализация отслеживания изменений. Во Vue 3 для этого используется объект Proxy, введенный в ES6. Из-за поддержки данного функционала на уровне языка (JavaScript engine), соответствующий код фреймворка получается эффективней и проще.
+The implementations of reactive variables in Vue 2 and Vue 3 are different. Vue 2 had its own (framework) implementation of change tracking. In Vue 3, the Proxy object introduced in ES6 is used for this purpose. Because of the support for this functionality at the language level (JavaScript engine), the corresponding framework code is more efficient and simpler.
 
-Reactive непосредственно использует Proxy объект.
+Reactive uses the Proxy object directly.
 
-Ref на объекте использует напрямую Reactive, а для примитивов оборачивает их в объект и снова использует Reactive.
+Ref on the object uses Reactive directly, and for primitives it wraps them in the object and uses Reactive again.
 
-Если хотите претенциозной эффективности - используйте на объектах Reactive, на примитивах - Ref. В ином случае можно все делать через Ref.
-
-:::
-
-::: details ShallowRef
-
-Когда у вас массив с большим количеством элементов, но данные внутри элементов массива не меняются, а может меняться только сам массив (добавление элементов, удаление, замена массива) - используйте `ShallowRef`.
-
-Он работает как `Ref`, но не отслеживает изменения внутри элементов массива, что дает значительное улучшение производительности.
+If you want pretentious efficiency, use Reactive on objects and Ref on primitives. Otherwise, you can do everything via Ref.
 
 :::
 
-::: details Миксины
+:::: details ShallowRef
 
-Нужно забыть о них как о страшном сне. Миксины как паттерн множественного наследования являются очень плохой архитектурной практикой и должны быть избегаемы. Во Vue 2 в самом фреймворке не было возможности сделать для компонент общей часть стейта и методов, поэтому использовались миксины. Во Vue 3 появилось Composition API и миксины стали не нужны.
+When you have an array with a large number of elements, but the data inside the array elements does not change, but only the array itself can change (adding elements, deleting, replacing the array) - use `ShallowRef`.
+
+It works like `Ref` but does not track changes inside array elements, which gives a significant performance improvement.
+
+:::
+
+:::: details Mixins
+
+We should forget about them like a bad dream. Mixins as a pattern of multiple inheritance is a very bad architectural practice and should be avoided. In Vue 2, the framework itself did not have a way to make the component part of the steit and methods common, so mixins were used. In Vue 3, the Composition API was introduced and mixins were no longer needed.
 
 :::

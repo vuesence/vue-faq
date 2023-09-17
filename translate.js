@@ -1,25 +1,30 @@
-const dir = "./docs/test/";
 import fs from "fs";
 
 const fileNames = [];
 const text = [];
 
+// const dir = "misc/";
+const dir = "frontend/";
+// const dir = "development/";
+// const dir = "deployment/";
+// const dir = "backend/";
+
 processDir(dir);
 
 function processDir(dir) {
-  fs.readdirSync(dir).forEach((file) => {
+  fs.readdirSync("./docs/" + dir).forEach((file) => {
     if (file.endsWith(".md")) {
       // console.log(file);
       fileNames.push(file);
-      const data = fs.readFileSync(dir + file, "utf8");
+      const data = fs.readFileSync("./docs/" + dir + file, "utf8");
       //   console.log(data);
       text.push(data);
     }
   });
   console.log(fileNames);
-  console.log(text);
+  // console.log(text);
 
-  fileNames.forEach((fn) => fs.copyFileSync(dir + fn, dir + fn + ".txt"));
+  // fileNames.forEach((fn) => fs.copyFileSync(dir + fn, dir + fn + ".txt"));
 
   // process.exit();
   const raw = JSON.stringify({
@@ -45,9 +50,9 @@ function processDir(dir) {
     .then((result) => {
       for (let i = 0; i < result.translations.length; i++) {
         const data = result.translations[i].text;
-        fs.writeFileSync(dir + fileNames[i], data);
+        fs.writeFileSync("./docs/en/" + dir + fileNames[i], data);
       }
-      console.log(result);
+      // console.log(result);
     })
     .catch((error) => console.log("error", error));
 }

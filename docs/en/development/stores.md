@@ -1,87 +1,87 @@
 <!-- TODO: -->
 
-# State management во Vue 3
+# State management in Vue 3
 
-::: details Зачем нужен State management?
+::: details Why State management?
 
-Иногда в приложении нужно передать реактивные данные или функцию из одного компонента в другой, и эти компоненты не принадлежат одной иерархии. Механизмы пропсов/ивентов или provide/inject не подходят для этого. Поэтому во Vue 2 появился Vuex - state management библиотека, которая позволяет хранить реактивный стейт и предоставлять доступ к нему отовсюду.
+Sometimes in an application you need to pass reactive data or a function from one component to another, and these components do not belong to the same hierarchy. Props/invents or provide/inject mechanisms are not suitable for this. That's why Vue 2 introduced Vuex, a state management library that allows you to store a reactive state and provide access to it from anywhere.
 
-Библиотека управления стейтом на фронтенде обычно называется "стором".
+A frontend state management library is usually called a "storum".
 
 :::
 
-::: details Как можно передать реактивные данные из одного компонента в другой во Vue 3?
+:::: details How can I pass reactive data from one component to another in Vue 3?
 
-- Если один компонент является прямым потомком другого - пропсы и ивенты
-- Если один компонент непрямой потомок другого - provide/inject или проп/ивент дриллинг (плохая практика)
-- Если они в разных ветках иерархии - стор или Vue 3 ref/reactive
+- If one component is a direct descendant of another - props and invents
+- If one component is an indirect descendant of another - provide/inject or prop/invent dribbling (bad practice).
+- If they are in different branches of the hierarchy - stor or Vue 3 ref/reactive
 
-Vue 3 ref/reactive - это когда в отдельном js модуле вы определяете и экспортируете реактивную переменную:
+Vue 3 ref/reactive is when you define and export a reactive variable in a separate js module:
 
 ```
 export const userLoggedIn = ref(false);
 ```
 
-После чего она доступна во всём приложении через импорт данного модуля.
+It is then available throughout the application via the import of this module.
 
-Однако, расшаривать просто переменную - архитектурно плохая идея. Обычно вокруг этой переменной есть бизнес логика, которую и надо сделать доступной.
+However, it is architecturally a bad idea to just share a variable. Usually there is business logic around this variable, which should be made available.
 
-Например, для аутентификации нужен не только сам факт, что пользователь залогинился, но и сопутствующие методы - `login()`, `logout()`, `register()`, `isAuthenticated()`. Синтез некоего стейта и сопутствующей бизнес логики дал так называемые composable функции во Vue 3.
+For example, authentication requires not only the fact that the user is logged in, but also the associated methods - `login()`, `logout()`, `register()`, `isAuthenticated()`. Synthesizing some kind of steit and the accompanying business logic yielded the so-called composable functions in Vue 3.
 
-В некотором смысле - аналог объекта в ООП.
+In some sense, it is an analog of an object in OOP.
 
 :::
 
-::: details Что такое стор (store) на фронтенде?
+:::: details What is a store on the frontend?
 
 > _A Store (like Pinia) is an entity holding state and business logic that isn't bound to your Component tree. In other words, it hosts global state. It's a bit like a component that is always there and that everybody can read off and write to._
 >
-> _Стор (например, Pinia) — это сущность, содержащая состояние и бизнес-логику, которая не привязана к вашему дереву компонентов. Другими словами, здесь находится глобальное состояние. Это что-то вроде компонента, который всегда присутствует, и который каждый может считывать и писать в него._
+> _Store (such as Pinia) is an entity that contains state and business logic that is not bound to your Component tree. In other words, this is where the global state resides. It's sort of like a component that is always present, and that anyone can read and write to._
 >
-> _Официальная документация Pinia_
+> _ _Official Pinia_ documentation.
 
-Выглядит как очень неудачное, двусмысленное и запутывающее определение.
+Looks like a very unfortunate, ambiguous and confusing definition.
 
-С точки зрения разработчика не фронтенда (по сути любой другой язык, кроме JavaScript, плюс частично JavaScript), аналогом конструкции с названием`стор` будет база данных - SQL, NoSQL или кэширующий Redis. Там есть аналоги стейта и геттеров (`View` в SQL БД). Но в 99.99% случаях в базе данных не будет никакой бизнес логики, за исключением ограничений для консистентности данных (например, unique или foreign keys).
+From the perspective of a non-frontend developer (basically any language other than JavaScript, plus partially JavaScript), the analog of a construct called `store` would be a database - SQL, NoSQL or caching Redis. There are analogs of state and getters (`View` in SQL database). But in 99.99% of cases, there will be no business logic in the database except for data consistency constraints (e.g., unique or foreign keys).
 
-С точки зрения разработчика не фронтенда, сторы фронтенда - это просто объекты / stateful сервисы, построенные по шаблону `синглтон`. Называть их _"глобальными сторами"_ как минимум нелогично.
+From a non-frontend developer's perspective, frontend storas are just objects / stateful services built on a `singleton` pattern. Calling them _"global stors"_ is at least illogical.
 
-Скорей всего, это произошло исторически. Сперва был один Vuex, он был один стор и глобален. Потом у него появились модули. Потом у Pinia эти модули стали независимы и расползлись по всему приложению. В итоге, в приложении куча мелких локальных (по области использования) сторов, каждый из которых считает себя глобальным, даже если его использует 2-3 компонента из 1000 на проекте, и даже если в этом сторе 1% - стейта, и 99% - бизнес и сопутствующей логики.
+It's likely that this happened historically. First there was one Vuex, it was one stor and global. Then it had modules. Then Pinia modules became independent and spread all over the application. As a result, the application has a bunch of small local (by area of use) storages, each of which considers itself global, even if it is used by 2-3 components out of 1000 on the project, and even if this storage has 1% of steate and 99% of business and related logic.
 
-В этом плане использование композабл функций для той же цели (_an entity holding state and business logic that isn't bound to your Component tree_) - намного более логично. И называть их следует не useAuthStore, а useAuth или useAuthService.
-
-:::
-
-::: details Vuex или Pinia?
-
-Во Vue 3 основной внешней библиотекой управления стейтом стала Pinia. В отличие от Vuex у нее есть поддержка TypeScript, она удобней и, естественно, пользуется преимуществами Vue 3.
-
-Vuex официально устарел (deprecated)
+In this respect, using composable functions for the same purpose (_an entity holding state and business logic that isn't bound to your Component tree_) - is much more logical. And they should be called useAuth or useAuthService instead of useAuthStore.
 
 :::
 
-::: details Pinia или Composables functions?
+:::: details Vuex or Pinia?
 
-Во Vue 3 появилось нечто, делающее отдельную библиотеку для управления стейтом ненужной. А именно, реактивные типы`Ref` и `Reactive`, которыми можно пользоваться за пределами компонент. Стало возможным делать свои сторы на основе composable функций и подключать их в любом компоненте.
+In Vue 3, Pinia has become the main external library for managing the stack. Unlike Vuex, it has TypeScript support, is more convenient, and naturally takes advantage of Vue 3.
 
-Основное декларируемое отличие Pinia - интеграция с Vue DevTools, плагины и SSR поддержка. Однако, нужно ли ему то или другое, каждый разработчик решает сам. Работать с composables в DevTools вполне комфортно.
-
-Composable функция, в свою очередь, может иметь как глобальный, так и локальный (переменные объявлены внутри функции) стейты. Это бывает удобно в определенных случаях - можно создать несколько экземпляров composable функций, каждая со своим стейтом. Например, когда у вас на сайте несколько новостных виджетов, различающихся только категорией новостей.
-
-Кроме того, с функциональной точки зрения composable функции имеют полный доступ ко всему Vue Reactivity API, что делает их гибче, чем Pinia.
-
-Composable функции с глобальным стейтом не работают в SSR режиме.
-
-Также надо помнить, что любая зависимость (в данном случае библиотека Pinia) может принести проблемы, аналогичные с ситуацией "RIP Vuex", когда библиотека умирает, устаревает, перестает поддерживаться или в ней находят уязвимости. Composable функции, в свою очередь, выглядят основательным нововведением во Vue фреймворк.
+Vuex is officially deprecated
 
 :::
 
-::: details Как разделять логику между компонентом и composable функциями?
+::: details Pinia or Composables functions?
 
-Удобно представлять это как [MVC шаблон](https://ru.wikipedia.org/wiki/Model-View-Controller), где роль `View` (и частично `Controller`) выполняют компоненты, отвечающие преимущественно за визуализацию, а логика и модель (`Model` и частично `Controller`) приходятся на композабл функции и их реактивный стейт.
+In Vue 3 there is something that makes a separate library for managing the state unnecessary. Namely, reactive types `Ref` and `Reactive` that can be used outside of a component. It became possible to make your own storages on the basis of composable functions and connect them in any component.
 
-Чтобы понять, что класть в композабл, а что в компонент (который может состоять из нескольких компонент), представьте, что вы меняете компонент на другой - отображающий ваши данные как-то иначе. В идеале, модель (композабл) должен остаться тем же самым, вы переписываете только компонент, в котором логика, ответственная только за отображение.
+The main declared difference of Pinia is integration with Vue DevTools, plugins and SSR support. However, whether he needs one or the other, each developer decides for himself. It is quite comfortable to work with composables in DevTools.
 
-В то же время, логика (`Controller`) может делиться между компонентом и композаблом. Например, валидация данных формы может происходить в компоненте (проверка, что поле заполнено), в компоненте с помощью сторонней утилиты (проверка, что пароль - "сложный") и в композабле (проверка, что username - уникален)
+Composable function, in its turn, can have both global and local (variables are declared inside the function) stats. This can be useful in certain cases - you can create several instances of composable functions, each with its own state. For example, when you have several news widgets on your site, differing only by news category.
+
+Also, from a functional point of view, composable functions have full access to the entire Vue Reactivity API, which makes them more flexible than Pinia.
+
+Composable functions with global stats do not work in SSR mode.
+
+You should also keep in mind that any dependency (in this case the Pinia library) can bring problems similar to the "RIP Vuex" situation when the library dies, becomes obsolete, is no longer supported, or vulnerabilities are found in it. Composable features, on the other hand, look like a thorough innovation to the Vue framework.
+
+:::
+
+::::: details How to split logic between component and composable functions?
+
+It is convenient to think of it as [MVC pattern](https://ru.wikipedia.org/wiki/Model-View-Controller), where the role of `View` (and partially `Controller`) is played by components, which are mainly responsible for visualization, and the logic and model (`Model` and partially `Controller`) fall on composable functions and their reactive state.
+
+To understand what to put in a composable and what to put in a component (which may consist of several components), imagine that you change the component to another one - displaying your data in some other way. Ideally, the model (composite) should remain the same, you are only rewriting the component that has logic responsible for displaying it.
+
+At the same time, the logic (`Controller`) can be shared between the component and the composable. For example, validation of form data can happen in the component (checking that the field is populated), in the component using a third-party utility (checking that the password is "complex"), and in the compsable (checking that username is unique)
 
 :::

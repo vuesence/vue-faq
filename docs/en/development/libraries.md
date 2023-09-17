@@ -1,19 +1,19 @@
-# Подскажите удобную библиотеку
+# Tell me a handy library
 
 <!-- TODO: -->
 
-::: detail Для работы с датами
-`moment` безвозвратно устарел. Есть day.js и day-fnc.js
+:::: detail For working with dates
+`moment` is irretrievably obsolete. There's day.js and day-fnc.js.
 
-Однако в 95% случаев хватает возможностей стандартного JavaScript Intl пакета
+However, in 95% of cases the capabilities of the standard JavaScript Intl package are sufficient
 :::
 
-::: detail Для UI компонентов
+:::: detail For UI components
 
-Существует достаточно много CSS и UI библиотек
+There are quite a few CSS and UI libraries out there
 
-Вот [в этой статье](https://habr.com/ru/articles/745012/) есть небольшой обзор их тяжеловесности
+Here [in this article](https://habr.com/ru/articles/745012/) is a small overview of their heavyweight nature
 
-Quasar и PrimeVue выглядят солидно.
+Quasar and PrimeVue look solid.
 
 :::

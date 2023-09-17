@@ -1,66 +1,66 @@
-# Аутентификация и авторизация
+# Authentication and authorization
 
-::: details Что такое аутентификация и авторизация
-Грубо говоря:
+::: details What is authentication and authorization
+Roughly speaking:
 
-Аутентификация - когда система удостоверяется, что в неё залогинился именно Вася Пупкин, например, проверив его логин и пароль
+Authentication is when the system verifies that it is Vasya Pupkin who logged in, for example, by checking his username and password
 
-Авторизация - когда система удостоверяется, что запрашивающий ресурс/действие пользователь имеет право доступа к нему. Например, старший менеджер имеет право удаления товара в админке, а простой менеджер - нет.
+Authorization - when the system verifies that the user requesting the resource/action has the right to access it. For example, a senior manager has the right to delete an item in the admin, but a simple manager does not.
 :::
 
-::: details Как сделать систему аутентификации на сайта
+:::: details How to make an authentication system on the site
 
-Для SPA самый распространенный способ - на JWT токенах. Вариантов это сделать много, в зависимости от требований уровня безопасности (личный блог Васи Пупкина с комментариями гостей и онлайн магазин с депозитами и бонусами - две большие разницы).
+For SPA the most common way - on JWT tokens. There are many variants of this, depending on the requirements of the security level (Vasya Pupkin's personal blog with guest comments and online store with deposits and bonuses - two big differences).
 
-JWT - это стандарт записи небольшого количества информации в строку (токен) и подписывания её (криптография). Делает это бэкенд. Таким образом только бэкенд может удостовериться, что токен выписан им, и в нем действительная информация.
+JWT is a standard for writing a small amount of information into a string (token) and signing it (cryptography). It is done by the backend. So only the backend can make sure that the token is written by it and has valid information in it.
 
-Стандарта аутентификация на токенах как такового нет, есть лучшие практики.
+There is no standard for token authentication as such, there are best practices.
 
-Варианты:
+Options:
 
-1. Бэкенд генерит токен (access token - AT) и кладет в httpOnly cookie. Фронтэнд доступа к токену не имеет, браузер просто возвращает куку. Метод незаслужено редко используемый, но вполне надежный. С фронта снимаются все заморочки по манипуляции с АТ.
+1. backend generates token (access token - AT) and puts it in httpOnly cookie. The frontend does not have access to the token, the browser just returns the cookie. This method is undeservedly rarely used, but it is quite reliable. The frontend removes all the hassles of manipulating AT.
 
-Сценарий:
+Scenario:
 
-- Фронт логинится, получает данные пользователя с бэка и работает с ними. При получении при любом запросе 401 - направляет пользователя на форму логина, обнуляет данные пользователя.
-- Бэк при логине создает httpOnly cookie с токеном с определенным сроком жизни. На каждом запросе проверяет токен, определяет того, кому выписан этот токен и его права, и дальше решает разрешать ли доступ. Если срок жизни токена кончился - возвращает 401.
+- Front logs in, gets user data from the backend and works with it. When receiving any 401 request, it directs the user to the login form and resets the user data to zero.
+- Back at login creates httpOnly cookie with token with certain lifetime. At each request it checks the token, determines the person to whom this token is issued and his rights, and then decides whether to allow access. If the lifetime of the token has expired, it returns 401.
 
-2. Бэкенд генерит токен (access token - AT) и передаёт фронту. Фронт сохраняет его и каждый раз отправляет его обратно. По сути то же самое, что и в первом случае, плюс лишние телодвижения и возможность потерять токен через XSS.
+2 The backend generates an access token (AT) and passes it to the front. The front saves it and sends it back each time. In essence the same as in the first case, plus unnecessary steps and the possibility of losing the token through XSS.
 
-3. Используются два токена - короткоживущий access token (AT) и дольше живущий refresh token (RT) пересылаемый в httpOnly cookie. AT работает как во втором случае. Когда записанный в нем срок его жизни кончается, бэкенд проверяет RT, и если он валиден, обновляет AT. Кончается RT - пользователь направляется на перелогин.
+3. two tokens are used - short-lived access token (AT) and longer-lived refresh token (RT) sent in httpOnly cookie. AT works as in the second case. When its lifetime expires, the backend checks the RT and if it is valid, refreshes the AT. RT expires - the user is sent to re-login.
 
-Подробнее по данной теме можно ознакомиться в, например, [этой статье](https://habr.com/ru/articles/710552/)
-
-:::
-
-::: details Где хранить access token на фронте?
-
-В 95% случаев в LocalStorage
+More details on this topic can be found in, for example, [this article](https://habr.com/ru/articles/710552/).
 
 :::
 
-::: details Что такое oAuth и SSO?
+:::: details Where to store access token on the frontend?
 
-oAuth - Логин "через Google". Также когда, например, у пользователь есть возможность на твоем сайте сохранить что-то в Google Drive. Чтобы получить разрешение для твоего сайта работы с Google Drive аккаунтом пользователя, ты просишь его дать через Google разрешения твоему сайту лазить в его аккаунт. Итого у нас есть четыре части - Google (авторизационный центр), сторонний ресурс (Google Drive), твой сайт и пользователь
-
-SSO - single sign-on - логин пользователя на портал некой компании один раз, и затем прозрачный доступ на разные его сервисы. Например, логин в GMail и доступ в сразу в Google Диск, Google Photo и так далее.
+In 95% of cases in LocalStorage
 
 :::
 
-::: details Дает ли аутентификация через JWT безопасность?
+:::: details What is oAuth and SSO?
 
-Безопасность - очень комплексное понятие, аутентификация через JWT - всего лишь один из её элементов. Для критичных приложений можно снимать отпечаток системы пользователя (browser fingerprint) и заставлять пользователя перелогиниваться как только он изменился. То же самое с IP. Таким образом можно бороться с кражей АТ. Также ставить очень маленький срок жизни AT, если используется RT. Но основные меры безопасности связаны не с аутентификацией, а с постоянным мониторингом системы на подозрительные действия.
+oAuth - Login "via Google". Also when, for example, a user has the option on your site to save something to Google Drive. In order to get permission for your site to work with the user's Google Drive account, you ask the user to allow your site to access their account via Google. So we have four parts - Google (the authorization center), the third-party resource (Google Drive), your site, and the user
+
+SSO - single sign-on - a user logs in to a certain company's portal once, and then has transparent access to its different services. For example, login to GMail and access to Google Drive, Google Photo and so on.
 
 :::
 
-::: details Авторизация
+:::: details Does authentication via JWT give security?
 
-Если нужно давать пользователям разный уровень доступа к ресурсам сайта, то обычно применяется или RBAC (Role-based access control) или PBA - Policy-Based Authorization (Permission-Based Authorization).
+Security is a very complex concept, and JWT authentication is just one of its elements. For critical applications, it is possible to capture the user's browser fingerprint and force the user to re-login as soon as they change. Same with IP. In this way you can fight AT theft. Also set very small AT lifetime if RT is used. But the main security measures are not related to authentication, but to constant monitoring of the system for suspicious actions.
 
-В первом случае пользователи распределяются по ролям (админ, менеджер, юзер) и уровень доступа определяется ролью.
+:::
 
-Во-втором можно более гранулировано задать разрешение каждому пользователю индивидуально на любое действие.
+:::: details Authorization
 
-Нужно понимать, что на фронте авторизация делается для удобства (пользователь не видит разделы сайта, которые ему запрещены), но за безопасность отвечает бэк - он должен проверять каждый раз, имеет ли пользователь право доступа к запрашиваемому ресурсу, даже если на фронте его как бы видно не должно быть. Сломать фронт - очень несложно.
+If it is necessary to give users different levels of access to site resources, it is common to use either RBAC (Role-based access control) or PBA (Policy-Based Authorization).
+
+In the first case, users are assigned to roles (admin, manager, user) and the level of access is determined by the role.
+
+In the second case, it is possible to set permissions for each user individually for any action in a more granular way.
+
+It should be understood that on the front authorization is done for convenience (the user does not see the sections of the site that are forbidden to him), but the back is responsible for security - he must check each time whether the user has the right to access the requested resource, even if on the front it should not be visible. It is not very difficult to break the front end.
 
 :::

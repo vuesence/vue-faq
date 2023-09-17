@@ -1,4 +1,4 @@
-# Шпаргалки (Cheat Sheet)
+# Cheat Sheet #
 
 <!-- - [Vue-3-Cheat-Sheet](./Vue-3-Cheat-Sheet.pdf) -->
 

@@ -1,16 +1,16 @@
-# Внесите лепту в развитие данного FAQ
+# Contribute to the development of this FAQ
 
-<p>Вы можете предложить корректировку любого или добавление нового вопроса-ответа используя форму ниже.</p>
-<p>GitHub way внесения изменений (<i>fork -> edit -> create PR</i>) также всячески приветствуется.</p>
+<p>You can suggest corrections to any or add a new FAQ using the form below.</p>
+<p>GitHub way of making changes (<i>fork -> edit -> create PR</i>) is also very welcome.</p>
 
 <div class="form-container" action="action_page.php">
-  <label for="fname">Ваше имя и/или контакты (опционально)</label>
+  <label for="fname">Your name and/or contacts (optional)</label>
   <input id="fname" v-model="form.name" type="text" name="firstname" placeholder="" />
-  <label for="subject">Вопрос/ответ или сообщение</label>
+  <label for="subject">Question/answer or message</label>
   <textarea id="subject" v-model="form.message" name="subject" placeholder=""></textarea>
-  <label for="check">Введите слово "vue"</label>
+  <label for="check">Enter the word "vue"</label>
   <input id="check" v-model="form.check" type="text" name="check" placeholder="" />
-  <input ref="submit" type="submit" value="Отправить" @click="submitForm" />
+  <input ref="submit" type="submit" value="Submit" @click="submitForm" />
 </div>
 
 <script setup>
@@ -25,9 +25,9 @@ const form = ref({ name: "", email: "", message: "", check: "" });
 
 async function submitForm() {
   submit.value.setAttribute("disabled", true);
-  if (form.value.check === "vue") {    
-    const text = `Сообщение с сайта Vue FAQ:\n\n
-      Имя:${form.value.name}\n
+  if (form.value.check === "vue") {
+    const text = `Message from Vue FAQ:\n\n\n
+      Name:${form.value.name}\n
       ${form.value.message}`;
 
     const response = await fetch(
@@ -35,7 +35,7 @@ async function submitForm() {
       {
         method: "POST",
         headers: {
-          "Content-Type": "application/json;charset=utf-8",
+          "Content-Type": "application/json;charset=utf-8"
         },
         body: JSON.stringify({
           chat_id: "333530662",
@@ -44,11 +44,11 @@ async function submitForm() {
       },
     );
     if (response) {
-      form.value = { name: "", email: "", message: "", check: "" };
+      form.value = { name: "", email: "", message: "", check: "" }
     }
   }
   else {
-    alert("Неверное проверочное слово");
+    alert("Incorrect check word");
   }
 
   submit.value.removeAttribute("disabled");
