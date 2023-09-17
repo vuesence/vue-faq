@@ -24,9 +24,10 @@ export default defineConfig({
         [
           "script",
           {},
-          `const locale = navigator.language; 
-          console.log(locale);
-          if (locale == "ru-RU") document.location="/en/"`,
+          `const init = localStorage.getItem("vue-faq-init") ?? false;
+            localStorage.setItem("vue-faq-init", true);
+            if (navigator.language != "ru-RU" && !init) document.location="/en/";
+            `,
         ],
       ],
     },

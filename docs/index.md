@@ -9,7 +9,7 @@ hero:
   actions:
     - theme: brand
       text: Начать
-      link: /introduction
+      link: /misc/introduction
     - theme: alt
       text: Почему Vue?
       link: /frontend/about-frameworks
