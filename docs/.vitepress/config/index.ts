@@ -21,6 +21,13 @@ export default defineConfig({
             gtag('js', new Date());
             gtag('config', 'G-JL65GWRNZZ');`,
         ],
+        [
+          "script",
+          {},
+          `const locale = navigator.language; 
+          console.log(locale);
+          if (locale == "ru-RU") document.location="/en/"`,
+        ],
       ],
     },
     en: {
@@ -43,7 +50,7 @@ export default defineConfig({
       ],
     },
   },
-  lang: "en-US",
+  lang: "en",
   title: "Vue FAQ",
   description: "Vue JavaScript фреймворк FAQ",
   themeConfig: {
@@ -52,9 +59,7 @@ export default defineConfig({
     },
     // https://vitepress.dev/reference/default-theme-config
     nav: nav_ru,
-
     sidebar: sidebar_ru,
-
     socialLinks: [{ icon: "github", link: "https://github.com/vuesence/vue-faq" }],
   },
 });
