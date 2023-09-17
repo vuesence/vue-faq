@@ -15,7 +15,6 @@ export default [
     items: [
       { text: "Customizing the IDE", link: "/en/development/ide" },
       { text: "Creating and building an application", link: "/en/development/building" },
-      // { text: "Creating a project", link: "/en/development/new-project" },
       { text: "How to use images and other resources", link: "/en/development/assets" },
       { text: "Stores - Vuex, Pinia and Composition API", link: "/en/development/stores" },
       { text: "Testing", link: "/en/development/testing" },

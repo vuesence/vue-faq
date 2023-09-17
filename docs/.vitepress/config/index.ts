@@ -29,6 +29,9 @@ export default defineConfig({
             if (navigator.language != "ru-RU" && !init) document.location="/en/";
             `,
         ],
+        ["link", { rel: "apple-touch-icon", sizes: "180x180", href: "/images/apple-touch-icon.png" }],
+        ["link", { rel: "icon", type: "image/png", sizes: "32x32", href: "/images/favicon-32x32.png" }],
+        ["link", { rel: "shortcut icon", href: "/favicon.ico" }],
       ],
     },
     en: {
@@ -48,6 +51,9 @@ export default defineConfig({
           gtag('js', new Date());
           gtag('config', 'G-JCCRGKJ88B');`,
         ],
+        ["link", { rel: "apple-touch-icon", sizes: "180x180", href: "/images/apple-touch-icon.png" }],
+        ["link", { rel: "icon", type: "image/png", sizes: "32x32", href: "/images/favicon-32x32.png" }],
+        ["link", { rel: "shortcut icon", href: "/favicon.ico" }],
       ],
     },
   },
@@ -55,6 +61,7 @@ export default defineConfig({
   title: "Vue FAQ",
   description: "Vue JavaScript фреймворк FAQ",
   themeConfig: {
+    logo: "/images/vue-faq-logo.webp",
     search: {
       provider: "local",
     },

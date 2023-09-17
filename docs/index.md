@@ -13,6 +13,9 @@ hero:
     - theme: alt
       text: Почему Vue?
       link: /frontend/about-frameworks
+  image:
+    src: /images/vue-faq-logo.webp
+    alt: Vue FAQ
 
 features:
   - title: Frontend
