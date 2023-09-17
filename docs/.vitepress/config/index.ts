@@ -11,6 +11,17 @@ export default defineConfig({
     root: {
       lang: "ru",
       label: "Русский",
+      head: [
+        ["script", { async: "", src: "https://www.googletagmanager.com/gtag/js?id=G-JL65GWRNZZ" }],
+        [
+          "script",
+          {},
+          `window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-JL65GWRNZZ');`,
+        ],
+      ],
     },
     en: {
       lang: "en",
@@ -19,22 +30,22 @@ export default defineConfig({
         nav: nav_en,
         sidebar: sidebar_en,
       },
+      head: [
+        ["script", { async: "", src: "https://www.googletagmanager.com/gtag/js?id=G-JCCRGKJ88B" }],
+        [
+          "script",
+          {},
+          `window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-JCCRGKJ88B');`,
+        ],
+      ],
     },
   },
   lang: "en-US",
   title: "Vue FAQ",
   description: "Vue JavaScript фреймворк FAQ",
-  head: [
-    ["script", { async: "", src: "https://www.googletagmanager.com/gtag/js?id=G-JL65GWRNZZ" }],
-    [
-      "script",
-      {},
-      `window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-JL65GWRNZZ');`,
-    ],
-  ],
   themeConfig: {
     search: {
       provider: "local",
