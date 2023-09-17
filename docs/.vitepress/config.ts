@@ -3,6 +3,20 @@ import { defineConfig } from "vitepress";
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   // base: "/ru/",
+  locales: {
+    root: {
+      lang: "ru",
+      label: "Русский",
+    },
+    en: {
+      lang: "en",
+      label: "English",
+      // themeConfig: {
+      //   sidebar: [{ text: "Introduction", link: "/introduction" }],
+      // },
+    },
+  },
+  lang: "en-US",
   title: "Vue FAQ",
   description: "Vue JavaScript фреймворк FAQ",
   head: [
@@ -17,6 +31,13 @@ export default defineConfig({
     ],
   ],
   themeConfig: {
+    // localeLinks: {
+    //   text: "",
+    //   items: [
+    //     { text: "English", link: "/en/" },
+    //     { text: "Русский", link: "/ru/" },
+    //   ],
+    // },
     search: {
       provider: "local",
     },
@@ -28,11 +49,11 @@ export default defineConfig({
         items: [
           {
             text: "Changelog",
-            link: "CHANGELOG.md",
+            link: "/misc/CHANGELOG.md",
           },
           {
-            text: "Помощь",
-            link: "/about/add-qa.md",
+            text: "Помочь с FAQ",
+            link: "/misc/contribute.md",
           },
         ],
       },
@@ -40,7 +61,7 @@ export default defineConfig({
     ],
 
     sidebar: [
-      { text: "Предисловие", link: "/introduction" },
+      { text: "Предисловие", link: "/misc/introduction" },
       {
         text: "Фронтенд",
         items: [
