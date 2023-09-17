@@ -1,15 +1,15 @@
 export default [
-  { text: "Main", link: "/" },
+  { text: "Main", link: "/en/" },
   {
     text: "v 1.1",
     items: [
       {
         text: "Changelog",
-        link: "/misc/CHANGELOG.md",
+        link: "/en/misc/CHANGELOG.md",
       },
       {
         text: "Contribute",
-        link: "/misc/contribute.md",
+        link: "/en/misc/contribute.md",
       },
     ],
   },
