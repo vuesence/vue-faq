@@ -29,9 +29,6 @@ export default defineConfig({
             if (navigator.language != "ru-RU" && !init) document.location="/en/";
             `,
         ],
-        ["link", { rel: "apple-touch-icon", sizes: "180x180", href: "/images/apple-touch-icon.png" }],
-        ["link", { rel: "icon", type: "image/png", sizes: "32x32", href: "/images/favicon-32x32.png" }],
-        ["link", { rel: "shortcut icon", href: "/favicon.ico" }],
       ],
     },
     en: {
@@ -51,16 +48,19 @@ export default defineConfig({
           gtag('js', new Date());
           gtag('config', 'G-JCCRGKJ88B');`,
         ],
-        ["link", { rel: "apple-touch-icon", sizes: "180x180", href: "/images/apple-touch-icon.png" }],
-        ["link", { rel: "icon", type: "image/png", sizes: "32x32", href: "/images/favicon-32x32.png" }],
-        ["link", { rel: "shortcut icon", href: "/favicon.ico" }],
       ],
     },
   },
   lang: "en",
   title: "Vue FAQ",
   description: "Vue JavaScript фреймворк FAQ",
-  head: [["meta", { attr: "sa", sizes: "180x180", href: "icon.png" }]],
+  head: [
+    ["meta", { property: "og:type", content: "article" }],
+    ["meta", { property: "og:image", content: "/images/vue-faq-logo.webp" }],
+    ["link", { rel: "apple-touch-icon", sizes: "180x180", href: "/images/apple-touch-icon.png" }],
+    ["link", { rel: "icon", type: "image/png", sizes: "32x32", href: "/images/favicon-32x32.png" }],
+    ["link", { rel: "shortcut icon", href: "/favicon.ico" }],
+  ],
   themeConfig: {
     logo: "/images/vue-faq-logo.webp",
     search: {

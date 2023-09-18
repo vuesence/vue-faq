@@ -1,5 +1,5 @@
 export default [
-  { text: "Main", link: "/en/" },
+  { text: "Home", link: "/en/" },
   {
     text: "v 1.1",
     items: [
