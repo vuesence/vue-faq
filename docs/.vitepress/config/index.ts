@@ -53,7 +53,7 @@ export default defineConfig({
   },
   lang: "en",
   title: "Vue FAQ",
-  description: "Vue JavaScript фреймворк FAQ",
+  description: "Vue JavaScript framework FAQ",
   head: [
     // ["meta", { name: "og:type", content: "article" }],
     ["meta", { property: "og:type", content: "website" }],
