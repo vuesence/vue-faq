@@ -56,7 +56,7 @@ export default defineConfig({
   description: "Vue JavaScript фреймворк FAQ",
   head: [
     ["meta", { property: "og:type", content: "article" }],
-    ["meta", { property: "og:image", content: "/images/vue-faq-logo.webp" }],
+    ["meta", { property: "og:image", content: "/images/vue-faq-logo-small.webp" }],
     ["link", { rel: "apple-touch-icon", sizes: "180x180", href: "/images/apple-touch-icon.png" }],
     ["link", { rel: "icon", type: "image/png", sizes: "32x32", href: "/images/favicon-32x32.png" }],
     ["link", { rel: "shortcut icon", href: "/favicon.ico" }],
