@@ -1,6 +1,6 @@
 # Learning Vue
 
-::: Sources of information on Vue
+::: details Sources of information on Vue
 
 For some reason, it is believed that there are only two ways to get knowledge on frontend - Vue documentation and tutorial videos from YouTube and all kinds of courses.
 
@@ -30,7 +30,7 @@ The difference between Vue 2 and Vue 3 is big. It's not a case of learning the p
 
 :::
 
-:::: details Do I need to know JavaScript beforehand?
+::: details Do I need to know JavaScript beforehand?
 
 Absolutely, at least an intermediate level. If not, I would suggest taking a short javascript course first, so that the person knows about the document object, knows how to handle array methods and is not too afraid of promises. Also, HTML and CSS at least at a basic level.
 
@@ -46,7 +46,7 @@ Also a classic resource on JavaScript - [learn.javascript.ru](https://learn.java
 Also an absolutely necessary pre-skill is the ability to google.
 :::
 
-:::: details Is there a certification for Vue?
+::: details Is there a certification for Vue?
 [Vue.js Certification](https://certificates.dev/vuejs)
 :::
 
@@ -59,7 +59,7 @@ Go back to this source from time to time and improve your code.
 ESlint also helps you keep your code in line with best practices.
 :::
 
-:::: details Do I need a mentor?
+::: details Do I need a mentor?
 
 A mentor is useful for both a beginner and an experienced developer. You can uselessly kill two days to solve a problem that can be explained in 20 minutes by a more experienced person. And this two-day "experience" will never be useful again.
 
@@ -69,13 +69,13 @@ There are services like [Solvery](https://solvery.io/) on the Internet that can 
 
 :::
 
-::::: details I still want the video
+::: details I still want video
 
 There are quality ones from `Vue Mastery`, but most are outdated.
 
 :::
 
-:::: details What else to look at besides Vue? React?
+::: details What else to look at besides Vue? React?
 
 You can do React if you have a real option to use that knowledge, but it's much better to expand your developer horizons. Try to write a simple API on the backend. The easiest and most convenient language for this is PHP, but you can also use Node.js or Python. Try JSON-RPC and WebSockets transport protocols. Upload your application to GitHub Pages or another similar service, experiment with GitHub Actions - they help a lot with deploy automation and CI/CD in general. Work with Cloud providers (many offer free resources), set up a virtual server. Register a domain, make a product finished site - even if it's just your resume site or something basic on VitePress (used by this site). Work with FireStore and open APIs for various data. Check out Swagger. Learn SQL, install MySQL and play around with it, or do it on SupaBase. Understanding how data is stored and processed on the backend will help a lot in choosing the right strategies on the frontend.
 

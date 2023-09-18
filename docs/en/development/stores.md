@@ -10,7 +10,7 @@ A frontend state management library is usually called a "storum".
 
 :::
 
-:::: details How can I pass reactive data from one component to another in Vue 3?
+::: details How can I pass reactive data from one component to another in Vue 3?
 
 - If one component is a direct descendant of another - props and invents
 - If one component is an indirect descendant of another - provide/inject or prop/invent dribbling (bad practice).
@@ -32,13 +32,13 @@ In some sense, it is an analog of an object in OOP.
 
 :::
 
-:::: details What is a store on the frontend?
+::: details What is a store on the frontend?
 
 > _A Store (like Pinia) is an entity holding state and business logic that isn't bound to your Component tree. In other words, it hosts global state. It's a bit like a component that is always there and that everybody can read off and write to._
 >
 > _Store (such as Pinia) is an entity that contains state and business logic that is not bound to your Component tree. In other words, this is where the global state resides. It's sort of like a component that is always present, and that anyone can read and write to._
 >
-> _ _Official Pinia_ documentation.
+> \_ _Official Pinia_ documentation.
 
 Looks like a very unfortunate, ambiguous and confusing definition.
 
@@ -52,7 +52,7 @@ In this respect, using composable functions for the same purpose (_an entity hol
 
 :::
 
-:::: details Vuex or Pinia?
+::: details Vuex or Pinia?
 
 In Vue 3, Pinia has become the main external library for managing the stack. Unlike Vuex, it has TypeScript support, is more convenient, and naturally takes advantage of Vue 3.
 
@@ -76,7 +76,7 @@ You should also keep in mind that any dependency (in this case the Pinia library
 
 :::
 
-::::: details How to split logic between component and composable functions?
+::: details How to split logic between component and composable functions?
 
 It is convenient to think of it as [MVC pattern](https://ru.wikipedia.org/wiki/Model-View-Controller), where the role of `View` (and partially `Controller`) is played by components, which are mainly responsible for visualization, and the logic and model (`Model` and partially `Controller`) fall on composable functions and their reactive state.
 

@@ -10,7 +10,7 @@ For the more experienced, especially fullstackers, I suggest to take a look at `
 
 :::
 
-::::: details Why JSON-RPC?
+::: details Why JSON-RPC?
 
 After an experience with JSON-RPC, communication with back end is usually never the same again.
 
@@ -24,7 +24,7 @@ When using `JSON-RPC`, switching to `WebSockets` or other transport protocols wi
 
 :::
 
-::::: details How to organize reconnection of WebSocket connection on the front?
+::: details How to organize reconnection of WebSocket connection on the front?
 
 You need a bus, or `Event bus`, which will work as a proxy for incoming messages.
 
@@ -32,7 +32,7 @@ You can use [mitt](https://github.com/developit/mitt).
 
 :::
 
-:::: details What is GraphGL?
+::: details What is GraphGL?
 
 A complex thing, an attempt to translate SQL query language for client-server queries on the web.
 

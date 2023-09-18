@@ -8,7 +8,7 @@ Authentication is when the system verifies that it is Vasya Pupkin who logged in
 Authorization - when the system verifies that the user requesting the resource/action has the right to access it. For example, a senior manager has the right to delete an item in the admin, but a simple manager does not.
 :::
 
-:::: details How to make an authentication system on the site
+::: details How to make an authentication system on the site
 
 For SPA the most common way - on JWT tokens. There are many variants of this, depending on the requirements of the security level (Vasya Pupkin's personal blog with guest comments and online store with deposits and bonuses - two big differences).
 
@@ -33,13 +33,13 @@ More details on this topic can be found in, for example, [this article](https://
 
 :::
 
-:::: details Where to store access token on the frontend?
+::: details Where to store access token on the frontend?
 
 In 95% of cases in LocalStorage
 
 :::
 
-:::: details What is oAuth and SSO?
+::: details What is oAuth and SSO?
 
 oAuth - Login "via Google". Also when, for example, a user has the option on your site to save something to Google Drive. In order to get permission for your site to work with the user's Google Drive account, you ask the user to allow your site to access their account via Google. So we have four parts - Google (the authorization center), the third-party resource (Google Drive), your site, and the user
 
@@ -47,13 +47,13 @@ SSO - single sign-on - a user logs in to a certain company's portal once, and th
 
 :::
 
-:::: details Does authentication via JWT give security?
+::: details Does authentication via JWT give security?
 
 Security is a very complex concept, and JWT authentication is just one of its elements. For critical applications, it is possible to capture the user's browser fingerprint and force the user to re-login as soon as they change. Same with IP. In this way you can fight AT theft. Also set very small AT lifetime if RT is used. But the main security measures are not related to authentication, but to constant monitoring of the system for suspicious actions.
 
 :::
 
-:::: details Authorization
+::: details Authorization
 
 If it is necessary to give users different levels of access to site resources, it is common to use either RBAC (Role-based access control) or PBA (Policy-Based Authorization).
 

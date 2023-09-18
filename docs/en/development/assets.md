@@ -8,7 +8,7 @@ Resources refer to images, icons, audio, video, json, pdf and other files that y
 
 :::
 
-:::: details Should I put images in the public or assets folder?
+::: details Should I put images in the public or assets folder?
 
 From the `public` folder, resources (e.g. images) are connected in your application via HTTP(S), downloaded as needed from the server - as they have always been.
 
@@ -16,7 +16,7 @@ Resources in the `assets` folder (and in general from any subdirectory in `src/`
 
 The resources are accessed via import:
 
-``js
+```js
 // gets url to the resource
 import imageUrl from "./image.img";
 
@@ -30,11 +30,11 @@ See [Vite documentation](https://vitejs.dev/guide/assets.html) for more details.
 
 :::
 
-:::: details How to connect images from assets?
+::: details How to connect images from assets?
 
 Using images from the `public/images` folder is easy.
 
-``html
+```html
 // static image name
 <img src="/images/someImage.png" />
 
@@ -44,7 +44,7 @@ Using images from the `public/images` folder is easy.
 
 Pictures (as well as other resources) from `assets` must be imported into JavaScript before use
 
-````js
+```js
 import imgUrl from './img.png'
 // ...
 <img :src="imgUrl" />
@@ -58,13 +58,13 @@ This returns the url to the resource.
 
 Importing icons one by one is inconvenient when there are many of them, and often the icon needs to be changed dynamically depending on the conditions. To solve this problem you can create a universal class `BaseIcon`, which will display an icon by its name:
 
-``vue
+```vue
 <BaseIcon name="account" size="26" />
 ```
 
 #### BaseIcon
 
-````vue
+```vue
 <script setup>
 import { computed } from "vue";
 import { getImageUrl, getSvgIcon } from "@/app/utils/icons";
@@ -139,7 +139,7 @@ const height = computed(() => {
 </style>
 ```
 
-The `/app/utils/icons` file uses Vite's `import.meta.glob` function to import files from masked directories:
+The `/app/utils/icons.js` file uses Vite's `import.meta.glob` function to import files from masked directories:
 
 #### icons.js
 
@@ -182,7 +182,7 @@ The component will first try to look for the `svg` named `account`, then `png`.
 
 :::
 
-:::: details What is the best format for pictures - jpg or png?
+::: details What is the best format for pictures - jpg or png?
 
 Try modern `webp`. Really strong compression with no apparent loss of quality. There is a transparent background.
 
@@ -190,7 +190,7 @@ Only IE is not supported, it requires a fallback picture in a different format (
 
 :::
 
-::::: details How to import JSON?
+::: details How to import JSON?
 
 ```js
 // import the entire object
@@ -201,3 +201,7 @@ import { field } from "./example.json";
 ```
 
 :::
+
+```
+
+```

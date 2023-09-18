@@ -6,7 +6,7 @@ To make calls to the backend, it is convenient to separate the code related to t
 
 Then in your component access to your backend will look like this:
 
-``js
+```js
 import { api } from "@/services/api";
 
 // loading.value = true;
@@ -42,7 +42,7 @@ const api = {
   },
 };
 
-export { api }
+export { api };
 export default api;
 ```
 

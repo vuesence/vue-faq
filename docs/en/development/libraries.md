@@ -2,13 +2,13 @@
 
 <!-- TODO: -->
 
-:::: detail For working with dates
+::: details For working with dates
 `moment` is irretrievably obsolete. There's day.js and day-fnc.js.
 
 However, in 95% of cases the capabilities of the standard JavaScript Intl package are sufficient
 :::
 
-:::: detail For UI components
+::: details For UI components
 
 There are quite a few CSS and UI libraries out there
 

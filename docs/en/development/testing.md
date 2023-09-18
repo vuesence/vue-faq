@@ -1,6 +1,6 @@
 # Testing
 
-::: Do I need testing on the frontend?
+::: details Do I need testing on the frontend?
 
 There are several types of tests, among them are unit tests and integration (e2e) tests
 
@@ -12,7 +12,7 @@ Frontend development in this aspect is very different from backend development, 
 
 :::
 
-::::: details What are e2e tests?
+::: details What are e2e tests?
 
 On the front end, especially for a web application that is already in production and needs to be updated from time to time, e2e tests are important.
 

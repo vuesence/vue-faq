@@ -1,6 +1,6 @@
 # Customizing the IDE
 
-::: Which IDE should I choose?
+::: details Which IDE should I choose?
 
 Vue is recommended by Microsoft VS Code. The second most popular is WebStorm
 
@@ -12,7 +12,7 @@ For beginners VS Code is the best choice
 
 :::
 
-:::: details Necessary VS Code extensions
+::: details Necessary VS Code extensions
 
 When working with Vite and Vue 3:
 
@@ -28,7 +28,7 @@ Could be useful:
 
 :::
 
-:::: VS Code Customization
+::: details VS Code Customization
 
 VS Code allows you to do very fine customization. For example, try creating this local customization file `.vscode/setting.json` and see how the editor changes.
 
@@ -38,7 +38,7 @@ VS Code allows you to do very fine customization. For example, try creating this
 
 :::
 
-:::: details ESlint
+::: details ESlint
 
 Linter is a coder's right hand. It checks for errors, formats code, and does many other useful things
 
@@ -52,7 +52,7 @@ Unfortunately, formatting the `<style>` block in `.vue` files doesn't work, so y
 
 :::
 
-:::: details Online sandboxes for Vue 3
+::: details Online sandboxes for Vue 3
 
 - [Vue SFC Playground](https://play.vuejs.org/)
 - [StackBlitz](https://stackblitz.com/edit/vitejs-vite-usvaqn?file=index.html&terminal=dev)
@@ -60,7 +60,7 @@ Unfortunately, formatting the `<style>` block in `.vue` files doesn't work, so y
 
 :::
 
-::::: details More programs useful in web development
+::: details More programs useful in web development
 
 - [Postman](https://www.postman.com/) - API requests, API creation
 - [Xshell](https://www.netsarang.com/en/xshell/) - handy SSH client
@@ -68,7 +68,7 @@ Unfortunately, formatting the `<style>` block in `.vue` files doesn't work, so y
 
 :::
 
-:::: details What computer configuration is suitable for frontend development?
+::: details What computer configuration is suitable for frontend development?
 
 At least 16GB RAM and a good (fast) SSD disk, everything else is secondary, including the processor. Spend your money on a quality second 22+ inch monitor, a comfortable keyboard and mouse.
 

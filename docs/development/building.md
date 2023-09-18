@@ -34,7 +34,7 @@ Vite.
 
 Создание напрямую через Vite:
 
-```
+```sh
 pnpm create vite
 ```
 

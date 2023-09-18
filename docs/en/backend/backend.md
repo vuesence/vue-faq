@@ -10,17 +10,17 @@ Google ``"json placeholder"''.
 
 :::
 
-:::: details Are there any free open APIs with real data?
+::: details Are there any free open APIs with real data?
 
 Plenty. For example, [here](https://github.com/public-apis/public-apis)
 
-Google ``public api``.
+Google `public api`.
 
 You can also poke around relevant sites in DevTools / Network for endpoints with data in a suitable format
 
 :::
 
-:::: details How to make your own backend?
+::: details How to make your own backend?
 
 If you already know JavaScript, it should not be a problem to install and run Node.js with an HTTP server.
 
@@ -32,7 +32,7 @@ Most major cloud providers (Amazon, Google, Oracle, Microsoft) provide free plan
 
 :::
 
-:::: details What is BaaS (Backend as a service)?
+::: details What is BaaS (Backend as a service)?
 
 It is a cloud solution where the backend in the form of a database and its access interface, and possibly the ability to use some logic, is provided by a BaaS provider.
 
@@ -58,7 +58,7 @@ In case a frontend developer wants to make a full-fledged application, but doesn
 
 :::
 
-:::: details How Edge/Cloud/Lamda features work
+::: details How Edge/Cloud/Lamda features work
 
 It's basically a backend in miniature
 

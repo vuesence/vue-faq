@@ -8,7 +8,7 @@ That's how SPA was born.
 
 :::
 
-:::: details SPA
+::: details SPA
 
 SPA (Single Page Application) works like a regular desktop/mobile application - when first accessing the server, it receives the shell necessary to display the site, and then sends data to/from the server, usually in JSON format. This is much more efficient than the way when with each request from the server came a new HTML page with all the resources.
 
@@ -18,7 +18,7 @@ For the user UX increases significantly.
 
 :::
 
-:::: details PWA
+::: details PWA
 
 PWA (Progressive Web Application) is another step to improve user experience and make web applications as close as possible to native web applications.
 
@@ -34,7 +34,7 @@ Upgrading SPA to PWA is very small in labor cost, but very significant in benefi
 
 :::
 
-:::: details PWA -> Workbox and vite-plugin-pwa
+::: details PWA -> Workbox and vite-plugin-pwa
 
 `Manifest` and `Service worker` are so simple that creating a wrapper over SW - `Workbox`, and a plugin for Vite - `vite-plugin-pwa` is not logical. You get several times more code, need to load additional dependencies and understand wrapper configurations. Simple things have been made complex.
 
@@ -42,7 +42,7 @@ It is better to use `Manifest` and `Service worker` as they were created origina
 
 :::
 
-:::: details SSG
+::: details SSG
 
 SSG (Static Site Generation) is an approach where the content of a website is pre-generated into html files, which are then distributed from the server.
 
@@ -52,7 +52,7 @@ Immediately suitable for indexing by search engines.
 
 :::
 
-:::: details SSR
+::: details SSR
 
 SSR (Server Side Rendering), a way of generating html on the server side, when generation occurs at the moment of request.
 After the client requests a page, the server executes API requests on its side and then generates the html page. Accordingly, the server needs a Node.js server, which is quite a heavy load on the hardware.
@@ -61,7 +61,7 @@ In addition, there are a lot of restrictions when writing code and using certain
 
 :::
 
-:::: details CEO optimization
+::: details CEO optimization
 
 In order for a search engine to index a page on your site, it must receive HTML with content (text, images, video) when accessing it. With SPA sites, where content is loaded dynamically by JavaScript, this is often not possible.
 

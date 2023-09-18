@@ -1,6 +1,6 @@
 # CI/CD
 
-:::: What is CI/CD?
+::: details What is CI/CD?
 
 CI/CD (Continuous Integration, Continuous Delivery) is a technology for automating the build, testing and deployment of a project under development.
 
@@ -12,7 +12,7 @@ Main tools for CI/CD: GitHub Actions, GitLab CI/CD, Jenkins, Trevis
 
 :::
 
-:::: details GitHub Actions
+::: details GitHub Actions
 
 GitHub Actions are popular and convenient, so it is recommended to learn them for use in both pet and large commercial projects.
 

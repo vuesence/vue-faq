@@ -28,11 +28,11 @@ We recommend Composition API (script setup) as more logical and convenient, in w
 
 :::
 
-:::: details Ref or Reactive?
+::: details Ref or Reactive?
 
 Difference in terms of usage - Reactive only works with objects and does not track object replacement. Ref works with everything and tracks variable replacement:
 
-``js
+```js
 const a = Ref(1);
 const b = Reactive({ x: 1 });
 
@@ -53,7 +53,7 @@ If you want pretentious efficiency, use Reactive on objects and Ref on primitive
 
 :::
 
-:::: details ShallowRef
+::: details ShallowRef
 
 When you have an array with a large number of elements, but the data inside the array elements does not change, but only the array itself can change (adding elements, deleting, replacing the array) - use `ShallowRef`.
 
@@ -61,7 +61,7 @@ It works like `Ref` but does not track changes inside array elements, which give
 
 :::
 
-:::: details Mixins
+::: details Mixins
 
 We should forget about them like a bad dream. Mixins as a pattern of multiple inheritance is a very bad architectural practice and should be avoided. In Vue 2, the framework itself did not have a way to make the component part of the steit and methods common, so mixins were used. In Vue 3, the Composition API was introduced and mixins were no longer needed.
 

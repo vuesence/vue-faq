@@ -1,6 +1,6 @@
 # CORS
 
-:::: What are CORS?
+::: details What are CORS?
 
 Roughly speaking, CORS is used to protect your backend from outside requests by setting special HTTP headers.
 
@@ -12,7 +12,7 @@ Access is granted by specialized requests. The Internet resource that receives t
 Accordingly, only the backend can do all this, and it is configured on the backend. The specific solution depends on the backend language, the framework used, and even the webserver.
 
 :::
-:::: details CORS working principle
+::: details CORS working principle
 
 When creating an HTTP cross-request, the client browser adds a domain declaration of the web page initiating the request. The domain is declared in the Origin section.
 
@@ -49,7 +49,7 @@ There is a lot of nuance in the CORS standard. Here is a more detailed [article 
 
 :::
 
-:::: details Problems with CORS
+::: details Problems with CORS
 
 CORS problems can occur only when a resource is accessed by a browser, not by a separate program like Postman or other backend.
 

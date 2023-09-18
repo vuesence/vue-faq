@@ -1,6 +1,6 @@
 # CSS and UI libraries
 
-::: What are CSS and UI libraries?
+::: details What are CSS and UI libraries?
 
 CSS and UI libraries either provide their own or help you create custom UI components like Button or Select? which can speed up your development.
 
@@ -10,7 +10,7 @@ There is a separate type of Headless-UI libraries that offer components without 
 
 :::
 
-:::: details Pros and cons of UI libraries?
+::: details Pros and cons of UI libraries?
 
 Pros: shortens the development, if you use it on the project as much as possible, brings a unified style to the application
 
@@ -20,7 +20,7 @@ In [this article](https://habr.com/ru/articles/745012/) there is a good comparis
 
 :::
 
-::::: details How to reduce dependency on foreign libraries?
+::: details How to reduce dependency on foreign libraries?
 
 Wrap UI library components in your own.
 
@@ -31,11 +31,11 @@ Wrap UI library components in your own.
 </template>
 ```
 
-and use ``BaseButton`` in your code. This way it will be much easier for you to upgrade, replace the library or replace this component with a self-designed one. And even just change the styles of the component.
+and use `BaseButton` in your code. This way it will be much easier for you to upgrade, replace the library or replace this component with a self-designed one. And even just change the styles of the component.
 
 :::
 
-:::: details Layout and adaptability of pages by means of CSS and UI libraries
+::: details Layout and adaptability of pages by means of CSS and UI libraries
 
 Using the column system and other functionality of CSS and UI libraries like the popular Tailwind is convenient for small projects and sometimes speeds up layout, but very much worsens the quality of the code as a whole, including its maintainability and extensibility. It's as if the world went back to the days of IE6, when all styles and JavaScript were also located in tag attributes, and the whole evolution of CSS into a clear, convenient, beautiful hierarchical class model was for nothing, just like the division of the web into document (template), presentation layer (CSS styles) and logic (JavaScript).
 

@@ -1,6 +1,6 @@
 # Hosting
 
-:::: Where to host a website?
+::: details Where to host a website?
 
 After building a frontend project, you get a set of `html/css/js/jpeg` and other static files that need to be hosted on a webserver for your site to be accessed.
 
@@ -18,7 +18,7 @@ Also, many cloud providers (Amazon, Google, Oracle, Microsoft) provide free tari
 
 :::
 
-:::: details Domain
+::: details Domain
 
 Buying a domain is now very easy and inexpensive (from 200 rubles per year), so it is recommended to do so. GitHub Pages and other hosts allow you to connect a custom domain to your site. Subdomains are convenient for organizing development environments:
 

@@ -1,6 +1,6 @@
 # About frontend frameworks
 
-:::: What is "reactivity"?
+::: details What is "reactivity"?
 
 Probably the most fundamental difference between a frontend program and a backend program, a microservice or even a standalone GUI application is the concept of "**reactivity**".
 
@@ -14,7 +14,7 @@ Simplistically speaking, under the hood, a reactive variable is a proxy wrapper 
 
 :::
 
-:::: details What reactive frontend frameworks exist
+::: details What reactive frontend frameworks exist
 
 React, Vue, Angular are the most common. There are many others that have not taken off.
 
@@ -28,7 +28,7 @@ Behind React- Zuckerberg and a greater&#x301;l prevalence. More job offers, but 
 
 :::
 
-:::: details Why Vue?
+::: details Why Vue?
 
 To be able to develop and manage large complex software systems, OOP - object-oriented programming - was invented, where new entities - objects - were introduced to hierarchize complexity. They encapsulated data and behavior (logic).
 

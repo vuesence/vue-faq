@@ -10,7 +10,7 @@ A good frontend application architecture allows you to accomplish all of this mo
 
 :::
 
-:::: details OOP on the frontend
+::: details OOP on the frontend
 
 Many people coming from development in object-oriented languages try to use OOP concepts on the frontend and program with classes, inheritance, polymorphism and other things.
 
@@ -20,13 +20,13 @@ At the same time, a good analogy of an object with a global ("static") and local
 
 :::
 
-:::: details Suitable architecture for Vue 3 web application
+::: details Suitable architecture for Vue 3 web application
 
 The most suitable architecture for a Vue 3 application is modular.
 
 Initially, the application is divided into logical modules that are loosely related to each other. For example, for an online store, it can be a product catalog module, a module of a single product, a module of a personal cabinet / user account.
 
-In addition, there is a shell module - what is sometimes called an `app shell'. A template with a header, footer, side menu and main window. It is wise to put utilities and resources used throughout the application into this module - for example, `api`, `useI18n`, `BaseButton` and `stringHelpers`.
+In addition, there is a shell module - what is sometimes called an `app shell'. A template with a header, footer, side menu and main window. It is wise to put utilities and resources used throughout the application into this module - for example, `api`, `useI18n`, `BaseButton`and`stringHelpers`.
 
 Each module has its own `components`, `composables`, `assets`, `utils`; perhaps `api`, `routes`, `views`, `layouts`.
 
@@ -34,7 +34,7 @@ Loose coupling allows each module to be developed fairly independently, which gr
 
 :::
 
-:::: details Useful tips
+::: details Useful tips
 
 ###### Avoid addictions
 

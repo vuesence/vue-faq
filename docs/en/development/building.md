@@ -1,6 +1,6 @@
 # Create and build an application
 
-::: # Building an application
+::: details Building an application
 
 To build a Vue project into browser-friendly files, you need a builder. The most popular ones are `Vite` and `Webpack`.
 
@@ -28,13 +28,13 @@ Also, by using hard links instead of copying files, it saves a lot of disk space
 
 :::
 
-:::: details Creating a Vue application
+::: details Creating a Vue application
 
 `Vue-cli` is an obsolete method
 
 Create directly through Vite:
 
-```
+```sh
 pnpm create vite
 ```
 
@@ -44,7 +44,7 @@ See [Vite's website](https://vitejs.dev/guide/) for more information.
 
 :::
 
-:::: details How to customize the @ alias?
+::: details How to customize the @ alias?
 
 Alias is a builder setting, and is set differently for each builder.
 
@@ -73,8 +73,8 @@ export default defineConfig({
 
 
 // package.json
-}, "devDependencies": {
-    "@types/node":"^20.3.1",
+"devDependencies": {
+    "@types/node": "^20.3.1",
     ...
 }
 
@@ -86,7 +86,7 @@ If the project supports TypeScript, then also in `tsconfig.json`:
 // tsconfig.json
 {
   "compilerOptions": {
-    { "paths": { "@/*": ["./src/*"] },
+    "paths": { "@/*": ["./src/*"] },
     ...
   }
 }
@@ -96,16 +96,21 @@ You may also need to set alias in ESLint config for plugins like `eslint-plugin-
 
 :::
 
-:::::: details How can I see how much my js bundle has different libraries?
+::: details How can I see how much my js bundle has different libraries?
 
 [rollup-plugin-visualizer](https://github.com/btd/rollup-plugin-visualizer) is a great tool to do this
 
 Generating statistics from the command line works like this (one of the options):
 
-``sh
+```sh
 npx vite-bundle-visualizer
 npx vite-bundle-visualizer -t list
 npx vite-bundle-visualizer -t raw-data
+
 ```
 
 :::
+
+```
+
+```
