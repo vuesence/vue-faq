@@ -1,4 +1,4 @@
-# Cheat Sheet #
+# Cheat Sheet
 
 <!-- - [Vue-3-Cheat-Sheet](./Vue-3-Cheat-Sheet.pdf) -->
 
@@ -17,7 +17,9 @@
 ### CSS
 
 - <a target="_blank" href="/assets/files/FlexBox-Cheat-Sheets-in-2021.pdf">FlexBox Cheat Sheet</a>
+- <a target="_blank" href="/assets/files/Flex-Layout-Cheat-Sheet.pdf">FlexBox Cheat Sheet 2</a>
 - <a target="_blank" href="/assets/files/Grid-Cheat-Sheet.pdf">Grid Cheat Sheet</a>
+- <a target="_blank" href="/assets/files/Grid-Layout-Cheat-Sheet.pdf">Grid Cheat Sheet 2</a>
 
 ### Typescript
 
