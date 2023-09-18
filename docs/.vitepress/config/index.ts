@@ -60,6 +60,7 @@ export default defineConfig({
   lang: "en",
   title: "Vue FAQ",
   description: "Vue JavaScript фреймворк FAQ",
+  head: [["meta", { attr: "sa", sizes: "180x180", href: "icon.png" }]],
   themeConfig: {
     logo: "/images/vue-faq-logo.webp",
     search: {
