@@ -58,7 +58,6 @@ export default defineConfig({
     // ["meta", { name: "og:type", content: "article" }],
     ["meta", { property: "og:type", content: "website" }],
     ["meta", { property: "og:site_name", content: "Vue FAQ" }],
-    ["meta", { property: "og:description", content: "Vue FAQ описание" }],
     ["meta", { property: "og:image", content: "/images/vue-faq-logo.webp" }],
     ["meta", { name: "twitter:image", content: "/images/vue-faq-logo.webp" }],
     ["link", { rel: "apple-touch-icon", sizes: "180x180", href: "/images/apple-touch-icon.png" }],
