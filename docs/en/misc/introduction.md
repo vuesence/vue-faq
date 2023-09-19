@@ -11,3 +11,7 @@ The increase in complexity does not come from the top down. The first questions 
 The main sources of information - official documentation of Vue 3 and Vite, [r/vuejs/](https://www.reddit.com/r/vuejs/), [@vuejs_ru](https://t.me/vuejs_ru).
 
 Relevance of the information - 2022-2023 years.
+
+---
+
+About the author: independent consultant, full-stack engineer with 20+ years of experience, AWS Certified Solutions Architect, Sun Certified Java Developer.
