@@ -1,0 +1,58 @@
+// https://codepen.io/frederickallen/pen/NZMEMw
+.custom-block.details {
+  margin: 2em 0;
+  summary {
+    font-size: 1.3em;
+    padding-right: 24px;
+    width: 100%;
+    position: relative;
+    cursor: pointer;
+    list-style: none;
+    outline: 0;
+    margin-right: 1em;
+    &::-webkit-details-marker {
+      display: none;
+    }
+    &:after {
+      content: "+";
+      color: black;
+      position: absolute;
+      font-size: 2rem;
+      line-height: 0;
+      top: 50%;
+      right: 0;
+      font-weight: 200;
+      transform-origin: center;
+      transition: 300ms linear;
+      .dark & {
+        content: "+";
+        color: #eee;
+      }
+    }
+  }
+  &[open] {
+    p {
+      font-size: 1.1em;
+    }
+    summary {
+      margin-bottom: 1.3em;
+      &:after {
+        transform: rotate(45deg);
+        right: -2px;
+        top: calc(50% + 1px);
+      }
+      & ~ * {
+        animation: open 0.3s ease-in-out;
+      }
+    }
+  }
+}
+
+@keyframes open {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

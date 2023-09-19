@@ -1,0 +1,24 @@
+@import "./custom-block.scss";
+
+body {
+  overflow-y: scroll;
+  /* --vp-custom-block-details-text: red; */
+  --vp-custom-block-code-font-size: 14px;
+  /* --vp-custom-block-details-text: #54545c; */
+  :not(.dark) & {
+    --vp-custom-block-details-text: #54545c;
+  }
+  .vp-doc h1 {
+    margin-bottom: 1em;
+  }
+  .is-home {
+    .main .text {
+      line-height: 44px;
+      font-size: 38px;
+    }
+    .has-image .main .name {
+      font-size: 68px;
+      margin-bottom: 30px;
+    }
+  }
+}
