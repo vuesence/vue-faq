@@ -14,4 +14,6 @@ Relevance of the information - 2022-2023 years.
 
 ---
 
-About the author: independent consultant, full-stack engineer with 20+ years of experience, AWS Certified Solutions Architect, Sun Certified Java Developer.
+### About the author:
+
+[Ruslan Makarov](mailto:ruslan.makarov@gmail.com) - independent consultant, full-stack engineer with 20+ years of experience in SD, AWS Certified Solutions Architect, Sun Certified Java Developer.
