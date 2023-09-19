@@ -36,9 +36,9 @@ Absolutely, at least an intermediate level. If not, I would suggest taking a sho
 
 Here is an easy to read book - ["Morgan N. - JavaScript for Kids. A Programming Self-Tutorial - 2016](https://drive.google.com/file/d/1H6HDJeRx2SAXLPJ8Rw0SqchkFZYNiZ9h/view?usp=sharing). Before you start learning Vue, it is advisable to understand 70% of the first part as well as paragraphs 10 and 12.
 
-Also a classic resource on JavaScript - [learn.javascript.ru](https://learn.javascript.ru/)
+<!-- Also a classic resource on JavaScript - [learn.javascript.ru](https://learn.javascript.ru/)
 
-[70 JavaScript interview preparation questions](https://habr.com/ru/articles/486820/#21) - a great test to test yourself on your knowledge of the language.
+[70 JavaScript interview preparation questions](https://habr.com/ru/articles/486820/#21) - a great test to test yourself on your knowledge of the language. -->
 
 ---
 

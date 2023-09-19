@@ -16,19 +16,19 @@
 
 При создании перекрестного HTTP-запроса браузер клиента добавляет в него объявление домена веб-страницы, инициирующей запрос. Домен объявляется в разделе Origin.
 
-Например, страница https://client-1.ru/page.html запрашивает данные со страницы https://server-site.ru/info.
+Например, страница https://client-1.com/page.html запрашивает данные со страницы https://server-site.com/info.
 Пример запроса от браузера клиента, использующего методы CORS, приведен ниже:
 
 ```
 GET /info HTTP/1.1
-Host: server-site.ru
-Origin: client-1.ru
+Host: server-site.com
+Origin: client-1.com
 ```
 
-В случае, если сервер по адресу www.server-site.ru разрешает странице-источнику запроса доступ к данным с домена, в его ответе на запрос появится строка `Access-Control-Allow-Origin` с именем объявленного домена:
+В случае, если сервер по адресу www.server-site.com разрешает странице-источнику запроса доступ к данным с домена, в его ответе на запрос появится строка `Access-Control-Allow-Origin` с именем объявленного домена:
 
 ```
-Access-Control-Allow-Origin: https://client-1.ru
+Access-Control-Allow-Origin: https://client-1.com
 ```
 
 Если сервер, на который запрошен доступ, не добавит в ответ указанную строку, браузер клиента вместо данных файла info вернет код ошибки.
@@ -42,7 +42,7 @@ Access-Control-Allow-Origin: *
 Если на сервере разрешен доступ не всем, а нескольким сторонним клиентам, ответ сервера содержит имена всех этих доменов, выведенных отдельными строками или разделенных пробелами:
 
 ```
-Access-Control-Allow-Origin: https://client-1.ru https://client-2.ru https://client-3.ru
+Access-Control-Allow-Origin: https://client-1.com https://client-2.com https://client-3.com
 ```
 
 В стандарте CORS много нюансов. Вот более подробная [статья по теме CORS](https://habr.com/ru/companies/macloud/articles/553826/)

@@ -13,3 +13,5 @@ Relevance of the information - 2022-2023 years.
 ---
 
 This website utilizes [VitePress](https://vitepress.dev/) SSG framework
+
+If you like it - Star it!

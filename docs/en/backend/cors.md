@@ -16,19 +16,19 @@ Accordingly, only the backend can do all this, and it is configured on the backe
 
 When creating an HTTP cross-request, the client browser adds a domain declaration of the web page initiating the request. The domain is declared in the Origin section.
 
-For example, the page https://client-1.ru/page.html requests data from the page https://server-site.ru/info.
+For example, the page https://client-1.com/page.html requests data from the page https://server-site.com/info.
 An example of a request from a client browser using CORS methods is shown below:
 
 ```
 GET /info HTTP/1.1
-Host: server-site.ru
-Origin: client-1.ru
+Host: server-site.com
+Origin: client-1.com
 ```
 
-If the server at www.server-site.ru allows the request source page to access data from the domain, the `Access-Control-Allow-Origin` line with the name of the declared domain will appear in its response to the request:
+If the server at www.server-site.com allows the request source page to access data from the domain, the `Access-Control-Allow-Origin` line with the name of the declared domain will appear in its response to the request:
 
 ```
-Access-Control-Allow-Origin: https://client-1.ru
+Access-Control-Allow-Origin: https://client-1.com
 ```
 
 If the server to which access is requested does not add the specified string to the response, the client browser will return an error code instead of the info file data.
@@ -42,7 +42,7 @@ Access-Control-Allow-Origin: *
 If the server allows access not to all but a few third-party clients, the server response contains the names of all these domains printed as separate lines or separated by spaces:
 
 ```
-Access-Control-Allow-Origin: https://client-1.ru https://client-2.ru https://client-3.ru
+Access-Control-Allow-Origin: https://client-1.com https://client-2.com https://client-3.com
 ```
 
 There is a lot of nuance in the CORS standard. Here is a more detailed [article on CORS](https://habr.com/ru/companies/macloud/articles/553826/)
