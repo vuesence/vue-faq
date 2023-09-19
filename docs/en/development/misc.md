@@ -47,7 +47,7 @@ The implementations of reactive variables in Vue 2 and Vue 3 are different. Vue 
 
 Reactive uses the Proxy object directly.
 
-Ref on the object uses Reactive directly, and for primitives it wraps them in the object and uses Reactive again.
+Ref on an object uses Reactive directly to track changes within the object, and creates and uses an array of variable dependencies for primitives and objects in case they are replaced.
 
 If you want pretentious efficiency, use Reactive on objects and Ref on primitives. Otherwise, you can do everything via Ref.
 
