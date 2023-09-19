@@ -16,8 +16,6 @@ Pros: shortens the development, if you use it on the project as much as possible
 
 Cons: as any dependency can become obsolete (Vuetify 2 tragedy), adds weight to the final bundle.
 
-In [this article](https://habr.com/ru/articles/745012/) there is a good comparison of 10 Vue 3 UI libraries.
-
 :::
 
 ::: details How to reduce dependency on foreign libraries?

@@ -58,7 +58,7 @@ const users = {
 };
 ```
 
-``http.js` is a wrapper around requests to the server via your favorite library.
+`http.js` is a wrapper around requests to the server via your favorite library.
 
 What is the convenience of abstracting the backend communication code from the main application code into a separate service?
 

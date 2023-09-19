@@ -3,14 +3,14 @@
 ::: details What is authentication and authorization
 Roughly speaking:
 
-Authentication is when the system verifies that it is Vasya Pupkin who logged in, for example, by checking his username and password
+Authentication is when the system verifies that it is John Doe who logged in, for example, by checking his username and password
 
 Authorization - when the system verifies that the user requesting the resource/action has the right to access it. For example, a senior manager has the right to delete an item in the admin, but a simple manager does not.
 :::
 
 ::: details How to make an authentication system on the site
 
-For SPA the most common way - on JWT tokens. There are many variants of this, depending on the requirements of the security level (Vasya Pupkin's personal blog with guest comments and online store with deposits and bonuses - two big differences).
+For SPA the most common way - on JWT tokens. There are many variants of this, depending on the requirements of the security level (John Doe's personal blog with guest comments and online store with deposits and bonuses - two big differences).
 
 JWT is a standard for writing a small amount of information into a string (token) and signing it (cryptography). It is done by the backend. So only the backend can make sure that the token is written by it and has valid information in it.
 
@@ -28,8 +28,6 @@ Scenario:
 2 The backend generates an access token (AT) and passes it to the front. The front saves it and sends it back each time. In essence the same as in the first case, plus unnecessary steps and the possibility of losing the token through XSS.
 
 3. two tokens are used - short-lived access token (AT) and longer-lived refresh token (RT) sent in httpOnly cookie. AT works as in the second case. When its lifetime expires, the backend checks the RT and if it is valid, refreshes the AT. RT expires - the user is sent to re-login.
-
-More details on this topic can be found in, for example, [this article](https://habr.com/ru/articles/710552/).
 
 :::
 

@@ -22,7 +22,7 @@ If you need Webpack, you'll know it yourself.
 
 ::: details npm, yarn or pnpm?
 
-We recommend `pnpm` as the most up-to-date one
+It is recommended to use `pnpm` as the most up-to-date one
 
 Also, by using hard links instead of copying files, it saves a lot of disk space on your computer in case of multiple projects with `node_modules` and the same packages in them.
 
@@ -44,7 +44,7 @@ See [Vite's website](https://vitejs.dev/guide/) for more information.
 
 :::
 
-::: details How to customize the @ alias?
+::: details How to configure the @ alias?
 
 Alias is a builder setting, and is set differently for each builder.
 

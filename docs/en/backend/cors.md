@@ -45,8 +45,6 @@ If the server allows access not to all but a few third-party clients, the server
 Access-Control-Allow-Origin: https://client-1.com https://client-2.com https://client-3.com
 ```
 
-There is a lot of nuance in the CORS standard. Here is a more detailed [article on CORS](https://habr.com/ru/companies/macloud/articles/553826/)
-
 :::
 
 ::: details Problems with CORS

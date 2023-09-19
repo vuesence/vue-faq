@@ -6,15 +6,15 @@
 
 Sometimes in an application you need to pass reactive data or a function from one component to another, and these components do not belong to the same hierarchy. Props/invents or provide/inject mechanisms are not suitable for this. That's why Vue 2 introduced Vuex, a state management library that allows you to store a reactive state and provide access to it from anywhere.
 
-A frontend state management library is usually called a "storum".
+A frontend state management library is usually called a "store".
 
 :::
 
 ::: details How can I pass reactive data from one component to another in Vue 3?
 
-- If one component is a direct descendant of another - props and invents
-- If one component is an indirect descendant of another - provide/inject or prop/invent dribbling (bad practice).
-- If they are in different branches of the hierarchy - stor or Vue 3 ref/reactive
+- If one component is a direct descendant of another - props and events
+- If one component is an indirect descendant of another - provide/inject or prop/event dribbling (bad practice).
+- If they are in different branches of the hierarchy - store or Vue 3 ref/reactive
 
 Vue 3 ref/reactive is when you define and export a reactive variable in a separate js module:
 
@@ -44,9 +44,9 @@ Looks like a very unfortunate, ambiguous and confusing definition.
 
 From the perspective of a non-frontend developer (basically any language other than JavaScript, plus partially JavaScript), the analog of a construct called `store` would be a database - SQL, NoSQL or caching Redis. There are analogs of state and getters (`View` in SQL database). But in 99.99% of cases, there will be no business logic in the database except for data consistency constraints (e.g., unique or foreign keys).
 
-From a non-frontend developer's perspective, frontend storas are just objects / stateful services built on a `singleton` pattern. Calling them _"global stors"_ is at least illogical.
+From a non-frontend developer's perspective, frontend stores are just objects / stateful services built on a `singleton` pattern. Calling them _"global stores"_ is at least illogical.
 
-It's likely that this happened historically. First there was one Vuex, it was one stor and global. Then it had modules. Then Pinia modules became independent and spread all over the application. As a result, the application has a bunch of small local (by area of use) storages, each of which considers itself global, even if it is used by 2-3 components out of 1000 on the project, and even if this storage has 1% of steate and 99% of business and related logic.
+It's likely that this happened historically. First there was one Vuex, it was one store and global. Then it had modules. Then Pinia modules became independent and spread all over the application. As a result, the application has a bunch of small local (by area of use) storages, each of which considers itself global, even if it is used by 2-3 components out of 1000 on the project, and even if this storage has 1% of steate and 99% of business and related logic.
 
 In this respect, using composable functions for the same purpose (_an entity holding state and business logic that isn't bound to your Component tree_) - is much more logical. And they should be called useAuth or useAuthService instead of useAuthStore.
 

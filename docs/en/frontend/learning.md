@@ -12,10 +12,6 @@ The main teacher should be a book that teaches, not a reference book.
 
 An excellent Vue tutorial in English is the May 2023 [Vue.js 3 Design Patterns and Best Practices](https://www.oreilly.com/library/view/vuejs-3-design/9781803238074/). You can register on oReilly and read for 10 days for free. Even download it. In spite of the title, the book teaches programming, and from a fairly basic level.
 
-Unfortunately, there is almost nothing in Russian, but, firstly, there is Google translate, and secondly, it is unlikely to become a confident developer without at least an average knowledge of technical English.
-
-It should also be noted that Vue documentation in Russian sometimes lags behind the documentation in English.
-
 :::
 
 ::: details Vue 2 or Vue 3?

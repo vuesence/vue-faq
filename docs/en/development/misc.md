@@ -17,7 +17,7 @@ At the same time, localization of a site often requires very simple things that 
 
 In fact, you usually need a reactive function that returns a string based on the key and the current locale.
 
-A variant of implementation via composable is in [this article](https://habr.com/ru/articles/736530/).
+A variant of implementation via composable is in [this article](https://www.reddit.com/r/vuejs/comments/13omkwi/detox_for_i18n/).
 
 Your bundle will be "thinner" by 50Kb.
 :::

@@ -2,11 +2,11 @@
 
 ### New
 
-- ``Development / Storrs''
+- `Development / Stores`
 
 ### Changed
 
-- ``Development / Helpful hints``.
+- `Development / Helpful hints`.
 
 ---
 
@@ -14,4 +14,4 @@
 
 ### New
 
-- Initial startup
+- Initial launch

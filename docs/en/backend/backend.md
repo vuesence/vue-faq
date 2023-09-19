@@ -6,7 +6,7 @@ There are many services that offer their API with different data for testing or 
 
 For example, [jsonplaceholder.typicode.com](https://jsonplaceholder.typicode.com/).
 
-Google ``"json placeholder"''.
+Google `"json placeholder"`.
 
 :::
 

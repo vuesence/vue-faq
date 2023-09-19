@@ -16,8 +16,6 @@ After an experience with JSON-RPC, communication with back end is usually never 
 
 It gives order, clarity, rigor and at the same time flexibility. It greatly simplifies and makes code understandable both on the frontend and backend.
 
-Here are two of my articles on this topic - [Popularizing JSON-RPC (part 1)](https://habr.com/ru/articles/709362/) and [Popularizing JSON-RPC (part 2)](https://habr.com/ru/articles/710652/).
-
 A variant of TypeScript implementation of frontend api service on JSON-RPC - [here](https://github.com/vuesence/utilities/blob/main/src/services/json-rpc/jsonrpc.ts).
 
 When using `JSON-RPC`, switching to `WebSockets` or other transport protocols will not cause any difficulties due to the unification of the message format.
@@ -26,7 +24,7 @@ When using `JSON-RPC`, switching to `WebSockets` or other transport protocols wi
 
 ::: details How to organize reconnection of WebSocket connection on the front?
 
-You need a bus, or `Event bus`, which will work as a proxy for incoming messages.
+You need an `Event bus`, which will work as a proxy for incoming messages.
 
 You can use [mitt](https://github.com/developit/mitt).
 

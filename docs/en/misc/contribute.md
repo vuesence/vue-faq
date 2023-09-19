@@ -1,6 +1,6 @@
 # Contribute to the development of this FAQ
 
-<p>You can suggest corrections to any or add a new FAQ using the form below.</p>
+<p>You can suggest corrections to any or add a new Q/A using the form below.</p>
 <p>GitHub way of making changes (<i>fork -> edit -> create PR</i>) is also very welcome.</p>
 
 <div class="form-container" action="action_page.php">
