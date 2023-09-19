@@ -1,13 +1,15 @@
-# Vue FAQ in Russian language
+# Vue FAQ
 
-Данный FAQ (Frequently Asked Questions - Часто задаваемые вопросы) создан по наиболее часто затрагиваемым темам в Телеграм чате [@vuejs_ru : Vue.js — русскоговорящее сообщество](https://t.me/vuejs_ru)
+This FAQ (Frequently Asked Questions) is created on the most frequently touched topics in Reddit [r/vuejs/](https://www.reddit.com/r/vuejs/) and Telegram chat [@vuejs_ru](https://t.me/vuejs_ru).
 
-Уровень вопросов и ответов охватывает как начинающих так и опытных фронтэнд разработчиков.
+The level of questions and answers covers both beginners and experienced frontend developers.
 
-В качестве ответов используется как общепризнанная, проверенная и объективная информация, так и субъективное мнение составителя.
+As answers are used both generally recognized, verified and objective information, and subjective opinion of the author.
 
-Повышение сложности не идет сверху вниз. И в первых вопросах-ответах описываются неочевидные моменты, могущие быть интересными для опытных программистов.
+The main sources of information - official documentation of Vue 3 and Vite, [r/vuejs/](https://www.reddit.com/r/vuejs/), [@vuejs_ru](https://t.me/vuejs_ru).
 
-Основные источники информации - официальные документации Vue 3 и Vite, телеграм чат [@vuejs_ru](https://t.me/vuejs_ru)
+Relevance of the information - 2022-2023 years.
 
-Актуальность информации - 2022-2023 года.
+---
+
+This website utilizes [VitePress](https://vitepress.dev/) SSG framework
