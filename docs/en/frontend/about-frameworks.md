@@ -36,11 +36,13 @@ On the frontend, the situation is a bit different due to the presence of code in
 
 Vue does this much better than the same React, which lumps everything together. In this aspect, Vue is unequivocally the flagship of component-oriented programming (COP) on the frontend.
 
-In addition, Vue 3 introduced reactivity beyond components - `ref` and `reactive` variables can be set in a simple `js` module. This is used in `composable` functions. It has become possible to separate not only the reactive service (`useI18n`, `useScreenSize` for example) but also the business logic (`useShoppingCart`, `useNewsWidget`) from the view. This allows to use [MVC pattern](https://ru.wikipedia.org/wiki/Model-View-Controller) on the frontend, where the roles of `View` and partially `Controller` are performed by components responsible mainly for visualization, and the logic and model (`Model` and partially `Controller`) fall on composeable functions and their reactive state.
+In addition, Vue 3 introduced reactivity beyond components - `ref` and `reactive` variables can be set in a simple `js` module. This is used in `composable` functions. It has become possible to separate not only the reactive service (`useI18n`, `useScreenSize` for example) but also the business logic (`useShoppingCart`, `useNewsWidget`) from the view. This allows to use [MVC pattern](https://ru.wikipedia.org/wiki/Model-View-Controller) on the frontend, where the roles of `View` and partially `Controller` are performed by components responsible mainly for visualization, and the logic and model (`Model` and partially `Controller`) fall on composable functions and their reactive state.
 
 This makes it possible to make, for example, changing the site design or replacing the UI library a much easier task.
 
 This feature also makes Vue stand out from other reactive frameworks.
+
+The Reactivity API in Vue 3 may not be perfect yet (which is why Evan You experimented with Reactivity Transform), but it's already quite suitable for developing large, robust, scalable systems, which was not the case with Vue 2.
 
 ::: tip
 Vue's reactivity can be used without UIs at all. For example, [this VS Code extension](https://github.com/soerenuhrbach/vscode-deepl/blob/main/src/state.ts) uses the Vue 3 elements `reactive`, `ref`, and `watch` to organize reactivity in code without visual components.

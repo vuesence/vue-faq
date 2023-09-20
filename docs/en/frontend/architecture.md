@@ -14,9 +14,9 @@ A good frontend application architecture allows you to accomplish all of this mo
 
 Many people coming from development in object-oriented languages try to use OOP concepts on the frontend and program with classes, inheritance, polymorphism and other things.
 
-This is a mistake. The main computations on the front end are related to UI - displaying data, handling user interaction. Class systems and microservices are simply not needed on them. Of course, you can create a basic button, wrap it in two custom components and consider it inheritance, but you can't do it in code. That's why you have to learn to think in other categories - components, compozables, js modules. And use your JavaScript power, not trying to stretch it on OOP.
+This is a mistake. The main computations on the front end are related to UI - displaying data, handling user interaction. Class systems and microservices are simply not needed on them. Of course, you can create a basic button, wrap it in two custom components and consider it inheritance, but you can't do it in code. That's why you have to learn to think in other categories - components, composable functions, js modules. And use your JavaScript power, not trying to stretch it on OOP.
 
-At the same time, a good analogy of an object with a global ("static") and local ("object") state is a compsable function. It can be used in certain situations.
+At the same time, a good analogy of an object with a global ("static") and local ("object") state is a composable function. It can be used in certain situations.
 
 :::
 

@@ -82,6 +82,6 @@ It is convenient to think of it as [MVC pattern](https://ru.wikipedia.org/wiki/M
 
 To understand what to put in a composable and what to put in a component (which may consist of several components), imagine that you change the component to another one - displaying your data in some other way. Ideally, the model (composite) should remain the same, you are only rewriting the component that has logic responsible for displaying it.
 
-At the same time, the logic (`Controller`) can be shared between the component and the composable. For example, validation of form data can happen in the component (checking that the field is populated), in the component using a third-party utility (checking that the password is "complex"), and in the compsable (checking that username is unique)
+At the same time, the logic (`Controller`) can be shared between the component and the composable. For example, validation of form data can happen in the component (checking that the field is populated), in the component using a third-party utility (checking that the password is "complex"), and in the composable (checking that username is unique)
 
 :::
