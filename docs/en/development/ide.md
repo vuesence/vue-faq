@@ -1,4 +1,4 @@
-# Customizing the IDE
+# Configuring the IDE
 
 ::: details Which IDE should I choose?
 

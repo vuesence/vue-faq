@@ -1,5 +1,7 @@
 # Vue FAQ
 
+Available at [https://vue-faq.org/](https://vue-faq.org/)
+
 This FAQ (Frequently Asked Questions) is created on the most frequently touched topics in Reddit [r/vuejs/](https://www.reddit.com/r/vuejs/) and Telegram chat [@vuejs_ru](https://t.me/vuejs_ru).
 
 The level of questions and answers covers both beginners and experienced frontend developers.
@@ -14,4 +16,4 @@ Relevance of the information - 2022-2023 years.
 
 This website utilizes [VitePress](https://vitepress.dev/) SSG framework
 
-If you like it - Star it!
+If you like this project - star it!

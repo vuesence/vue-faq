@@ -42,7 +42,7 @@ This makes it possible to make, for example, changing the site design or replaci
 
 This feature also makes Vue stand out from other reactive frameworks.
 
-The Reactivity API in Vue 3 may not be perfect yet (which is why Evan You experimented with Reactivity Transform), but it's already quite suitable for developing large, robust, scalable systems, which was not the case with Vue 2.
+The Reactivity API in Vue 3 may not be perfect yet (which is why creator of the Vue.js Evan You has been experimenting with Reactivity Transform), but it's already quite suitable for developing large, robust, scalable systems, which was not the case with Vue 2.
 
 ::: tip
 Vue's reactivity can be used without UIs at all. For example, [this VS Code extension](https://github.com/soerenuhrbach/vscode-deepl/blob/main/src/state.ts) uses the Vue 3 elements `reactive`, `ref`, and `watch` to organize reactivity in code without visual components.
