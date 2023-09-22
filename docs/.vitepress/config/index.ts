@@ -12,6 +12,14 @@ export default defineConfig({
       lang: "ru",
       label: "Русский",
       head: [
+        [
+          "script",
+          {},
+          `const init = localStorage.getItem("vue-faq-init") ?? false;
+            localStorage.setItem("vue-faq-init", true);
+            if (navigator.language != "ru-RU" && !init) document.location="/en/";
+            `,
+        ],
         ["script", { async: "", src: "https://www.googletagmanager.com/gtag/js?id=G-JL65GWRNZZ" }],
         [
           "script",
@@ -20,14 +28,6 @@ export default defineConfig({
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', 'G-JL65GWRNZZ');`,
-        ],
-        [
-          "script",
-          {},
-          `const init = localStorage.getItem("vue-faq-init") ?? false;
-            localStorage.setItem("vue-faq-init", true);
-            if (navigator.language != "ru-RU" && !init) document.location="/en/";
-            `,
         ],
       ],
     },
