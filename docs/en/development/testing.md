@@ -10,6 +10,8 @@ You should be more careful with front-end testing, as writing and rewriting test
 
 Frontend development in this aspect is very different from backend development, where unit tests are really useful.
 
+Good article on this topic - [Unit Test Fetish](https://250bpm.com/blog:40/)
+
 :::
 
 ::: details What are e2e tests?
