@@ -66,11 +66,11 @@ In Vue 3 there is something that makes a separate library for managing the state
 
 The main declared difference of Pinia is integration with Vue DevTools, plugins and SSR support. However, whether he needs one or the other, each developer decides for himself. It is quite comfortable to work with composables in DevTools.
 
-Composable function, in its turn, can have both global and local (variables are declared inside the function) stats. This can be useful in certain cases - you can create several instances of composable functions, each with its own state. For example, when you have several news widgets on your site, differing only by news category.
+Composable function, in its turn, can have both global and local (variables are declared inside the function) states. This can be useful in certain cases - you can create several instances of composable functions, each with its own state. For example, when you have several news widgets on your site, differing only by news category.
 
 Also, from a functional point of view, composable functions have full access to the entire Vue Reactivity API, which makes them more flexible than Pinia.
 
-Composable functions with global stats do not work in SSR mode.
+Composable functions with global states do not work in SSR mode.
 
 You should also keep in mind that any dependency (in this case the Pinia library) can bring problems similar to the "RIP Vuex" situation when the library dies, becomes obsolete, is no longer supported, or vulnerabilities are found in it. Composable features, on the other hand, look like a thorough innovation to the Vue framework.
 

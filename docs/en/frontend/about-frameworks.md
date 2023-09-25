@@ -48,3 +48,24 @@ The Reactivity API in Vue 3 may not be perfect yet (which is why creator of the 
 Vue's reactivity can be used without UIs at all. For example, [this VS Code extension](https://github.com/soerenuhrbach/vscode-deepl/blob/main/src/state.ts) uses the Vue 3 elements `reactive`, `ref`, and `watch` to organize reactivity in code without visual components.
 
 :::
+
+::: details What can Vue do that React/Svelte can't?
+
+Vue handles reactive data more efficiently.
+
+Adding a new element to an array:
+
+```js
+// React
+setSomeArr([...someArr, newItem]);
+
+// Svelte
+someArr = [...someArr, newItem];
+
+// Vue
+someArr.value.push(newItem.value);
+```
+
+Using ES6 native Proxy object avoids decomposition and creating an intermediate array.
+Also it should more performant.
+:::
