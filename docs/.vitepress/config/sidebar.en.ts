@@ -35,6 +35,7 @@ export default [
     text: "Deploy on server",
     items: [
       { text: "CI/CD", link: "/en/deployment/ci-cd" },
+      { text: "Github Actions", link: "/deployment/github-actions" },
       { text: "Site Hosting Options", link: "/en/deployment/hosting" },
       // { text: "Docker", link: "/en/deployment/docker" },
     ],

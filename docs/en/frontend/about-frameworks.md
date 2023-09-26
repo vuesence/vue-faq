@@ -49,7 +49,7 @@ Vue's reactivity can be used without UIs at all. For example, [this VS Code exte
 
 :::
 
-::: details What can Vue do that React/Svelte can't?
+::: details What can Vue do that React or Svelte can't?
 
 Vue handles reactive data more efficiently.
 

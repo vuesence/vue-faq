@@ -36,6 +36,7 @@ export default [
     text: "Деплой на сервере",
     items: [
       { text: "CI/CD", link: "/deployment/ci-cd" },
+      { text: "Github Actions", link: "/deployment/github-actions" },
       { text: "Варианты размещения сайта", link: "/deployment/hosting" },
       // { text: "Docker", link: "/deployment/docker" },
     ],
