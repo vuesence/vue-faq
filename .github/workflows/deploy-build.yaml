@@ -26,11 +26,8 @@ jobs:
 
       - run: pnpm build
 
-      - name: List website files
-        run: ls docs/.vitepress/dist
-
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: docs/.vitepress/dist # The folder the action should deploy.
+          folder: docs/.vitepress/dist
           branch: gh-pages
