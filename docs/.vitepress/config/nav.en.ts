@@ -1,7 +1,7 @@
 export default [
   { text: "Home", link: "/en/" },
   {
-    text: "v 1.1",
+    text: "v 1.2",
     items: [
       {
         text: "Changelog",

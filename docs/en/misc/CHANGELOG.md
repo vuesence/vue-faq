@@ -1,4 +1,25 @@
-# 1.1 (15-09-2023)
+# Changelog
+
+<br />
+
+## v1.2 (28-09-2023)
+
+#### New
+
+- ``Deployment / Github Actions`
+
+#### Changed
+
+- `Deployment / CI/CD`
+- `Frontend / About frontend frameworks`
+- Несущественные изменения и исправление ошибок в разных разделах
+
+<!-- --- -->
+
+<br />
+<br />
+
+## v1.1 (15-09-2023)
 
 ### New
 
@@ -8,9 +29,12 @@
 
 - `Development / Helpful hints`.
 
----
+<!-- --- -->
 
-# 1.0 (11-09-2023)
+<br />
+<br />
+
+## v1.0 (11-09-2023)
 
 ### New
 
