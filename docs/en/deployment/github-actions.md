@@ -12,7 +12,7 @@ It will contain the GitHub Actions instructions.
 
 :::
 
-::::: details GitHub Actions - sample deploy on GitHub Pages
+::: details GitHub Actions - sample deploy on GitHub Pages
 
 Sample configuration file of this project (Vue-Faq) with deployment to Github Pages
 
@@ -59,7 +59,7 @@ The GitHub Pages documentation describes another way to auto-deploy via Github A
 
 :::
 
-:::: details GitHub Actions - an example of an SSH-based deploy to a remote server
+::: details GitHub Actions - an example of an SSH-based deploy to a remote server
 
 A more interesting case of useful CI/CD process automation.
 
