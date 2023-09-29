@@ -72,6 +72,8 @@ Also, from a functional point of view, composable functions have full access to 
 
 Composable functions with global states do not work in SSR mode.
 
+As for performance, [according to tests](https://github.com/vuesence/pinia-vs-reactive) Pinia is about 1.5 times slower on Reactive changes than Vue 3, and 20 times slower on Ref. This is because Ref (primitive types) in Pinia becomes part of Reactive.
+
 You should also keep in mind that any dependency (in this case the Pinia library) can bring problems similar to the "RIP Vuex" situation when the library dies, becomes obsolete, is no longer supported, or vulnerabilities are found in it. Composable features, on the other hand, look like a thorough innovation to the Vue framework.
 
 :::

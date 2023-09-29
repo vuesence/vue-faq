@@ -11,6 +11,7 @@
 #### Changed
 
 - `Deployment / CI/CD`
+- `Deployment / Stores - Vuex, Pinia and Composition API`
 - `Frontend / About frontend frameworks`
 - Несущественные изменения и исправление ошибок в разных разделах
 
