@@ -47,6 +47,12 @@
         animation: open 0.3s ease-in-out;
       }
     }
+    ul,
+    ol,
+    blockquote p,
+    pre code {
+      font-size: 1.1em;
+    }
   }
 }
 @media (max-width: 768px) {
