@@ -32,7 +32,9 @@
   }
   &[open] {
     p {
-      font-size: 1.1em;
+      font-size: 1.2em;
+      line-height: 1.6em;
+      margin: 1.2em 0;
     }
     summary {
       margin-bottom: 1.3em;
@@ -45,6 +47,11 @@
         animation: open 0.3s ease-in-out;
       }
     }
+  }
+}
+@media (max-width: 768px) {
+  .custom-block.details[open] p {
+    font-size: 1.1em;
   }
 }
 
