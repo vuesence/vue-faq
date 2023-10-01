@@ -5,7 +5,7 @@ export default [
     items: [
       { text: "About frontend frameworks", link: "/en/frontend/about-frameworks" },
       { text: "How to learn Vue?", link: "/en/frontend/learning" },
-      { text: "SPA, PWA, SSG, SSR and CEO", link: "/en/frontend/spa-pwa-ssr-ssg" },
+      { text: "SPA, PWA, SSG, SSR and SEO", link: "/en/frontend/spa-pwa-ssr-ssg" },
       { text: "CSS and UI libraries", link: "/en/frontend/css-ui-libs" },
       { text: "Frontend application architecture", link: "/en/frontend/architecture" },
     ],

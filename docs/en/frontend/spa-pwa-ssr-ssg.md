@@ -1,4 +1,4 @@
-# SPA, PWA, SSG, SSR and CEO
+# SPA, PWA, SSG, SSR and SEO
 
 ::: details Web 1.0 -> Web 2.0
 
@@ -61,7 +61,7 @@ In addition, there are a lot of restrictions when writing code and using certain
 
 :::
 
-::: details CEO optimization
+::: details SEO optimization
 
 In order for a search engine to index a page on your site, it must receive HTML with content (text, images, video) when accessing it. With SPA sites, where content is loaded dynamically by JavaScript, this is often not possible.
 

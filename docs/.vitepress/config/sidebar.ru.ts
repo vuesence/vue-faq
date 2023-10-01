@@ -5,7 +5,7 @@ export default [
     items: [
       { text: "О фронтенд фреймворках", link: "/frontend/about-frameworks" },
       { text: "Как изучать Vue?", link: "/frontend/learning" },
-      { text: "SPA, PWA, SSG, SSR и CEO", link: "/frontend/spa-pwa-ssr-ssg" },
+      { text: "SPA, PWA, SSG, SSR и SEO", link: "/frontend/spa-pwa-ssr-ssg" },
       { text: "CSS и UI библиотеки", link: "/frontend/css-ui-libs" },
       { text: "Архитектура фронтенд приложений", link: "/frontend/architecture" },
     ],
