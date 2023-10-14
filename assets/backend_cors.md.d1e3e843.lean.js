@@ -1,1 +1,0 @@
-import{_ as e,o as s,c as a,Q as t}from"./chunks/framework.477046d0.js";const u=JSON.parse('{"title":"CORS","description":"","frontmatter":{},"headers":[],"relativePath":"backend/cors.md","filePath":"backend/cors.md"}'),o={name:"backend/cors.md"},l=t("",4),c=[l];function n(p,r,i,d,h,g){return s(),a("div",null,c)}const b=e(o,[["render",n]]);export{u as __pageData,b as default};
