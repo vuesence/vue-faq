@@ -55,4 +55,6 @@ CORS проблемы могут возникнуть только когда к
 
 Как временное решение при разработке могут помочь [CORS proxy](https://www.google.com/search?q=CORS+proxy), которые становятся посредником между фронтендом и бэкендом, или [расширения браузера](https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf).
 
+`Vite` предоставляет [подобный прокси](https://vitejs.dev/config/server-options.html#server-proxy) для `dev` режима.
+
 :::

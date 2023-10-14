@@ -53,4 +53,6 @@ CORS problems can occur only when a resource is accessed by a browser, not by a 
 
 As a temporary solution [CORS proxy](https://www.google.com/search?q=CORS+proxy), which becomes an intermediary between frontend and backend, or [browser extensions](https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf) can help during development.
 
+`Vite` provides [such proxy](https://vitejs.dev/config/server-options.html#server-proxy) for development.
+
 :::

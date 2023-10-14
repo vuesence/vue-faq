@@ -2,18 +2,29 @@
 
 <br />
 
+## v1.3 (10-10-2023)
+
+#### Changed
+
+- `Backend / CORS`
+- `Frontend / How to learn Vue?`
+
+<!-- --- -->
+
+<br />
+<br />
+
 ## v1.2 (28-09-2023)
 
 #### New
 
-- ``Deployment / Github Actions`
+- `Deployment / Github Actions`
 
 #### Changed
 
 - `Deployment / CI/CD`
 - `Deployment / Stores - Vuex, Pinia and Composition API`
 - `Frontend / About frontend frameworks`
-- Несущественные изменения и исправление ошибок в разных разделах
 
 <!-- --- -->
 

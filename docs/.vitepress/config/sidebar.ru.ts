@@ -23,7 +23,7 @@ export default [
     ],
   },
   {
-    text: "Общение с бэкендом",
+    text: "Бэкенд",
     items: [
       { text: "Авторизация и аутентификация", link: "/backend/auth" },
       { text: "Протоколы. To REST или не REST?", link: "/backend/protocols" },
