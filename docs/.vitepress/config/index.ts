@@ -3,6 +3,7 @@ import nav_en from "./nav.en";
 import nav_ru from "./nav.ru";
 import sidebar_en from "./sidebar.en";
 import sidebar_ru from "./sidebar.ru";
+import book_sidebar_ru from "./book.sidebar.ru";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -70,8 +71,11 @@ export default defineConfig({
       provider: "local",
     },
     // https://vitepress.dev/reference/default-theme-config
-    nav: nav_ru,
-    sidebar: sidebar_ru,
+    nav: nav_ru,    
+    sidebar: {
+      "/": sidebar_ru,
+      "/book/": book_sidebar_ru,
+    },
     socialLinks: [{ icon: "github", link: "https://github.com/vuesence/vue-faq" }],
   },
 });
