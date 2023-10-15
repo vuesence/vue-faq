@@ -1,7 +1,7 @@
 export default [
   { text: "Главная", link: "/" },
   { text: "FAQ", link: "/misc/introduction" },
-  { text: "Книга", link: "/book/" },
+  { text: "Книга", link: "/book/ru/" },
   {
     text: "v 1.3",
     items: [
