@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test1</title>
+  </head>
+  <body>
+    <script>
+      document.title = "Test2";
+      document.addEventListener("DOMContentLoaded", () => {
+        document.title = "Test3";
+      });
+      setTimeout(() => {
+        document.title = "Test4";
+      }, 4000);
+    </script>
+  </body>
+</html>
