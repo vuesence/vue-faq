@@ -26,3 +26,5 @@ dist-ssr
 .history
 docs/.vitepress/dist/
 docs/.vitepress/cache/
+src/html/
+src/ru/
