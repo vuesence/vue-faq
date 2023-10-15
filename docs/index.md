@@ -13,6 +13,9 @@ hero:
     - theme: alt
       text: Почему Vue?
       link: /frontend/about-frameworks
+    - theme: alt
+      text: Книга
+      link: /book/ru/
   image:
     src: /images/vue-faq-logo.webp
     alt: Vue FAQ
