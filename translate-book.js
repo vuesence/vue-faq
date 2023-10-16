@@ -12,11 +12,11 @@ const dir = "book/html/";
 processDir(dir);
 
 function processDir(dir) {
-  fs.readdirSync("./docs/book/html/en/").forEach((file) => {
+  fs.readdirSync("./src/html/en/").forEach((file) => {
     if (file.endsWith(".html")) {
       // console.log(file);
       fileNames.push(file);
-      const data = fs.readFileSync("./docs/book/html/en/" + file, "utf8");
+      const data = fs.readFileSync("./src/html/en/" + file, "utf8");
       //   console.log(data);
       text.push(data);
     }
@@ -57,7 +57,7 @@ function processDir(dir) {
     .then((result) => {
       for (let i = 0; i < result.translations.length; i++) {
         const data = result.translations[i].text;
-        fs.writeFileSync("./docs/book/html/ru/" + fileNames[i], data);
+        fs.writeFileSync("./src/html/html-ru/" + fileNames[i], data);
       }
       // console.log(result);
     })

@@ -1,0 +1,690 @@
+			<h1>Software Design Principles and Patterns</h1>
+			<p>Software development is fundamentally a <i>human-intensive discipline.</i> This means that it requires knowledge of both techniques and technology, but also comprehension of the problem and the ability to make decisions to implement a solution on multiple levels of abstraction. Programming has much to do with how a developer thinks. Over the years, and within each context and language, guidelines and solutions have emerged to solve recurring problems. Knowledge of these <i>patterns</i> will help you identify when to apply them and speed your development on a sure footing. On the other hand, <i>principles</i> are guiding concepts that should be applied at every stage of the process and have more to do with how you approach the process.</p>
+			<p>In this chapter, we will take a look at a non-exclusive and non-exhaustive list of principles and patterns that are common in Vue 3 application development.</p>
+			<table id="table001-1" class="No-Table-Style _idGenTablePara-1">
+				<colgroup>
+					<col>
+					<col>
+				</colgroup>
+				<tbody>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style">
+							<p><b>Principles</b></p>
+						</td>
+						<td class="No-Table-Style">
+							<p><b>Patterns</b></p>
+						</td>
+					</tr>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style">
+							<ul>
+								<li>Separation of concerns</li>
+								<li>Composition over inheritance</li>
+								<li>Single responsibility</li>
+								<li>Encapsulatio</span><span class="No-Break">n</li>
+								<li>KIC – keep it clean</li>
+								<li>DRY – don’t repeat yourself</li>
+								<li>KISS – keep it simple stupid</li>
+								<li>Code for the next</li>
+							</ul>
+						</td>
+						<td class="No-Table-Style">
+							<ul>
+								<li>Singleton</li>
+								<li>Dependency injection</li>
+								<li>Observer</li>
+								<li>Command</li>
+								<li>Proxy</li>
+								<li>Decorator</li>
+								<li>Façade</li>
+								<li>Callbacks</li>
+								<li>Promises</li>
+							</ul>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Table 2.1 <span xml:lang="en-GB">–</span> The principles and patterns covered in this chapter</p>
+			<p>Understanding these principles and patterns will help you use the framework more efficiently and more often than not, it will prevent you from “reinventing the wheel”. Together with the first chapter, this will conclude the <i>foundational part </i>of this book and will give you the basis to follow the practical parts and implementation of application examples in the rest of the book.</p>
+			<h2>What are the principles of software design?</h2>
+			<p>In software development, design principles are high-level conceptual guidelines that should apply to the entire process. Not every project will use the same principles, and these are not mandatory rules to be enforced. They can appear in a project from the architecture down to the <b>user interface</b> (<b>UI</b>) and the last bit of code. In practice, some of these principles can also influence software attributes, such as maintainability and re-usability.</p>
+			<h2>A non-exclusive list of design principles</h2>
+			<p>Design principles vary somewhat depending on the context, domain, and even the team one may be part of at the time. The principles included in this chapter are, therefore, non-exclusive.</p>
+			<h3>Separation of concerns</h3>
+			<p>This is perhaps the most important principle in software engineering. Separation of concerns implies that a system must be divided into subsystems of elements grouped by their function or service (the <b>concern</b>). For example, we can consider the human body as a <i>system</i> composed of many subsystems (respiratory, circulatory, digestive, etc.). These, in turn, are integrated by different organs, which are made of tissues, and so forth, down to the smallest cell. Following the same idea in software, an application can be divided into elements grouped by concerns, from the large architecture all the way down to the last function. Without this breakdown of complexity into manageable parts, creating a functional system would be much harder, if not impossible.</p>
+			<p>In general, the application of this principle starts with the big picture of what the system should be, looks into what it should do to accomplish that, and then breaks it down into manageable working parts.</p>
+			<p>As an example, here is a crude graphical representation of separation of concerns for a web application. Each box in this diagram identifies a different <i>concern</i> that, in turn, can be detailed into smaller functional parts. Even better, you can see how this principle allows you to identify the integrating parts of a system.</p>
+			<div>
+				<div>
+					<img src="images/Figure_2.01_B18602.jpg" alt="Figure 2.1 – A simple architectural view of a web application showing separation of concerns" width="528" height="208">
+				</div>
+			</div>
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 2.1 – A simple architectural view of a web application showing separation of concerns</p>
+			<p>If we were to drill down into any of these small boxes within their respective domains, we could still find more concerns to subdivide until we reach an indivisible atomic element (a component or function, for example). This principle has much to do with and benefits from other principles, such as abstraction and single responsibility. We will review them further down the line in this same chapter.</p>
+			<h3>Composition over inheritance</h3>
+			<p>The principle of <i>composition over inheritance</i> comes directly from <b>Object-Oriented Programming</b> (<b>OOP</b>). It states that an object should attempt to use other objects’ functionality when needed, by referencing or instantiating them instead of creating a large and complex inheritance family tree of classes to add such functionality. Now, JavaScript is fundamentally a <i>functional </i>language, even though it supports multiple paradigms, including features from OOP, so this principle applies as well. There is one note of warning for those migrating from OOP into JavaScript, and that is to avoid the temptation to treat JavaScript as a pure OOP language. Doing so could create unnecessary complexity instead of benefiting from the virtues of the language.</p>
+			<p>In Vue 3, there is no extension or inheritance of components. When we need shared or inherited functionality, we have a nice toolset of options to replace the inheritance paradigm. We will see later how we can comply with this principle by using <i>composable components</i> in <a href="https://learning.oreilly.com/library/view/vue-js-3-design/9781803238074/B18602_04.xhtml#_idTextAnchor102"><i>Chapter 4</i></span></a>, <i>User Interface Composition </i><span class="No-Break"><i>with Components.</i></p>
+			<h3>Single responsibility principle</h3>
+			<p>This principle can be found in OOP as well as in functional programming. Simply put, it states that a class, method, function, or <i>component </i>should deal with only one responsibility or functionality. If you have worked in other disciplines and languages, this comes naturally. Multipurpose functions are hard to maintain and tend to grow out of control, especially in a language such as JavaScript, which is loosely typed and highly dynamic. The same concept also applies directly to Vue 3 components. Each component should deal with one specific operation and avoid attempting to do too much by itself. In practice, when a component grows beyond a certain scope, it is best to split it into multiple components or extract the behavior into external modules. There are cases when you may end up with a many-thousand-lines-long component, but in my experience, this is rarely necessary and can and should be avoided. A warning, though, is that too much specificity could also lead to unnecessary complexity.</p>
+			<p>As an example, let’s imagine a sign-in screen that also displays a sign-up option. This approach is common on many sites today. You could include all the functionalities inside just one component, but that would break this principle. A better alternative would be to split the components into at least three components for this task:</p>
+			<ul>
+				<li>A parent component that handles the UI logic. This component decides when to show/hide the sign-in and sign-up components.</li>
+				<li>A child component that handles the sign-in function.</li>
+				<li>A child component that handles the sign-up function.</li>
+			</ul>
+			<p>Here is a graphical representation of this configuration:</p>
+			<div>
+				<div>
+					<img src="images/Figure_2.02_B18602.jpg" alt="Figure 2.2 – The composition of a sign-in/up interface using multiple components" width="528" height="157">
+				</div>
+			</div>
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 2.2 – The composition of a sign-in/up interface using multiple components</p>
+			<p>I think that you can quickly grasp the benefits of this principle. It makes the code easy to manage, maintain, and adapt since web applications have the tendency to mutate and evolve very, very quickly. </p>
+			<h6>Best practice tip</h6>
+			<p class="callout">Give components a single responsibility and functionality. Avoid mammoth monolithic components as much as possible.</p>
+			<h3>Encapsulation</h3>
+			<p>Encapsulation is the notion that you should wrap data and methods to act as a single unit while exposing a well-defined <b>application programming interface</b> (<b>API</b>). Often, this is done in the form of classes, modules, or libraries. JavaScript is not an exception, and it is highly recommended to follow this principle. In Vue 3, this concept applies to not only components but also CSS styles and HTML. The introduction of <i>single-file components</i> is a clear example of how the framework promotes this principle in action and how important it is for today’s development. With only a few edge-case situations, we should consider the (<b>UI</b>) components as black boxes that receive incoming parameters and provide outgoing data. Other components should not be <i>aware</i> of their inner workings, only the API. As we build example applications throughout this book, you will see this principle in action.</p>
+			<h3>KIC – keep it clean</h3>
+			<p>This principle refers mainly to the way <i>you write</i> code. I should emphasize here that KIC applies directly to two categories that strongly affect web and Vue 3 applications:</p>
+			<ul>
+				<li>How you format your code</li>
+				<li>How you tidy up events and variables</li>
+			</ul>
+			<p>The first item includes the use of code conventions, comments, and indentation to the organization of the code and logical grouping of functions. For example, if you have methods that deal with <b>create, read, update, and delete</b> (<b>CRUD</b>) operations, it would be best to place them near each other in the code, rather than spread around the source file. Many <b>integrated development environments</b> (<b>IDEs</b>) contain features to collapse or expand the inner code of functions. This helps to quickly review and locate sections in the code with similar logic.</p>
+			<p>The second part of this principle has to do with memory and reference handling. JavaScript has a very good garbage collector, the function of which is to discard unused data to reclaim memory. However, there are occasions when the algorithm is prevented from freeing up resources because a reference is still pending. If you have worked with other languages, such as C/C++, this issue may sound familiar as you need to manually reserve and release memory when not in use. In JavaScript, if you register a function to listen to an event, it is best to manually deregister it at the appropriate life cycle event of your component when no longer needed. This will prevent memory leaks and waste of memory and also prevent some security risks (which are out of the scope of this book).</p>
+			<p>We will review the component’s life cycle in <a href="https://learning.oreilly.com/library/view/vue-js-3-design/9781803238074/B18602_04.xhtml#_idTextAnchor102"><i>Chapter 4</i></span></a><i>, User Interface Composition with Components,</i> but for now, take the following example as a good application of this principle and keep it as best practice. In this example, we will create a <i>composable </i>component to detect when the window size changes, so in the <b>script setup</b> section we will find something <span class="No-Break">like this:</p>
+			<ol>
+				<li>Registers a function on the window object’s resize event during the mounting state.</li>
+				<li>Deregisters the event before the component is unmounted.</li>
+			</ol>
+			<p>Here is the code fragment:</p>
+			<pre class="source-code">&lt;script setup&gt;
+&nbsp;&nbsp;&nbsp;import {onMounted, onBeforeUnmount} from "vue"
+&nbsp;&nbsp;&nbsp;onMounted(()=&gt;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;window.<b>addEventListener</b>("resize", myFunction)
+&nbsp;&nbsp;&nbsp;})
+&nbsp;&nbsp;&nbsp;onBeforeUnmount(()=&gt;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;window.<b>removeEventListener</b>("resize", myFunction)
+&nbsp;&nbsp;&nbsp;})
+&nbsp;&nbsp;&nbsp;function myFunction(){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Do something with the event here
+&nbsp;&nbsp;&nbsp;}
+&lt;/script&gt;</pre>
+			<p>The <b>onMounted</b> and <b>onBeforeUnmount</b> functions are part of the Vue 3 framework and are triggered by the appropriate component life cycle event. Here, we attach our function to the <b>resize</b> event when the component is mounted to the <b>Document Object Model </b>(<b>DOM</b>), and we release it just before it is removed. The important concept to remember is to clean up after yourself and <i>keep </i><i>it clean</i></span><span class="No-Break">.</p>
+			<h3>DRY – don’t repeat yourself</h3>
+			<p>This principle is quite famous, almost to the point of turning into a cliché. Sadly, it is easily forgotten. It is credited to Andrew Hunt and David Thomas, who used it in the book <i>The Pragmatic Programmer</i>. It is mostly thought of as <i>don’t write the same thing twice</i> and is not far off, but it goes beyond that. It encompasses the notion of avoiding redundancy in the process as well as in the logic of the application. The core idea is that each process that executes business logic should exist in only one place in your entire application.</p>
+			<p>For example, most web applications have some asynchronous connection with a server through the use of an API. There may also be multiple elements in the application that will use or need to use this remote computer/server communication. If you were going to code the entire code/logic to communicate with the server in each component, we would end up with not only duplication of code but also application logic. Maintaining such a system would open up the door to an amazing number of negative side effects and security concerns, poor user experience, and much more. According to this principle, a better approach is to abstract all communication code related to the server API into a single module, or class. In practice, in JavaScript this can even be delegated to a web worker in a separate thread. We will explore this implementation later in <a href="https://learning.oreilly.com/library/view/vue-js-3-design/9781803238074/B18602_08.xhtml#_idTextAnchor186"><i>Chapter 8</i></span></a>,<i> Multithreading with </i><span class="No-Break"><i>Web Workers</i></span><span class="No-Break">.</p>
+			<p>As a rule of thumb, if you see yourself writing kind-of-the-same-code” in different components or classes, it is a clear opportunity to abstract the functionality into its own module or component.</p>
+			<h3>KISS – keep it simple and short</h3>
+			<p>This principle is not exclusive to the software design realm. It was coined by the US Navy back in the ’60s (according to Wikipedia, <a href="https://en.wikipedia.org/wiki/KISS_principle">https://en.wikipedia.org/wiki/KISS_principle</a>). The idea is pure common sense: it is better to build simple, small functional parts that work together than attempt to create a big and complex program in one go. Also, algorithms should be implemented in the most simple and efficient way. In web development, this principle is essential. Modern web applications are composed of hundreds of working parts spread over multiple computers, servers, and environments. The more complex a system or code implementation is, the harder it is also to maintain and adapt.</p>
+			<p>There is a warning, though. Keeping things simple does not mean over-simplification or unnecessary segregation. Too many small parts can introduce unnecessary complexity in the system. Applying the KISS principle means staying in that sweet middle point where things are manageable and easy to understand.</p>
+			<h3>Code for the next</h3>
+			<p>This principle is the idea that you should make your code readable and easy to understand for someone else besides you. Naming conventions, logic flow, and inter-line comments are all part of this. Not only for the case when you may need to delegate your code to another but also when you come back in a year or two to the same code. The last thing you want to do is to waste time thinking about what the past inexperienced you did with that clever line of spaghetti code Smart developers code as if they were going to teach somebody else, simply and elegantly. Especially if you are using or contributing to open-source code, this principle is vital for group collaboration. In this case, it is worth mentioning the <i>Boy Scout Principle,</i> which is similar but applies in groups. It states that when you find a hard-to-read or “spaghetti” code, you refactor it to make it clean.</p>
+			<h6>Best practice tip</h6>
+			<p class="callout">Keep your code clean with on-source comments and documentation explaining your logic, as if teaching somebody else. More often than not, you will be teaching yourself.</p>
+			<p>Design principles apply to many different scenarios, some beyond the practice of software development. It is important to consider them until they become second nature. In general, the application of these and other principles, together with the application of design patterns, make an important mark on your professional development.</p>
+			<h2>What is a software design pattern?</h2>
+			<p>In software development, it is common for certain processes and tasks to appear in multiple projects, in one way or another, or with some degree of variation. A <i>design pattern</i> is a proven solution for such similar problems. It does not prescribe code but acts like a reasoning template, an approach that has been abstracted independent of the implementation to be reused and adapted to particular circumstances. In practice, there is plenty of room for creativity to apply a pattern. Entire books have been dedicated to this subject and provide more detail than the scope of this book allows. In the following pages, we will take a look at what I consider to be the most recurrent patterns to keep in mind for Vue 3 applications. Even though we see them in isolation for the purposes of studying them, the reality is that often the implementation overlaps, mixes, and encapsulates multiple patterns in a single piece of code. For example, you can use a <b>singleton </b>to act as a <b>decorator </b>and a <b>proxy </b>to simplify or alter the communication between services in your application (we will do this quite often, actually, and the full code can be seen in <a href="https://learning.oreilly.com/library/view/vue-js-3-design/9781803238074/B18602_08.xhtml#_idTextAnchor186"><i>Chapter 8</i></span></a><i>, Multithreading with </i><span class="No-Break"><i>Web Workers</i></span><span class="No-Break">).</p>
+			<p>Design patterns can also be understood as software engineering and development <i>best practices</i>. And the opposite of that, <i>bad practice</i>, is often referred to as an <b>anti-pattern</b>. Anti-patterns are “solutions” that, even though they fix an issue in the short term, create problems and bad consequences along the line. They generate the need to work around the problem and destabilize the whole structure and implementation.</p>
+			<p>Let’s now view a list of patterns that should be part of your toolbox for Vue 3 projects.</p>
+			<h2>A quick reference list of patterns</h2>
+			<p>Patterns are classified according to the type of function or problem they solve. There are plenty of patterns according to the context, language, and architecture of a system. Here is a non-exclusive list of patterns that we will use throughout this book and that, in my experience, are more likely to appear in Vue applications:</p>
+			<ul>
+				<li><b>Creational patterns</b>: These deal with the approach to creating classes, objects, and data structures:</span><ul><li><span class="No-Break">Singleton pattern</span></li><li>Dependency <span class="No-Break">injection pattern</span></li><li><span class="No-Break">Factory pattern</li></ul></li>
+				<li><b>Behavioral patterns</b>: These deal with communication between objects, components, and other elements of the application:</span><ul><li><span class="No-Break">Observer pattern</span></li><li><span class="No-Break">Command pattern</li></ul></li>
+				<li><b>Structural patterns</b>: These provide templates that affect the design of your application and the relationship between components:</span><ul><li><span class="No-Break">Proxy pattern</span></li><li><span class="No-Break">Decorator pattern</span></li><li><span class="No-Break">Façade pattern</li></ul></li>
+				<li><b>Asynchronous patterns</b>: These deal with data and process flow with asynchronous requests and events in single-threaded applications (heavily used in web applications):</span><ul><li><span class="No-Break">Callbacks pattern</span></li><li><span class="No-Break">Promises pattern</li></ul></li>
+			</ul>
+			<p>Not by any means this list of patterns is exclusive. There are many more patterns and classifications, and a full library is dedicated to this subject. It is worth mentioning that the description and application for some of these may differ from one literature to another and there is some overlapping depending on the context and implementation.</p>
+			<p>With that introduction to design patterns, let’s look at them in detail with examples.</p>
+			<h3>The singleton pattern</h3>
+			<p>This is a very common pattern in JavaScript and perhaps one of, if not the most important. The basic concept defines that one object’s instance must only exist once in the entire application, and all references and function calls are done through this object. A singleton can act as a gateway to resources, libraries, and data.</p>
+			<h4>When to use it</h4>
+			<p>Here is a short rule of thumb to know when to apply this pattern:</p>
+			<ul>
+				<li>When you need to make sure a resource is accessed through only one gateway, for example, the global application state</li>
+				<li>When you need to encapsulate or simplify behavior or communications (used in conjunction with other patterns). For example, the API access object.</li>
+				<li>When the <i>cost </i>of multiple instantiations is detrimental. For example, the creation of web workers.</li>
+			</ul>
+			<h4>Implementations</h4>
+			<p>There are many ways that you can apply this pattern in JavaScript. In some cases, the implementation from other languages is migrated to JavaScript, often following Java examples with the use of a <b>getInstance()</b> method to obtain the singleton. However, there are better ways to implement this pattern in JavaScript. Let’s see them next.</p>
+			<h5>Method 1</h5>
+			<p>The simplest way is through a module that exports a plain object literal or a <b>JavaScript Object Notation</b> (<b>JSON</b>), which is a static object:</p>
+			<p class="SC---Heading" lang="en-US" xml:lang="en-US">./chapter 2/singleton-json.js</p>
+			<pre class="source-code">const my_singleton={
+&nbsp;&nbsp;&nbsp;&nbsp;// Implementation code here...
+}
+export default my_singleton;</pre>
+			<p>You then can import this module into other modules and still always have the same object. This works because bundlers and browsers are smart enough to avoid the repetition of imports, so once this object has been brought in the first time, it will ignore the next requests. When not using a bundler, the ES6 implementation of JavaScript also defines that modules are singletons.</p>
+			<h5>Method 2</h5>
+			<p>This method creates a class and then, on the first instantiation, saves the reference for future calls.
+In order for this to work, we use a variable (traditionally called <b>_instance</b>) from the class and save the reference to the instance in the constructor. In the following calls, we check whether the <b>_instance</b> value exists, and if so, return it. Here is the code:</p>
+			<p class="SC---Heading" lang="en-US" xml:lang="en-US">./chapter 2/singleton-class.js</p>
+			<pre class="source-code">class myClass{
+&nbsp;&nbsp;&nbsp;&nbsp;constructor(){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(<b>myClass._instance</b>){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>return myClass._instance;</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}else{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>myClass._instance=this;</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return this;
+&nbsp;&nbsp;&nbsp;&nbsp;}
+}
+export default new myClass()</pre>
+			<p>This second method may be more familiar to other language developers. Notice how we are also exporting a new instance of the class and not the class directly. This way, the invoker will not have to remember to instantiate the class every time, and the code will be the same as in <i>method 1</i>. This use case is something that needs to be coordinated with your team to avoid different implementations.</p>
+			<p>The invoker then can call methods from each one directly (assuming the singleton has a function/method called </span><span class="No-Break"><b>myFunction()</b></span><span class="No-Break">):</p>
+			<p class="SC---Heading" lang="en-US" xml:lang="en-US">./chapter 2/singleton-invoker.js</p>
+			<pre class="source-code">import my_method1_singleton from "./singleton-json";
+import my_method2_singleton from "./singleton-class";
+console.log("Look mom, no instantiation in both cases!")
+my_method1_singleton.myFunction()
+my_method2_singleton.myFunction()</pre>
+			<p>The singleton pattern is extremely useful, though it rarely exists <i>in isolation</i>. Often, we use singletons to wrap the implementation of other patterns and make sure we have a single point of access. In our examples, we will use this pattern quite often.</p>
+			<h3>The dependency injection pattern</h3>
+			<p>This pattern simply states that the dependencies for a class or function are provided as inputs, for example, as parameters, properties, or other types of implementations. This simple statement opens a very wide range of possibilities. Let’s take, for example, a class that works with the browser’s <b>IndexedDB API</b> through an abstraction class. We will learn more about the IndexedDB API in <a href="https://learning.oreilly.com/library/view/vue-js-3-design/9781803238074/B18602_07.xhtml#_idTextAnchor173"><i>Chapter 7</i></span></a>, <i>Data Flow Management</i>, but for now, just concentrate on the dependency part. Consider that the <b>dbManager.js</b> file exposes an object that handles the operations with the database, and the <b>projects</b> object deals with CRUD operations for the projects table (or collection). Without using dependency injection, you will have something <span class="No-Break">like this:</p>
+			<p class="SC---Heading" lang="en-US" xml:lang="en-US">./chapter 2/dependency-injection-1.js</p>
+			<pre class="source-code"><b>import dbManager from "dbManager"</b>
+const projects={
+&nbsp;&nbsp;&nbsp;&nbsp;getAllProjects(){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return <b>dbManager.</b>getAll("projects")
+&nbsp;&nbsp;&nbsp;&nbsp;}
+}
+export default projects;</pre>
+			<p>The preceding code shows a “normal” approach, where we import the dependencies at the beginning of the file and then use them in our code. Now, let’s tweak this same code to use dependency injection:</p>
+			<p class="SC---Heading" lang="en-US" xml:lang="en-US">./chapter 2/dependency-injection-2.js</p>
+			<pre class="source-code">const projects={
+&nbsp;&nbsp;&nbsp;&nbsp;getAllProjects(<b>dbManager</b>){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return <b>dbManager</b>.getAll("projects")
+&nbsp;&nbsp;&nbsp;&nbsp;}
+}
+export default projects;</pre>
+			<p>As you can see, the main difference is that <b>dbManager</b> is now passed as a parameter to the function. This is what is called <b>injection</b>. This opens up many ways to manage dependencies and, at the same time, pushes the hardcoding of dependencies up the implementation tree. This makes this class highly reusable, at least for as long as the dependency respects the expected API.</p>
+			<p>The preceding example is not the only way to inject a dependency. We could, for example, assign it to a property for the object’s internal use. For example, if the <b>projects.js</b> file was implemented using the property approach instead, it would look like this:</p>
+			<p class="SC---Heading" lang="en-US" xml:lang="en-US">./chapter 2/dependency-injection-3.js</p>
+			<pre class="source-code">const projects={
+&nbsp;&nbsp;&nbsp;&nbsp;<b>dbManager,</b>
+&nbsp;&nbsp;&nbsp;&nbsp;getAllProjects(){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return <b>this.dbManager</b>.getAll("projects")
+&nbsp;&nbsp;&nbsp;&nbsp;}
+}
+export default projects;</pre>
+			<p>In this case, the invoker of the object (a singleton, by the way) needs to be aware of the property and assign it before calling on any of its functions. Here is an example of how that would look:</p>
+			<p class="SC---Heading" lang="en-US" xml:lang="en-US">./chapter 2/dependency-injection-4.js</p>
+			<pre class="source-code">import projects from "projects.js"
+import dbManager from "dbManager.js"
+<b>projects.dbManager=dbManager;</b>
+projects.getAllProjects();</pre>
+			<p>But this approach is not recommended. You can clearly see that it breaks the principle of encapsulation, as we are directly assigning a property for the object. It also doesn’t feel like clean code even though it is valid code.</p>
+			<p>Passing the dependencies one function at a time is also not recommended. So, what is a better approach? It depends on the implementation:</p>
+			<ul>
+				<li>In a class, it is convenient to require the dependencies in the constructor (and if not found, throw an error)</li>
+				<li>In a plain JSON object, it is convenient to provide a function to set the dependency explicitly and let the object decide how to use it internally</li>
+			</ul>
+			<p>This last approach is also recommended for passing a dependency after the instantiation of an object when the dependency is not ready at the time of implementation</p>
+			<p>Here is a code example for the first point mentioned in the preceding list:</p>
+			<p class="SC---Heading" lang="en-US" xml:lang="en-US">./chapter 2/dependency-injection-5.js</p>
+			<pre class="source-code">class Projects {
+&nbsp;&nbsp;&nbsp;&nbsp;constructor(<b>dbManager</b>=null){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(<b>!dbManager</b>){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>throw "Dependency missing"</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}else{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>this.dbManager=dbManager;</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;}
+}</pre>
+			<p>In the constructor, we declare the expected parameter with a default value. If the dependency is not provided, we throw an error. Otherwise, we assign it to an internal private attribute for the use of the instance. In this case, the invoker should look like this:</p>
+			<pre class="source-code">// Projects are a class
+import Projects from "projects.js"
+import <b>dbManager </b>from "dbManager.js"
+try{
+&nbsp;&nbsp;&nbsp;&nbsp;const projects=<b>new Projects(dbManager)</b>;
+}catch{
+&nbsp;&nbsp;&nbsp;&nbsp;// Error handler here
+}</pre>
+			<p>In an alternative implementation, we could have a function that basically does the same by receiving the dependency and assigning it to a private attribute:</p>
+			<pre class="source-code">import projects from "projects.js"
+import <b>dbManager </b>from "dbManager.js"
+projects.setDBManager<b>(dbManager)</b>;</pre>
+			<p>This approach is better than directly assigning the internal attribute, but you still need to remember to do the assignment before using any of the methods in the object.</p>
+			<h6>Best practice note</h6>
+			<p class="callout">Whatever approach you use for dependency injection, remain constant throughout your code base.</p>
+			<p>You may have noticed that we have mainly been focusing on objects. As you may have already guessed, passing a dependency to a function is just the same as passing another parameter, so it does not deserve special attention.</p>
+			<p>This example has just moved the dependency implementation responsibility up to another class in the hierarchy. But what if we implement a singleton pattern to handle all or most of the dependencies in our application? This way, we could just delegate the loading of the dependencies to one class or object at a determined point in our application life cycle. But how do we implement such a thing? We will need the following:</p>
+			<ul>
+				<li>A method to register the dependency</li>
+				<li>A method to retrieve the dependency by name</li>
+				<li>A structure to keep the reference to each dependency</li>
+			</ul>
+			<p>Let’s put that into action and create a very <i>naive</i> implementation of such a singleton. Please keep in mind that this is an academic exercise, so we are not considering error checking, de-registration,
+or other considerations:</p>
+			<p class="SC---Heading" lang="en-US" xml:lang="en-US">./chapter 2/dependency-injection-6.js</p>
+			<pre class="source-code">const dependencyService={&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//1
+&nbsp;&nbsp;&nbsp;&nbsp;<b>dependencies</b>:{},&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//2
+&nbsp;&nbsp;&nbsp;&nbsp;<b>provide</b>(name, dependency){&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//3
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>this.dependencies[name]=dependency</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//4
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return this;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//5
+&nbsp;&nbsp;&nbsp;&nbsp;},
+&nbsp;&nbsp;&nbsp;&nbsp;<b>inject</b>(name){&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//6
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>return this.dependencies[name]</b>??null;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//7
+&nbsp;&nbsp;&nbsp;&nbsp;}
+}
+export default dependencyService;</pre>
+			<p>With this bare minimum implementation, let’s look at each line by the line comment:</p>
+			<ol>
+				<li>We create a simple JavaScript object literal as a singleton.</li>
+				<li>We declare an empty object to use as a dictionary to hold our dependencies by name.</li>
+				<li>The <b>provide</b> function lets us register a dependency by name.</li>
+				<li>Here, we just use the name as the field name and assign the dependency passed by argument (notice we are not checking pre-existing names, etc.).</li>
+				<li>Here, we return the source object, mainly for convenience so we can chain the invocation.</li>
+				<li>The <b>inject</b> function will take the name as registered in the <b>provide </b></span><span class="No-Break">function.</li>
+				<li>We return the dependency or <b>null </b>if not found.</li>
+			</ol>
+			<p>With that singleton on board, we can now use it across our application to distribute the dependencies as needed. For that, we need a parent object to import them and populate the service. Here is an example of how that might look:</p>
+			<p class="SC---Heading" lang="en-US" xml:lang="en-US">./chapter 2/dependency-injection-7.js</p>
+			<pre class="source-code">import dependencyService from "./dependency-injection-6"
+import myDependency1 from "myFile1"
+import myDependency2 from "myFile2"
+<b>import dbManager from "dbManager"</b>
+dependencyService
+&nbsp;&nbsp;&nbsp;&nbsp;.provide("dependency1", myDependency1)
+&nbsp;&nbsp;&nbsp;&nbsp;.provide("dependency2", myDependency2)
+&nbsp;&nbsp;&nbsp;&nbsp;.<b>provide("dbManager", dbManager)</b></pre>
+			<p>As you can see, this module has hard-coded dependencies, and its work is to load them into the <b>dependencyService</b> object. Then, the dependent function or object needs only to import the service and retrieve the dependency it needs by the registration name like this:</p>
+			<pre class="source-code">import dependencyService from "./dependency-injection-6"
+const <b>dbManager</b>=dependencyService<b>.inject("dbManager")</b></pre>
+			<p>This approach does create a tight coupling between components but is here as a reference. It has the advantage that we can control all the dependencies in a single location so that the maintenance benefits could be significant. The choice of names for the methods of the <b>dependencyService</b> object was not random either: these are the same used by Vue 3 inside the component’s hierarchy. This is very useful for implementing some User Interface design patterns. We will see this in more detail in <a href="https://learning.oreilly.com/library/view/vue-js-3-design/9781803238074/B18602_04.xhtml#_idTextAnchor102"><i>Chapter 4</i></span></a>, <i>User Interface Composition with Components</i> and <a href="https://learning.oreilly.com/library/view/vue-js-3-design/9781803238074/B18602_07.xhtml#_idTextAnchor173"><span class="No-Break"><i>C</i></span><span class="No-Break"><i>hapter 7</i></span></a>, <i>Data </i><span class="No-Break"><i>Flow Management</i></span><span class="No-Break">.</p>
+			<p>As you can see, this pattern is very important and is implemented in Vue 3 with the <b>provide</b>/<b>inject</b> functions. It's a great addition to our toolset, but there is more still. Let’s move on to the next one.</p>
+			<h3>The factory pattern</h3>
+			<p>The factory pattern provides us with a way to create objects without creating a direct dependency.
+It works through a function that, based on the input, will return an instantiated object. The use of such an implementation will be made through a common or standard interface. For example, consider two classes: <b>Circle</b> and <b>Square</b>. Both implement the same <b>draw()</b> method, which draws the figure to a canvas. Then, a <b>factory</b> function would work something like this:</p>
+			<pre class="console">function createShape(type){
+&nbsp;&nbsp;&nbsp;&nbsp;switch(type){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case "circle": return new Circle();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case "square": return new Square();
+}}
+let
+&nbsp;&nbsp;&nbsp;&nbsp;shape1=createShape("circle"),
+&nbsp;&nbsp;&nbsp;&nbsp;shape2=createShape("square");
+shape1.draw();
+shape2.draw();</pre>
+			<p>This method is quite popular, especially in conjunction with other patterns, as we will see multiple times in this book.</p>
+			<h3>The observer pattern</h3>
+			<p>The observer pattern is very useful and one of the basis of a reactive framework. It defines a relationship between objects where one is being observed (the <b>subject</b>) for changes or events, and other(s) are notified of such changes (the <b>observers</b>). The observers are also called <b>listeners</b>. Here is a graphical representation:</p>
+			<div>
+				<div>
+					<img src="images/Figure_2.03_B18602.jpg" alt="Figure 2.3 – The subject emits an event and notifies the observers" width="480" height="216">
+				</div>
+			</div>
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 2.3 – The subject emits an event and notifies the observers</p>
+			<p>As you can see, the subject emits an event to notify the observers. It is for the subject to define what events and parameters it will <b>publish</b>. Meanwhile, the observers <b>subscribe</b> to each event by registering a function with the publisher. This implementation is why this pattern is often referred to as the <b>pub/sub</b> pattern, and it can have several variations.</p>
+			<p>When looking into the implementation of this pattern, it is important to notice the cardinality of the publication: <b>1</b> event to <b>0..N</b> observers (functions). This means that the subject must implement, on top of its main purpose, the functionality to publish events and keep track of the subscribers. Since this would break a principle or two in the design (separation of concerns, single responsibility, etc.), it is common to extract this functionality into a middle object. The previous design then changes to add a middle layer:</p>
+			<div>
+				<div>
+					<img src="images/Figure_2.04_B18602.jpg" alt="Figure 2.4 – An observer implementation with a dispatcher middle object" width="480" height="216">
+				</div>
+			</div>
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 2.4 – An observer implementation with a dispatcher middle object</p>
+			<p>This middle object, sometimes referred to as an “<b>event dispatcher</b> encapsulates the basic functionality to register observers, receive events from the subject, and dispatch them to the observers. It also does some clean-up activities when an observer is no longer observing Let’s put these concepts into a simple and naive implementation of an event dispatcher in plain JavaScript:</p>
+			<p class="SC---Heading" lang="en-US" xml:lang="en-US">./chapter 2/Observer-1.js</p>
+			<pre class="source-code">class <b>ObserverPattern</b>{
+constructor(){
+<b>&nbsp;&nbsp;&nbsp;&nbsp;this.events={}</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>//1</b>
+}
+<b>on</b>(event_name, fn=()=&gt;{}){&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>//2</b>
+&nbsp;&nbsp;&nbsp;&nbsp;if(!this.events[event_name]){
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.events[event_name]=[]</b>
+&nbsp;&nbsp;&nbsp;&nbsp;}
+<b>&nbsp;&nbsp;&nbsp;&nbsp;this.events[event_name].push(fn)</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>//3</b>
+}
+<b>emit</b>(event_name, data){&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>//4</b>
+&nbsp;&nbsp;&nbsp;&nbsp;if(!this.events[event_name]){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return
+&nbsp;&nbsp;&nbsp;&nbsp;}
+for(let i=0, l=this.events[event_name].length; i&lt;l; i++){
+<b>&nbsp;&nbsp;&nbsp;&nbsp;this.events[event_name][i](data)</b>
+}
+}
+<b>off</b>(event_name, fn){&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>//5</b>
+&nbsp;&nbsp;&nbsp;&nbsp;let i=this.events[event_name].indexOf(fn);
+&nbsp;&nbsp;&nbsp;&nbsp;if(i&gt;-1){
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.events[event_name].splice(i, 1);</b>
+&nbsp;&nbsp;&nbsp;&nbsp;}
+}
+}</pre>
+			<p>The preceding implementation is, again, naive. It doesn’t contain the necessary error and edge case handling that you would use in production, but it does have the bare basics for an event dispatcher. Let’s look into it line by line:</p>
+			<ol>
+				<li>In the constructor, we declare an object to use internally as a dictionary for our events.</li>
+				<li>The <b>on</b> method allows the observers to register their functions. In this line, if the event is not initialized, we create an empty array.</li>
+				<li>In this line, we just push the function to the array (as I said, this is a naive implementation, as we don’t check for duplicates, for example).</li>
+				<li>The <b>emit</b> method allows the subject to publish an event by its name and pass some data to it. Here, we run over the array and execute each function passing the data we received as a parameter.</li>
+				<li>The <b>off</b> method is necessary to deregister the function once it is not used (see the <i>keep it clean </i> principle, earlier in this chapter).</li>
+			</ol>
+			<p>In order for this implementation to work, every observer and the subject need to reference the same implementation of the <b>ObserverClass</b>. The easiest way to secure this is to implement it through a <i>singleton pattern</i>. Once imported, each observer registers with the dispatcher with this line:</p>
+			<pre class="source-code">import dispatcher from "ObserverClass.js"&nbsp;&nbsp;&nbsp;&nbsp;//a singleton
+<b>dispatcher.on("event_name", myFunction)</b></pre>
+			<p>Then, the subject emits the event and passes the data with the following lines:</p>
+			<pre class="source-code">import dispatcher from "ObserverClass.js"&nbsp;&nbsp;&nbsp;&nbsp;//a singleton
+<b>dispatcher.emit("event_name", data)</b></pre>
+			<p>Finally, when the observer no longer needs to watch the subject, it needs to clean up the reference with the <b>off</b></span><span class="No-Break"> method:</p>
+			<pre class="source-code"><b>dispatcher.off("event_name", myFunction)</b></pre>
+			<p>There are a good number of edge cases and controls that we have not covered here, and rather than reinventing the wheel, I suggest using a ready-made solution for these cases. In our book, we will use one named <b>mitt</b> (<a href="https://www.npmjs.com/package/mitt">https://www.npmjs.com/package/mitt</a>). That has the same methods as in our example. We will see how to install packaged dependencies in <a href="https://learning.oreilly.com/library/view/vue-js-3-design/9781803238074/B18602_03.xhtml#_idTextAnchor079"><i>Chapter 3</i></span></a>, <i>Setting up a </i><span class="No-Break"><i>Working Project</i></span><span class="No-Break">.</p>
+			<h3>The command pattern</h3>
+			<p>This pattern is very useful and easy to understand and implement. Instead of executing a function right away, the basic concept is to create an object or structure with the information necessary for the execution. This data package (the <b>command</b>) is then delegated to another object that will perform the execution according to some logic to handle it. For example, the commands can be serialized and queued, scheduled, reversed, grouped together, and transformed. Here is a graphical representation of this pattern with the necessary parts:</p>
+			<div>
+				<div>
+					<img src="images/Figure_2.05_B18602.jpg" alt="Figure 2.5 – A graphical implementation of the command pattern" width="536" height="165">
+				</div>
+			</div>
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 2.5 – A graphical implementation of the command pattern</p>
+			<p>The diagram shows how the clients submit their commands to the <b>Invoker</b>. The invoker usually implements some sort of queue or task array to handle the commands and then routes the execution to the proper <b>Receiver</b>. If there is any data to return, it also returns it to the proper client. It is also common that the invoker attaches additional data to the command to keep track of clients and receives, especially in the case of asynchronous executions. It also provides a single point of “entry” to the receivers and decouples the “clients” from them.</p>
+			<p>Let’s again work on a naive implementation of an <b>Invoker</b></span><span class="No-Break"> class:</p>
+			<p class="SC---Heading" lang="en-US" xml:lang="en-US">./chapter 2/Command-1.js</p>
+			<pre class="source-code">class CommandInvoker{
+&nbsp;&nbsp;&nbsp;&nbsp;<b>addCommand</b>(command_data){&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>//1</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// .. queue implementation here
+&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;<b>runCommand(command_data)</b>{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>//2</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;switch(<b>command_data.action)</b>{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>//3</b>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case "eat"</b>:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// .. invoke the receiver here
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>case "code":</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// .. invoke the receiver here
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>case "repeat":</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// .. invoke the receiver here
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;}
+}</pre>
+			<p>In the preceding code, we have implemented a bare-bones example of what an <b>Invoker</b> should have line by line:</p>
+			<ol>
+				<li>The <b>Invoker </b>exposes a method to add commands to the object. This is only necessary when the commands will be somehow queued, serialized, or processed according to some logic.</li>
+				<li>This line executes the command according to the <b>action</b> field contained in the <b>command_data</b></span><span class="No-Break"> parameter.</li>
+				<li>Based on the <b>action</b> field, the <i>invoker</i> routes the execution to the proper receiver.</li>
+			</ol>
+			<p>There are many ways to implement the logic for routing the execution. It is important to notice that this pattern can be implemented on a larger scale depending on the context. For example, the invoker might not even be in the web client application and be on the server or on a different machine. We will see an implementation of this pattern in <a href="https://learning.oreilly.com/library/view/vue-js-3-design/9781803238074/B18602_08.xhtml#_idTextAnchor186"><i>Chapter 8</i></span></a>, <i>Multithreading with Web Workers</i>, where we use this pattern to process tasks between different threads and unload the main thread (where Vue <span class="No-Break">3 runs).</p>
+			<h3>The proxy pattern</h3>
+			<p>The definition for this pattern comes directly from its name, as the word “proxy” means something or someone who acts on behalf of another as if it was the same. That is a mouthful, but it will make you remember it. Let’s look into an example to clarify how this works. We will need at least three entities (components, objects, etc.):</p>
+			<ul>
+				<li>A <b>client</b> entity that needs to access the API of a target entity</li>
+				<li>A <b>target</b> entity that exposes a well-known API</li>
+				<li>A <b>proxy</b> object that sits in between and exposes the same API as the target while at the same time intercepting every communication from the client and relaying it to the target</li>
+			</ul>
+			<p>We can graphically represent the relationship between these entities in this way:</p>
+			<div>
+				<div>
+					<img src="images/Figure_2.06_B18602.jpg" alt="Figure 2.6 – The proxy object exposes the same API as the target" width="491" height="96">
+				</div>
+			</div>
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 2.6 – The proxy object exposes the same API as the target</p>
+			<p>The key factor for this pattern is that the proxy behaves and exposes the same API as the target, in such a way that the client does not know or doesn’t need to know that it is dealing with a proxy and not the target object directly. So, why would we want to do such a thing? There are many good reasons, such as the following:</p>
+			<ul>
+				<li>You need to maintain the original unmodified API, but at the same time:</span><ul><li>Need to process the inputs or outputs for <span class="No-Break">the client</span></li><li>Need to intercept each API call to add internal functionality, such as maintenance operations, performance improvements, error checking, <span class="No-Break">and validation</span></li><li>The target is an expensive resource, so a proxy could implement logic to leverage their operations (for example, <span class="No-Break">a cache)</li></ul></li>
+				<li>You need to change the client or the target but can’t modify the API</li>
+				<li>You need to maintain backward compatibility</li>
+			</ul>
+			<p>There are more reasons that you may come across, but I hope that by now you can see how this can be useful. Being a pattern, this template can be implemented on multiple levels, from a simple object proxy to a full application or server. It is quite common when performing partial upgrades of a system or application. On a lower level, JavaScript even natively includes a constructor for proxying objects that Vue 3 uses internally to create reactivity.</p>
+			<p>In <a href="https://learning.oreilly.com/library/view/vue-js-3-design/9781803238074/B18602_01.xhtml#_idTextAnchor017"><i>Chapter 1</i></span></a>, <i>The Vue 3 Framework</i>, we reviewed the options for reactivity with the <b>ref()</b> but this new version of Vue also includes another alternative for complex structures, called <b>reactive()</b>. The first one uses pub/sub methods (the observer pattern!), but the latter uses native proxy handlers (this pattern!). Let’s look into an example of how this native implementation may work with a naive <span class="No-Break">partial implementation.</p>
+			<p>In this simple example, we will make an object with reactive properties automatically convert Celsius degrees to and back from Fahrenheit using a <b>Proxy</b></span><span class="No-Break"> object:</p>
+			<p class="SC---Heading" lang="en-US" xml:lang="en-US">./chapter 2/proxy-1.js</p>
+			<pre class="source-code">let temperature={celsius:0,fahrenheit: 32},&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>//1</b>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>handler</b>={&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>//2</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>set(target, key, value)</b>{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>//3</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>target[key]=value;</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>//4</b>
+<b>&nbsp;&nbsp;&nbsp;&nbsp;switch(key){</b>
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case "celsius":</b>
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;target.fahrenheit=calculateFahrenheit(value);</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>//5</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;
+&nbsp;&nbsp;&nbsp;&nbsp;case "<b>fahrenheit</b>":
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>target.celsius=calculateCelsius(value);</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;get(target, key){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return <b>target[key]</b>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>//6</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;},
+&nbsp;&nbsp;&nbsp;&nbsp;<b>degrees=new Proxy(temperature, handler)</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>//7</b>
+// Auxiliar functions
+function <b>calculateCelsius</b>(fahrenheit){
+&nbsp;&nbsp;&nbsp;&nbsp;return (fahrenheit - 32) / 1.8
+}
+function <b>calculateFahrenheit</b>(celsius){
+&nbsp;&nbsp;&nbsp;&nbsp;return (celsius * 1.8) + 32
+}
+<b>degrees.celsius=25</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>//8</b>
+console.log(<b>degrees</b>)
+// Prints in the console:
+<b>// {celsius:25, fahrenheit:77}</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>//9</b></pre>
+			<p>Let’s review the code line by line to see how this </span><span class="No-Break"></span><span class="No-Break">works:</p>
+			<ol>
+				<li>In this line, we declare the <b>temperature</b> object, which is going to be our target to be proxied. We initialize its two properties with an equal converted value.</li>
+				<li>We declare a <b>handler</b> object, which will be our proxy for the temperature object.</li>
+				<li>The <b>set</b> function in the proxy handler receives three arguments: the target object, the key referred to, and the value attempted to be assigned. Notice that I say “attempted”, as the operation has been intercepted by the proxy.</li>
+				<li>On this line, we perform the assignment as intended to the object property. Here, we could have done other transformations or logic, such as validation or raised an event (the observer pattern again!).</li>
+				<li>Notice how we use a switch to filter the property names that we are interested in. When the key is <b>celsius</b>, we calculate and assign the value in Fahrenheit. The opposite happens when we receive an assignment for <b>fahrenheit</b> degrees. This is where the <b>reactivity</b> comes into play.</li>
+				<li>For the <b>get</b> function, at least in this example, we just specifically return the value requested. In the way this is implemented, it would be the same as if we skip the <b>getter</b> function. However, it is here as an example that we could operate and transform the value to be returned as this operation is also intercepted.</li>
+				<li>Finally, in line 7, we declare the <b>degrees</b> object as the proxy for <b>temperature</b> with the handler.</li>
+				<li>On this line, we test the reactivity by assigning a value in <i>Celsius </i>to the member of the <b>degrees</b> object, just like we normally would to any other object.</li>
+				<li>When we print the <b>degrees</b> object to the console, we notice that the <b>fahrenheit</b> property has been automatically updated.</li>
+			</ol>
+			<p>This is a rather limited and simple example of how the native <b>Proxy()</b> constructor works and applies the pattern. Vue 3 has a more complex approach to reactivity and tracking dependencies, using the proxy and observer patterns. However, this gives us a good idea of what approach is happening behind the scenes when we see the HTML updated live in front of our very eyes.</p>
+			<p>The concept of proxying between a client and a target is also related to the next two patterns: the <i>decorator and the façade patterns</i> since they are also a sort of proxy implementation. The distinguishing key factor is that the proxy retains the same API as the original target object.</p>
+			<h3>The decorator pattern</h3>
+			<p>This pattern may, at first sight, seem very similar to the <i>proxy pattern</i>, and indeed it is, but it adds a few distinctive features that set it apart. It does have the same moving parts as the proxy, meaning there is a <b>Client</b>, a <b>Target</b>, and a <b>Decorator</b> in between that implements the same interface as the target (yes, just like in the proxy pattern). However, while in the <i>Proxy pattern</i> the intercepted API calls mainly deal with the data and internal maintenance (“housekeeping”), the decorator augments the functionality of the original object to do more. This is the defining factor that separates them.</p>
+			<p>In the proxy example, notice how the additional functionality was an <i>internal reactivity </i>to keep the degrees in each scale synchronized. When you change one, it internally and automatically updates the other. In a decorator pattern, the proxy object performs additional operations before, during, or after executing the API call to the target object. Just like in the proxy pattern, all of this is transparent for the client object.</p>
+			<p>For example, building on the previous code, imagine that now we want to log each call to the API of a certain target while keeping the same functionality. Graphically, it would look like this:</p>
+			<div>
+				<div>
+					<img src="images/Figure_2.07_B18602.jpg" alt="Figure 2.7 – An example of a decorator that augments the target with a logging feature" width="526" height="138">
+				</div>
+			</div>
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 2.7 – An example of a decorator that augments the target with a logging feature</p>
+			<p>Here, what was first a simple proxy, now by the mere act of performing a humble logging call, has now become a decorator. In the code, we only need to add this line before the end of the <b>set()</b> method (assuming there is also a function named </span><span class="No-Break"><b>getTimeStamp()</b></span><span class="No-Break">):</p>
+			<pre class="source-code">console.log(getTimeStamp());</pre>
+			<p>Of course, this is a simple example just to make a point. In the real world, decorators<b> </b>are very useful for adding functionality to your application without having to rewrite the logic or significant portions of your code. On top of this, decorators can be <i>stackable</i> or <i>chainable</i>, meaning that you can create “decorators for decorators” if needed, so each one will represent one step of added functionality that would maintain the same API of the target object. And just like that, we are beginning to step into the boundaries of a <b>middleware pattern</b>, but we will not cover it in this book. Anyway, the idea behind that other pattern is to create layers of middleware functions with a specified API, each one that performs one action, but with the difference that any step can decide to abort the operation, so the target may or may not be called. But that is another story... let’s get back to decorators.</p>
+			<p>Previously in this book, we mentioned that Vue 3 components do not have inheritance like plain JavaScript classes implemented by extending from one another. Instead, we can use the decorator pattern on components to add functionality or change the visual appearance. Let’s look at a brief example now, as we will see components and UI design in detail in <a href="https://learning.oreilly.com/library/view/vue-js-3-design/9781803238074/B18602_04.xhtml#_idTextAnchor102"><i>Chapter 4</i></span></a>, <i>User Interface Composition </i><span class="No-Break"><i>with Components</i></span><span class="No-Break">.</p>
+			<p>Consider that we have the simplest of components that displays a humble <b>h1</b> tag with a title that receives the following as input:</p>
+			<p class="SC---Heading" lang="en-US" xml:lang="en-US">./chapter 2/decorator-1.vue</p>
+			<pre class="source-code">&lt;script setup&gt;
+<b>&nbsp;&nbsp;&nbsp;&nbsp;const $props=defineProps(['label'])</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//1
+&lt;/script&gt;
+&lt;template&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;<b>{{$props.label}}</b>&lt;/h1&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//2
+&lt;/template&gt;
+&lt;style scoped&gt;&lt;/style&gt;</pre>
+			<p>In this simple component, we declare a single input named <b>label</b> in line <b>//1</b>. Don’t worry about the syntax for now, as we will see this in detail in <a href="https://learning.oreilly.com/library/view/vue-js-3-design/9781803238074/B18602_04.xhtml#_idTextAnchor102"><i>Chapte</i></span><span class="No-Break"><i>r 4</i></span></a><i>,</i> <i>User Interface Composition with Components. </i>On line <b>//2</b>, we are interpolating the value plainly inside the <b>h1</b> tags just <span class="No-Break">as expected.</p>
+			<p>So, to create a decorator for this component we need to apply the following simple rules:</p>
+			<ul>
+				<li>It has to act on behalf of the component (object)</li>
+				<li>It has to respect the same API (inputs, outputs, function calls, etc.)</li>
+				<li>It has to augment the functionality or visual representation before, after, or during the execution of the target API</li>
+			</ul>
+			<p>With that in mind, we can create a decorator component that intercepts the label attribute, changes it a bit, and also modifies the visual appearance of the target component:</p>
+			<p class="SC---Heading" lang="en-US" xml:lang="en-US">./chapter 2/decorator-2.vue</p>
+			<pre class="source-code">&lt;script setup&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;import HeaderH1 from "./decorator-1.vue"
+<b>&nbsp;&nbsp;&nbsp;&nbsp;const $props=defineProps(['label'])</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//1
+&lt;/script&gt;
+&lt;template&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div <b>style="color: purple !important;"</b>&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//2
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;HeaderH1 :title=<b>"$props.label+'!!!'"</b>&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//3
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/HeaderH1&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+&lt;/template&gt;</pre>
+			<p>In this code, in line <b>//1</b>, you can see that we keep the same interface as the target component (that we imported in the previous line), and then in line <b>//2</b>, we modify (augment) the <b>color </b>attribute and in line <b>//3</b> we are also modifying the data passed to the target component by adding three exclamation marks. With those simple tasks, we have kept the conditions to build a decorator pattern extrapolated to Vue 3 components. Not bad at all.</p>
+			<p>Decorators are very useful, but there is still one more proxy-like pattern that is also very common and handy: the façade pattern.</p>
+			<h3>The façade pattern</h3>
+			<p>By now, you may have seen the progressive pattern in these, well, patterns. We started with a proxy to act on behalf of another object or entity, we augmented it with the use of decorators while keeping the same API, and now is the turn for the façade pattern. Its job is, in addition to the functions of a proxy and decorator, to simplify the API and hide the large complexity behind it. So, a façade sits between a client and a target, but now the target is highly complex, being an object or even a system or multiple subsystems. This pattern is also used to change the API of an object or to limit the exposure to the client. We can picture the interactions as follows:</p>
+			<div>
+				<div>
+					<img src="images/Figure_2.08_B18602.jpg" alt="Figure 2.8 – A façade object simplifying the interaction with a complex API or system" width="535" height="96">
+				</div>
+			</div>
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 2.8 – A façade object simplifying the interaction with a complex API or system</p>
+			<p>As you can see, the main purpose of the façade is to offer a simpler approach to a complex interaction or API. We will use this pattern many times during our examples to simplify native implementations in the browser with more developer-friendly approaches. We will use libraries to encapsulate the use of IndexedDB and create our own simplified communication with web workers in <a href="https://learning.oreilly.com/library/view/vue-js-3-design/9781803238074/B18602_08.xhtml#_idTextAnchor186"><i>Chapter 8</i></span></a>, <i>Multithreading with </i><span class="No-Break"><i>Web Workers</i></span><span class="No-Break">.</p>
+			<p>Needless to say, you will have seen this pattern in action before, as it is one of the foundational concepts of modern technology. <i>Hiding complexity</i> behind a simple interface (API) is all around us and is a big part of web development. After all, the entire internet is extremely complicated, with thousands of moving parts, and the technology that makes up web pages is close to magic. Without this pattern, we would still be programming with zeros and ones.</p>
+			<p>In practice, you will add layers of simplification to your own applications to break down complexity. One way to do it is to use third-party libraries that provide a simplified interface. In the following chapters, we will use some of these, such as the following:</p>
+			<ul>
+				<li><b>Axios</b>: To handle all <b>Asynchronous JavaScript and XML</b> (<b>AJAX</b>) communications with the server</li>
+				<li><b>DexieDB</b>: To handle the API to IndexedDB (the browser’s local database)</li>
+				<li><b>Mitt</b>: To create event pipelines (we mentioned this in the Observer pattern)</li>
+				<li><b>Vue 3</b>: To create amazing UIs</li>
+			</ul>
+			<p>In general, there are façade libraries for most of the native implementations of web technologies, which are well battle tested. Developers are very good at simplifying these and sharing the code with others, thanks to the open source movement. Still, when using other people’s modules, make sure they are “safe.” Don’t reinvent the wheel, and don’t repeat yourself But now, it is time to move on to the next pattern in our list.</p>
+			<h3>The callback pattern</h3>
+			<p>The callback pattern is easy to understand. It applies when an operation needs to be executed after a <b>synchronous</b> or <b>asynchronous</b> operation has finished. For this, the function invocation includes, as one of the parameters, a function to be executed when the operations are completed. Having said that, we need to distinguish between the following two types of code flow:</p>
+			<ul>
+				<li>Synchronous operations are executed one after another in sequential order. It is the basic code flow, top to bottom.</li>
+				<li>Asynchronous operations are executed out of the normal flow once invoked. Their length is uncertain, as well as their success or failure.</li>
+			</ul>
+			<p>It is for asynchronous cases that the <i>callback pattern</i> is especially useful. Think, for example, of a network call. Once invoked, we don’t know how long it will take to get an answer from the server and whether it will succeed, fail, or throw an error. If we didn’t have asynchronous operations, our application would be <i>frozen</i>, waiting until a resolution happens. That would not be a good user experience, even though it would be computationally correct.</p>
+			<p>One important feature in JavaScript is that, being single-threaded, asynchronous functions don’t block the main thread allowing the execution to continue. This is important since the rendering functions of the browser run on the same thread. However, this is not free as they do consume resources, but they won’t freeze the UI, at least in theory. In practice, it will depend on a number of factors heavily influenced by the browser environment and the hardware. Still, let’s stick to the theory.</p>
+			<p>Let’s see an example of a synchronous callback function and turn it asynchronous. The example function is very simple: we will calculate the Fibonacci value of a given number using the callback pattern. But first, a refresher on the formula for the calculation:</p>
+			<pre class="source-code">F(0)=0
+F(1)=1
+F(n)=F(n-1)+F(n-2), with n&gt;=2</pre>
+			<p>So, here is a JavaScript function that applies the formula and receives a callback to return the value. Notice that this function is synchronous:</p>
+			<p class="SC---Heading" lang="en-US" xml:lang="en-US">./chapter 2/callback-1.js - Synchronous Fibonacci</p>
+			<pre class="source-code">function FibonacciSync(n, callback){
+&nbsp;&nbsp;&nbsp;&nbsp;if(n&lt;2){
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;callback(n)</b>
+&nbsp;&nbsp;&nbsp;&nbsp;} else{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let pre_1=0,pre_2=1,value;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(let i=1; i&lt;n; i++){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value=pre_1+pre_2;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pre_1=pre_2;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pre_2=value;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;callback(value)</b>
+&nbsp;&nbsp;&nbsp;&nbsp;}
+}</pre>
+			<p>Notice how instead of returning the value with <b>return</b>, we are passing it as a parameter to the <b>callback</b> function. When is it useful to use such a thing? Consider these simple examples:</p>
+			<pre class="source-code">FibonacciSync(8, <b>console.log</b>);
+// Will print 21 to the console
+FibonacciSync(8, <b>alert</b>)
+// Will show a modal with the number 21</pre>
+			<p>Just by replacing the callback function, we can considerably alter how the result is presented. However, the example function has a fundamental flaw affecting the user experience. Being synchronous, the calculation time is proportional to the parameter passed: the larger <b>n</b>, the more time it will take. With a sufficiently large number, we can easily hang up the browser, but also, much before that, we can freeze the interface. You can test that the execution is synchronous with the following snippet:</p>
+			<pre class="source-code">console.log("Before")
+FibonacciSync(9, console.log)
+console.log("After")
+// Will output
+// Before
+// 34
+// After</pre>
+			<p>To turn this simple function into an asynchronous function, you can simply wrap the logic inside a <b>setImmediate</b> call. This will take the execution out of the normal workflow. The new function now looks like this:</p>
+			<pre class="source-code">function <b>FibonacciAsync</b>(n, callback){
+<b>&nbsp;&nbsp;&nbsp;&nbsp;setImmediate(()=&gt;{</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (n&lt;2){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;callback(n)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let pre_1=0,pre_2=1,value;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(let i=1; i&lt;n; i++){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value=pre_1+pre_2;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pre_1=pre_2;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pre_2=value;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;callback(value);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;<b>})</b>
+}</pre>
+			<p>As you can see, we use an arrow function to wrap up the code without any modifications. Now, see the difference when we execute the same snippet as before with this function:</p>
+			<pre class="source-code">console.log("Before")
+<b>FibonacciAsync</b>(9, console.log)
+console.log("After")
+// Will output
+// Before
+<b>// After</b>
+// 34</pre>
+			<p>As you can see by the output, the snippet outputs <b>After</b> before <b>34</b>. This is because our asynchronous operation has been taken out of the normal flow as expected. When calling an asynchronous function, the execution <i>does not wait</i> for a result and continues executing the next instruction. This can be confusing at times but is very powerful and useful. However, the pattern does not prescribe how to handle errors or failed operations or how to chain or sequentially run multiple calls. There are different ways to deal with those cases, but they are not part of the pattern. There is another way to handle asynchronous operations that offers more flexibility and control:<i> promises.</i> We will see this next, and in most cases, you can use either pattern interchangeably. I say, “in most cases,” not all!</p>
+			<h3>The promise pattern</h3>
+			<p>The <i>promises pattern</i> is made primarily to deal with asynchronous operations. Just like with callbacks, the invocation of a promised function takes the execution out of the normal flow, but it returns a special object called <b>Promise</b>. This object exposes a simple API with three methods: <b>then</b>, <b>catch</b>, and </span><span class="No-Break"><b>finally</b></span><span class="No-Break">:</p>
+			<ul>
+				<li>The <b>then</b> method receives two callback functions, traditionally called <b>resolve</b> and <b>reject</b>. They are used in the asynchronous code to return a successful value (<b>resolve</b>) or a failed or negative value (</span><span class="No-Break"><b>reject</b></span><span class="No-Break">).</li>
+				<li>The <b>catch</b> method receives an <b>error </b>parameter and is triggered when the process throws an <b>error</b> and the execution is interrupted.</li>
+				<li>The <b>finally</b> method executes in either case and receives a callback function.</li>
+			</ul>
+			<p>While a promise is running, it is said to be in an <i>indeterminate</i> state until it is resolved or rejected. There is no time limit for how long a promise will wait in this state, something that makes it especially useful for lengthy operations such as network calls and <b>inter-process </b><b>communication</b></span><span class="No-Break"> (</span><span class="No-Break"><b>IPC</b></span><span class="No-Break">).</p>
+			<p>Let’s see how to implement the previous example with the Fibonacci series using promises:</p>
+			<pre class="source-code">function FibonacciPromise(<b>n</b>) {
+<b>&nbsp;&nbsp;&nbsp;&nbsp;return new Promise</b>((<b>resolve</b>, <b>reject</b>) =&gt; {&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>//1</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (n &lt; 0) {
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reject()</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>//2</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (n &lt; 2) {
+<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;resolve(n)</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>//3</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let pre_1 = 1, pre_2 = 1, value;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (let i = 2; i &lt; n; i++) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value = pre_1 + pre_2;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pre_1 = pre_2;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pre_2 = value;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>resolve(value);</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;})
+}</pre>
+			<p>At first sight, it is easy to see that the implementation has changed a bit. We start on line <b>//1</b> by immediately returning a <b>new Promise()</b> object. This constructor receives a callback function, that will, in turn, receive two callbacks named <b>resolve() </b>and <b>reject()</b>. We need to use these in our logic to return a value in case of success (<b>resolve</b>) or failure (<b>reject</b>). Also notice that we don’t have to wrap our code in a <b>setImmediate</b> function, as a promise is by nature asynchronous. We now check for negative numbers and then reject the operation in that case (line <b>//2</b>). The other change we make is to replace the <b>callb>4</b></span>.</p>
+			<p>The invocation now also changes:</p>
+			<pre class="source-code">console.log("Before")
+FibonacciPromise(9)<b>.then</b>(
+<b>&nbsp;&nbsp;&nbsp;&nbsp;value=&gt;console.log(value),</b>
+<b>&nbsp;&nbsp;&nbsp;&nbsp;()=&gt;{console.log("Undefined for negative numbers!")}</b>
+<b>);</b>
+console.log("After")
+// Will output:
+// Before
+// After
+// 34</pre>
+			<p>As you can see, we chain to the invocation, the <b>then</b> method, and pass to it the two functions for success and failure (<b>resolve</b> and <b>reject</b> in our code). Just like before, we get the same output. Now, this may seem more verbose (it is), but the benefits greatly outweigh the extra typing. Promises are chainable, meaning that for successful operations, you can return a new promise and, that way, have a sequential operation. Here is an example:</p>
+			<pre class="source-code">MyFunction()
+&nbsp;&nbsp;&nbsp;&nbsp;.then(()=&gt;{ return new Promise(...)}, ()=&gt;{...})
+&nbsp;&nbsp;&nbsp;&nbsp;.then(()=&gt;{ return new Promise(...)}, ()=&gt;{...})
+&nbsp;&nbsp;&nbsp;&nbsp;.then(()=&gt;{ return new Promise(...)}, ()=&gt;{...})
+&nbsp;&nbsp;&nbsp;&nbsp;.then(()=&gt;{ return new Promise(...)}, ()=&gt;{...})
+&nbsp;&nbsp;&nbsp;&nbsp;.catch(err=&gt;{...})</pre>
+			<p>There are other methods exposed by the <b>Promise</b> constructor, such as <b>.all</b>, but I will refer you to the documentation to dig deeper into the possibilities and syntax (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise</a>). Still, quite verbose. Lucky for us, JavaScript provides us with a simplified syntax to handle promises, <b>async/await,</b> and think of them as a way to code in a more “traditional” way. This only applies to the invocation of promised functions and can only be used in functions.</p>
+			<p>To see this as an example, let’s imagine that we have three functions that return promises, named <b>MyFuncA</b>, <b>MyFuncB</b>, and <b>MyFuncC</b> (yes, I know, not the greatest names). Each one returns, in case of success, <i>one single value </i>(this is a condition). These are then used within <b>MyProcessFunction</b> with the new syntax. Here is the declaration:</p>
+			<pre class="source-code"><b>async </b>function myProcessFunction() {&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//1
+<b>&nbsp;&nbsp;&nbsp;&nbsp;try {</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>//2</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a = <b>await </b>MyFuncA(),&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//3
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b = await MyFuncB(),
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c = await MyFuncC()
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log(a + b + c)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//4
+<b>&nbsp;&nbsp;&nbsp;&nbsp;} catch {</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log("Error")
+<b>&nbsp;&nbsp;&nbsp;&nbsp;}</b>
+}
+// Invoke the function normally
+<b>MyProcessFunction()</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>//5</b></pre>
+			<p>We start by declaring our function with the <b>async</b> keyword (line <b>//1</b>). This signals to the interpreter that we will use the <b>await</b> syntax inside our function. One condition is to wrap the code in a <b>try...catch</b> block. Then, we can use the <b>await</b> keyword in front of the invocation of each promised function call, as in line <b>//3</b>. By line <b>//4</b>, we are certain that each variable has received a value. Certainly, this approach is easier to follow and read.</p>
+			<p>Let’s investigate the equivalences for the line:</p>
+			<pre class="source-code">let a=await MyFuncA()</pre>
+			<p>This will match the <i>thenable </i>(using <b>.</b><b>then</b></span><span class="No-Break">) syntax:</p>
+			<pre class="source-code">let a;
+MyFuncA()
+&nbsp;&nbsp;&nbsp;&nbsp;.then(result=&gt;{ a=result; })</pre>
+			<p>However, the <a id="_idTextAnchor072"></a>problem with this last syntax is that we need to make sure that all the variables <b>a</b>, <b>b</b>, and <b>c</b> have values before w<a id="_idTextAnchor073"></a>e can run line <b>//4</b>, <b>console.log(a+b+c)</b>, which wo<a id="_idTextAnchor074"></a>uld mean chaining the invocations like this:</p>
+			<pre class="source-code">let a,b,c;
+MyFuncA()
+&nbsp;&nbsp;&nbsp;&nbsp;.then(result=&gt;{ a=result; <b>return MyFuncB()</b>})
+&nbsp;&nbsp;&nbsp;&nbsp;.then(result=&gt;{ b=result; <b>return MyFuncC()</b>})
+&nbsp;&nbsp;&nbsp;&nbsp;.then(result=&gt;{ c=result; <b>console.log(a+b+c)</b>})</pre>
+			<p>This format is harder to follow and certainly more verbose. For these cases, the <b>async/await</b> syntax is preferred.</p>
+			<p>The use of promises is great for wrapping lengthy or uncertain operations and integrating with other patterns that we have seen (façade, decorator, etc.). It is an important pattern to keep in mind that we will use extensively in our applications.</p>
+			<h2>Summary</h2>
+			<p>In this chapter, we have seen principles for software development and important design patterns, with examples in plain JavaScript and, when appropriate, hinted at implementations with Vue 3. These patterns can be hard to grasp the first time you see them, but we will use them and return to them in the rest of the book so that this chapter will work as a reference. This will give you a better idea of when and how to apply different patterns according to the needs of your application.</p>
+			<p>In the next chapter, we will start to implement a project from scratch and will set the foundations for the applications we will build in the rest of the book. As we move forward, we will reference these patterns to help you consolidate their application.</p>
+			<h2>Review questions</h2>
+			<ul>
+				<li>What is the difference between a principle and a pattern?</li>
+				<li>Why is the singleton pattern so important?</li>
+				<li>How can you manage dependencies?</li>
+				<li>What patterns make reactivity possible?</li>
+				<li>Do patterns intertwine? Why? Can you give an example?</li>
+				<li>What is asynchronous programming, and why is it so important?</li>
+				<li>Can you think of use cases for <i>promised</i></span><span class="No-Break"> functions?</li>
+			</ul>
+		</div>
+	</div></div>
