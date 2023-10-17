@@ -1,3 +1,17 @@
+---
+head:
+  - - meta
+    - name: og:site_name
+      content: Vue.js 3 Design Patterns and Best Practices
+  - - meta
+    - name: og:image
+      content: /images/book-face.jpg
+  - - meta
+    - name: twitter:image
+      content: /images/book-face.jpg
+---
+
+
 # Фреймворк Vue 3
 
 Современная всемирная паутина (World Wide Web) претерпела значительные изменения по
