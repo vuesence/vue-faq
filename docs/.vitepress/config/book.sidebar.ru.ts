@@ -1,5 +1,6 @@
 export default [
-  { text: "О книге", link: "/book/ru/" },
+  { text: "Предисловие", link: "/book/ru/" },
+  { text: "Краткое содержание", link: "/book/ru/summary" },
   // { text: "Глава 1", link: "/book/chapter-1" },
   // { text: "Глава 1 cc", link: "/book/Chapter 1_ The Vue 3 Framework - cc" },
   // { text: "Глава 1 cc2", link: "/book/Chapter 1_ The Vue 3 Framework - cc2" },
@@ -44,7 +45,7 @@ export default [
     link: "/book/ru/not-implemented",
   },
   {
-    text: "Глава 11: UX",
+    text: "Глава 11: UX Patterns",
     link: "/book/ru/not-implemented",
   },
   {
