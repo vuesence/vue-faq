@@ -1,3 +1,16 @@
+---
+head:
+  - - meta
+    - name: og:site_name
+      content: Vue.js 3 Design Patterns and Best Practices
+  - - meta
+    - name: og:image
+      content: /images/book-face.jpg
+  - - meta
+    - name: twitter:image
+      content: /images/book-face.jpg
+---
+
 # Принципы и шаблоны проектирования программного обеспечения
 
 Разработка программного обеспечения по своей сути является *человекоемкой дисциплиной*. Это означает, что она требует не только
