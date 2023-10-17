@@ -44,13 +44,17 @@ Vue 3 - это последняя и наиболее производитель
 
 Как правило, если на вашем компьютере может работать современный веб-браузер (Chrome/Chromium, Mozilla Firefox или Microsoft Edge), то он должен отвечать всем требованиям для установки и запуска всех инструментов разработчика, упомянутых в этой книге.
 
+## Купит книгу
+
+Книга доступна для покупки на сайте [O'Reilly](https://www.oreilly.com/library/view/vuejs-3-design/9781803238074/)
+
 ## Скачать файлы кода примеров
 
-Файлы кода примеров для этой книги можно загрузить с GitHub по адресу [https://github.com/PacktPublishing/Vue.js-3-Design-Patterns-and-Best-Practices](https://github.com/PacktPublishing/Vue.js-3-Design-Patterns-and-Best-Practices).
+Файлы кода примеров этой книги можно загрузить с GitHub по адресу [https://github.com/PacktPublishing/Vue.js-3-Design-Patterns-and-Best-Practices](https://github.com/PacktPublishing/Vue.js-3-Design-Patterns-and-Best-Practices).
 
 ## Код в действии
 
-Видеоролики *Код в действии* для этой книги можно посмотреть на сайте [https://packt.link/FtCMS](https://packt.link/FtCMS).
+Видеоролики *Программирование в действии* для этой книги можно посмотреть на сайте [https://packt.link/FtCMS](https://packt.link/FtCMS).
 
 
 <!-- 
