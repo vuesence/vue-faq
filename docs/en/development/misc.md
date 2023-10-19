@@ -1,5 +1,24 @@
 # Helpful hints
 
+::: details What are some good libraries for working with ...?
+
+### Carousel or slider
+
+[Keen-Slider](https://keen-slider.io/), [Embla Carousel](https://www.embla-carousel.com/), [Splide](https://splidejs.com/)
+
+Well known [Swiper](https://swiperjs.com/) is not so good for the Vue.js
+
+
+### Date and time
+
+[day.js](https://day.js.org/), [day-fnc.js](https://date-fns.org/)
+
+Well known [moment.js](https://momentjs.com/) is irretrievably obsolete.
+
+::: tip
+Modern JavaScript is much more than it was 10 years ago. In 95% of cases the capabilities of the standard JavaScript `Intl` package are sufficient for date-time operations
+:::
+
 ::: details How to catch the moment when the user scrolls to a certain place?
 
 Intersection Observer
@@ -63,6 +82,6 @@ It works like `Ref` but does not track changes inside array elements, which give
 
 ::: details Mixins
 
-We should forget about them like a bad dream. Mixins as a pattern of multiple inheritance is a very bad architectural practice and should be avoided. In Vue 2, the framework itself did not have a way to make the component part of the steit and methods common, so mixins were used. In Vue 3, the Composition API was introduced and mixins were no longer needed.
+We should forget about them like a bad dream. Mixins as a pattern of multiple inheritance is a very bad architectural practice and should be avoided. In Vue 2, the framework itself did not have a way to make the component part of the steit and methods common, so mixins were used. In Vue 3, the Composition API has been introduced and mixins are no longer needed.
 
 :::

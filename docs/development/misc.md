@@ -1,5 +1,24 @@
 # Полезные советы
 
+::: details Какие есть хорошие библиотеки для работы с ...?
+
+### Карусель или слайдер
+
+[Keen-Slider](https://keen-slider.io/), [Embla Carousel](https://www.embla-carousel.com/), [Splide](https://splidejs.com/)
+
+Хорошо известный [Swiper](https://swiperjs.com/) не очень подходит для Vue.js
+
+
+### Дата и время
+
+[day.js](https://day.js.org/), [day-fnc.js](https://date-fns.org/)
+
+Известный [moment.js](https://momentjs.com/) безвозвратно устарел.
+
+::: tip
+Современный JavaScript - это гораздо больше, чем было 10 лет назад. В 95% случаев для операций с датой достаточно возможностей стандартного пакета JavaScript `Intl`
+:::
+
 ::: details Как поймать момент когда пользователь доскролил до определенного места?
 
 Intersection Observer

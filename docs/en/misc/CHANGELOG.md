@@ -8,6 +8,7 @@
 
 - `Backend / CORS`
 - `Frontend / How to learn Vue?`
+- `Development / Useful tips`
 
 <!-- --- -->
 
