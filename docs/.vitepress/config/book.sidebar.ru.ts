@@ -13,8 +13,8 @@ export default [
     link: "/book/ru/Chapter 2_ Software Design Principles and Patterns",
   },
   {
-    text: "Глава 3: Chapter 3_ Setting Up a Working Project",
-    link: "/book/ru/not-implemented",
+    text: "Глава 3: Установка рабочего проекта",
+    link: "/book/ru/Chapter 3_ Setting Up a Working Project",
   },
   {
     text: "Глава 4: Композиция пользовательского интерфейса с помощью компонентов",
