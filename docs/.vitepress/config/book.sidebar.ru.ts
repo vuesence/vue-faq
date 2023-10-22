@@ -49,7 +49,7 @@ export default [
     link: "/book/ru/not-implemented",
   },
   {
-    text: "Приложение: Миграция с Vue 3 на Vue 3",
+    text: "Приложение: Миграция с Vue 2 на Vue 3",
     link: "/book/ru/not-implemented",
   },
 ];
