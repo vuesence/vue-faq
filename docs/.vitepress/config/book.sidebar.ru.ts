@@ -18,7 +18,7 @@ export default [
   },
   {
     text: "Глава 4: Композиция пользовательского интерфейса с помощью компонентов",
-    link: "/book/ru/not-implemented",
+    link: "/book/ru/Chapter 4_ User Interface Composition with Components",
   },
   {
     text: "Глава 5: Одностраничные приложения",
