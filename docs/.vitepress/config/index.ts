@@ -76,6 +76,9 @@ export default defineConfig({
       "/": sidebar_ru,
       "/book/": book_sidebar_ru,
     },
-    socialLinks: [{ icon: "github", link: "https://github.com/vuesence/vue-faq" }],
+    socialLinks: [
+      { icon: "github", link: "https://github.com/vuesence/vue-faq" },
+      { icon: {svg: '<svg xmlns="http://www.w3.org/2000/svg"><g><text font-weight="bold" xml:space="preserve" font-size="18" id="svg_1" y="16" x="8" fill="currentColor">Star it!</text></g></svg>'}, link: "https://github.com/vuesence/vue-faq" }
+    ],
   },
 });

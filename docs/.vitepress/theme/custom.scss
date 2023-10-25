@@ -21,4 +21,12 @@ body {
       margin-bottom: 30px;
     }
   }
+  .social-links {
+    a:nth-child(2) {
+      width: unset;
+      svg {
+        width: 80px !important;
+      }
+    }
+  }
 }
