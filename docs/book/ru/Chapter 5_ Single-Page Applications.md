@@ -1,3 +1,16 @@
+---
+head:
+  - - meta
+    - name: og:site_name
+      content: Vue.js 3 Design Patterns and Best Practices
+  - - meta
+    - name: og:image
+      content: /images/book-face.jpg
+  - - meta
+    - name: twitter:image
+      content: /images/book-face.jpg
+---
+
 # Одностраничные приложения
 
 В этой главе мы продолжаем совершенствовать свои навыки работы с Vue 3, знакомясь с **одностраничными приложениями** (**SPA**). Мы узнаем, что отличает их от обычных сайтов, и рассмотрим их ключевые характеристики. 
