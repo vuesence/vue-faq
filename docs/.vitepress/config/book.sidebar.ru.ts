@@ -21,8 +21,8 @@ export default [
     link: "/book/ru/Chapter 4_ User Interface Composition with Components",
   },
   {
-    text: "Глава 5: Одностраничные приложения",
-    link: "/book/ru/not-implemented",
+    text: "Глава 5: Одностраничные приложения (SPA)",
+    link: "/book/ru/Chapter 5_ Single-Page Applications",
   },
   {
     text: "Глава 6: Прогрессивные веб-приложения",
