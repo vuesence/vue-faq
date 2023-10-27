@@ -35,7 +35,7 @@ function processDir(dir) {
   });
 
   const myHeaders = new Headers();
-  myHeaders.append("Authorization", "DeepL-Auth-Key 11b71328-09dd-14fb-073c-d0f468e550b2:fx");
+  myHeaders.append("Authorization", "DeepL-Auth-Key 11b71328-09dd-14fb-073c-d0f468e550b20:fx");
   myHeaders.append("Content-Type", "application/json");
 
   const requestOptions = {
