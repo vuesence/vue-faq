@@ -2,17 +2,17 @@
 
 body {
   overflow-y: scroll;
-  /* --vp-custom-block-details-text: red; */
   --vp-custom-block-code-font-size: 14px;
-  /* --vp-custom-block-details-text: #54545c; */
   :not(.dark) & {
     --vp-custom-block-details-text: #54545c;
   }
-  .vp-doc h1 {
-    margin-bottom: 1em;
-  }
-  .vp-doc p img {
-    margin: auto;
+  .vp-doc {
+    h1 {
+      margin-bottom: 1em;
+    }
+    p img {
+      margin: auto;
+    }
   }
   .is-home {
     .main .text {
