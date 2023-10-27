@@ -26,7 +26,7 @@ export default [
   },
   {
     text: "Глава 6: Прогрессивные веб-приложения",
-    link: "/book/ru/not-implemented",
+    link: "/book/ru/Chapter 6_ Progressive Web Applications",
   },
   {
     text: "Глава 7: Управление потоком данных",
