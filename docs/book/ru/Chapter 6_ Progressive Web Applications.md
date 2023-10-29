@@ -1,3 +1,16 @@
+---
+head:
+  - - meta
+    - name: og:site_name
+      content: Vue.js 3 Design Patterns and Best Practices
+  - - meta
+    - name: og:image
+      content: /images/book-face.jpg
+  - - meta
+    - name: twitter:image
+      content: /images/book-face.jpg
+---
+
 # Прогрессивные веб-приложения
 
 В этой главе мы познакомимся со следующим шагом эволюции веб-приложений: **прогрессивные веб-приложения** (**PWA**). Этот термин может показаться недостаточно описательным, но он относится к группе технологий, которые создают общую концепцию и могут быть реализованы постепенно или частично. 
