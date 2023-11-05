@@ -30,11 +30,11 @@ export default [
   },
   {
     text: "Глава 7: Управление потоком данных",
-    link: "/book/ru/not-implemented",
+    link: "/book/ru/Chapter 7 Data Flow Management",
   },
   {
     text: "Глава 8: Многопоточность с Web Workers",
-    link: "/book/ru/not-implemented",
+    link: "/book/ru/Chapter 8_ Multithreading with Web Workers",
   },
   {
     text: "Глава 9: Тестирование и контроль исходного кода",
