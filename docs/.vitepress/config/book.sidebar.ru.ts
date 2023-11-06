@@ -30,7 +30,7 @@ export default [
   },
   {
     text: "Глава 7: Управление потоком данных",
-    link: "/book/ru/Chapter 7 Data Flow Management",
+    link: "/book/ru/Chapter 7_Data Flow Management",
   },
   {
     text: "Глава 8: Многопоточность с Web Workers",
