@@ -1,0 +1,306 @@
+			<h1 id="_idParaDest-185"><a id="_idTextAnchor225"></a>Deploying Your Application</h1>
+			<p>Working on and developing our application would come to a sad end if we could not publish the final product. While quite straightforward, presenting our application on the internet does require attention to a few details and being familiar with some terms and <span class="No-Break">hosting possibilities.</span></p>
+			<p>In this chapter, we will learn about <span class="No-Break">the following:</span></p>
+			<ul>
+				<li>What is involved in publishing a web application on <span class="No-Break">the internet</span></li>
+				<li>Considerations for building our application <span class="No-Break">for deployment</span></li>
+				<li>Becoming familiar with the terms and processes to register <span class="No-Break">a domain</span></li>
+				<li>Configuring a web server to host our <strong class="bold">Single-Page Application</strong> (<strong class="bold">SPA</strong>) or <strong class="bold">Progressive Web </strong><span class="No-Break"><strong class="bold">Application</strong></span><span class="No-Break"> (</span><span class="No-Break"><strong class="bold">PWA</strong></span><span class="No-Break">)</span></li>
+				<li>Securing our web application's server with <span class="No-Break">Let’s Encrypt</span></li>
+			</ul>
+			<p>The main purpose of this chapter is to give you the tools to understand the steps needed to publish and secure a website, and by extension, also our SPA <span class="No-Break">or PWA.</span></p>
+			<h1 id="_idParaDest-186"><a id="_idTextAnchor226"></a>Technical requirements</h1>
+			<p>This chapter is mostly informative, but a few configuration files have been uploaded to the book’s repository as examples, which can be found <span class="No-Break">here: </span><a href="https://github.com/PacktPublishing/Vue.js-3-Design-Patterns-and-Best-Practices/tree/main/Chapter10"><span class="No-Break">https://github.com/PacktPublishing/Vue.js-3-Design-Patterns-and-Best-Practices/tree/main/Chapter10</span></a><span class="No-Break">.</span></p>
+			<h1 id="_idParaDest-187"><a id="_idTextAnchor227"></a>What is involved in publishing a web application?</h1>
+			<p>Publishing a<a id="_idIndexMarker765"></a> Vue 3 web application is not that much different from doing so for any other website, save for a few key differences. In this chapter, we will consider a clean installation, meaning that we will procure all the elements involved by ourselves. At its most basic, we need to consider <span class="No-Break">the following:</span></p>
+			<ul>
+				<li>A domain name for <span class="No-Break">our site/application</span></li>
+				<li>The destination path for <span class="No-Break">our application</span></li>
+				<li>The hosting service <span class="No-Break">or type</span></li>
+				<li>The web <span class="No-Break">server software</span></li>
+				<li>Procuring a <span class="No-Break">security certificate</span></li>
+			</ul>
+			<p>The preceding items also give us a simple formula for our preparations. Let’s go one by one, explaining each necessary term and concern as we <span class="No-Break">move forward.</span></p>
+			<h2 id="_idParaDest-188"><a id="_idTextAnchor228"></a>Domains, Domain Name Servers (DNS), and DNS records</h2>
+			<p>Every computer connected to a network receives a unique identificatory address to distinguish it from the others on the same network. These are called <strong class="bold">Internet Protocol</strong> (<strong class="bold">IP</strong>) addresses, and <a id="_idIndexMarker766"></a>nowadays, there are two in operation – IP versions 4 <span class="No-Break">and 6.</span></p>
+			<ul>
+				<li><strong class="bold">IPv4</strong>: Addresses are<a id="_idIndexMarker767"></a> comprised of four numbers separated by a dot. The number range is from 0 to 255. There are a few reserved addresses with a special meaning, such as <strong class="source-inline">127.0.0.1</strong>, which represents a loopback to our own computer. These addresses can also have a mask that defines a sub-segment in a network. Most likely, your home network uses this <span class="No-Break">protocol internally.</span></li>
+				<li><strong class="bold">IPv6</strong>: This provides<a id="_idIndexMarker768"></a> a significantly larger address space, with eight groups of four hexadecimal digits, separated by a semicolon. Being so large, the protocol also provides ways to simplify the notation by removing leading zeros and replacing all zero segments with an empty segment. For example, the loopback address equivalent to IPv4’s <strong class="source-inline">127.0.0.1</strong> in IPv6 is <strong class="source-inline">0000:0000:0000:0000:0000:0000:0000:0001</strong>, which then can be abridged as <strong class="source-inline">0:0:0:0:0:0:0:1</strong> or <span class="No-Break">just </span><span class="No-Break"><strong class="source-inline">::1</strong></span><span class="No-Break">.</span></li>
+			</ul>
+			<p>There is much more regarding network addresses, but only with this brief introduction, it is already possible to see a usability issue here. These addresses work great for computers but don’t play nice with “<em class="italic">human memory.</em>” On the great internet, with millions of connected computers, using only IP addresses for navigation would be impossible. That is why there are special servers in the infrastructure of the web that provide a conversion from a “<em class="italic">human-friendly name</em>” into the right IP address. These friendly names are<a id="_idIndexMarker769"></a> called <strong class="bold">domains</strong>, and the servers that provide the conversion are<a id="_idIndexMarker770"></a> the <strong class="bold">Domain Name Service</strong> (<strong class="bold">DNS</strong>). All this is regulated <a id="_idIndexMarker771"></a>by the <strong class="bold">Internet Corporation for Assigned Names and Numbers</strong> (<span class="No-Break"><strong class="bold">ICANN</strong></span><span class="No-Break">) organization.</span></p>
+			<p>Domain names are what we use every day to access any website or application on the internet today. These are bought for a limited time from an entity authorized to sell them, called a <strong class="bold">registrar</strong>. Once the<a id="_idIndexMarker772"></a> period has expired, there is the possibility for a limited time to renew the domain, and if not, it can be acquired by anyone else. Usually, domains are sold in terms of years, and prices vary greatly from a few cents to thousands of dollars. Domains are also organized in groups, separated by dots from right to left, as <span class="No-Break">shown here:</span></p>
+			<div>
+				<div id="_idContainer078" class="IMG---Figure">
+					<img src="./Chapter 10_ Deploying Your Application _ Vue.js 3 Design Patterns and Best Practices_files/Figure_10.01_B18602.jpg" alt="Figure 10.1 – The parts that make up a full domain name" width="907" height="133">
+				</div>
+			</div>
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 10.1 – The parts that make up a full domain name</p>
+			<p>The top-level domain is managed by the ICANN, and while <strong class="source-inline">.com</strong> for commercial websites is the most famous, there are plenty of others to choose from, such as <span class="No-Break">the following:</span></p>
+			<ul>
+				<li><strong class="source-inline">.org</strong>: <span class="No-Break">For organizations</span></li>
+				<li><strong class="source-inline">.net</strong>: For networks or portals of corporate intranets and <span class="No-Break">other organizations</span></li>
+				<li><strong class="source-inline">.mil</strong>: For <span class="No-Break">military use</span></li>
+				<li><strong class="source-inline">.gov</strong>: For official <span class="No-Break">government sites</span></li>
+			</ul>
+			<p>New top-level domains<a id="_idIndexMarker773"></a> are created often. You can find a growing list of them <span class="No-Break">here: </span><a href="https://en.wikipedia.org/wiki/List_of_Internet_top-level_domains"><span class="No-Break">https://en.wikipedia.org/wiki/List_of_Internet_top-level_domains</span></a><span class="No-Break">.</span></p>
+			<p>When we buy a domain (such as <strong class="bold">mydomain</strong> in the previous figure), it is attached to a top-level domain of our choosing. <strong class="bold">Registrars</strong> give <a id="_idIndexMarker774"></a>us the option to select a domain and check whether they are available for purchase. To be of any use, the domain needs to be registered on a DNS to point to an IP address. The way to do that is to create <strong class="bold">DNS records</strong>, which <a id="_idIndexMarker775"></a>is often done through the same registrar that sells the domain, or we can record in the registrar the DNS that will have the destination IP. There’ll be more about this later, but for now, just keep present the concept in your mind. The most common DNS records for a domain are <span class="No-Break">as follows:</span></p>
+			<table id="table001-6" class="No-Table-Style _idGenTablePara-1">
+				<colgroup>
+					<col>
+					<col>
+				</colgroup>
+				<tbody>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style">
+							<p><strong class="bold">Record </strong><span class="No-Break"><strong class="bold">Type (name)</strong></span></p>
+						</td>
+						<td class="No-Table-Style">
+							<p><strong class="bold">Value </strong><span class="No-Break"><strong class="bold">and description</strong></span></p>
+						</td>
+					</tr>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style">
+							<p><strong class="source-inline">A</strong></p>
+						</td>
+						<td class="No-Table-Style">
+							<p>An IPv4 address. This is the main record that points to the public IP of <span class="No-Break">your server.</span></p>
+						</td>
+					</tr>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style">
+							<p><span class="No-Break"><strong class="source-inline">AAAA</strong></span></p>
+						</td>
+						<td class="No-Table-Style">
+							<p>An IPv6 address. Points to the public IPv6 address of <span class="No-Break">your server.</span></p>
+						</td>
+					</tr>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style">
+							<p><span class="No-Break"><strong class="source-inline">CNAME</strong></span></p>
+						</td>
+						<td class="No-Table-Style">
+							<p>Creates an alias to a domain, so you can point multiple domains to the same destination without creating multiple A/AAAA records. This can be used to <span class="No-Break">create subdomains.</span></p>
+						</td>
+					</tr>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style">
+							<p><span class="No-Break"><strong class="source-inline">TXT</strong></span></p>
+						</td>
+						<td class="No-Table-Style">
+							<p>A plain text record, which is often used with some form of validation of ownership for <span class="No-Break">a domain.</span></p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Table 10.1 – DNS record types</p>
+			<p>Depending on the registrar and the service hired, you may never see or have to deal with these records, as some registrars/web hostings manage them automatically <span class="No-Break">for you.</span></p>
+			<p>Subdomains do not need to be bought from a<a id="_idIndexMarker776"></a> registrar, only configured. You can create as many as you please for your own domain. Some common subdomains are <span class="No-Break">as follows:</span></p>
+			<ul>
+				<li><strong class="source-inline">www</strong>: For <strong class="bold">World Wide Web</strong>, or a <a id="_idIndexMarker777"></a>web page. Nowadays, this subdomain is often used as a synonym for <span class="No-Break">the domain.</span></li>
+				<li><strong class="source-inline">app</strong>: <span class="No-Break">For applications.</span></li>
+				<li><strong class="source-inline">admin</strong>: For <span class="No-Break">administration access.</span></li>
+				<li><strong class="source-inline">mail</strong>: For <span class="No-Break">email services.</span></li>
+			</ul>
+			<p>Using subdomains, you can host multiple websites off the same domain/host. We will see later how to configure one for our application on our web server. At this point, what we need to remember is that a domain or a subdomain will point as a final destination to <span class="No-Break">your server.</span></p>
+			<p class="callout-heading">A note about the loopback address</p>
+			<p class="callout">Following the previous examples, the “domain” name reserved for the loopback (home) address <span class="No-Break">is </span><span class="No-Break"><strong class="source-inline">localhost</strong></span><span class="No-Break">.</span></p>
+			<p>The domain where our application will be hosted is the first step to having a presence on the internet. With it, we are in place to move to the next consideration – where it will be placed in <span class="No-Break">that domain.</span></p>
+			<h1 id="_idParaDest-189"><a id="_idTextAnchor229"></a>Considerations for building our application for deployment</h1>
+			<p>Once we have <a id="_idIndexMarker778"></a>our domain/subdomain, we need to decide (or know) on which path the application will be located. The path is what follows the domain, in segments separated by a forward slash (<strong class="source-inline">/</strong>) – for example, <strong class="source-inline">mydomain.com/store/product.html</strong>. These sections are called “paths” because they follow the same directory structure as mirrored in the local storage. Our application will be served <a id="_idIndexMarker779"></a>through a <strong class="bold">web server</strong>. These amazing pieces of software are built around the concept of serving files following the directory structure (<strong class="source-inline">folder/subfolder/file...</strong>). Internally, our server will match a domain request to the files in a local directory. Here is where we need to know whether the Vue application will be placed at the root, or on a path (directory), as we need to indicate this for the build process if we are using Vue Router in the web history mode (review <a href="https://learning.oreilly.com/library/view/vue-js-3-design/9781803238074/B18602_05.xhtml#_idTextAnchor130"><span class="No-Break"><em class="italic">Chapter 5</em></span></a>, <em class="italic">Single-Page Applications</em>, if you need a refresher on this topic). In this case, we need to make <span class="No-Break">two modifications:</span></p>
+			<ul>
+				<li>Indicate the <em class="italic">root </em>path for the application in our <span class="No-Break">Router configuration</span></li>
+				<li>Configure the web server to alter the directory/file service and route all the requests to the <span class="No-Break"><strong class="source-inline">index.html</strong></span><span class="No-Break"> file</span></li>
+			</ul>
+			<p>If our application is placed in <strong class="source-inline">mydomain.com</strong><strong class="bold">/app</strong> using the web history mode, then we need to alter our router definition by passing the “base path” to the creator function. So, if we look at the router from our SPA example application in <a href="https://learning.oreilly.com/library/view/vue-js-3-design/9781803238074/B18602_05.xhtml#_idTextAnchor130"><span class="No-Break"><em class="italic">Chapter 5</em></span></a>, <em class="italic">Single-Page Applications</em>, we can<a id="_idIndexMarker780"></a> modify it <span class="No-Break">as follows:</span></p>
+			<p class="SC---Heading" lang="en-US" xml:lang="en-US">/chapter 5/to-do SPA/src/router/index.js</p>
+			<pre class="source-code">import { createWebHistory } from "vue-router"
+// ...
+router = createRouter({
+history: <strong class="bold">createWebHistory</strong>(<strong class="bold">'/app'</strong>),
+routes,
+// ...
+}
+})</pre>
+			<p>Note the minor change, where we pass the base path to the <strong class="source-inline">createWebHistory</strong> constructor instead of using <strong class="source-inline">createWebHashHistory()</strong>. Of course, if the application uses the hash mode, it doesn’t matter where it is placed in our path. This is because in this mode, all routing navigation will be passed after the hash while pointing to our <strong class="source-inline">index.html</strong> file. For example, if our router has a route called <strong class="source-inline">/description</strong>, using the hash mode will make the address <strong class="source-inline">mydomain.com/app</strong><strong class="bold">#description</strong> (the hash mode) instead of <strong class="source-inline">mydomain.com/app</strong><strong class="bold">/description</strong> (the web <span class="No-Break">history mode).</span></p>
+			<p class="callout-heading">Hashes in web addresses</p>
+			<p class="callout">The hash in an address indicates a link to a section on the page/file, according to the HTML standard, and is used by Vue to manage the defined routes when in the <span class="No-Break">hash mode.</span></p>
+			<p>Having provisioned the destination of our application, we can now build the production code through Vite with the following command on <span class="No-Break">the terminal:</span></p>
+			<pre class="console"> $ npm run build</pre>
+			<p>By default, the <a id="_idIndexMarker781"></a>final production-ready files for our entire application will be placed in the <strong class="source-inline">/dist</strong> folder (at the same level as our <strong class="source-inline">/src</strong> folder). Now, with our built distribution files, we are ready to upload them to a server once we have set the <span class="No-Break">proper configuration.</span></p>
+			<h1 id="_idParaDest-190"><a id="_idTextAnchor230"></a>Web server options and configurations</h1>
+			<p>When <a id="_idIndexMarker782"></a>is time to upload <a id="_idIndexMarker783"></a>our application to a server, we are faced with many options, based on the type of service and web server application provided. This combination of items is usually referred to as the “hosting” server, which includes the operating system, machine configuration, architecture type, and especially, the web server software. Here is a list of some of the most common options for <span class="No-Break">each category:</span></p>
+			<table id="table002-1" class="No-Table-Style _idGenTablePara-1">
+				<colgroup>
+					<col>
+					<col>
+					<col>
+				</colgroup>
+				<tbody>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style">
+							<p><span class="No-Break"><strong class="bold">Operating system</strong></span></p>
+						</td>
+						<td class="No-Table-Style">
+							<p><strong class="bold">Linux </strong><span class="No-Break"><strong class="bold">or Windows</strong></span></p>
+						</td>
+						<td class="No-Table-Style">
+							<p><strong class="bold">For our Vue 3 application, this choice </strong><span class="No-Break"><strong class="bold">is inconsequential</strong></span></p>
+						</td>
+					</tr>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style" rowspan="6">
+							<p><span class="No-Break"><strong class="bold">Hosting type</strong></span></p>
+						</td>
+						<td class="No-Table-Style">
+							<p><span class="No-Break"><strong class="bold">Shared</strong></span></p>
+						</td>
+						<td class="No-Table-Style">
+							<p>Our application will reside in a server in a private area of the storage but will share all the resources with other applications. Access to configuration is usually done through a web <span class="No-Break">control panel</span></p>
+						</td>
+					</tr>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style">
+							<p><strong class="bold">Virtual Private </strong><span class="No-Break"><strong class="bold">Server (VPS)</strong></span></p>
+						</td>
+						<td class="No-Table-Style">
+							<p>We are provided with a virtual machine with full access to the entire configuration and resources, usually through a direct connection with a <span class="No-Break">remote terminal</span></p>
+						</td>
+					</tr>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style">
+							<p><span class="No-Break"><strong class="bold">Managed VPS</strong></span></p>
+						</td>
+						<td class="No-Table-Style">
+							<p>Like a VPS, but we are provided with a web control panel or other services to manage <span class="No-Break">the machine</span></p>
+						</td>
+					</tr>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style">
+							<p><span class="No-Break"><strong class="bold">Private server</strong></span></p>
+						</td>
+						<td class="No-Table-Style">
+							<p>Here, we rent real hardware from the hosting provider and have full liberty to all <span class="No-Break">their resources</span></p>
+						</td>
+					</tr>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style">
+							<p><span class="No-Break"><strong class="bold">Self-hosted</strong></span></p>
+						</td>
+						<td class="No-Table-Style">
+							<p>We connect a server directly to the internet by our own means and an <span class="No-Break">internet connection</span></p>
+						</td>
+					</tr>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style">
+							<p><span class="No-Break"><strong class="bold">Collocated</strong></span></p>
+						</td>
+						<td class="No-Table-Style">
+							<p>We provide a server to a server farm, where they take care of physical needs. We manage the server remotely with full control of software <span class="No-Break">and hardware</span></p>
+						</td>
+					</tr>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style" rowspan="2">
+							<p><span class="No-Break"><strong class="bold">Web server</strong></span></p>
+						</td>
+						<td class="No-Table-Style">
+							<p><span class="No-Break"><strong class="bold">Apache HTTP</strong></span></p>
+						</td>
+						<td class="No-Table-Style">
+							<p>This server is stable and heavily used in Linux and <span class="No-Break">shared hosting</span></p>
+						</td>
+					</tr>
+					<tr class="No-Table-Style">
+						<td class="No-Table-Style">
+							<p><span class="No-Break"><strong class="bold">Nginx</strong></span></p>
+						</td>
+						<td class="No-Table-Style">
+							<p>A smaller and fast web server, famous for managing very well a large number of concurrent connections, with efficient use of resources. Very easy to manage and very popular for <span class="No-Break">VPS hosting</span></p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Table 10.2 - Common hosting options per category</p>
+			<p>In the case of <a id="_idIndexMarker784"></a>Vue 3 applications, we aim to have a web server that is fast and<a id="_idIndexMarker785"></a> reliable to attend to multiple requests simultaneously by serving static files. We do not require much CPU processing power, as we do not run code on the server, so our requirements for hardware and software are very low, so much so that practically any “static file server” would do. Most likely, our application will be part of a much larger infrastructure with other requirements, but those used to serve our Vue 3 app in and of itself <span class="No-Break">are low.</span></p>
+			<p>The key<a id="_idIndexMarker786"></a> consideration here is, again, whether we are using the web <a id="_idIndexMarker787"></a>history mode in our router. In that case, we need to include a configuration to the web server software to direct all requests to the entry point of our Vue application (our <strong class="source-inline">index.html</strong>) when a request does not match the standard (a file in the folder directory). This may sound complicated but is rather simple. Directly from the official Vue Router documentation, here are examples of the two <span class="No-Break">web servers.</span></p>
+			<h2 id="_idParaDest-191"><a id="_idTextAnchor231"></a>Apache HTTP Server configuration</h2>
+			<p>The Apache HTTP Server<a id="_idIndexMarker788"></a> is used heavily in shared hosting providers and allows us to alter the configuration for requests by placing a single file in the root directory of the web application. This is very convenient and simple, but it does require that the hosting provider has enabled (or through the administration panel, allowed the user to enable) a special module that allows us to rewrite the incoming requests. The official documentation (<a href="https://router.vuejs.org/guide/essentials/history-mode.html">https://router.vuejs.org/guide/essentials/history-mode.html#apache</a>) shows <span class="No-Break">this example:</span></p>
+			<p class="SC---Heading" lang="en-US" xml:lang="en-US">/.htaccess</p>
+			<pre class="source-code">&lt;IfModule mod_negotiation.c&gt;
+&nbsp;&nbsp;Options -MultiViews
+&lt;/IfModule&gt;
+&lt;IfModule mod_rewrite.c&gt;
+&nbsp;&nbsp;RewriteEngine On
+&nbsp;&nbsp;RewriteBase <strong class="bold">/</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong class="bold">//1</strong>
+&nbsp;&nbsp;RewriteRule ^index\.html$ - [L]
+&nbsp;&nbsp;RewriteCond %{REQUEST_FILENAME} !-f
+&nbsp;&nbsp;RewriteCond %{REQUEST_FILENAME} !-d
+&nbsp;&nbsp;RewriteRule . /index.html [L]
+&lt;/IfModule&gt;</pre>
+			<p>The<a id="_idIndexMarker789"></a> preceding file should be placed alongside our <strong class="source-inline">index.html</strong> file. Every incoming request will then be routed to it and captured by Vue Router in the web history mode. Also, note in line <strong class="source-inline">//1</strong>, the <strong class="source-inline">RewriteBase</strong> rule. Here is where we change the path of our application, if not placed at the root of <span class="No-Break">the domain.</span></p>
+			<h2 id="_idParaDest-192"><a id="_idTextAnchor232"></a>Nginx server configuration</h2>
+			<p>In the case of VPSes and private servers, the NGINX <a id="_idIndexMarker790"></a>server is quite popular for how flexible and performant it is. It can behave as a reverse proxy, load balancer, and much more. Installing this server in a VPS with Linux/Windows is rather trivial, but we will not cover it here. You can see the documentation for each system <span class="No-Break">at </span><a href="https://www.nginx.com/resources/wiki/start/topics/tutorials/install/"><span class="No-Break">https://www.nginx.com/resources/wiki/start/topics/tutorials/install/</span></a><span class="No-Break">.</span></p>
+			<p>Unlike Apache with the <strong class="source-inline">.htaccess</strong> files, we need to modify the server configuration file for our site. In Linux, this<a id="_idIndexMarker791"></a> is usually placed in /etc/nginx/sites-available. The file follows a simple schema where, for each virtual server, we declare the location path (as in the domain path) and the location on the local storage (the directory or folder). Here is an example file from a <span class="No-Break">Linux server:</span></p>
+			<p class="SC---Heading" lang="en-US" xml:lang="en-US">/etc/nginx/sites-available/default</p>
+			<pre class="source-code">server {
+&nbsp;&nbsp;&nbsp;&nbsp;listen 80;
+&nbsp;&nbsp;&nbsp;&nbsp;index index.html;
+&nbsp;&nbsp;&nbsp;&nbsp;root <strong class="bold">/home/user/www</strong>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong class="bold">//1</strong>
+&nbsp;&nbsp;&nbsp;&nbsp;server_name <strong class="bold">www.mydomain.com mydomain.com</strong>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong class="bold">//2</strong>
+&nbsp;&nbsp;&nbsp;&nbsp;location <strong class="bold">/</strong> {&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong class="bold">//3</strong>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try_files $uri $uri/ /index.html;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong class="bold">//4</strong>
+&nbsp;&nbsp;&nbsp;&nbsp;}
+}</pre>
+			<p>Let’s look at the <span class="No-Break">preceding code:</span></p>
+			<ul>
+				<li>In line <em class="italic">//1</em>, we place the local storage absolute path to <span class="No-Break">our application.</span></li>
+				<li>In line <em class="italic">//2</em>, we declare the domains and subdomains that will be associated with this <span class="No-Break">server block.</span></li>
+				<li>In line <em class="italic">//3,</em> we declare the location path to process. In this example, we are placing the application at the root (<strong class="source-inline">/</strong>). If placed in <strong class="source-inline">mydomain.com/app</strong>, we would write <span class="No-Break"><strong class="source-inline">location /app</strong></span><span class="No-Break">.</span></li>
+				<li>Finally, in line <em class="italic">//4,</em> we tell NGINX to try to find a valid directory/file and, if not, pass it <a id="_idIndexMarker792"></a>through to our <span class="No-Break"><strong class="source-inline">index.html</strong></span><span class="No-Break"> file.</span></li>
+			</ul>
+			<p>As before, if we are using the web hash mode, then we do not need to do these changes. We can just use the default configuration to serve the files from <span class="No-Break">the disk.</span></p>
+			<h2 id="_idParaDest-193"><a id="_idTextAnchor233"></a>Other servers</h2>
+			<p>There are many other servers in use and possible configurations that are not possible to cover here. However, the official Vue Router documentation has very good examples for other servers and guidelines for those not covered. You can find the reference at this <span class="No-Break">link: </span><a href="https://router.vuejs.org/guide/essentials/history-mode.html#example-server-configurations"><span class="No-Break">https://router.vuejs.org/guide/essentials/history-mode.html#example-server-configurations</span></a><span class="No-Break">.</span></p>
+			<p>Let’s see now how to move our files onto our <span class="No-Break">online server.</span></p>
+			<h1 id="_idParaDest-194"><a id="_idTextAnchor234"></a>Transferring your files to the server</h1>
+			<p>Armed <a id="_idIndexMarker793"></a>now with the<a id="_idIndexMarker794"></a> domain pointing to our server and the configurations in place, it is time to upload our distribution files. Depending on your choice of hosting, this could be done through a web <a id="_idIndexMarker795"></a>interface, a <strong class="bold">File Transfer Protocol</strong> (<strong class="bold">FTP</strong>) application, or secure transfer over<a id="_idIndexMarker796"></a> the <strong class="bold">Secure Shell Protocol</strong> (<strong class="bold">SSH</strong>). For the last two options, it is recommended to use an application that takes care of the heavy lifting. An excellent option is to use FileZilla (<a href="https://filezilla-project.org/">https://filezilla-project.org/</a>), which handles the aforementioned protocols. It is available for Linux, Windows, <span class="No-Break">and macOS.</span></p>
+			<p>As we mentioned in <a href="https://learning.oreilly.com/library/view/vue-js-3-design/9781803238074/B18602_09.xhtml#_idTextAnchor199"><span class="No-Break"><em class="italic">Chapter 9</em></span></a>, <em class="italic">Testing and Source Control</em>, you can also configure your VPS/server to pull the source code from a remote repository using <strong class="bold">Git</strong>. In this case, the application folder will be configured to point to the <strong class="source-inline">/dist</strong> folder <a id="_idIndexMarker797"></a>in the local repository. We could, for example, open a remote terminal to the server, trigger a synchronization (pull), and then bundle the application on the server itself, pull a branch that already has the application bundled, push our commits directly to the server, and so on. There are many options when using Git, and a few more when using a service such as <strong class="source-inline">GitHub</strong> or <strong class="source-inline">GitLab</strong> with powerful tools for <em class="italic">continuous integration and delivery</em>. This is a topic worth exploring if you do not want to use S/FTP applications or want to automate<a id="_idIndexMarker798"></a> the process. Each implementation would be specific and out of the <a id="_idIndexMarker799"></a>scope of this book, so we will move on to the next topic, assuming that our files are now on <span class="No-Break">the server.</span></p>
+			<h1 id="_idParaDest-195"><a id="_idTextAnchor235"></a>Protecting your web application with Let’s Encrypt</h1>
+			<p>Internet addresses are included at the very beginning of the protocol being used. By default, all web navigation is done using<a id="_idIndexMarker800"></a> the <strong class="bold">Hypertext Transfer Protocol</strong> (<strong class="bold">HTTP</strong>), which, while foundational, is not considered secure. When an encryption layer between the client and the server is provided, then the communication is done o<a id="_idIndexMarker801"></a>ver <strong class="bold">HTTPS</strong> (the <strong class="bold">S</strong> standing for <strong class="bold">Secure</strong>). This encryption layer is provided and validated by a certifying authority, so the certificate must be bought from such one. Hosting providers usually have the option to buy and install one on their servers, but there is also a free and reliable alternative<a id="_idIndexMarker802"></a> provided by the <strong class="bold">Let’s Encrypt</strong> <span class="No-Break">foundation (</span><a href="https://letsencrypt.org/"><span class="No-Break">https://letsencrypt.org/</span></a><span class="No-Break">).</span></p>
+			<p>To install a <em class="italic">Let’s Encrypt</em> certificate, you need shell access to your server. If not, then you must rely on the<a id="_idIndexMarker803"></a> service provided by the hosting. The<a id="_idIndexMarker804"></a> list of certified hosting providers compatible is <span class="No-Break">here: </span><a href="https://certbot.eff.org/hosting_providers"><span class="No-Break">https://certbot.eff.org/hosting_providers</span></a><span class="No-Break">.</span></p>
+			<p>In the case that we have access to a server through remote shell access, the process is also straightforward. The Let’s Encrypt foundation and the <strong class="bold">Electronic Frontier Foundation</strong> (<strong class="bold">EFF</strong>) provide<a id="_idIndexMarker805"></a> an application called <strong class="bold">certbot</strong> (certification robot), which <a id="_idIndexMarker806"></a>automates the installation of security certificates and also configures the local web server files to use HTTPS. In this case, we have <span class="No-Break">two options:</span></p>
+			<ul>
+				<li>Install a certificate for each domain and <span class="No-Break">each subdomain</span></li>
+				<li>Install a <em class="italic">wild card certificate</em>, which covers each domain and all <span class="No-Break">possible subdomains</span></li>
+			</ul>
+			<p>The <a id="_idIndexMarker807"></a>instructions to install the <em class="italic">certbot </em>and then<a id="_idIndexMarker808"></a> run the process differ for each operating system and web server, and the type of certificate mentioned. Because of this, the EFF<a id="_idIndexMarker809"></a> provides a web page with configurable options for each possible variation and easy-to-follow steps. The<a id="_idIndexMarker810"></a> wizard can be found <span class="No-Break">here: </span><a href="https://certbot.eff.org/"><span class="No-Break">https://certbot.eff.org/</span></a><span class="No-Break">.</span></p>
+			<div>
+				<div id="_idContainer079" class="IMG---Figure">
+					<img src="./Chapter 10_ Deploying Your Application _ Vue.js 3 Design Patterns and Best Practices_files/Figure_10.02_B18602.jpg" alt="Figure 10.2 – Certbot instructions for NGINX and Ubuntu 20" width="1650" height="384">
+				</div>
+			</div>
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 10.2 – Certbot instructions for NGINX and Ubuntu 20</p>
+			<p>In general, the instructions follow <span class="No-Break">these steps:</span></p>
+			<ol>
+				<li><span class="No-Break">Install </span><span class="No-Break"><strong class="bold">certbot</strong></span><span class="No-Break">.</span></li>
+				<li>Run <strong class="bold">certbot</strong>. This will present a series of options, with all the found dominions found on the given <span class="No-Break">web server.</span></li>
+				<li>Select the type of certificate <span class="No-Break">to install.</span></li>
+				<li>Select, if active, the auto-renewal of the certificate. Rejecting this will require <span class="No-Break">manual renewal.</span></li>
+			</ol>
+			<p>The <a id="_idIndexMarker811"></a>free certificate is only valid for 3 months at a <a id="_idIndexMarker812"></a>time, as opposed to a commercial certificate, which can be bought for more time. After 3 months, it must be manually renewed. Luckily, <em class="italic">certbot </em>includes <a id="_idIndexMarker813"></a>a function to perform automatic updates before the expiration period <span class="No-Break">is due.</span></p>
+			<p>Even for simple test applications, it is important and recommendable to always protect a website with a security certificate. Let’s also remember that having a security certificate and serving an application over HTTPS is a hard requirement <span class="No-Break">for PWAs.</span></p>
+			<h1 id="_idParaDest-196"><a id="_idTextAnchor236"></a>Summary</h1>
+			<p>In this chapter, we covered the basics for publishing our Vue application in its own public space on the internet. We also learned important concepts for understanding instructions when buying and reserving a domain and setting DNS records if and when prompted to do so. We also learned about how to accommodate our bundle configuration when using the HTML5 history mode in Vue Router, the different types of online hosting we can hire, options for copying our distribution files onto the production server, and guidelines for securing our website with a free Let’s Encrypt certificate to serve our applications over HTTPS. All of these are important skills, and you will benefit from having the experience of executing these skills at <span class="No-Break">least once.</span></p>
+			<p>With the deployment of our application, we have covered in this book the main steps and topics to construct a Vue 3 application, from the introduction of the framework all the way to testing our individual components and installing our production-ready files in a web server. In some cases, we have gone beyond the basics to see advanced topics, which are an important addition to a professional developer. If you have followed the concepts and code examples this far, you have acquired important skills to help you in your professional development. But this is not the end of this book, as you can find additional bonus <span class="No-Break">content next.</span></p>
+			<p>I extend my appreciation and gratitude to you, dear reader, for your interest in Vue 3 and in acquiring this book, which summarizes many years of experience developing applications. I hope it becomes a source of reference and encouragement to keep learning, and I wish you the best of success in your personal and <span class="No-Break">professional career.</span></p>
+			<p><span class="No-Break">Sincerely,</span></p>
+			<p><strong class="bold">Pablo </strong><span class="No-Break"><strong class="bold">D. Garaguso</strong></span></p>
+			<h1 id="_idParaDest-197"><a id="_idTextAnchor237"></a>Review questions</h1>
+			<ul>
+				<li>What is a top-level domain, and how is it different from <span class="No-Break">a domain?</span></li>
+				<li>Is there a limit to the number of subdomains we can create for our <span class="No-Break">domain? Why?</span></li>
+				<li>What is a DNS? What are <span class="No-Break">DNS records?</span></li>
+				<li>What are the options currently for publishing your web application on <span class="No-Break">the internet?</span></li>
+				<li>What considerations in our code and web server do we need to make when using Vue Router in web <span class="No-Break">history mode?</span></li>
+				<li>What are some common web servers found in shared hosting <span class="No-Break">and VPSes?</span></li>
+				<li>What is certbot and what does <span class="No-Break">it do?</span></li>
+			</ul>
