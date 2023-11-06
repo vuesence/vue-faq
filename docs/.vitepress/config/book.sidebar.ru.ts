@@ -38,7 +38,7 @@ export default [
   },
   {
     text: "Глава 9: Тестирование и контроль исходного кода",
-    link: "/book/ru/not-implemented",
+    link: "/book/ru/Chapter_9__Testing_and_Source_Control",
   },
   {
     text: "Глава 10: Развертывание приложения",
