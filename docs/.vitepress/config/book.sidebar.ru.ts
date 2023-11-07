@@ -42,7 +42,7 @@ export default [
   },
   {
     text: "Глава 10: Развертывание приложения",
-    link: "/book/ru/not-implemented",
+    link: "/book/ru/Chapter_10__Deploying_Your_Application",
   },
   {
     text: "Глава 11: UX Patterns",
@@ -50,6 +50,6 @@ export default [
   },
   {
     text: "Приложение: Миграция с Vue 2 на Vue 3",
-    link: "/book/ru/not-implemented",
+    link: "/book/ru/Appendix__Migrating_from_Vue_2",
   },
 ];
