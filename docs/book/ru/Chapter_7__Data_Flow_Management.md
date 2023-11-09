@@ -1,3 +1,16 @@
+---
+head:
+  - - meta
+    - name: og:site_name
+      content: Vue.js 3 Design Patterns and Best Practices
+  - - meta
+    - name: og:image
+      content: /images/book-face.jpg
+  - - meta
+    - name: twitter:image
+      content: /images/book-face.jpg
+---
+
 # Управление потоками данных
 
 В предыдущих главах мы сосредоточились на понимании фреймворка Vue 3 и
