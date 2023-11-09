@@ -10,6 +10,7 @@ head:
     - name: twitter:image
       content: /images/book-face.jpg
 ---
+
 # Приложение: Миграция с Vue 2
 
 Переход приложения Vue 2 на Vue 3 не так прост, как простая замена
