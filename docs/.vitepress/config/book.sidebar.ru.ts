@@ -37,7 +37,7 @@ export default [
     link: "/book/ru/Chapter_8__Multithreading_with_Web_Workers",
   },
   {
-    text: "Глава 9: Тестирование и системы котроля версий",
+    text: "Глава 9: Тестирование и системы контроля версий",
     link: "/book/ru/Chapter_9__Testing_and_Source_Control",
   },
   {
