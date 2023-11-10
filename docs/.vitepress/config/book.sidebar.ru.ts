@@ -37,7 +37,7 @@ export default [
     link: "/book/ru/Chapter_8__Multithreading_with_Web_Workers",
   },
   {
-    text: "Глава 9: Тестирование и контроль исходного кода",
+    text: "Глава 9: Тестирование и Source control системы",
     link: "/book/ru/Chapter_9__Testing_and_Source_Control",
   },
   {
