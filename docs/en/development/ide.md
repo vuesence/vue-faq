@@ -55,6 +55,7 @@ Unfortunately, formatting the `<style>` block in `.vue` files doesn't work, so y
 ::: details Online sandboxes for Vue 3
 
 - [Vue SFC Playground](https://play.vuejs.org/)
+- [Replit](https://replit.com/)
 - [StackBlitz](https://stackblitz.com/edit/vitejs-vite-usvaqn?file=index.html&terminal=dev)
 - [Codesandbox](https://codesandbox.io/s/vue-3-glziy)
 
@@ -62,6 +63,7 @@ Unfortunately, formatting the `<style>` block in `.vue` files doesn't work, so y
 
 ::: details More programs useful in web development
 
+- [Hoppscotch/](https://hoppscotch.io/) - API requests
 - [Postman](https://www.postman.com/) - API requests, API creation
 - [Xshell](https://www.netsarang.com/en/xshell/) - handy SSH client
 - [HeidiSQL](https://www.heidisql.com/) - client for accessing SQL databases
