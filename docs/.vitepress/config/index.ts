@@ -19,6 +19,7 @@ export default defineConfig({
         sidebar: {
           "/": sidebar_ru,
           "/book/": sidebar_book_ru,
+          "/vue-webapp/": sidebar_vue_webapp_ru,
         },
       },
       head: [
@@ -50,6 +51,7 @@ export default defineConfig({
         nav: nav_en,
         sidebar: {
           "/en/": sidebar_en,
+          "/en/vue-webapp/": sidebar_vue_webapp_en,
         },
       },
       head: [
