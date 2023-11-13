@@ -1,5 +1,5 @@
 export default [
-  { text: "О приложении", link: "/vue-webapp/" },
-  { text: "Цели", link: "/vue-webapp/goals" },
-  { text: "Идеология", link: "/vue-webapp/ideology" },  
+  { text: "О приложении", link: "/vue-webapp/ru/" },
+  { text: "Цели", link: "/vue-webapp/ru/summary" },
+  { text: "Идеология", link: "/vue-webapp/ru/ideology" },  
 ];
