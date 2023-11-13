@@ -55,6 +55,7 @@ VS Code позволяет делать очень тонкую настройк
 ::: details Онлайн песочницы для Vue 3
 
 - [Vue SFC Playground](https://play.vuejs.org/)
+- [Replit](https://replit.com/)
 - [StackBlitz](https://stackblitz.com/edit/vitejs-vite-usvaqn?file=index.html&terminal=dev)
 - [Codesandbox](https://codesandbox.io/s/vue-3-glziy)
 
@@ -62,6 +63,7 @@ VS Code позволяет делать очень тонкую настройк
 
 ::: details Еще программы, полезные в веб разработке
 
+- [Hoppscotch/](https://hoppscotch.io/) - запросы к API
 - [Postman](https://www.postman.com/) - запросы к API, создание API
 - [Xshell](https://www.netsarang.com/en/xshell/) - удобный SSH клиент
 - [HeidiSQL](https://www.heidisql.com/) - клиент для доступа к SQL базам данных

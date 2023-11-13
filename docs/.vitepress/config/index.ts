@@ -3,7 +3,7 @@ import nav_en from "./nav.en";
 import nav_ru from "./nav.ru";
 import sidebar_en from "./sidebar.en";
 import sidebar_ru from "./sidebar.ru";
-import book_sidebar_ru from "./book.sidebar.ru";
+import sidebar_book_ru from "./sidebar.book.ru";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -74,7 +74,7 @@ export default defineConfig({
     nav: nav_ru,    
     sidebar: {
       "/": sidebar_ru,
-      "/book/": book_sidebar_ru,
+      "/book/": sidebar_book_ru,
     },
     socialLinks: [
       { icon: "github", link: "https://github.com/vuesence/vue-faq" },
