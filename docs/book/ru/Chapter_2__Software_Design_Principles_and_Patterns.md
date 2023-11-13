@@ -501,7 +501,7 @@ function createShape(type){
 }
 let
     shape1 = createShape("circle"),
-    shape2 = createShape("квадрат");
+    shape2 = createShape("square");
 shape1.draw();
 shape2.draw();
 ```

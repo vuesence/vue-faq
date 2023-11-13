@@ -37,12 +37,12 @@ export default [
     link: "/book/ru/Chapter_8__Multithreading_with_Web_Workers",
   },
   {
-    text: "Глава 9: Тестирование и контроль исходного кода",
-    link: "/book/ru/not-implemented",
+    text: "Глава 9: Тестирование и системы контроля версий",
+    link: "/book/ru/Chapter_9__Testing_and_Source_Control",
   },
   {
     text: "Глава 10: Развертывание приложения",
-    link: "/book/ru/not-implemented",
+    link: "/book/ru/Chapter_10__Deploying_Your_Application",
   },
   {
     text: "Глава 11: UX Patterns",
@@ -50,6 +50,6 @@ export default [
   },
   {
     text: "Приложение: Миграция с Vue 2 на Vue 3",
-    link: "/book/ru/not-implemented",
+    link: "/book/ru/Appendix__Migrating_from_Vue_2",
   },
 ];
