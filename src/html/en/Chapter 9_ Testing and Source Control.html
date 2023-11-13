@@ -1,308 +1,1314 @@
-			<h1>Deploying Your Application</h1>
-			<p>Working on and developing our application would come to a sad end if we could not publish the final product. While quite straightforward, presenting our application on the internet does require attention to a few details and being familiar with some terms and hosting possibilities.</p>
-			<p>In this chapter, we will learn about the following:</p>
+			<h1 id="_idParaDest-160"><a id="_idTextAnchor200"></a>Testing and Source Control</h1>
+
+			<p>The success of our application depends on many factors, beyond the
+ quality of our code organization or patterns. Moreover, the very nature
+ of software implies that there will be changes during and after 
+development, changes in the requirements, the scope, and so on. With 
+each feature developed, an item of complexity is introduced into the 
+software, creating relationships and dependencies. New inclusions may 
+disrupt these connections and introduce breaking changes, bugs, or even 
+completely disable the system. The solution for this problem is to keep 
+track of code changes and conduct tests on the application to identify 
+problems and ensure as much as possible that the system complies with 
+the desired software attributes and satisfies <span class="No-Break">the requirements.</span></p>
+
+			<p>In this chapter, we will cover <span class="No-Break">the following:</span></p>
+
 			<ul>
-				<li>What is involved in publishing a web application on the internet</li>
-				<li>Considerations for building our application for deployment</li>
-				<li>Becoming familiar with the terms and processes to register a domain</li>
-				<li>Configuring a web server to host our <b>Single-Page Application</b> (<b>SPA</b>) or <b>Progressive Web </b><b>Application</b></span><span class="No-Break"> (</span><span class="No-Break"><b>PWA</b></span><span class="No-Break">)</li>
-				<li>Securing our web application's server with Let’s Encrypt</li>
+
+				<li>Different approaches to testing and the concept of <strong class="bold">test-driven </strong><span class="No-Break"><strong class="bold">development (TDD)</strong></span></li>
+
+				<li>Installing a test suite (Vitest) and test tools (Vue Test Utils) for <span class="No-Break">our project</span></li>
+
+				<li>Creating and running tests on an existing project for synchronous and <span class="No-Break">asynchronous code</span></li>
+
+				<li>Testing our components by simulating <span class="No-Break">user interactions</span></li>
+
+				<li>Installing and managing our source code using Git and online repositories such as GitHub <span class="No-Break">or GitLab</span></li>
+
 			</ul>
-			<p>The main purpose of this chapter is to give you the tools to understand the steps needed to publish and secure a website, and by extension, also our SPA or PWA.</p>
-			<h2>Technical requirements</h2>
-			<p>This chapter is mostly informative, but a few configuration files have been uploaded to the book’s repository as examples, which can be found here: </span><a href="https://github.com/PacktPublishing/Vue.js-3-Design-Patterns-and-Best-Practices/tree/main/Chapter10"><span class="No-Break">https://github.com/PacktPublishing/Vue.js-3-Design-Patterns-and-Best-Practices/tree/main/Chapter10</span></a><span class="No-Break">.</p>
-			<h2>What is involved in publishing a web application?</h2>
-			<p>Publishing a Vue 3 web application is not that much different from doing so for any other website, save for a few key differences. In this chapter, we will consider a clean installation, meaning that we will procure all the elements involved by ourselves. At its most basic, we need to consider the following:</p>
+
+			<p>The concepts in this chapter are introductions to important 
+professional skills for a developer to ensure the delivery of 
+good-quality software. Often, these tasks are left aside or relegated as
+ an afterthought. However, the lack of them may lead to expensive 
+mistakes and lengthy overwork as the software complexity grows. For 
+non-trivial applications with more than one developer <span class="No-Break">involved, nowadays,</span>
+
+it is hardly possible to conceive a project that does not use some of <span class="No-Break">these tools.</span></p>
+
+			<p>In this chapter, we will focus on <strong class="bold">unit testing</strong> and the tools provided by the Vue team to <span class="No-Break">perform it.</span></p>
+
+			<h1 id="_idParaDest-161"><a id="_idTextAnchor201"></a>Technical requirements</h1>
+
+			<p>This chapter does not have additional requirements to those of 
+previous implementations of code examples. The final source code can be 
+found in the official repository for this book <span class="No-Break">at </span><a href="https://github.com/PacktPublishing/Vue.js-3-Design-Patterns-and-Best-Practices/tree/main/Chapter09"><span class="No-Break">https://github.com/PacktPublishing/Vue.js-3-Design-Patterns-and-Best-Practices/tree/main/Chapter09</span></a><span class="No-Break">.</span></p>
+
+			<p>Check out the following video to see the Code in <span class="No-Break">Action: </span><a href="https://packt.link/UqRIi"><span class="No-Break">https://packt.link/UqRIi</span></a></p>
+
+			<h1 id="_idParaDest-162"><a id="_idTextAnchor202"></a>What are testing and TDD</h1>
+
+			<p>Testing is the <a id="_idIndexMarker687"></a>process to verify 
+that the software is doing what it is supposed to do, according to the 
+requirements of the project. It involves the manual or automated 
+execution of tools to evaluate and measure different properties and 
+attributes of the software, identify errors and bugs, and provide 
+feedback for developers to take action to correct them. There are many 
+different approaches and types of tests to be performed, such as <span class="No-Break">the following:</span></p>
+
 			<ul>
-				<li>A domain name for our site/application</li>
-				<li>The destination path for our application</li>
-				<li>The hosting service or type</li>
-				<li>The web server software</li>
-				<li>Procuring a security certificate</li>
+
+				<li><strong class="bold">Unit testing</strong>: This is <a id="_idIndexMarker688"></a>where relevant<a id="_idIndexMarker689"></a> units of the source code are validated against a series of inputs and outputs. It is <span class="No-Break">often automated.</span></li>
+
+				<li><strong class="bold">Integration testing</strong>: All the<a id="_idIndexMarker690"></a> components of a system are verified together as a group, looking for<a id="_idIndexMarker691"></a> errors and bugs in the resulting integration, communication, and <span class="No-Break">so on.</span></li>
+
+				<li><strong class="bold">End-to-end testing</strong>: This<a id="_idIndexMarker692"></a> involves a complete validation of the application<a id="_idIndexMarker693"></a>
+ simulating real-world use, interacting with databases, network 
+scenarios, and so on. It can be performed with automated tools that 
+simulate human interaction, and manual testing using <span class="No-Break">real-life users.</span></li>
+
 			</ul>
-			<p>The preceding items also give us a simple formula for our preparations. Let’s go one by one, explaining each necessary term and concern as we move forward.</p>
-			<h3>Domains, Domain Name Servers (DNS), and DNS records</h3>
-			<p>Every computer connected to a network receives a unique identificatory address to distinguish it from the others on the same network. These are called <b>Internet Protocol</b> (<b>IP</b>) addresses, and nowadays, there are two in operation – IP versions 4 and 6.</p>
-			<ul>
-				<li><b>IPv4</b>: Addresses are comprised of four numbers separated by a dot. The number range is from 0 to 255. There are a few reserved addresses with a special meaning, such as <b>127.0.0.1</b>, which represents a loopback to our own computer. These addresses can also have a mask that defines a sub-segment in a network. Most likely, your home network uses this protocol internally.</li>
-				<li><b>IPv6</b>: This provides a significantly larger address space, with eight groups of four hexadecimal digits, separated by a semicolon. Being so large, the protocol also provides ways to simplify the notation by removing leading zeros and replacing all zero segments with an empty segment. For example, the loopback address equivalent to IPv4’s <b>127.0.0.1</b> in IPv6 is <b>0000:0000:0000:0000:0000:0000:0000:0001</b>, which then can be abridged as <b>0:0:0:0:0:0:0:1</b> or just </span><span class="No-Break"><b>::1</b></span><span class="No-Break">.</li>
-			</ul>
-			<p>There is much more regarding network addresses, but only with this brief introduction, it is already possible to see a usability issue here. These addresses work great for computers but don’t play nice with “<i>human memory.</i>” On the great internet, with millions of connected computers, using only IP addresses for navigation would be impossible. That is why there are special servers in the infrastructure of the web that provide a conversion from a “<i>human-friendly name</i>” into the right IP address. These friendly names are called <b>domains</b>, and the servers that provide the conversion are the <b>Domain Name Service</b> (<b>DNS</b>). All this is regulated by the <b>Internet Corporation for Assigned Names and Numbers</b> (<b>ICANN</b></span><span class="No-Break">) organization.</p>
-			<p>Domain names are what we use every day to access any website or application on the internet today. These are bought for a limited time from an entity authorized to sell them, called a <b>registrar</b>. Once the period has expired, there is the possibility for a limited time to renew the domain, and if not, it can be acquired by anyone else. Usually, domains are sold in terms of years, and prices vary greatly from a few cents to thousands of dollars. Domains are also organized in groups, separated by dots from right to left, as shown here:</p>
-			<div>
-				<div>
-					<img src="https://learning.oreilly.com/api/v2/epubs/urn:orm:book:9781803238074/files/image/Figure_10.01_B18602.jpg" alt="Figure 10.1 – The parts that make up a full domain name" width="907" height="133">
-				</div>
-			</div>
-			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 10.1 – The parts that make up a full domain name</p>
-			<p>The top-level domain is managed by the ICANN, and while <b>.com</b> for commercial websites is the most famous, there are plenty of others to choose from, such as the following:</p>
-			<ul>
-				<li><b>.org</b>: For organizations</li>
-				<li><b>.net</b>: For networks or portals of corporate intranets and other organizations</li>
-				<li><b>.mil</b>: For military use</li>
-				<li><b>.gov</b>: For official government sites</li>
-			</ul>
-			<p>New top-level domains are created often. You can find a growing list of them here: </span><a href="https://en.wikipedia.org/wiki/List_of_Internet_top-level_domains"><span class="No-Break">https://en.wikipedia.org/wiki/List_of_Internet_top-level_domains</span></a><span class="No-Break">.</p>
-			<p>When we buy a domain (such as <b>mydomain</b> in the previous figure), it is attached to a top-level domain of our choosing. <b>Registrars</b> give us the option to select a domain and check whether they are available for purchase. To be of any use, the domain needs to be registered on a DNS to point to an IP address. The way to do that is to create <b>DNS records</b>, which is often done through the same registrar that sells the domain, or we can record in the registrar the DNS that will have the destination IP. There’ll be more about this later, but for now, just keep present the concept in your mind. The most common DNS records for a domain are as follows:</p>
-			<table id="table001-6" class="No-Table-Style _idGenTablePara-1">
-				<colgroup>
-					<col>
-					<col>
-				</colgroup>
-				<tbody>
-					<tr class="No-Table-Style">
-						<td class="No-Table-Style">
-							<p><b>Record </b><b>Type (name)</b></p>
-						</td>
-						<td class="No-Table-Style">
-							<p><b>Value </b><b>and description</b></p>
-						</td>
-					</tr>
-					<tr class="No-Table-Style">
-						<td class="No-Table-Style">
-							<p><b>A</b></p>
-						</td>
-						<td class="No-Table-Style">
-							<p>An IPv4 address. This is the main record that points to the public IP of your server.</p>
-						</td>
-					</tr>
-					<tr class="No-Table-Style">
-						<td class="No-Table-Style">
-							<p><b>AAAA</b></p>
-						</td>
-						<td class="No-Table-Style">
-							<p>An IPv6 address. Points to the public IPv6 address of your server.</p>
-						</td>
-					</tr>
-					<tr class="No-Table-Style">
-						<td class="No-Table-Style">
-							<p><b>CNAME</b></p>
-						</td>
-						<td class="No-Table-Style">
-							<p>Creates an alias to a domain, so you can point multiple domains to the same destination without creating multiple A/AAAA records. This can be used to create subdomains.</p>
-						</td>
-					</tr>
-					<tr class="No-Table-Style">
-						<td class="No-Table-Style">
-							<p><b>TXT</b></p>
-						</td>
-						<td class="No-Table-Style">
-							<p>A plain text record, which is often used with some form of validation of ownership for a domain.</p>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Table 10.1 – DNS record types</p>
-			<p>Depending on the registrar and the service hired, you may never see or have to deal with these records, as some registrars/web hostings manage them automatically for you.</p>
-			<p>Subdomains do not need to be bought from a registrar, only configured. You can create as many as you please for your own domain. Some common subdomains are as follows:</p>
-			<ul>
-				<li><b>www</b>: For <b>World Wide Web</b>, or a web page. Nowadays, this subdomain is often used as a synonym for the domain.</li>
-				<li><b>app</b>: For applications.</li>
-				<li><b>admin</b>: For administration access.</li>
-				<li><b>mail</b>: For email services.</li>
-			</ul>
-			<p>Using subdomains, you can host multiple websites off the same domain/host. We will see later how to configure one for our application on our web server. At this point, what we need to remember is that a domain or a subdomain will point as a final destination to your server.</p>
-			<h6>A note about the loopback address</h6>
-			<p class="callout">Following the previous examples, the “domain” name reserved for the loopback (home) address is </span><span class="No-Break"><b>localhost</b></span><span class="No-Break">.</p>
-			<p>The domain where our application will be hosted is the first step to having a presence on the internet. With it, we are in place to move to the next consideration – where it will be placed in that domain.</p>
-			<h2>Considerations for building our application for deployment</h2>
-			<p>Once we have our domain/subdomain, we need to decide (or know) on which path the application will be located. The path is what follows the domain, in segments separated by a forward slash (<b>/</b>) – for example, <b>mydomain.com/store/product.html</b>. These sections are called “paths” because they follow the same directory structure as mirrored in the local storage. Our application will be served through a <b>web server</b>. These amazing pieces of software are built around the concept of serving files following the directory structure (<b>folder/subfolder/file...</b>). Internally, our server will match a domain request to the files in a local directory. Here is where we need to know whether the Vue application will be placed at the root, or on a path (directory), as we need to indicate this for the build process if we are using Vue Router in the web history mode (review <a href="https://learning.oreilly.com/library/view/vue-js-3-design/9781803238074/B18602_05.xhtml#_idTextAnchor130"><i>Chapter 5</i></span></a>, <i>Single-Page Applications</i>, if you need a refresher on this topic). In this case, we need to make <span class="No-Break">two modifications:</p>
-			<ul>
-				<li>Indicate the <i>root </i>path for the application in our Router configuration</li>
-				<li>Configure the web server to alter the directory/file service and route all the requests to the <b>index.html</b></span><span class="No-Break"> file</li>
-			</ul>
-			<p>If our application is placed in <b>mydomain.com</b><b>/app</b> using the web history mode, then we need to alter our router definition by passing the “base path” to the creator function. So, if we look at the router from our SPA example application in <a href="https://learning.oreilly.com/library/view/vue-js-3-design/9781803238074/B18602_05.xhtml#_idTextAnchor130"><i>Chapter 5</i></span></a>, <i>Single-Page Applications</i>, we can modify it <span class="No-Break">as follows:</p>
-			<p class="SC---Heading" lang="en-US" xml:lang="en-US">/chapter 5/to-do SPA/src/router/index.js</p>
-			<pre class="source-code">import { createWebHistory } from "vue-router"
-// ...
-router = createRouter({
-history: <b>createWebHistory</b>(<b>'/app'</b>),
-routes,
-// ...
-}
-})</pre>
-			<p>Note the minor change, where we pass the base path to the <b>createWebHistory</b> constructor instead of using <b>createWebHashHistory()</b>. Of course, if the application uses the hash mode, it doesn’t matter where it is placed in our path. This is because in this mode, all routing navigation will be passed after the hash while pointing to our <b>index.html</b> file. For example, if our router has a route called <b>/description</b>, using the hash mode will make the address <b>mydomain.com/app</b><b>#description</b> (the hash mode) instead of <b>mydomain.com/app</b><b>/description</b> (the web history mode).</p>
-			<h6>Hashes in web addresses</h6>
-			<p class="callout">The hash in an address indicates a link to a section on the page/file, according to the HTML standard, and is used by Vue to manage the defined routes when in the hash mode.</p>
-			<p>Having provisioned the destination of our application, we can now build the production code through Vite with the following command on the terminal:</p>
-			<pre class="console"> $ npm run build</pre>
-			<p>By default, the final production-ready files for our entire application will be placed in the <b>/dist</b> folder (at the same level as our <b>/src</b> folder). Now, with our built distribution files, we are ready to upload them to a server once we have set the proper configuration.</p>
-			<h2>Web server options and configurations</h2>
-			<p>When is time to upload our application to a server, we are faced with many options, based on the type of service and web server application provided. This combination of items is usually referred to as the “hosting” server, which includes the operating system, machine configuration, architecture type, and especially, the web server software. Here is a list of some of the most common options for each category:</p>
-			<table id="table002-1" class="No-Table-Style _idGenTablePara-1">
-				<colgroup>
-					<col>
-					<col>
-					<col>
-				</colgroup>
-				<tbody>
-					<tr class="No-Table-Style">
-						<td class="No-Table-Style">
-							<p><b>Operating system</b></p>
-						</td>
-						<td class="No-Table-Style">
-							<p><b>Linux </b><b>or Windows</b></p>
-						</td>
-						<td class="No-Table-Style">
-							<p><b>For our Vue 3 application, this choice </b><b>is inconsequential</b></p>
-						</td>
-					</tr>
-					<tr class="No-Table-Style">
-						<td class="No-Table-Style" rowspan="6">
-							<p><b>Hosting type</b></p>
-						</td>
-						<td class="No-Table-Style">
-							<p><b>Shared</b></p>
-						</td>
-						<td class="No-Table-Style">
-							<p>Our application will reside in a server in a private area of the storage but will share all the resources with other applications. Access to configuration is usually done through a web control panel</p>
-						</td>
-					</tr>
-					<tr class="No-Table-Style">
-						<td class="No-Table-Style">
-							<p><b>Virtual Private </b><b>Server (VPS)</b></p>
-						</td>
-						<td class="No-Table-Style">
-							<p>We are provided with a virtual machine with full access to the entire configuration and resources, usually through a direct connection with a remote terminal</p>
-						</td>
-					</tr>
-					<tr class="No-Table-Style">
-						<td class="No-Table-Style">
-							<p><b>Managed VPS</b></p>
-						</td>
-						<td class="No-Table-Style">
-							<p>Like a VPS, but we are provided with a web control panel or other services to manage the machine</p>
-						</td>
-					</tr>
-					<tr class="No-Table-Style">
-						<td class="No-Table-Style">
-							<p><b>Private server</b></p>
-						</td>
-						<td class="No-Table-Style">
-							<p>Here, we rent real hardware from the hosting provider and have full liberty to all their resources</p>
-						</td>
-					</tr>
-					<tr class="No-Table-Style">
-						<td class="No-Table-Style">
-							<p><b>Self-hosted</b></p>
-						</td>
-						<td class="No-Table-Style">
-							<p>We connect a server directly to the internet by our own means and an internet connection</p>
-						</td>
-					</tr>
-					<tr class="No-Table-Style">
-						<td class="No-Table-Style">
-							<p><b>Collocated</b></p>
-						</td>
-						<td class="No-Table-Style">
-							<p>We provide a server to a server farm, where they take care of physical needs. We manage the server remotely with full control of software and hardware</p>
-						</td>
-					</tr>
-					<tr class="No-Table-Style">
-						<td class="No-Table-Style" rowspan="2">
-							<p><b>Web server</b></p>
-						</td>
-						<td class="No-Table-Style">
-							<p><b>Apache HTTP</b></p>
-						</td>
-						<td class="No-Table-Style">
-							<p>This server is stable and heavily used in Linux and shared hosting</p>
-						</td>
-					</tr>
-					<tr class="No-Table-Style">
-						<td class="No-Table-Style">
-							<p><b>Nginx</b></p>
-						</td>
-						<td class="No-Table-Style">
-							<p>A smaller and fast web server, famous for managing very well a large number of concurrent connections, with efficient use of resources. Very easy to manage and very popular for VPS hosting</p>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Table 10.2 - Common hosting options per category</p>
-			<p>In the case of Vue 3 applications, we aim to have a web server that is fast and reliable to attend to multiple requests simultaneously by serving static files. We do not require much CPU processing power, as we do not run code on the server, so our requirements for hardware and software are very low, so much so that practically any “static file server” would do. Most likely, our application will be part of a much larger infrastructure with other requirements, but those used to serve our Vue 3 app in and of itself are low.</p>
-			<p>The key consideration here is, again, whether we are using the web history mode in our router. In that case, we need to include a configuration to the web server software to direct all requests to the entry point of our Vue application (our <b>index.html</b>) when a request does not match the standard (a file in the folder directory). This may sound complicated but is rather simple. Directly from the official Vue Router documentation, here are examples of the two web servers.</p>
-			<h3>Apache HTTP Server configuration</h3>
-			<p>The Apache HTTP Server is used heavily in shared hosting providers and allows us to alter the configuration for requests by placing a single file in the root directory of the web application. This is very convenient and simple, but it does require that the hosting provider has enabled (or through the administration panel, allowed the user to enable) a special module that allows us to rewrite the incoming requests. The official documentation (<a href="https://router.vuejs.org/guide/essentials/history-mode.html">https://router.vuejs.org/guide/essentials/history-mode.html#apache</a>) shows this example:</p>
-			<p class="SC---Heading" lang="en-US" xml:lang="en-US">/.htaccess</p>
-			<pre class="source-code">&lt;IfModule mod_negotiation.c&gt;
-&nbsp;&nbsp;Options -MultiViews
-&lt;/IfModule&gt;
-&lt;IfModule mod_rewrite.c&gt;
-&nbsp;&nbsp;RewriteEngine On
-&nbsp;&nbsp;RewriteBase <b>/</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>//1</b>
-&nbsp;&nbsp;RewriteRule ^index\.html$ - [L]
-&nbsp;&nbsp;RewriteCond %{REQUEST_FILENAME} !-f
-&nbsp;&nbsp;RewriteCond %{REQUEST_FILENAME} !-d
-&nbsp;&nbsp;RewriteRule . /index.html [L]
-&lt;/IfModule&gt;</pre>
-			<p>The preceding file should be placed alongside our <b>index.html</b> file. Every incoming request will then be routed to it and captured by Vue Router in the web history mode. Also, note in line <b>//1</b>, the <b>RewriteBase</b> rule. Here is where we change the path of our application, if not placed at the root of the domain.</p>
-			<h3>Nginx server configuration</h3>
-			<p>In the case of VPSes and private servers, the NGINX server is quite popular for how flexible and performant it is. It can behave as a reverse proxy, load balancer, and much more. Installing this server in a VPS with Linux/Windows is rather trivial, but we will not cover it here. You can see the documentation for each system at </span><a href="https://www.nginx.com/resources/wiki/start/topics/tutorials/install/"><span class="No-Break">https://www.nginx.com/resources/wiki/start/topics/tutorials/install/</span></a><span class="No-Break">.</p>
-			<p>Unlike Apache with the <b>.htaccess</b> files, we need to modify the server configuration file for our site. In Linux, this is usually placed in /etc/nginx/sites-available. The file follows a simple schema where, for each virtual server, we declare the location path (as in the domain path) and the location on the local storage (the directory or folder). Here is an example file from a Linux server:</p>
-			<p class="SC---Heading" lang="en-US" xml:lang="en-US">/etc/nginx/sites-available/default</p>
-			<pre class="source-code">server {
-&nbsp;&nbsp;&nbsp;&nbsp;listen 80;
-&nbsp;&nbsp;&nbsp;&nbsp;index index.html;
-&nbsp;&nbsp;&nbsp;&nbsp;root <b>/home/user/www</b>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>//1</b>
-&nbsp;&nbsp;&nbsp;&nbsp;server_name <b>www.mydomain.com mydomain.com</b>;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>//2</b>
-&nbsp;&nbsp;&nbsp;&nbsp;location <b>/</b> {&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>//3</b>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try_files $uri $uri/ /index.html;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>//4</b>
-&nbsp;&nbsp;&nbsp;&nbsp;}
-}</pre>
-			<p>Let’s look at the preceding code:</p>
-			<ul>
-				<li>In line <i>//1</i>, we place the local storage absolute path to our application.</li>
-				<li>In line <i>//2</i>, we declare the domains and subdomains that will be associated with this server block.</li>
-				<li>In line <i>//3,</i> we declare the location path to process. In this example, we are placing the application at the root (<b>/</b>). If placed in <b>mydomain.com/app</b>, we would write <b>location /app</b></span><span class="No-Break">.</li>
-				<li>Finally, in line <i>//4,</i> we tell NGINX to try to find a valid directory/file and, if not, pass it through to our <b>index.html</b></span><span class="No-Break"> file.</li>
-			</ul>
-			<p>As before, if we are using the web hash mode, then we do not need to do these changes. We can just use the default configuration to serve the files from the disk.</p>
-			<h3>Other servers</h3>
-			<p>There are many other servers in use and possible configurations that are not possible to cover here. However, the official Vue Router documentation has very good examples for other servers and guidelines for those not covered. You can find the reference at this link: </span><a href="https://router.vuejs.org/guide/essentials/history-mode.html#example-server-configurations"><span class="No-Break">https://router.vuejs.org/guide/essentials/history-mode.html#example-server-configurations</span></a><span class="No-Break">.</p>
-			<p>Let’s see now how to move our files onto our online server.</p>
-			<h2>Transferring your files to the server</h2>
-			<p>Armed now with the domain pointing to our server and the configurations in place, it is time to upload our distribution files. Depending on your choice of hosting, this could be done through a web interface, a <b>File Transfer Protocol</b> (<b>FTP</b>) application, or secure transfer over the <b>Secure Shell Protocol</b> (<b>SSH</b>). For the last two options, it is recommended to use an application that takes care of the heavy lifting. An excellent option is to use FileZilla (<a href="https://filezilla-project.org/">https://filezilla-project.org/</a>), which handles the aforementioned protocols. It is available for Linux, Windows, and macOS.</p>
-			<p>As we mentioned in <a href="https://learning.oreilly.com/library/view/vue-js-3-design/9781803238074/B18602_09.xhtml#_idTextAnchor199"><i>Chapter 9</i></span></a>, <i>Testing and Source Control</i>, you can also configure your VPS/server to pull the source code from a remote repository using <b>Git</b>. In this case, the application folder will be configured to point to the <b>/dist</b> folder in the local repository. We could, for example, open a remote terminal to the server, trigger a synchronization (pull), and then bundle the application on the server itself, pull a branch that already has the application bundled, push our commits directly to the server, and so on. There are many options when using Git, and a few more when using a service such as <b>GitHub</b> or <b>GitLab</b> with powerful tools for <i>continuous integration and delivery</i>. This is a topic worth exploring if you do not want to use S/FTP applications or want to automate the process. Each implementation would be specific and out of the scope of this book, so we will move on to the next topic, assuming that our files are now on <span class="No-Break">the server.</p>
-			<h2>Protecting your web application with Let’s Encrypt</h2>
-			<p>Internet addresses are included at the very beginning of the protocol being used. By default, all web navigation is done using the <b>Hypertext Transfer Protocol</b> (<b>HTTP</b>), which, while foundational, is not considered secure. When an encryption layer between the client and the server is provided, then the communication is done over <b>HTTPS</b> (the <b>S</b> standing for <b>Secure</b>). This encryption layer is provided and validated by a certifying authority, so the certificate must be bought from such one. Hosting providers usually have the option to buy and install one on their servers, but there is also a free and reliable alternative provided by the <b>Let’s Encrypt</b> foundation (</span><a href="https://letsencrypt.org/"><span class="No-Break">https://letsencrypt.org/</span></a><span class="No-Break">).</p>
-			<p>To install a <i>Let’s Encrypt</i> certificate, you need shell access to your server. If not, then you must rely on the service provided by the hosting. The list of certified hosting providers compatible is here: </span><a href="https://certbot.eff.org/hosting_providers"><span class="No-Break">https://certbot.eff.org/hosting_providers</span></a><span class="No-Break">.</p>
-			<p>In the case that we have access to a server through remote shell access, the process is also straightforward. The Let’s Encrypt foundation and the <b>Electronic Frontier Foundation</b> (<b>EFF</b>) provide an application called <b>certbot</b> (certification robot), which automates the installation of security certificates and also configures the local web server files to use HTTPS. In this case, we have two options:</p>
-			<ul>
-				<li>Install a certificate for each domain and each subdomain</li>
-				<li>Install a <i>wild card certificate</i>, which covers each domain and all possible subdomains</li>
-			</ul>
-			<p>The instructions to install the <i>certbot </i>and then run the process differ for each operating system and web server, and the type of certificate mentioned. Because of this, the EFF provides a web page with configurable options for each possible variation and easy-to-follow steps. The wizard can be found here: </span><a href="https://certbot.eff.org/"><span class="No-Break">https://certbot.eff.org/</span></a><span class="No-Break">.</p>
-			<div>
-				<div>
-					<img src="https://learning.oreilly.com/api/v2/epubs/urn:orm:book:9781803238074/files/image/Figure_10.02_B18602.jpg" alt="Figure 10.2 – Certbot instructions for NGINX and Ubuntu 20" width="1650" height="384">
-				</div>
-			</div>
-			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 10.2 – Certbot instructions for NGINX and Ubuntu 20</p>
-			<p>In general, the instructions follow these steps:</p>
+
+			<p>These types of testing are just a small sample of this discipline,
+ as there are hundreds of possible tests to apply to the software. Large
+ companies may have entire testing teams dedicated to ensuring the 
+quality of the software. Usually, the more complex the software, the 
+more complex the testing may be. In practice, the testing plan can be as
+ complex as the development plan itself. As mentioned in the 
+introduction, we will focus on the official tools provided by the Vue 
+team for <span class="No-Break">this task.</span></p>
+
+			<p>Testing<a id="_idIndexMarker694"></a> can be done before, during, after, or in parallel with the development. <strong class="bold">TDD</strong> is a <a id="_idIndexMarker695"></a>discipline
+ that places the burden of testing as early in the project as possible, 
+even before the actual coding begins, with the objective to match the 
+requirements. It involves the <span class="No-Break">following steps:</span></p>
+
 			<ol>
-				<li>Install </span><span class="No-Break"><b>certbot</b></span><span class="No-Break">.</li>
-				<li>Run <b>certbot</b>. This will present a series of options, with all the found dominions found on the given web server.</li>
-				<li>Select the type of certificate to install.</li>
-				<li>Select, if active, the auto-renewal of the certificate. Rejecting this will require manual renewal.</li>
+
+				<li>Write a test case, based on the requirements and design of the application, with key inputs and <span class="No-Break">expected outputs.</span></li>
+
+				<li>Run the test, which should fail (as there is no code <span class="No-Break">written yet).</span></li>
+
+				<li>Write the actual code to be tested (a function, Vue <span class="No-Break">component, etc.).</span></li>
+
+				<li>Run the test against the created code. If it fails, refactor the code <span class="No-Break">or design.</span></li>
+
+				<li>Start again with a new test case for the <span class="No-Break">next unit.</span></li>
+
 			</ol>
-			<p>The free certificate is only valid for 3 months at a time, as opposed to a commercial certificate, which can be bought for more time. After 3 months, it must be manually renewed. Luckily, <i>certbot </i>includes a function to perform automatic updates before the expiration period is due.</p>
-			<p>Even for simple test applications, it is important and recommendable to always protect a website with a security certificate. Let’s also remember that having a security certificate and serving an application over HTTPS is a hard requirement for PWAs.</p>
-			<h2>Summary</h2>
-			<p>In this chapter, we covered the basics for publishing our Vue application in its own public space on the internet. We also learned important concepts for understanding instructions when buying and reserving a domain and setting DNS records if and when prompted to do so. We also learned about how to accommodate our bundle configuration when using the HTML5 history mode in Vue Router, the different types of online hosting we can hire, options for copying our distribution files onto the production server, and guidelines for securing our website with a free Let’s Encrypt certificate to serve our applications over HTTPS. All of these are important skills, and you will benefit from having the experience of executing these skills at least once.</p>
-			<p>With the deployment of our application, we have covered in this book the main steps and topics to construct a Vue 3 application, from the introduction of the framework all the way to testing our individual components and installing our production-ready files in a web server. In some cases, we have gone beyond the basics to see advanced topics, which are an important addition to a professional developer. If you have followed the concepts and code examples this far, you have acquired important skills to help you in your professional development. But this is not the end of this book, as you can find additional bonus content next.</p>
-			<p>I extend my appreciation and gratitude to you, dear reader, for your interest in Vue 3 and in acquiring this book, which summarizes many years of experience developing applications. I hope it becomes a source of reference and encouragement to keep learning, and I wish you the best of success in your personal and professional career.</p>
-			<p>Sincerely,</p>
-			<p><b>Pablo </b><b>D. Garaguso</b></p>
-			<h2>Review questions</h2>
+
+			<p>This process is repeated, and it is expected to provide developers
+ with a significant reduction of “bugs” and errors and help them focus 
+on the requirements. This does incur an overhead of effort early in the 
+project, as opposed to refactoring, when the tests are performed toward <span class="No-Break">the end.</span></p>
+
+			<p>TDD has <a id="_idIndexMarker696"></a>become popular in some teams
+ and with some frameworks, and it is supposed to help developers improve
+ their own code as they now acquire a “testing” mindset. However, there 
+are no specific studies made to confirm this, but practitioners of this 
+discipline do report that it has improved their code and design. This, 
+of course, begs the question: what needs to be tested, and how can we 
+streamline the task into our workflow? That is the topic we will <span class="No-Break">discuss next.</span></p>
+
+			<h1 id="_idParaDest-163"><a id="_idTextAnchor203"></a>What to test</h1>
+
+			<p>A key<a id="_idIndexMarker697"></a> factor in the success of a 
+good testing plan and implementation is deciding what to test. It is not
+ possible to test the full universe of possibilities or 100% of the 
+components and interactions in a project when considering internal and 
+external factors. Even the attempt to fully cover all possibilities 
+would be incredibly expensive and practically impossible. Instead, the 
+focus needs to be on the real possibilities of what can be tested within
+ our time and budget constraints, by carefully selecting the non-trivial
+ elements that “make or break” our project requirements. This is often 
+not an <span class="No-Break">easy task.</span></p>
+
+			<p>When it comes to Vue applications, we need to <a id="_idIndexMarker698"></a>focus on crucial services and components that perform key operations. We need to test <span class="No-Break">the following:</span></p>
+
 			<ul>
-				<li>What is a top-level domain, and how is it different from a domain?</li>
-				<li>Is there a limit to the number of subdomains we can create for our domain? Why?</li>
-				<li>What is a DNS? What are DNS records?</li>
-				<li>What are the options currently for publishing your web application on the internet?</li>
-				<li>What considerations in our code and web server do we need to make when using Vue Router in web history mode?</li>
-				<li>What are some common web servers found in shared hosting and VPSes?</li>
-				<li>What is certbot and what does it do?</li>
+
+				<li><strong class="bold">Services</strong>: Self-contained<a id="_idIndexMarker699"></a>
+ functions, both synchronous and asynchronous. Functions that don’t 
+return a value but perform logical procedures will serve a different 
+kind of testing than what we will see here. These will involve mocking 
+network communications or database calls, application policies, and so 
+on. However, the principles for testing these <span class="No-Break">are similar.</span></li>
+
+				<li><strong class="bold">Components</strong>: We need to<a id="_idIndexMarker700"></a>
+ test inputs (props) and outputs (events and HTML). Higher-level 
+components that group other components to perform a workflow or business
+ logic can also be tested in the same way (props, events, and HTML 
+rendered). However, these also will need other types of testing, such as
+ <span class="No-Break">end-to-end testing.</span></li>
+
 			</ul>
-		</div>
-	</div></div>
+
+			<p>We can write our own functions and tools to perform tests, but 
+apart from some edge cases, the obvious recommendation is to use stable 
+test suites and tools. In our case, for Vue, there are official 
+resources provided by the <a id="_idIndexMarker701"></a>same team, called <strong class="bold">Vitest</strong> and <strong class="bold">Vue Test Utils</strong>. Using <a id="_idIndexMarker702"></a>a
+ testing suite/library has many benefits, akin to the use of a framework
+ or library in the “regular” development of an application. Perhaps one 
+of the major benefits has to do with <strong class="bold">DX</strong>, or <strong class="bold">Developer eXperience</strong>, as they <a id="_idIndexMarker703"></a>streamline
+ and make the development process easier or lighter in the best case. 
+Let’s learn how to apply these tools in our workflow by going through an
+ example application, which we will address in the <span class="No-Break">next section.</span></p>
+
+			<h1 id="_idParaDest-164"><a id="_idTextAnchor204"></a>Our base example application</h1>
+
+			<p>It is <a id="_idIndexMarker704"></a>best to understand the 
+discipline of testing and learn about the tools by applying them to a 
+real project through practice. As a learning exercise, we will first 
+take a running application based on one of the examples presented in <a href="https://learning.oreilly.com/library/view/vue-js-3-design/9781803238074/B18602_02.xhtml#_idTextAnchor040"><span class="No-Break"><em class="italic">Chapter 2</em></span></a>, <em class="italic">Software Design Principles and Patterns</em>. We will build a <strong class="bold">Fibonacci calculator</strong>
+ and install the Vitest test suite and Vue Testing Utils to the project.
+ Later, we will explain what would change in this approach when applying
+ the <span class="No-Break">TDD discipline.</span></p>
+
+			<p>The code for this application can be found in the repository for this chapter. <span class="No-Break">Once downloaded,</span>
+
+you need to execute the following command to install <span class="No-Break">the dependencies:</span></p>
+
+			<div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="console">
+
+$ npm install</pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div>
+
+			<p>Then, to run the application, you must run <span class="No-Break">the following:</span></p>
+
+			<div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="console">
+
+$ npm run start</pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div>
+
+			<p>When the server is ready, loading the site in your web browser should present you with an application <span class="No-Break">like this:</span></p>
+
+			<div>
+
+				<div id="_idContainer066" class="IMG---Figure">
+
+					<img src="Chapter%2099%20Testing%20and%20Source%20Control%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_9.01_B18602.jpg" alt="Figure 9.1 – The example application with a Fibonacci calculator" width="1331" height="231">
+
+				</div>
+
+			</div>
+
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 9.1 – The example application with a Fibonacci calculator</p>
+
+			<p>The design of this application has been made with the purpose of 
+learning the basics of testing functions and components, so it is very 
+basic but sufficient. We are presented with one service file (<strong class="source-inline">/src/services/Fibonacci.js</strong>) and three components: <strong class="source-inline">App.vue</strong>, <strong class="source-inline">FibonacciInput.vue</strong>, <span class="No-Break">and </span><span class="No-Break"><strong class="source-inline">FibonacciOutput.vue</strong></span><span class="No-Break">.</span></p>
+
+			<div>
+
+				<div id="_idContainer067" class="IMG---Figure">
+
+					<img src="Chapter%2099%20Testing%20and%20Source%20Control%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_9.02_B18602.jpg" alt="Figure 9.2 – Components and service for the application" width="640" height="206">
+
+				</div>
+
+			</div>
+
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 9.2 – Components and service for the application</p>
+
+			<p>Our application-level component, <strong class="source-inline">App.vue</strong>, receives from <strong class="source-inline">FibonacciInput.vue</strong> a positive integer number through an event, which passes as a prop input to <strong class="source-inline">FibonacciOutput.vue</strong>. This component uses the <strong class="source-inline">Fibonacci.js</strong>
+ service to calculate the respective Fibonacci number corresponding in 
+the series and present it to the user. As simple as this application 
+sounds, it gives us basic examples to create tests for the most common <a id="_idIndexMarker705"></a>cases, which will give us a solid start. It is now time to install our <span class="No-Break">test suite.</span></p>
+
+			<h1 id="_idParaDest-165"><a id="_idTextAnchor205"></a>Installation and use of Vitest</h1>
+
+			<p><strong class="bold">Vitest</strong> (<a href="https://vitest.dev/">https://vitest.dev/</a>) is a<a id="_idIndexMarker706"></a> test suite, meaning that it provides, out of the box, a set of tools and a<a id="_idIndexMarker707"></a>
+ framework to perform tests in our code. Being developed by the Vue and 
+Vite teams, it integrates seamlessly with Vite, even sharing the same 
+configuration and respecting each other’s organization. <em class="italic">Vitest </em>can
+ be selected during the original creation of a Vue project by selecting 
+the proper option during the creation wizard – a task that will add a <strong class="source-inline">/src/__tests__</strong> folder, some examples, and a few extra entries in our <strong class="source-inline">package.json</strong> file. But all this boilerplate can be a bit confusing <a id="_idIndexMarker708"></a>unless
+ we have previous experience in this area. Instead, we start from an 
+already created project, so we will install Vitest as a development 
+dependency – a task that will give us an insight into how it works and <span class="No-Break">is organized.</span></p>
+
+			<p>Install Vitest from the command line at the root directory of the project with <span class="No-Break">this command:</span></p>
+
+			<div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="console">
+
+$ npm install -D vitest</pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div>
+
+			<p>The package manager will take some time to include Vitest and all 
+necessary dependencies but won’t modify our source code or organization.
+ For convenience, we will use <strong class="source-inline">npm</strong> as well to run our tests, so we need to open our <strong class="source-inline">package.json</strong> file, and in the <strong class="source-inline">scripts</strong> section, enter the following lines so the section looks <span class="No-Break">like this:</span></p>
+
+			<div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="source-code">
+
+"scripts": {
+
+&nbsp;&nbsp;&nbsp;&nbsp;"start":"vite",
+
+&nbsp;&nbsp;&nbsp;&nbsp;"build": "vite build",
+
+&nbsp;&nbsp;&nbsp;&nbsp;"preview": "vite preview",
+
+<strong class="bold">&nbsp;&nbsp;&nbsp;&nbsp;"test": "vitest",</strong>
+
+<strong class="bold">&nbsp;&nbsp;&nbsp;&nbsp;"test:once": "vitest run",</strong>
+
+<strong class="bold">&nbsp;&nbsp;&nbsp;&nbsp;"test:coverage": "vitest run --coverage"</strong>
+
+}</pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div>
+
+			<p>At this point, we can now test our <span class="No-Break">test suite:</span></p>
+
+			<div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="console">
+
+$ npm run test</pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div>
+
+			<p>After you <a id="_idIndexMarker709"></a>run that command, you will
+ be graciously greeted with a red message explaining that the tests have
+ failed. Perfect. This is what it should do, as we do not have any tests
+ yet! So, let’s add them. We will start by testing our <span class="No-Break"><strong class="source-inline">Fibonacci.js</strong></span><span class="No-Break"> service.</span></p>
+
+			<p>Vitest allows us to write our test functions in independent files 
+or in-source, meaning that we place them alongside our component’s 
+JavaScript. There are benefits and trade-offs with both approaches, but 
+to start, we will place our test code in independent files, one for each
+ service and component. In this way, we place these files in their own 
+directory, which by convention can be either <strong class="source-inline">/src/tests</strong> or <strong class="source-inline">/src/components/__tests__</strong>,
+ but they could also be placed alongside the Single File Components or 
+with the services. Vitest will scan the entire source folder for the 
+test files. Even though we can be very creative when placing these 
+files, we will place them in <strong class="source-inline">/src/test</strong>
+ to keep things neat and tidy. There is another convention to adhere to,
+ which is that each test file must have the same name as the file being 
+tested, plus the <strong class="source-inline">.spec.js</strong> or <strong class="source-inline">.test.js</strong> extension. Vitest uses this convention to identify and run the tests in an organized manner. So, in our case, our <strong class="source-inline">Fibonacci.js</strong> service will have its testing counterpart in <strong class="source-inline">/src/tests/Fibonacci.test.js</strong>. Go ahead and create that file, and enter the <span class="No-Break">following lines:</span></p>
+
+			<p class="SC---Heading" lang="en-US" xml:lang="en-US">/src/tests/Fibonacci.test.js</p>
+
+			<div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="source-code">
+
+import { <strong class="bold">describe, expect, test</strong> } from "vitest"
+
+import { Fibonacci, FibonacciPromise } from "../services/Fibonacci.js"</pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div>
+
+			<p>In the first line, we<a id="_idIndexMarker710"></a> import three 
+functions from Vitest, which are the foundation of all our testing, and 
+the ones that we will be using most often. Here is what each <span class="No-Break">one does:</span></p>
+
+			<ul>
+
+				<li><strong class="source-inline">describe(String, Function)</strong>:
+ This function groups together a number of tests, and Vitest will report
+ the test group by using the description given as the first parameter. 
+The second parameter is a function, where we will run the tests with the
+ <span class="No-Break"><strong class="source-inline">test()</strong></span><span class="No-Break"> function.</span></li>
+
+				<li><strong class="source-inline">test(String, Function)</strong>: 
+The first parameter is a description of the tests encompassed in the 
+second parameter, which is a function. The test will “pass” if no errors
+ are thrown within it. This means that we can write our own test logic 
+and tools following this condition and throw a JavaScript error when the
+ validation fails. However, there is a <span class="No-Break">simpler approach...</span></li>
+
+				<li><strong class="source-inline">expect(value)</strong>: This is 
+the function that performs the “magic” of testing. It receives, as a 
+unique argument, a single value or a function that resolves to a single 
+value. The result of <strong class="source-inline">expect()</strong> is a
+ chainable object that exposes many different and almost 
+language-natural assertions (comparisons, validations, etc.) to perform 
+on the argument value. Under the hood, it uses the Chia syntax to a 
+certain extent and is also compatible with other test suites, such as 
+Jest – for example, <strong class="source-inline">expect(2).toBe(2)</strong>. A full list of all the possible assertion methods can be found in the official documentation <span class="No-Break">here: </span><a href="https://vitest.dev/api/expect.html"><span class="No-Break">https://vitest.dev/api/expect.html</span></a><span class="No-Break">.</span></li>
+
+			</ul>
+
+			<p>In the second line of the test file, we directly import the two functions contained in the service: <strong class="source-inline">Fibonacci()</strong> and <strong class="source-inline">FibonacciPromise()</strong>.
+ We need to import each function that we want to test, and then create 
+as many test groups as necessary for each one. Let’s start with the 
+self-contained <strong class="source-inline">Fibonacci()</strong> function by adding the following <span class="No-Break">test group:</span></p>
+
+			<div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="source-code">
+
+<strong class="bold">describe</strong>("Test the results from Fibonacci()", () =&gt; {
+
+ <strong class="bold">test</strong>("Results according to the series definition", ()=&gt;{
+
+&nbsp;&nbsp;&nbsp;&nbsp;// Expected values as defined by the series
+
+&nbsp;&nbsp;&nbsp;&nbsp;<strong class="bold">expect(</strong>Fibonacci(0)<strong class="bold">).toBe(0)</strong>
+
+&nbsp;&nbsp;&nbsp;&nbsp;expect(Fibonacci(1)).toBe(1)
+
+&nbsp;&nbsp;&nbsp;&nbsp;expect(Fibonacci(2)).toBe(1)
+
+&nbsp;&nbsp;&nbsp;&nbsp;expect(Fibonacci(3)).toBe(2)
+
+&nbsp;&nbsp;&nbsp;&nbsp;// A known value defined by calculation of the series
+
+&nbsp;&nbsp;&nbsp;&nbsp;expect(Fibonacci(10)).toBe(55)
+
+ })
+
+})</pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div>
+
+			<p>We start by <a id="_idIndexMarker711"></a>creating a test group with <strong class="source-inline">describe()</strong> and create inside the passed function as many tests as needed. Inside each <strong class="source-inline">test()</strong>
+ function, we can create as many assertions as needed, but it has to 
+have at least one. Notice how we are executing the function from the 
+service with different arguments, and then asserting them to the 
+expected value as defined in the numerical series. In this case, we are 
+using <strong class="source-inline">.toBe() </strong>to test equality, but in the same way, we could be testing strings, objects, types, and so on, using other assertions, such as <strong class="source-inline">.not, .toEqual, .toBeGreaterThan</strong>, etc. There are more than 50 assertion methods defined in the documentation (<a href="https://vitest.dev/api/expect.html">https://vitest.dev/api/expect.html</a>). Take some time to review them, and remember that these are chainable, so you can make more than one assertion <span class="No-Break">at once.</span></p>
+
+			<p>After saving this file, you can run the <span class="No-Break">test again:</span></p>
+
+			<div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="console">
+
+$ npm run test</pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div>
+
+			<p>You should receive a few messages in green, indicating the number 
+of tests performed and whether they passed or not. In the case that one 
+raises an error, it will be pointed out in red letters using the 
+descriptive text and line where it occurred. That is a sign to start 
+refactoring the code (assuming the test function and assertion were 
+properly and correctly written; otherwise, you get a <span class="No-Break">false positive!).</span></p>
+
+			<p>In the case that no assertion method works for a particular edge case, you can create inside <strong class="source-inline">test()</strong> your own logic in plain JavaScript and throw an error when the validation fails. For example, these two code snippets <span class="No-Break">are equivalent:</span></p>
+
+			<div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="source-code">
+
+// Using expect
+
+expect(Fibonacci(10)).toBe(55);
+
+// Using your own logic
+
+let result=Fibonacci(10);
+
+if(result!=55) throw Error("Calculation failed");</pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div>
+
+			<p>Even though this example is trivial, it is easy to see how the first case, using <strong class="source-inline">expect()</strong>, results in a <a id="_idIndexMarker712"></a>better developer experience, as it is succinct, elegant, and easy <span class="No-Break">to read.</span></p>
+
+			<p class="callout-heading">Vitest is still running!</p>
+
+			<p class="callout">Perhaps you have noticed that running <strong class="source-inline">npm run test</strong>
+ does not end the execution of the script once the tests have 
+terminated. Just like with a developer server, Vitest keeps waiting for 
+changes to occur to the source code or test files and automatically 
+reruns all the tests for you. If you want to run the tests only once, 
+use <strong class="source-inline">npm run test:once</strong> or <strong class="source-inline">vitest –-run</strong> to flag Vitest to run the tests only once and <span class="No-Break">then exit.</span></p>
+
+			<h2 id="_idParaDest-166"><a id="_idTextAnchor206"></a>Special assertion case – fail on purpose</h2>
+
+			<p>All the<a id="_idIndexMarker713"></a> previous assertions thus far
+ have been made using the “positive” approach that a function will 
+return what is expected. Using the “negative” approach in testing is to 
+make sure that a function will fail when it is supposed to. For example,
+ the Fibonacci series is not defined for negative numbers, so any 
+calculation should not return a value but should throw an error. In 
+these cases, we need to wrap the execution of the function in another 
+function, thus encapsulating it to test the assertion against a thrown 
+error. This would be the equivalent of using a <strong class="source-inline">try..catch</strong> block in plain JavaScript to avoid terminating the execution of the script when an error occurs. For example, executing <strong class="source-inline">Fibonacci(-5)</strong> should throw an error, so we will write our test case <span class="No-Break">as this:</span></p>
+
+			<div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="source-code">
+
+test("Out of range, must fail and throw an error", ()=&gt;{
+
+&nbsp;&nbsp;&nbsp;&nbsp;<strong class="bold">expect(()=&gt;</strong>Fibonacci(-5)<strong class="bold">).toThrow()</strong>
+
+})</pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div>
+
+			<p>The preceding<a id="_idIndexMarker714"></a> assertion will work as expected, without interrupting the <span class="No-Break">testing process.</span></p>
+
+			<h2 id="_idParaDest-167"><a id="_idTextAnchor207"></a>Special assertion case – asynchronous code</h2>
+
+			<p>Another <a id="_idIndexMarker715"></a>special case to keep in mind
+ is asynchronous code, such as network calls, promises, and so on. In 
+this case, the solution is to use <strong class="source-inline">async..await</strong>, not on the function but on <strong class="source-inline">expect</strong>. For example, to test the <strong class="source-inline">FibonacciPromise()</strong> asynchronous function, we would write a test <span class="No-Break">like this:</span></p>
+
+			<div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="source-code">
+
+test("Resolve promise", <strong class="bold">async </strong>()=&gt;{
+
+<strong class="bold">&nbsp;&nbsp;&nbsp;&nbsp;await </strong>expect(FibonacciPromise(10))<strong class="bold">.resolves</strong>.toBe(55)
+
+})</pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div>
+
+			<p>Notice how we are applying the <strong class="source-inline">async</strong> syntax to the entire test function, and <strong class="source-inline">await</strong> to the <strong class="source-inline">expect()</strong> function. We also need to use the <strong class="source-inline">.resolves</strong> assertion to indicate the successful resolution for the value to validate. If we needed to test a <strong class="source-inline">Promise</strong> rejection, we would use <strong class="source-inline">.rejects</strong> instead <span class="No-Break">of </span><span class="No-Break"><strong class="source-inline">.resolves</strong></span><span class="No-Break">.</span></p>
+
+			<p>With this, we have covered the majority of tools and test 
+approaches to get us started in unit-testing our plain JavaScript 
+functions. However, all these tests are executed using <strong class="bold">Node.js</strong> (the server version of JavaScript), not on the browser where our Vue components will be executed. In Node.js, there is no <strong class="bold">DOM</strong> or <strong class="bold">Windows</strong> object, so we don’t have any HTML... so how do we test our <strong class="bold">Single File Components</strong>? </p>
+
+			<p>The answer is to provide Vitest with a simulated DOM where we can 
+mount our components and run tests as if it were a browser window. Here 
+is where the Vue Test Utils tools come <span class="No-Break">into play.</span></p>
+
+			<h1 id="_idParaDest-168"><a id="_idTextAnchor208"></a>Installation of Vue Test Utils</h1>
+
+			<p>As of now, Vitest provides us, out of the box, with tools to test 
+plain JavaScript functions, classes, events, and so on. To test our 
+Single File Components, we need additional resources, and these are 
+provided to us again by the official <a id="_idIndexMarker716"></a>Vue team in the <a id="_idIndexMarker717"></a>form of <strong class="bold">Vue Test Utils</strong> (<a href="https://test-utils.vuejs.org/">https://test-utils.vuejs.org/</a>). To install them, run the <span class="No-Break">following command:</span></p>
+
+			<div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="console">
+
+$ npm install -D @vue/test-utils</pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div>
+
+			<p>Once the<a id="_idIndexMarker718"></a> installation has completed, we need to update our <strong class="source-inline">vite.config.js</strong>
+ file to include the environment where the components will be tested, 
+meaning a browser context. Modify the configuration file so it looks <span class="No-Break">like this:</span></p>
+
+			<div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="source-code">
+
+export default defineConfig({
+
+&nbsp;&nbsp;&nbsp;&nbsp;plugins: [vue()],
+
+&nbsp;&nbsp;&nbsp;&nbsp;<strong class="bold">test:{environment:"jsdom"}</strong>
+
+})</pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div>
+
+			<p>Vitest and Vue Test Utils both integrate seamlessly with Vite, to 
+the point that they share the same configuration file. You can now run 
+the test suite, and Vitest will attempt to download and install any 
+missing dependencies on the first run after these modifications. If for 
+some reason the installation of <strong class="source-inline">jsdom</strong> does not happen automatically, you can install it manually with <span class="No-Break">this command:</span></p>
+
+			<div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="console">
+
+$ npm install –D jsdom</pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div>
+
+			<p>Now, with these changes, we are ready to start our first component tests. Let’s start creating a file to test our <strong class="source-inline">FibonacciOutput.vue</strong> component, as it is the simplest, we have in our application. Create the following file in the test directory with <span class="No-Break">this code:</span></p>
+
+			<p class="SC---Heading" lang="en-US" xml:lang="en-US">/src/tests/FibonacciOutput.test.js</p>
+
+			<div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="source-code">
+
+import { describe, expect, test } from "vitest"
+
+<strong class="bold">import { mount } from "@vue/test-utils"</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong class="bold">#1</strong>
+
+import <strong class="bold">FibonacciOutput </strong>from "../components/FibonacciOutput.vue"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong class="bold">#2</strong>
+
+describe("Check Component props and HTML", () =&gt; {
+
+&nbsp;&nbsp;&nbsp;&nbsp;test("Props input and HTML output", () =&gt; {
+
+<strong class="bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const wrapper = mount(FibonacciOutput,</strong>
+
+<strong class="bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{ props: { number: 10 } })</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong class="bold">#3</strong>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expect(<strong class="bold">wrapper.text()</strong>).toContain(55)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong class="bold">#4</strong>
+
+&nbsp;&nbsp;&nbsp;&nbsp;})
+
+})</pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div>
+
+			<p>The preceding code is not that different from a basic unit test as
+ we have done before, but it does some things a bit differently. In line
+ <strong class="source-inline">#1</strong>, we import a function from 
+the Vue Test Utils library that allows us to “mount” our component in a 
+test environment simulating a browser window with Vue 3. In line <strong class="source-inline">#2</strong>, we import our component in the usual way, and then proceed to write our test group as before. The difference here is in line <strong class="source-inline">#3</strong>. We use the <strong class="source-inline">mount</strong>
+ function to create our live component by passing it as the first 
+argument and, as the second, we pass an object with properties that will
+ be applied to the component. In this case, we are passing the <strong class="source-inline">number</strong> prop with a value of <strong class="source-inline">10</strong>. The <strong class="source-inline">mount</strong>
+ function will return a wrapper object representing our component, 
+exposing an API that we access to perform our assertions. In this case, 
+in line <strong class="source-inline">#4</strong>, we are checking that 
+the plain text rendered by the component contains the value 55, which we
+ will find to be true when the test is run. It is by using this wrapper 
+object that we can access the component <a id="_idIndexMarker719"></a>properties,
+ events, slots, and rendered HTML by accessing the proper methods. We 
+will only discuss a few in this chapter, but a full list is available in
+ the official documentation <span class="No-Break">at </span><a href="https://test-utils.vuejs.org/api/#wrapper-methods"><span class="No-Break">https://test-utils.vuejs.org/api/#wrapper-methods</span></a><span class="No-Break">.</span></p>
+
+			<p>This short example gives us a template to write our tests, but now we move to a more complex example to test our <strong class="source-inline">input</strong> component. In the test directory, create the <span class="No-Break">following file:</span></p>
+
+			<p class="SC---Heading" lang="en-US" xml:lang="en-US">/src/tests/FibonacciInput.test.js</p>
+
+			<div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="source-code">
+
+import { describe, expect, test } from "vitest"
+
+import { mount } from "@vue/test-utils"
+
+import FibonacciInput from "../components/FibonacciInput.vue"
+
+describe("Check Component action and event", ()=&gt;{
+
+&nbsp;&nbsp;&nbsp;&nbsp;test("Enter value and emit event on button click",()=&gt;{
+
+<strong class="bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let wrapper=mount(FibonacciInput)</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong class="bold">#1</strong>
+
+<strong class="bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wrapper.find("input").setValue(10)</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong class="bold">#2</strong>
+
+<strong class="bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wrapper.find("button").trigger("click")</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong class="bold">#3</strong>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Capture the event parameters
+
+<strong class="bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;let inputEvents=wrapper.emitted("input")</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong class="bold">#4</strong>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Assert the event was emitted, and with the correct value
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Each event provides an array with the arguments passed
+
+<strong class="bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expect(inputEvents[0]).toEqual([10])</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong class="bold">#5</strong>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// or
+
+<strong class="bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expect(inputEvents[0][0]).toBe(10)</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong class="bold">#6</strong>
+
+&nbsp;&nbsp;&nbsp;&nbsp;})
+
+})</pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div>
+
+			<p>This final<a id="_idIndexMarker720"></a> example starts in the 
+same way as before, by importing the functions that we will use to 
+describe the tests, mount our component, and the component itself. Our 
+purpose here is to simulate to a certain degree the user interaction 
+with the component by entering a value in the <strong class="source-inline">input</strong>
+ field, clicking the button, and then capturing the event and the value 
+passed programmatically. We will rely on the methods just like before. 
+We start in line <strong class="source-inline">#1</strong> by mounting 
+our component and creating the wrapper. Notice that, this time, we are 
+not passing any options, as we don’t need them. In line <strong class="source-inline">#2</strong>, we use the wrapper’s <strong class="source-inline">find()</strong> method to locate an <strong class="source-inline">input</strong> element and set a value of <strong class="source-inline">10</strong>. The <strong class="source-inline">find()</strong> method retrieves elements using a string with the same syntax as <strong class="source-inline">querySelector</strong>
+ in a browser window. The returned object is a wrapper around the 
+element, which again exposes methods for users to interact with it – in 
+this case, <strong class="source-inline">.setValue()</strong>. Using a similar logic, in line <strong class="source-inline">#3</strong>, we also locate the button and trigger the <strong class="source-inline">click</strong> event, which will emit the <strong class="source-inline">input</strong> event in our component. Notice how easy it is in lines <strong class="source-inline">#2</strong> and <strong class="source-inline">#3</strong>
+ to manipulate our component. In this way, we can access and interact 
+programmatically with it, much like it could happen in an end-to-end 
+test. We could, in theory, create our end-to-end tests using this tool, 
+but there are better options, such <a id="_idIndexMarker721"></a>as <strong class="bold">Cypress</strong> (<a href="https://www.cypress.io/">https://www.cypress.io/</a>), which work excellently with Vitest, giving us a <span class="No-Break">great DX.</span></p>
+
+			<p>In line <strong class="source-inline">#3</strong>, we have clicked a button, which we know should emit an event. In line <strong class="source-inline">#4</strong>, we capture all the emitted events with the name <strong class="source-inline">input</strong>.
+ The result is an array of wrapped events that we can use in our 
+assertions, by referencing each event by its ordinal index. In this 
+case, we only triggered one event, so in line <strong class="source-inline">#5</strong>, we pass that to our expected function as <strong class="source-inline">inputEvents[0]</strong>. However, notice that the assertion matches the output to an array, <strong class="source-inline">[10]</strong>, instead of the value we entered in line <strong class="source-inline">#2</strong>. Why is that? The answer is that each<em class="italic"> event</em>
+ has an undetermined number of arguments it could pass, so these are 
+captured in an array. An equivalent notation is shown here in line <strong class="source-inline">#6</strong>, where we<a id="_idIndexMarker722"></a> pass to <strong class="source-inline">expect()</strong> directly the value of the first element in the array of arguments, from the first event captured: <strong class="source-inline">inputEvents[0][0]</strong>. Then, we can directly validate the result to a value with <strong class="source-inline">.toBe(10)</strong>.
+ Now, this approach may seem a bit convoluted and clumsy, having to 
+refer to events and their values in such a way, but it is very powerful.
+ Consider that we can, in one single line, assert a full array with a 
+set of <span class="No-Break">related values!</span></p>
+
+			<p>In these two files, we have now tested the input and output of our
+ components and even validated the interactivity as expected. We have 
+also learned how to retrieve elements rendered and access their 
+properties. Any error thrown in these functions will invalidate the test
+ and point us in the right direction, line, and comment on where to fix 
+it. Placing tests in individual files is a very convenient alternative. 
+However, Vitest also accepts in-source testing, which we will <span class="No-Break">see next.</span></p>
+
+			<h1 id="_idParaDest-169"><a id="_idTextAnchor209"></a>In-source testing</h1>
+
+			<p>With in-source testing, we <a id="_idIndexMarker723"></a>can 
+indicate to Vitest to look into our JavaScript and Single Component 
+Files for the tests to run, as opposed to specific files. These 
+alternatives are not exclusive to each other, so we could have both 
+active at the same time. The reason behind this is that, in some cases, a
+ test case would benefit to be “close” to the original code that it is 
+trying to assert. Such code must be placed at the end of our file 
+following <span class="No-Break">this format:</span></p>
+
+			<div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="source-code">
+
+if (<strong class="bold">import.meta.vitest</strong>) {
+
+&nbsp;&nbsp;&nbsp;&nbsp;const { describe, test, expect } = <strong class="bold">import.meta.vitest</strong>
+
+&nbsp;&nbsp;&nbsp;//... Test functions here
+
+}</pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div>
+
+			<p>Then, for Vitest to find this code in our files, we also need to modify the <strong class="source-inline">vite.config.js</strong> file to include <span class="No-Break">the following:</span></p>
+
+			<div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="source-code">
+
+export default defineConfig({
+
+&nbsp;&nbsp;&nbsp;&nbsp;test: {
+
+<strong class="bold">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;includeSource: ['src/**/*.{js,ts}']</strong>,
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// other configurations here...
+
+&nbsp;&nbsp;&nbsp;&nbsp;},
+
+})</pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div>
+
+			<p>And finally, to eliminate the test code from the production build, we need to add the following before <span class="No-Break">the bundling:</span></p>
+
+			<div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="source-code">
+
+export default defineConfig({
+
+&nbsp;&nbsp;&nbsp;&nbsp;define: { <strong class="bold">'import.meta.vitest': 'undefined'</strong> },
+
+&nbsp;&nbsp;&nbsp;&nbsp;// Other configurations...
+
+})</pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div>
+
+			<p>With these <a id="_idIndexMarker724"></a>changes, we can then 
+include the tests at the end of our JavaScript files, with the benefits 
+and trade-offs that this brings. For example, if there is an in-house 
+service that is shared or used among projects, it could be a good idea 
+to place the tests in the same file as opposed to duplicating them for <span class="No-Break">each project.</span></p>
+
+			<p>Now that we have our tests in place, let’s see two more benefits that we get from using Vitest:<em class="italic"> coverage</em> and a live<em class="italic"> </em><span class="No-Break"><em class="italic">web UI.</em></span></p>
+
+			<h1 id="_idParaDest-170"><a id="_idTextAnchor210"></a>Coverage</h1>
+
+			<p>The concept of coverage<a id="_idIndexMarker725"></a> is very 
+simple, and it answers the question of how much of our code is covered 
+by automated tests. We know that 100% coverage is only possible for 
+small applications, as the same effort for large projects falls fast 
+into the law of diminishing returns Vitest offers us a simple way to 
+answer this question by running the <strong class="source-inline">vitest –coverage</strong> command. In our case, we have already set this option in our <strong class="source-inline">package.json</strong> scripts section, so we can run the <span class="No-Break">following command:</span></p>
+
+			<div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="console">
+
+$ npm run test:coverage</pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div>
+
+			<p>When the preceding command is run, if any dependency is missing, it will prompt us on whether we want to try to download and <span class="No-Break">install it:</span></p>
+
+			<div>
+
+				<div id="_idContainer068" class="IMG---Figure">
+
+					<img src="Chapter%2099%20Testing%20and%20Source%20Control%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_9.03_B18602.jpg" alt="Figure 9.3 – Vitest prompts us to install missing dependencies for coverage" width="740" height="109">
+
+				</div>
+
+			</div>
+
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 9.3 – Vitest prompts us to install missing dependencies for coverage</p>
+
+			<p>For our chapter code example, the coverage report should look something <span class="No-Break">like this:</span></p>
+
+			<div>
+
+				<div id="_idContainer069" class="IMG---Figure">
+
+					<img src="Chapter%2099%20Testing%20and%20Source%20Control%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_9.04_B18602.jpg" alt="Figure 9.4 – Vitest coverage report example" width="608" height="308">
+
+				</div>
+
+			</div>
+
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 9.4 – Vitest coverage report example</p>
+
+			<p>It is possible to retrieve this<a id="_idIndexMarker726"></a> information on a file (as <strong class="source-inline">json</strong>, <strong class="source-inline">text</strong>, or <strong class="source-inline">html</strong>) if we need to. For that, we just need to include a new line in our <span class="No-Break"><strong class="source-inline">vite.config.js</strong></span><span class="No-Break"> file:</span></p>
+
+			<div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="source-code">
+
+test:{
+
+&nbsp;&nbsp;&nbsp;&nbsp;coverage: {reporter: ['text', 'json', 'html']},
+
+&nbsp;&nbsp;&nbsp;&nbsp;//...
+
+}</pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div>
+
+			<p>The result of running the command again will be a website placed in a new directory called <strong class="source-inline">coverage</strong> at the root of our project. This static website provides for navigation and drills down in <span class="No-Break">the report.</span>
+
+In our example, it looks <span class="No-Break">like this:</span></p>
+
+			<div>
+
+				<div id="_idContainer070" class="IMG---Figure">
+
+					<img src="Chapter%2099%20Testing%20and%20Source%20Control%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_9.05_B18602.jpg" alt="Figure 9.5 – Coverage HTML report" width="1029" height="294">
+
+				</div>
+
+			</div>
+
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 9.5 – Coverage HTML report</p>
+
+			<p>Depending on our needs, this simple tool may provide us with 
+insight into our project that would be hard to find otherwise. The 
+export to JSON file comes also very handy if we need to integrate our 
+project with other reporting software or format. There is yet another 
+alternative that may come in handy: Vitest also provides a web UI to 
+view and interact with the tests in the form of a dashboard. We will see
+ <span class="No-Break">this next.</span></p>
+
+			<h1 id="_idParaDest-171"><a id="_idTextAnchor211"></a>The Vitest UI</h1>
+
+			<p>Since Vitest is based on Vite, it does <a id="_idIndexMarker727"></a>make
+ good use of some of its features, not only for live testing but also to
+ provide a live development server displaying the tests in real time. To
+ make use of this option, we only need to install the appropriate 
+dependency <span class="No-Break">as follows:</span></p>
+
+			<div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="console">
+
+$ npm install –D @vitests/ui</pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div>
+
+			<p>Then, for convenience, we should add the following line in our <strong class="source-inline">package.json</strong> file so we can run the application <span class="No-Break">using </span><span class="No-Break"><strong class="source-inline">npm</strong></span><span class="No-Break">:</span></p>
+
+			<div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="source-code">
+
+scripts:{
+
+&nbsp;&nbsp;&nbsp;&nbsp;"<strong class="bold">test:ui</strong>": "<strong class="bold">vitest –-ui</strong>"
+
+&nbsp;&nbsp;&nbsp;&nbsp;// Other settings...
+
+}</pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div>
+
+			<p>We can then run the server with this <span class="No-Break">command line:</span></p>
+
+			<div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="console">
+
+$ npm run test:ui</pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div>
+
+			<p>The development test server will start and provide us with an address to open in the browser. For our application, this looks <span class="No-Break">like this:</span></p>
+
+			<div>
+
+				<div id="_idContainer071" class="IMG---Figure">
+
+					<img src="Chapter%2099%20Testing%20and%20Source%20Control%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_9.06_B18602.jpg" alt="Figure 9.6 – Vitest UI dashboard" width="981" height="373">
+
+				</div>
+
+			</div>
+
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 9.6 – Vitest UI dashboard</p>
+
+			<p>The web<a id="_idIndexMarker728"></a> UI has also new 
+possibilities to interact with the test cases, and even see the 
+relationships between components and services in a graphical manner, all
+ the way down to the <span class="No-Break">test code.</span></p>
+
+			<p>Now that we have cleaned up our code and run tests, it is time to 
+look into another tool to keep track of changes, a fundamental concept 
+for today: source control <span class="No-Break">with Git.</span></p>
+
+			<h1 id="_idParaDest-172"><a id="_idTextAnchor212"></a>What is source control... and why?</h1>
+
+			<p>Software development is a “human-intensive” discipline, meaning 
+that it depends heavily on the creativity and involvement of the 
+developer and their know-how. It is common to try different approaches 
+to the same situation and write and rewrite code. Even the process of 
+refactoring after testing implies making changes in the code. It is not 
+an anomaly that during this process, we need to “go back” to a previous 
+code when a change or approach didn’t meet expectations. If we are 
+constantly overwriting the same files... how do we keep track of what 
+changed where? And by whom? Our own memory is not enough when time and 
+complexity grow. Save files with different names? That would become 
+impractical very soon. And what about combining source code from 
+multiple developers? We can quickly see that managing the source code 
+for non-trivial projects is a very important task <span class="No-Break">in itself.</span></p>
+
+			<p>The historical solution to this early problem in computer science 
+has been the creation of additional software in charge of keeping track 
+of changes in the code, allowing a developer to go back on their tracks,
+ and facilitating the chore of merging code from multiple developers to 
+make a cohesive source code. The emerging discipline for this task is 
+called <strong class="bold">Source Control</strong> (<strong class="bold">SC</strong>), and the<a id="_idIndexMarker729"></a> software to implement it is<a id="_idIndexMarker730"></a> called a <strong class="bold">Source Control System</strong> (<strong class="bold">SCS</strong>) or <strong class="bold">Source Control Management System</strong> (<strong class="bold">SCMS</strong>). There <a id="_idIndexMarker731"></a>have been many, and still are many, different systems in use today, such <a id="_idIndexMarker732"></a>as <strong class="bold">Mercurial</strong>, <strong class="bold">Subversion</strong>, <strong class="bold">ClearCase</strong>, <strong class="bold">Git</strong>, and <strong class="bold">BitKeeper</strong>. Each one <a id="_idIndexMarker733"></a>has its trade-offs. In <a id="_idIndexMarker734"></a>particular, Git is used today by most projects <a id="_idIndexMarker735"></a>and <a id="_idIndexMarker736"></a>developers
+ around the globe. Statistics on the internet show different percentages
+ for the most popular ones, but each one shows this trend. Because of 
+this, it is important that we learn how to use Git, which is our <span class="No-Break">next topic.</span></p>
+
+			<h1 id="_idParaDest-173"><a id="_idTextAnchor213"></a>Source control with Git</h1>
+
+			<p>Currently, the mos<a id="_idIndexMarker737"></a>t popular SCS is Git, which was created by <strong class="bold">Linus Torvalds</strong>, who<a id="_idIndexMarker738"></a> is also the creator of the Linux kernel. The story goes that the Linux kernel project used <em class="italic">BitKeeper </em>for
+ source control, but the team hit many issues with the growing 
+complexity and distributed nature of the development. Frustrated, Linus 
+Torvalds decided to make his own SCS to solve the real-life problems 
+they had... and it took him one weekend! (See <a href="https://www.linux.com/news/10-years-git-interview-git-creator-linus-torvalds/">https://www.linux.com/news/10-years-git-interview-git-creator-linus-torvalds/</a>.) That was the humble beginning of Git, and from there, it became popular in the open source community as well as in the <span class="No-Break">enterprise world.</span></p>
+
+			<p>Git is a distributed SCMS, simple and effective to use from the command line. It offers the <span class="No-Break">following features:</span></p>
+
+			<ul>
+
+				<li>Creates and manages a <strong class="bold">repository</strong>, where it collects the source files and the history of changes for <span class="No-Break">each one.</span></li>
+
+				<li>Allows sharing projects by cloning <strong class="bold">remote repositories</strong> into <span class="No-Break">local projects.</span></li>
+
+				<li>Allows the project to be branched and merged. This means that 
+you can have different copies of the same project with different code (a
+ <strong class="bold">branch</strong>), switch between them, join them, and unify them by request (<span class="No-Break">a </span><span class="No-Break"><strong class="bold">merge</strong></span><span class="No-Break">).</span></li>
+
+				<li>Synchronizes changes from a remote repository into a local copy (called <span class="No-Break">a </span><span class="No-Break"><strong class="bold">pull</strong></span><span class="No-Break">).</span></li>
+
+				<li>Sends local <a id="_idIndexMarker739"></a>changes <a id="_idIndexMarker740"></a>to a remote repository (called <span class="No-Break">a </span><span class="No-Break"><strong class="bold">push</strong></span><span class="No-Break">).</span></li>
+
+			</ul>
+
+			<p>Let’s learn how to use Git by applying it to our current project 
+for this chapter. Let’s start by installing it in our system, so it’s 
+available for all <span class="No-Break">our projects.</span></p>
+
+			<h2 id="_idParaDest-174"><a id="_idTextAnchor214"></a>Installation on Windows systems</h2>
+
+			<p>The<a id="_idIndexMarker741"></a> easiest and recommended way to install Git on Windows <a id="_idIndexMarker742"></a>systems is to download the installers from the official Git website at <a href="https://git-scm.com/download/win">https://git-scm.com/download/win</a>.
+ Click on the version you want to use, according to your operating 
+system (32- or 64-bit), and then run the installer following <span class="No-Break">the directions.</span></p>
+
+			<div>
+
+				<div id="_idContainer072" class="IMG---Figure">
+
+					<img src="Chapter%2099%20Testing%20and%20Source%20Control%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_9.07_B18602.jpg" alt="Figure 9.7 – Official Git installers for Windows" width="832" height="311">
+
+				</div>
+
+			</div>
+
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 9.7 – Official Git installers for Windows</p>
+
+			<p>Once the installation is done, the command-line tools will be 
+installed on your system so we can run them through a terminal. Also, if
+ you are using a code editor such as Visual Studio Code, it will 
+integrate the tools and provide you with a GUI to handle <span class="No-Break">basic operations.</span></p>
+
+			<h2 id="_idParaDest-175"><a id="_idTextAnchor215"></a>Installation on Linux systems</h2>
+
+			<p>In <a id="_idIndexMarker743"></a>Linux systems, the installation is done through the command line, using <a id="_idIndexMarker744"></a>the distribution’s package manager. The package name in (almost) all distributions is simply <strong class="source-inline">git</strong>. In Debian and Ubuntu systems, the installation can be run with <span class="No-Break">the following:</span></p>
+
+			<div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="console">
+
+$ sudo apt install git</pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div>
+
+			<p>However, in these distributions, there may not be the latest 
+version, so if you need the latest stable release, you need to add the 
+official PPA repository. In this case, run the following commands <span class="No-Break">in order:</span></p>
+
+			<div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="console">
+
+$ sudo add-apt-repository ppa:git-core/ppa
+
+$ sudo apt update
+
+$ sudo apt install git</pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div>
+
+			<p>The preceding commands will update your system dependencies and 
+install (or upgrade) Git on your system. For a complete list of 
+distributions and commands to install Git, please refer to the official 
+documentation <span class="No-Break">at </span><a href="https://git-scm.com/download/linux"><span class="No-Break">https://git-scm.com/download/linux</span></a><span class="No-Break">.</span></p>
+
+			<h2 id="_idParaDest-176"><a id="_idTextAnchor216"></a>Installation on macOS systems</h2>
+
+			<p>In <a id="_idIndexMarker745"></a>macOS systems, there are <a id="_idIndexMarker746"></a>different ways to <span class="No-Break">install Git:</span></p>
+
+			<ul>
+
+				<li>If you have Homebrew installed, run <strong class="source-inline">$ brew install git</strong> in <span class="No-Break">a Terminal</span></li>
+
+				<li>If instead, you have MacPorts, run <strong class="source-inline">$ sudo port install git</strong> in <span class="No-Break">a Terminal</span></li>
+
+				<li>If you have installed Xcode, Git <span class="No-Break">is included</span></li>
+
+			</ul>
+
+			<p>For other alternatives, please check the official documentation <span class="No-Break">at https://git-scm.com/download/mac.</span></p>
+
+			<h2 id="_idParaDest-177"><a id="_idTextAnchor217"></a>Using Git</h2>
+
+			<p>Regardless of which system you<a id="_idIndexMarker747"></a> are 
+working on, or the installation type you made, Git will be installed in 
+your local path, so it can be executed from any terminal window. To 
+verify the installation and version, run this command (does not require <span class="No-Break">admin privileges):</span></p>
+
+			<div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="console">
+
+$ git –-version</pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div>
+
+			<p>At the time of writing, the current stable version is <em class="italic">2.39.2</em>.
+ With this done, open a terminal window in the root folder of our 
+project. To start using Git, we need to create a local repository with <span class="No-Break">this command:</span></p>
+
+			<div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="console">
+
+$ git init</pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div>
+
+			<p>After the execution is done, a new hidden directory will be 
+created in the folder. You don’t have to worry about it, as it will be 
+managed by Git. If your File Explorer has deactivated the option to see 
+hidden files, then you may not notice the creation. It is recommended 
+that you have <strong class="bold">Show/view hidden files</strong> in your <span class="No-Break">system activated.</span></p>
+
+			<p>Once we have created the repository, we can start using it. The steps to work with files usually includes the <span class="No-Break">following stages:</span></p>
+
+			<div>
+
+				<div id="_idContainer073" class="IMG---Figure">
+
+					<img src="Chapter%2099%20Testing%20and%20Source%20Control%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_9.08_B18602.jpg" alt="Figure 9.8 – Working stages of Git" width="831" height="105">
+
+				</div>
+
+			</div>
+
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 9.8 – Working stages of Git</p>
+
+			<p>Once we have files created or edited, the next step is to “stage” 
+the files. This indicates to Git that it needs to keep track of changes 
+and include the file in the next commit event. <strong class="bold">Committing</strong> is the <a id="_idIndexMarker748"></a>act
+ of moving those files/changes into the repository. If a file is not 
+staged, it will not be included in the commit. To add a file, run the <span class="No-Break">following command:</span></p>
+
+			<div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="console">
+
+$ git add [filename1] [filename2]..</pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div>
+
+			<p>This will add the files, but it is quite verbose. Instead, if you want to add all changes in all files, run <span class="No-Break">this instead:</span></p>
+
+			<div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="console">
+
+$ git add .</pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div>
+
+			<p>This will come in handy in the first commit when the repository is
+ initialized. After running this command, all the files will start to be
+ tracked. However, we do not want to track everything in our root 
+folder, so to exclude files or directories, we can use a special file 
+named <strong class="source-inline">.gitignore</strong>. If you<a id="_idIndexMarker749"></a> open this file in the example directory, you will find something <span class="No-Break">like this:</span></p>
+
+			<p class="SC---Heading" lang="en-US" xml:lang="en-US">/chapter 10/.gitignore</p>
+
+			<div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="source-code">
+
+logs
+
+*.log
+
+npm-debug.log*
+
+yarn-debug.log*
+
+yarn-error.log*
+
+pnpm-debug.log*
+
+lerna-debug.log*
+
+node_modules
+
+dist
+
+dist-ssr
+
+*.local
+
+.vscode/*
+
+!.vscode/extensions.json
+
+.idea
+
+.DS_Store
+
+*.suo
+
+*.ntvs*
+
+*.njsproj
+
+*.sln
+
+*.sw?</pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div>
+
+			<p>This is a plain text file that indicates to Git not to track the 
+files and directories indicated in each line. You can also use wildcards
+ such as an asterisk (<strong class="source-inline">*</strong>) and question mark (<strong class="source-inline">?</strong>)
+ to include a match pattern. This is very useful, as there are parts of 
+your code base that you don’t need to track, such as the node 
+dependencies and binary files (images and the like). Make sure to have 
+this file in your directory before making a <span class="No-Break">massive staging.</span></p>
+
+			<p>Once you have <a id="_idIndexMarker750"></a>staged files, you can check them with <span class="No-Break">this command:</span></p>
+
+			<div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="console">
+
+$ git status</pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div>
+
+			<p>In the case of our example project, it will show something <span class="No-Break">like this:</span></p>
+
+			<div>
+
+				<div id="_idContainer074" class="IMG---Figure">
+
+					<img src="Chapter%2099%20Testing%20and%20Source%20Control%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_9.09_B18602.jpg" alt="Figure 9.9 – First staging in Git" width="764" height="403">
+
+				</div>
+
+			</div>
+
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 9.9 – First staging in Git</p>
+
+			<p>Notice how Git informs us also that we are in the <strong class="source-inline">master</strong> branch, and that there have not been any commits yet. The <strong class="source-inline">master</strong>
+ branch is the main branch for our code and is created by default. This 
+is a special branch that is used to keep the stable code of our 
+applications. In tools such as GitLab and GitHub (we will talk about 
+them later), these branches also trigger certain events once committed. 
+For now, let’s move forward and create our first<a id="_idIndexMarker751"></a> commit with <span class="No-Break">this command:</span></p>
+
+			<div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="console">
+
+$ git commit –m "First commit"</pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div>
+
+			<p>We will see results <span class="No-Break">like this:</span></p>
+
+			<div>
+
+				<div id="_idContainer075" class="IMG---Figure">
+
+					<img src="Chapter%2099%20Testing%20and%20Source%20Control%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_9.10_B18602.jpg" alt="Figure 9.10 – Results from the first commit" width="647" height="328">
+
+				</div>
+
+			</div>
+
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 9.10 – Results from the first commit</p>
+
+			<p>With these simple lines, we have started to keep track of our 
+source code. Now, as mentioned before, we have committed our initial 
+code to the <strong class="source-inline">master</strong> branch. Git 
+allows us to make an instant copy of the state of our code, much like a 
+screenshot, and continue working from there without affecting the 
+original. This is<a id="_idIndexMarker752"></a> called <strong class="bold">branching</strong> and is an important part of <span class="No-Break">using Git.</span></p>
+
+			<h2 id="_idParaDest-178"><a id="_idTextAnchor218"></a>Managing branches and merges</h2>
+
+			<p>Using branches<a id="_idIndexMarker753"></a> to control our development is a very good way to move forward on a certain footing. Here are the most common commands to <span class="No-Break">manage branches:</span></p>
+
+			<table id="table001-5" class="No-Table-Style"><colgroup><col><col></colgroup><tbody><tr class="No-Table-Style"><td class="No-Table-Style">
+
+							<p><span class="No-Break">Action</span></p>
+
+						</td><td class="No-Table-Style">
+
+							<p><span class="No-Break">Command example</span></p>
+
+						</td></tr><tr class="No-Table-Style"><td class="No-Table-Style">
+
+							<p>Create a branch and switch <span class="No-Break">to it</span></p>
+
+						</td><td class="No-Table-Style">
+
+							<div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="console">
+
+$ git checkout –b [branch_name]</pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div>
+
+						</td></tr><tr class="No-Table-Style"><td class="No-Table-Style">
+
+							<p>Create a branch but stay <span class="No-Break">in current</span></p>
+
+						</td><td class="No-Table-Style">
+
+							<div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="console">
+
+$ git branch [branch_name]</pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div>
+
+						</td></tr><tr class="No-Table-Style"><td class="No-Table-Style">
+
+							<p><span class="No-Break">Delete branch</span></p>
+
+						</td><td class="No-Table-Style">
+
+							<div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="console">
+
+$ git branch –d [branch_name]</pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div>
+
+						</td></tr><tr class="No-Table-Style"><td class="No-Table-Style">
+
+							<p>Switch to <span class="No-Break">a branch</span></p>
+
+						</td><td class="No-Table-Style">
+
+							<div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="console">
+
+$ git checkout [branch_name]</pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div>
+
+						</td></tr><tr class="No-Table-Style"><td class="No-Table-Style">
+
+							<p>Merge a branch <span class="No-Break">with current</span></p>
+
+						</td><td class="No-Table-Style">
+
+							<div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="console">
+
+$ git merge [branch_name]</pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div>
+
+						</td></tr><tr class="No-Table-Style"><td class="No-Table-Style">
+
+							<p>Check <span class="No-Break">current branch</span></p>
+
+						</td><td class="No-Table-Style">
+
+							<div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="console">
+
+$ git branch</pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div>
+
+						</td></tr></tbody></table>
+
+			<p>Once you have moved to another branch, you can perform all the 
+regular Git operations (edit and delete files, etc.) without affecting 
+the <span class="No-Break">other ones.</span></p>
+
+			<h2 id="_idParaDest-179"><a id="_idTextAnchor219"></a>Merging conflicts</h2>
+
+			<p>When merging multiple <a id="_idIndexMarker754"></a>branches together or with <strong class="source-inline">master</strong>, it is possible and more than likely that some files will have a discrepancy with the current branch. In this case, the <em class="italic">merge </em>will
+ fail, and the user will be prompted to solve the differences. What Git 
+does is mark the target file (the file in the current branch) with 
+markers in the text for the user to edit. Once these have been edited, 
+the file can be staged and committed, thus ending the <em class="italic">merge</em>. Let’s try that without code, by purposely creating a discrepancy to fix. Follow <span class="No-Break">these steps:</span></p>
+
+			<ol>
+
+				<li>Create a new branch, <strong class="source-inline">dev</strong>, with this command: <strong class="source-inline">$ git checkout –</strong><span class="No-Break"><strong class="source-inline">b dev</strong></span><span class="No-Break">.</span></li>
+
+				<li>Edit <strong class="source-inline">index.html</strong>, adding in line 11 (before the script tag) the following: <strong class="source-inline">&lt;div&gt;A div created in </strong><span class="No-Break"><strong class="source-inline">branch dev&lt;/div&gt;</strong></span><span class="No-Break">.</span></li>
+
+				<li>Save the file, stage it, and commit the change with <strong class="source-inline">$ git add index.html</strong> and then <strong class="source-inline">$ git commit –m "added div </strong><span class="No-Break"><strong class="source-inline">in dev"</strong></span><span class="No-Break">.</span></li>
+
+				<li>Now, we will move to the <strong class="source-inline">master</strong> branch with <strong class="source-inline">$ git </strong><span class="No-Break"><strong class="source-inline">checkout master</strong></span><span class="No-Break">.</span></li>
+
+				<li>Notice how line 11 with the div has disappeared from <strong class="source-inline">index.html</strong>. This is because that edition was never made on this file. Now, add in that line the following: <strong class="source-inline">&lt;p&gt;This change was made </strong><span class="No-Break"><strong class="source-inline">in master&lt;/p&gt;</strong></span><span class="No-Break">.</span></li>
+
+				<li>Save the file, stage it, and commit it with a different message (look at <span class="No-Break"><em class="italic">step 3</em></span><span class="No-Break">).</span></li>
+
+			</ol>
+
+			<p>Now, we will try to merge both branches and, as <strong class="source-inline">index.html</strong> has been committed to both with a different code, it will fail! To start the <em class="italic">merge</em>, run <strong class="source-inline">$ git merge dev</strong>.</p>
+
+			<p>You should see an<a id="_idIndexMarker755"></a> error on the terminal, and new lines added to <strong class="source-inline">index.html</strong> indicating the discrepancies. In our code example, it looks like this:</p>
+
+			<div>
+
+				<div id="_idContainer076" class="IMG---Figure">
+
+					<img src="Chapter%2099%20Testing%20and%20Source%20Control%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_9.11_B18602.jpg" alt="Figure 9.11 – Merge conflict" width="699" height="171">
+
+				</div>
+
+			</div>
+
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 9.11 – Merge conflict</p>
+
+			<ol>
+
+				<li value="7">To resolve the conflict, just edit the source code to 
+your best judgment (also delete the extra labels added by Git), then 
+save the file, stage it, and finally make a commit. You will <a id="_idIndexMarker756"></a>receive a message indicating that the <em class="italic">merge </em>has <span class="No-Break">been resolved.</span></li>
+
+			</ol>
+
+			<p>Working with branches and resolving mergers when they appear is a 
+common practice and quite useful, but we are still not using the full 
+potential of Git. As you remember, Git is a distributed SCMS, and this 
+relies on its great potential. Enter the <span class="No-Break">remote repository...</span></p>
+
+			<h2 id="_idParaDest-180"><a id="_idTextAnchor220"></a>Working with remote repositories</h2>
+
+			<p>In the same way that we work <a id="_idIndexMarker757"></a>with a 
+local repository, Git can also synchronize code with a remote 
+repository. This enables team members from anywhere in the world to 
+collaborate together in the same code base, resolve conflicts, and also 
+synchronize their own code with others’ contributions. Working with a 
+remote repository involves the following steps to <span class="No-Break">set up:</span></p>
+
+			<ol>
+
+				<li>The remote repository must be created, and a URL provided to connect <span class="No-Break">to it.</span></li>
+
+				<li>We add the remote repository as a new origin to our local repository with the <span class="No-Break">following command:</span><div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="console">
+
+<strong class="bold">$ git remote add origin URL</strong></pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div></li>
+
+				<li>We set our <strong class="source-inline">master</strong> branch to synchronize with the <span class="No-Break">remote repository:</span><div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="console">
+
+<strong class="bold">$ git push –set-upstream origin master</strong></pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div></li>
+
+				<li>We retrieve changes from the <span class="No-Break">remote repository:</span><div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="console">
+
+<strong class="bold">$ git pull origin master</strong></pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div></li>
+
+				<li>We submit our changes to the <span class="No-Break">remote repository:</span><div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="console">
+
+<strong class="bold">$ git push origin master</strong></pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div></li>
+
+			</ol>
+
+			<p>Once you have done <em class="italic">steps 1</em> to <em class="italic">3</em>, the regular activity will involve <em class="italic">steps 4</em> and <em class="italic">5</em>.
+ These activities will keep your local repository synchronized with your
+ remote repository. In practice, modern IDEs such as Visual Studio Code 
+will already provide you with graphical tools to make these operations, 
+and this results in more convenience when you are working on a project. 
+They also include visual tools to resolve conflicts <span class="No-Break">during </span><span class="No-Break"><em class="italic">merges</em></span><span class="No-Break">.</span></p>
+
+			<p>Setting up a Git server for your local network is outside the 
+scope of this book, but this introduction would not be complete without a
+ word about <strong class="bold">GitHub </strong>and <strong class="bold">GitLab</strong>. It is common that when people first hear about Git, they associate it<a id="_idIndexMarker758"></a> with GitHub, which is<a id="_idIndexMarker759"></a> understandable, as the latter has a much more popular media presence. GitHub is not Git. It is a web platform that provides<a id="_idIndexMarker760"></a>
+ tools built on top of Git, to host online projects hosting remote 
+repositories. Thus, you can perfectly work with Git locally, and 
+synchronize with a GitHub or GitLab remote repository. This is the most <span class="No-Break">common case.</span></p>
+
+			<p>GitHub provides messaging and documentation tools, and much more –
+ even additional services that allow detecting events in our repository 
+to trigger certain actions and services, some provided locally (at a 
+cost), others remotely (for example, webhooks). For example, it is 
+possible for you to commit locally, push the changes to the <strong class="source-inline">master</strong> branch on GitHub, and<a id="_idIndexMarker761"></a>
+ have a whole set of routines started, from compilation to website 
+presentation. Again, managing all these options is outside our current 
+scope in this chapter, but the important thing to remember is that all 
+of this is based and built upon Git, so if you understand <em class="italic">how </em>it the works and <em class="italic">what </em>it
+ does, you have a solid foundation to move ahead with other tools and 
+services. There is one more concept that has become familiar with this 
+topic, Continuous Integration and Delivery, which we will <span class="No-Break">see next.</span></p>
+
+			<h1 id="_idParaDest-181"><a id="_idTextAnchor221"></a>Continuous Integration and Delivery</h1>
+
+			<p><strong class="bold">Continuous Integration</strong> (<strong class="bold">CI</strong>) is a<a id="_idIndexMarker762"></a>
+ practice enabled by the technologies we have seen thus far, where 
+developers commit their changes to a central (remote) repository as 
+frequently as possible. The central repository detects the incoming 
+changes and triggers automated tests against the code. Then, it 
+compiles/builds the final product. This is done continuously, as opposed
+ to the practice of merging and compiling on a given date <span class="No-Break">before launch.</span></p>
+
+			<p><strong class="bold">Continuous Delivery</strong> (<strong class="bold">CD</strong>) builds <a id="_idIndexMarker763"></a>on
+ top of CI, by also deploying the released product to its final 
+location. You can configure this process to create preliminary versions 
+of software or web applications, (for example, betas, nightly builds, 
+etc.), and program a release date for the end location and delivery to 
+the customers (sometimes, this last part may involve a process of its 
+own and is called <strong class="bold">Continuous Deployment</strong>). Both <a id="_idIndexMarker764"></a>services mentioned before (GitHub and GitLab) offer these types <span class="No-Break">of services.</span></p>
+
+			<p>By using these concepts, it is possible to set up a whole 
+automated workflow from your desktop to the web, where a simple Git 
+commit and a push to the server would trigger your application to be 
+tested and published in its destination online. The way to implement 
+this workflow is particular to the tool used to implement CI <span class="No-Break">and CD.</span></p>
+
+			<h1 id="_idParaDest-182"><a id="_idTextAnchor222"></a>Summary</h1>
+
+			<p>In this chapter, we have covered very important concepts regarding
+ the care and quality of our code. We have learned how to install 
+official tools to perform automated tests in our code and components, as
+ well as how to keep track of changes and management in the source code.
+ While the examples and information provided here are introductory, they
+ are detailed enough to implement them in your own projects and keep 
+your learning skills growing. The concepts of CI and CD, as well as 
+services provided by online repositories, also give you a solid 
+foundation to learn to use them, as they all are based on the 
+functionality provided by Git. All these tools have professional value 
+for a developer and are required in the <span class="No-Break">industry today.</span></p>
+
+			<h1 id="_idParaDest-183"><a id="_idTextAnchor223"></a>Review questions</h1>
+
+			<ul>
+
+				<li>Why is automated testing important? Does it eliminate the need to perform <span class="No-Break">manual testing?</span></li>
+
+				<li>What is necessary to test our Single File Components <span class="No-Break">in Vue?</span></li>
+
+				<li>What is source control, and why is <span class="No-Break">it necessary?</span></li>
+
+				<li>What is Git, and how is it different <span class="No-Break">from GitHub/GitLab?</span></li>
+
+				<li>When you modify a file in a branch, does that modify it in all other branches? Why does or doesn’t <span class="No-Break">this happen?</span></li>
+
+				<li>Are the commands to control Git the same across <span class="No-Break">all platforms?</span></li>
+
+				<li>What do CI and CD stand for, and what is the value they add to <span class="No-Break">a workflow?</span></li>
+
+			</ul>

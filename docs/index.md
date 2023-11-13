@@ -14,7 +14,7 @@ hero:
       text: Почему Vue?
       link: /frontend/about-frameworks
     - theme: alt
-      text: Книга
+      text: Учебник
       link: /book/ru/
   image:
     src: /images/vue-faq-logo.webp
@@ -27,6 +27,8 @@ features:
     details: Основное внимание уделено Vue 3, Composition API и экосистеме Vue последних лет
   - title: Nuxt-free
     details: Nuxt - отдельный самостоятельный фреймворк, заслуживающий свой собственный FAQ
+  - title: Vue.js 3 Design Patterns and Best Practices
+    details: Перевод на русский язык прекрасного учебника по Vue 3 автора Pablo Garaguso
   # - title: Feature C
   #   details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
 ---
