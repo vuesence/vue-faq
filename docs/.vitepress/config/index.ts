@@ -4,6 +4,8 @@ import nav_ru from "./nav.ru";
 import sidebar_en from "./sidebar.en";
 import sidebar_ru from "./sidebar.ru";
 import sidebar_book_ru from "./sidebar.book.ru";
+import sidebar_vue_webapp_ru from "./sidebar.vue-webapp.ru";
+import sidebar_vue_webapp_en from "./sidebar.vue-webapp.en";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -12,6 +14,14 @@ export default defineConfig({
     root: {
       lang: "ru",
       label: "Русский",
+      themeConfig: {
+        nav: nav_ru,
+        sidebar: {
+          "/": sidebar_ru,
+          "/book/": sidebar_book_ru,
+          "/vue-webapp/": sidebar_vue_webapp_ru,
+        },
+      },
       head: [
         [
           "script",
@@ -37,7 +47,10 @@ export default defineConfig({
       label: "English",
       themeConfig: {
         nav: nav_en,
-        sidebar: sidebar_en,
+        sidebar: {
+          "/en/": sidebar_en,
+          "/en/vue-webapp/": sidebar_vue_webapp_en,
+        },
       },
       head: [
         ["script", { async: "", src: "https://www.googletagmanager.com/gtag/js?id=G-JCCRGKJ88B" }],
@@ -70,12 +83,7 @@ export default defineConfig({
     search: {
       provider: "local",
     },
-    // https://vitepress.dev/reference/default-theme-config
-    nav: nav_ru,    
-    sidebar: {
-      "/": sidebar_ru,
-      "/book/": sidebar_book_ru,
-    },
+    // https://vitepress.dev/reference/default-theme-config            
     socialLinks: [
       { icon: "github", link: "https://github.com/vuesence/vue-faq" },
       { icon: {svg: '<svg xmlns="http://www.w3.org/2000/svg"><g><text font-weight="bold" xml:space="preserve" font-size="18" id="svg_1" y="16" x="8" fill="currentColor">Star it!</text></g></svg>'}, link: "https://github.com/vuesence/vue-faq" }
