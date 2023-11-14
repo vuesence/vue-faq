@@ -29,11 +29,16 @@ ubuntu@localhost:~$ pnpm create vue-webapp
 ✔ Add 'BaseIcon' component? … yes
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 Scaffolding project in /home/ubuntu/my-vue-project... 
 Done.
 =======
 Scaffolding project in /home/ubuntu/my-vue-project... done.
 >>>>>>> 20c2df5 (chore: add 'getting started')
+=======
+Scaffolding project in /home/ubuntu/my-vue-project... 
+Done.
+>>>>>>> b167565 (chore: add analogy with a driver)
 ```
 Инициализация и запуск веб приложения
 
