@@ -15,7 +15,11 @@ head:
 ## Установка через `create vue-webapp`
 
 ```sh
+<<<<<<< HEAD
 $ pnpm create vue-webapp
+=======
+ubuntu@localhost:~$ pnpm create vue-webapp
+>>>>>>> 20c2df5 (chore: add 'getting started')
 
 ✔ Project name: … my-vue-project
 ✔ Make it PWA ( adds service worker and manifest )? … yes
@@ -24,8 +28,12 @@ $ pnpm create vue-webapp
 ✔ Select webapp footer › RichFooter
 ✔ Add 'BaseIcon' component? … yes
 
+<<<<<<< HEAD
 Scaffolding project in /home/ubuntu/my-vue-project... 
 Done.
+=======
+Scaffolding project in /home/ubuntu/my-vue-project... done.
+>>>>>>> 20c2df5 (chore: add 'getting started')
 ```
 Инициализация и запуск веб приложения
 
