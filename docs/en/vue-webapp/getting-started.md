@@ -10,9 +10,9 @@ head:
     - name: twitter:image
       content: /images/vue-webapp.jpg
 ---
-# Установка
+# Getting started
 
-## Установка через `create vue-webapp`
+## Installation via `create vue-webapp`
 
 ```sh
 ubuntu@localhost:~$ pnpm create vue-webapp
@@ -27,7 +27,8 @@ ubuntu@localhost:~$ pnpm create vue-webapp
 Scaffolding project in /home/ubuntu/my-vue-project... 
 Done.
 ```
-Инициализация и запуск веб приложения
+
+### Initializing and launching a web application
 
 ```sh
 $ cd my-vue-project
@@ -44,9 +45,9 @@ $ pnpm dev
   ➜  press h to show help
 
 ```
-При данном способе будут установленны только выбранные компоненты
+This method will only install the selected components
 
-## Установка из репозитория
+## Installation from the repository
 
 ```sh
 $ git clone https://github.com/vuesence/vue-webapp.git
@@ -55,4 +56,4 @@ $ pnpm i
 $ pnpm dev
 ```
 
-При данном способе будет установлено всё, однако непосредственно в webapp будет подключен минимум функциональности. Удобно для тестирования всех доступных компонент и функционала.
+With this method everything will be installed, but a minimum of functionality will be enabled. It is usefull for testing all available components and functionality.
