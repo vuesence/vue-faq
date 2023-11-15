@@ -15,7 +15,7 @@ head:
 ## Установка через `create vue-webapp`
 
 ```sh
-ubuntu@localhost:~$ pnpm create vue-webapp
+$ pnpm create vue-webapp
 
 ✔ Project name: … my-vue-project
 ✔ Make it PWA ( adds service worker and manifest )? … yes
