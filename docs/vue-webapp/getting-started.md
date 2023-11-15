@@ -15,7 +15,6 @@ head:
 ## Установка через `create vue-webapp`
 
 ```sh
-
 $ pnpm create vue-webapp
 
 ✔ Project name: … my-vue-project
