@@ -29,8 +29,8 @@ export default defineConfig({
           `const init = localStorage.getItem("vue-faq-init") ?? false;
           localStorage.setItem("vue-faq-init", true);
           const isGoogleBot = window.navigator.userAgent.includes('googlebot');
-          console.log("/en/" + window.location.pathname);
-          if (navigator.language != "ru-RU" && !init && !isGoogleBot) document.location="/en/" + window.location.pathname;
+          console.log("/en" + window.location.pathname);
+          if (navigator.language != "ru-RU" && !init && !isGoogleBot) document.location="/en" + window.location.pathname;
           `,
         ],
         ["script", { async: "", src: "https://www.googletagmanager.com/gtag/js?id=G-JL65GWRNZZ" }],
