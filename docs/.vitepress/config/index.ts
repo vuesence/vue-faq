@@ -17,10 +17,10 @@ export default defineConfig({
           "script",
           {},
           `const init = localStorage.getItem("vue-faq-init") ?? false;
-            localStorage.setItem("vue-faq-init", true);
-            const isGoogleBot = window.navigator.userAgent.includes('googlebot');
-            if (navigator.language != "ru-RU" && !init && !isGoogleBot) document.location="/en/";
-            `,
+          localStorage.setItem("vue-faq-init", true);
+          const isGoogleBot = window.navigator.userAgent.includes('googlebot');
+          if (navigator.language != "ru-RU" && !init && !isGoogleBot) document.location="/en/";
+          `,
         ],
         ["script", { async: "", src: "https://www.googletagmanager.com/gtag/js?id=G-JL65GWRNZZ" }],
         [
