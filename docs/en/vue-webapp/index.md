@@ -13,6 +13,24 @@ head:
 
 # Scaffolding vue webapp
 
+## Краткое описание
+
+Vue 3 вебсайт билдер (scaffolding) для разработчиков, с возможностью выбора бизнес-шаблона (портфолио, блог, магазин и .т.д.), лэйаут-шаблона, дизайна и функциональности (API модуль, i18n, PWA, Splash screen, auth модуль, темы и т.д.), для дальнейшей удобной кастомизации и наполнения контентом.
+
+```sh
+$ pnpm create vue-webapp
+
+✔ Project name: … my-vue-project
+✔ Make it PWA ( adds service worker and manifest )? … yes
+✔ Add Github Action Workflow for publishing it on GitHub Pages? … no
+✔ Select navigation drawer › TouchSlideoutDrawer
+✔ Select webapp footer › RichFooter
+✔ Add 'BaseIcon' component? … yes
+...
+```
+
+### Description
+
 There are quite a few (mostly specific and quickly becoming obsolete) boilerplate code examples for creating a Vue application. Usually it means creating an empty project with certain libraries. In other words, it's just setting up an environment to start development without, actually, code.
 
 At the same time, many other frontend and backend frameworks have starter-kits that allow you to quickly create a ready-made blog, online store, business card site, portfolio, documentation, etc., which greatly helps in learning the framework itself, relevant technologies and best practices, as well as for solving business tasks.

@@ -14,7 +14,7 @@ head:
 # Objectives 
 
 1. Create a simple working SPA front-end application for a specific task in a few minutes, style it and fill it with content in a few hours.
-2. Fine-tune it with small functional code blocks.
+2. Customize it with small functional code blocks.
 3. Collect and summarize the best techniques and practices for building a modern reactive frontend.
 4. Enable novice developers to learn frontend and Vue 3 best practices from building application architecture to naming CSS classes with ready-made examples.
 5. Enable experienced developers to quickly and more efficiently reuse overused boilerplate code, especially that which cannot be distributed as NPM packages.
