@@ -1,1462 +1,477 @@
-			<h1 id="_idParaDest-199"><a id="_idTextAnchor239"></a>Bonus Chapter - UX Patterns</h1>
-
-			<p>A long time ago, computer software was sold with heavy, printed 
-manuals and in many cases, also with specialized training. While some of
- this still applies to corporate applications and specialized hardware, 
-such a concept has almost completely disappeared from the consumer 
-market. Imagine that, for each website, you had to read a manual and 
-attend three months of training classes before even using it. How come, 
-today, a user can be presented with a new application and somehow manage
- to accomplish basic tasks at first sight? No doubt, a great contributor
- to this current situation is the years of study and progress in the 
-areas of human-computer interactions, a discipline almost as old as <span class="No-Break">computers themselves.</span></p>
-
-			<p>In this chapter, we will take a step back from the intricacies of 
-inner-working software patterns and architecture and look at some of the
- well-established patterns for designing a <strong class="bold">user interface</strong> (<strong class="bold">UI</strong>) and <strong class="bold">user experience</strong> (<strong class="bold">UX</strong>). We will do <span class="No-Break">the following:</span></p>
-
-			<ul>
-
-				<li>Understand the differences between UI <span class="No-Break">and UX</span></li>
-
-				<li>Become familiar with common UX patterns in <span class="No-Break">web applications</span></li>
-
-				<li>Learn about the evil side of UX with <span class="No-Break">dark patterns.</span></li>
-
-			</ul>
-
-			<p>By the end of this chapter, you will have a broad understanding of
- what UX patterns are, the principles they are based on, what the most 
-common approaches are today, and the effects they produce for the user, 
-be they positive or negative. You will also learn and develop a common 
-language to interact with UI and UX designers and <span class="No-Break">other developers.</span></p>
-
-			<h1 id="_idParaDest-200"><a id="_idTextAnchor240"></a>Technical requirements</h1>
-
-			<p>This chapter is mostly informative; however, small examples are 
-discussed and implemented in Vue 3, as they demonstrate the use of a 
-technique not seen this far in the book. For the complete source code, 
-please refer to the project folder for the chapter in the book’s 
-repository <span class="No-Break">at </span><a href="https://github.com/PacktPublishing/Vue.js-3-Design-Patterns-and-Best-Practices/tree/main/Chapter11"><span class="No-Break">https://github.com/PacktPublishing/Vue.js-3-Design-Patterns-and-Best-Practices/tree/main/Chapter11</span></a><span class="No-Break">.</span></p>
-
-			<p>Check out the following video to see the Code in <span class="No-Break">Action: </span><a href="https://packt.link/5ymkr"><span class="No-Break">https://packt.link/5ymkr</span></a></p>
-
-			<h1 id="_idParaDest-201"><a id="_idTextAnchor241"></a>UI design versus UX design</h1>
-
-			<p>It is common <a id="_idIndexMarker814"></a>to hear these two terms associated or used indistinctively, and<a id="_idIndexMarker815"></a>
- in some cases, both responsibilities are merged into the same role in a
- team, which adds to the confusion. While there is some overlapping, as 
-often happens in computer science disciplines, we will focus on the 
-differences for <span class="No-Break">learning purposes:</span></p>
-
-			<ul>
-
-				<li><strong class="bold">UI design</strong> is in charge of defining
- the visual language to represent information and capture user input to 
-interact with the application. It covers the design of visual styles, 
-typography, interactions, colors, sizes, animations, sounds, and so on 
-that make up the interface between humans and computers (software and 
-hardware). This applies to visual mediums (web, mobile, etc.) as well as
- other types such as natural language interfaces (think of AI assistants
- such as Siri, <span class="No-Break">Alexa, etc.).</span></li>
-
-				<li><strong class="bold">UX design</strong> includes the conditions 
-that affect and guide the UI design but encompasses a broader view 
-focused on the user’s perception of the system, company, or feature they
- come to interact with. It involves elements beyond software or 
-hardware, with aspects such as support, promotion, post-services, and so
- on. The aim is to create a wide and, hopefully, successful positive 
-experience from the user’s perspective. Under this definition, it also 
-collaborates with other disciplines, such as marketing, customer 
-support, distribution, product management, brand recognition, and so on.
- It has the primary objective to alter or create the user’s perception 
-that the product, service, or system is easy to use, efficient, and 
-above all, useful for <span class="No-Break">their purposes.</span></li>
-
-			</ul>
-
-			<p>Understanding the principles and objectives of each discipline 
-will help us develop better software and have a common ground for 
-understanding when collaborating with those in these assignments. 
-Without UI and UX, even the best-produced software may fall into 
-oblivion. Software history is full of examples of companies that went 
-the way of the dodo bird, even with superior products to their 
-competitors, for neglecting the user experience or having a bad visual 
-design. Sometimes, the cover of the book is as important as the 
-content...</p>
-
-			<h1 id="_idParaDest-202"><a id="_idTextAnchor242"></a>The principles of UI design</h1>
-
-			<p>At its core, UI<a id="_idIndexMarker816"></a> design has the 
-objective of creating an interface that the user finds easy to use, 
-efficient, informative, and enjoyable. Marketing concepts such as user 
-retention and satisfaction rely heavily on product design. For our 
-purposes, we will limit the introduction of UIs to on-display 
-application interfaces (presented through a visual medium, such as a 
-screen or <span class="No-Break">touch device).</span></p>
-
-			<p>There is ample documentation studying UI design in detail, with 
-engineering precision and well-defined industry standards. Each aspect 
-has its own set of rules that a good UI designer needs to keep in mind. A
- web designer will see things differently from an industrial designer, 
-for example. In our case, most of the patterns for UI design have been 
-included since the beginning in the HTML standard, so most, if not all, 
-of what we will see as patterns are already familiar to you and the end 
-user. How they work, or the principles they follow, however, is not 
-something that is commonly discussed or self-evident. For example, why 
-is the “X” to close a window in the top-right corner? What does each 
-different menu icon mean? Why does the <strong class="bold">Start</strong>
- button appear on the top or bottom-left corner of the screen? Why are 
-some features hard to find, while others are accessible at first sight? 
-All these questions have a solution rooted in UI design and UX patterns.
- With that in mind, let’s review some of the UI principles, and then 
-move on to the <span class="No-Break">UX patterns.</span></p>
-
-			<h2 id="_idParaDest-203"><a id="_idTextAnchor243"></a>Sufficient contrast or distinction between elements</h2>
-
-			<p>This principle <a id="_idIndexMarker817"></a>states that the 
-elements of a page should be clearly distinguishable from each other and
- representative of their function. It reflects the need to organize the 
-visual elements in a hierarchy using size, colors, typography, margins, 
-and white space in such a way that each function is clearly represented 
-and distinct from others. The main objective is to direct the user’s 
-attention to the focal point of the interface. Let’s see the Packt home 
-page (<a href="https://www.packtpub.com/">https://www.packtpub.com/</a>) as <span class="No-Break">an example:</span></p>
-
-			<div>
-
-				<div id="_idContainer081" class="IMG---Figure">
-
-					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.01_B18602.jpg" alt="Figure 11.1 – Packt’s home page and color contrast" width="519" height="174">
-
-				</div>
-
-			</div>
-
-			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.1 – Packt’s home page and color contrast</p>
-
-			<p>In this example, most of the content uses a limited number of 
-colors (a “palette”), and the two buttons have high contrast, which 
-draws the attention of the user: the <strong class="bold">TRY FOR FREE</strong> and <strong class="bold">START LEARNING NOW</strong> buttons. Clearly, the designer has set the focus point for these <span class="No-Break">two actions.</span></p>
-
-			<p>Related to this principle, there is a design “rule” applied in this screenshot that is handy to keep in mind: the <em class="italic">60-30-10 color rule</em>.
- This means that 60% of the section must have a base color (here, it is 
-dark brown), 30% is a primary color (used for regular text, menus, and 
-the image, which, here, is white), and 10% is reserved for the secondary
- color or high <a id="_idIndexMarker818"></a>contrast (used for the 
-focal point, or the “call to action” buttons in orange). Let’s continue 
-analyzing this page to see the other principles of <span class="No-Break">UI design.</span></p>
-
-			<h2 id="_idParaDest-204"><a id="_idTextAnchor244"></a>Stimulating repetition and being consistent</h2>
-
-			<p>This principle is based on the concept that people learn through 
-repetition. It indicates that the same task, even done through different
- interfaces, should emulate more or less the same repetitive behavior 
-from the user. For example, if you ask a user to open a word processor, 
-and you ask them to open a file, where will they try to click? Most 
-“seasoned” users will take their mouse to the upper-left part of the 
-window and look for either an icon that represents “<strong class="bold">Open</strong>,” or the <strong class="bold">File</strong>
- menu. Why is this? It is because this placement has become standard, 
-and we have learned through repetition where to find it. If you placed 
-the <strong class="bold">File</strong> menu at the bottom right of the screen, most, if not all, of your users would have trouble finding it <span class="No-Break">without direction.</span></p>
-
-			<p>Another example of repetition and consistency appears when 
-displaying visual elements – more importantly, when they are part of a 
-list or common set. Let’s follow with an example from the Packt <span class="No-Break">Publishing website:</span></p>
-
-			<div>
-
-				<div id="_idContainer082" class="IMG---Figure">
-
-					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.02_B18602.jpg" alt="Figure 11.2 – Cards with books" width="1124" height="557">
-
-				</div>
-
-			</div>
-
-			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.2 – Cards with books</p>
-
-			<p>In the preceding example, the designer used repetition to display 
-the books in prime time, by using vertical “cards” for each item. Each 
-card repeats a similar layout, colors, and format. Once you understand 
-what one displays, the same applies to all the others: this is a 
-repetition of visual design and is important, so the user doesn’t have 
-to “re-learn” the<a id="_idIndexMarker819"></a> interface for <span class="No-Break">each book.</span></p>
-
-			<p>In short, it is the repetition of placements, actions, and visual styles. Let’s move to the <span class="No-Break">next one.</span></p>
-
-			<h2 id="_idParaDest-205"><a id="_idTextAnchor245"></a>Be mindful of alignment and direction</h2>
-
-			<p>The alignment of elements (graphics, fonts, etc.) creates a sense 
-of order and organization, showing that such elements belong to the same
- group or have the same weight or importance. We are mostly familiar 
-with alignment (and spacing) when working with fonts, but the same 
-concept applies to graphical elements such as icons, sections, images, 
-and so on. From the previous figure, notice how the tabs are aligned, as
- well as the cards and the content therein. Just by alignment and style 
-alone, we can distinguish what belongs to which <span class="No-Break">natural group.</span></p>
-
-			<p>Another example of alignment is clearly seen when only using 
-typography for menus and features. For example, in the footer of this 
-page, even without the use of icons or visual boundaries, it is easy to 
-see what option belongs to each natural group just by using space <span class="No-Break">and alignment:</span></p>
-
-			<div>
-
-				<div id="_idContainer083" class="IMG---Figure">
-
-					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.03_B18602.jpg" alt="Figure 11.3 – Packt’s website footer, using alignment to display natural groups" width="480" height="116">
-
-				</div>
-
-			</div>
-
-			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.3 – Packt’s website footer, using alignment to display natural groups</p>
-
-			<p>This example, though simple, already shows the use of contrast 
-(bold versus normal font-weight), consistency through repetition, 
-alignment, and also the next principle we will see <span class="No-Break">here: proximity.</span></p>
-
-			<h2 id="_idParaDest-206"><a id="_idTextAnchor246"></a>Use proximity and distance to show natural groups</h2>
-
-			<p>This principle is<a id="_idIndexMarker820"></a> simple to follow: 
-place the elements that are naturally related close to each other. This 
-makes it easier for the user to find and understand. Typography and 
-iconography can also be used to show proximity and similar 
-functionality. The famous “ribbon bar” introduced by Microsoft in its 
-Office applications uses this concept heavily and soon became a 
-standard. For example, here is a segment of the <strong class="bold">Home</strong> tab that deals with alignment, lists, spacing, <span class="No-Break">and indentation:</span></p>
-
-			<div>
-
-				<div id="_idContainer084" class="IMG---Figure">
-
-					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.04_B18602.jpg" alt="Figure 11.4 – Paragraph icons" width="380" height="98">
-
-				</div>
-
-			</div>
-
-			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.4 – Paragraph icons</p>
-
-			<p>Notice how the icons that modify the type of paragraph, spacing, and alignment are close to each other, without <span class="No-Break">being “mixed.”</span></p>
-
-			<p>These are not the only principles of UI design but are the most 
-basic ones that we should keep in mind when developing our components. 
-If you work with a team that includes a UI designer, you may receive 
-templates or mockups, even storyboards, to implement into Vue 
-components, as we saw in <a href="https://learning.oreilly.com/library/view/vue-js-3-design/9781803238074/B18602_04.xhtml#_idTextAnchor102"><span class="No-Break"><em class="italic">Chapter 4</em></span></a>, <em class="italic">User Interface Composition with Components</em>. If instead, you are on a <em class="italic">“one-man band team”</em> and the design of the interfaces falls<a id="_idIndexMarker821"></a> in your lap, these principles will help you greatly to create a professional and useful UI. But there <span class="No-Break">is more...</span></p>
-
-			<h2 id="_idParaDest-207"><a id="_idTextAnchor247"></a>Laws for UI design</h2>
-
-			<p>Just like we have<a id="_idIndexMarker822"></a> principles, 
-several studies have issued or identified “laws” of design, which are 
-measurable functions to predict certain software attributes, such as 
-usability <span class="No-Break">and friendliness.</span>
-
-In particular, the following <span class="No-Break">stand out.</span></p>
-
-			<h3>Fitt’s law</h3>
-
-			<p>This law specifies <a id="_idIndexMarker823"></a>that the time taken for a user to acquire a target is a function of<a id="_idIndexMarker824"></a>
- the distance from the pointer and the size of the target. The important
- concepts here are the distance and size of the target: the longer the 
-distance between targets, the larger these <span class="No-Break">should be.</span></p>
-
-			<p>The application of this law is what places the window close button (<strong class="bold">X</strong>) in one of the corners of the screen (when the window is maximized), the <strong class="bold">Start</strong> button at the lower left of the screen, <em class="italic">Show desktop</em>
- at the bottom right of the screen, and so on. If a user moves the mouse
- in any of these directions, it will sooner or later arrive at these 
-targets, and continuing in the same direction will not affect the 
-result. In the language of UI design, these buttons are “infinite” as 
-once the cursor has reached a corner by the edge of the screen, 
-continuing scrolling in the same direction with the mouse will still hit
- <span class="No-Break">the target.</span></p>
-
-			<p>Another implication of this law is that functions that are similar
- should also be placed in proximity to each other (such as the examples 
-in <span class="No-Break"><em class="italic">Figure 11</em></span><em class="italic">.4</em>). You can find more information about this law on Wikipedia, <span class="No-Break">at </span><a href="https://en.wikipedia.org/wiki/Fitts%E2%80%99s_law"><span class="No-Break">https://en.wikipedia.org/wiki/Fitts’s_law</span></a><span class="No-Break">.</span></p>
-
-			<h3>Hick’s law</h3>
-
-			<p>This law says that <a id="_idIndexMarker825"></a>the time it takes a user to make a choice is a logarithmic<a id="_idIndexMarker826"></a>
- function based on the number of available options and their complexity.
- In simpler terms, too many options are confusing and will make the user
- take more time to decide. Some implications of this law are <span class="No-Break">as follows:</span></p>
-
-			<ul>
-
-				<li>Break complex tasks into smaller groups, manageable by the user to speed up their <span class="No-Break">decision time</span></li>
-
-				<li>Avoid creating interfaces overloaded with options, as they will overwhelm <span class="No-Break">the user</span></li>
-
-				<li>If a function is time-sensitive, minimize the options to the bare minimum for <span class="No-Break">the situation</span></li>
-
-			</ul>
-
-			<p>In everyday software, we can see the application of this law in 
-multiple places – for example, in “installers” for a particular 
-software, where successive windows with options are presented to the 
-user during or before starting the installation in a sequential manner, 
-as opposed to a form to fill in. More information about this law can be 
-found on <span class="No-Break">Wikipedia: </span><a href="https://en.wikipedia.org/wiki/Hick%27s_law"><span class="No-Break">https://en.wikipedia.org/wiki/Hick%27s_law</span></a><span class="No-Break">.</span></p>
-
-			<h3>Ben Schneiderman’s eight rules</h3>
-
-			<p>In 1986, Professor <a id="_idIndexMarker827"></a>Ben Schneiderman published his <a id="_idIndexMarker828"></a>book titled <em class="italic">Designing the User Interface: Strategies for Effective Human-Computer Interaction</em>,
- where he stipulated eight rules for interface design. These rules are 
-as relevant today as on the day they were created, so they are worth <span class="No-Break">mentioning here:</span></p>
-
-			<ol>
-
-				<li>Strive for consistency (in actions, steps, <span class="No-Break">placements, etc.).</span></li>
-
-				<li>Enable the use of shortcuts for common tasks (be it using a keyboard <span class="No-Break">or icons).</span></li>
-
-				<li>Offer informative feedback (especially when an <span class="No-Break">error occurs).</span></li>
-
-				<li>Design dialogs with <span class="No-Break">an end.</span></li>
-
-				<li>Offer simple error handling, so the user can take action quickly
- and avoid serious errors by the user. The classical implementation of 
-rules <em class="italic">#4</em> and<em class="italic"> #5 </em>are “confirmation dialogs” before performing permanent actions, such as <span class="No-Break">deleting content.</span></li>
-
-				<li>Permit easy reversal of actions (thanks to this, we have <em class="italic">Ctrl</em> + <span class="No-Break"><em class="italic">Z</em></span><span class="No-Break">!).</span></li>
-
-				<li>Support the sense of control in the user. Nothing is worse for a
- user than to feel that the machine is “doing its own thing, out of 
-control.” If you ever sent an 800-page file to print by mistake, and it 
-took you a dozen pages before you could actually cancel the operation...
- this is what this <span class="No-Break">is about.</span></li>
-
-				<li>Reduce short-term memory. The user can only keep in their 
-short-term memory a handful of items and tasks at a time, and too many 
-elements on a screen (menu, and so on) create rejection. This principle 
-also relates to <span class="No-Break">Hick’s law.</span></li>
-
-			</ol>
-
-			<p>For practical applications and an introduction to the topic, these principles, rules, and laws <a id="_idIndexMarker829"></a>should <a id="_idIndexMarker830"></a>give us a <span class="No-Break">sure footing.</span></p>
-
-			<p>More information about these rules and Ben Schneiderman can be found on <span class="No-Break">Wikipedia (</span><a href="https://en.wikipedia.org/wiki/Ben_Shneiderman"><span class="No-Break">https://en.wikipedia.org/wiki/Ben_Shneiderman</span></a><span class="No-Break">).</span></p>
-
-			<h3>UX design principles</h3>
-
-			<p>UX design also <a id="_idIndexMarker831"></a>has its own 
-objectives and principles that apply to patterns. Above all, the main 
-objective of UX is to provide a good perception to the user, to create a
- bond with the brand or product, by carefully tailoring a flow of 
-interactions. In this case, the solutions must be <span class="No-Break">as follows:</span></p>
-
-			<ul>
-
-				<li><em class="italic">Useful and usable:</em> First and foremost, the application must do what it intended to do, do it well, and be easy for the user <span class="No-Break">to use</span></li>
-
-				<li><em class="italic">Learnable and memorable</em>: The user must be able to learn and understand what information is presented and internalize it for future use <span class="No-Break">as well</span></li>
-
-				<li><em class="italic">Credible and give control to the user</em>: 
-When the user interacts with the application, it must feel that it is 
-doing what the user intends and that the result is “safe” for <span class="No-Break">the user</span></li>
-
-			</ul>
-
-			<p>This last principle is very important. If the user feels that the 
-application somewhere during the interaction has “lost control” of what 
-is going on, it is a recipe for disaster. Sadly, this occurs all too 
-often with the dark patterns that we will see later in this chapter, but
- now, let’s see some good patterns that result in a good experience for <span class="No-Break">the user.</span></p>
-
-			<h1 id="_idParaDest-208"><a id="_idTextAnchor248"></a>Common patterns for data manipulation</h1>
-
-			<p>These patterns are<a id="_idIndexMarker832"></a> often matched by 
-pure HTML elements, while others have emerged in recent years through 
-the clever use of styling of such elements. These have become standard 
-in the industry and are well understood by users at first sight. What 
-follows here is a non-exclusive list with a short description of when to
- use <span class="No-Break">each one.</span></p>
-
-			<h2 id="_idParaDest-209"><a id="_idTextAnchor249"></a>HTML input elements</h2>
-
-			<p>The standard <a id="_idIndexMarker833"></a>input fields provided 
-by HTML are a clear pattern for receiving input from the user. Nowadays,
- the input element has many variants due to the <strong class="source-inline">type</strong>
- attribute, allowing for input other than plain text. Used in forms and 
-validation libraries, these elements are as good as they come, ready to 
-read and format from text and numbers to URL, date, time, images, and 
-colors. The full list of available types supported by today’s browsers 
-can be found <span class="No-Break">here: </span><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input#input_types"><span class="No-Break">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input#input_types</span></a><span class="No-Break">.</span></p>
-
-			<p>For the most part, these elements are used with basic functionality and some heavy CSS styling. Use <strong class="source-inline">inputs</strong> (and <strong class="source-inline">textareas</strong>)
- any time that you need the user to enter text information. Browsers 
-today offer native-looking widgets for the more complex types, such as 
-date and <span class="No-Break">color pickers.</span></p>
-
-			<h2 id="_idParaDest-210"><a id="_idTextAnchor250"></a>Checkboxes, radios, and toggle switches</h2>
-
-			<p>Checkboxes <a id="_idIndexMarker834"></a>and<a id="_idIndexMarker835"></a> radio <a id="_idIndexMarker836"></a>buttons are provided natively by HTML and are presented to the user following the format of the local OS or <a id="_idIndexMarker837"></a>environment. <strong class="bold">Checkboxes</strong> represent multiple options to the user, which they can select freely from the group. In contrast, <strong class="bold">radio</strong> buttons <a id="_idIndexMarker838"></a>only allow the selection of one option from <span class="No-Break">the list:</span></p>
-
-			<div>
-
-				<div id="_idContainer085" class="IMG---Figure">
-
-					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.05_B18602.jpg" alt="Figure 11.5 – Checkboxes on the left, and radio buttons on the right" width="820" height="187">
-
-				</div>
-
-			</div>
-
-			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.5 – Checkboxes on the left, and radio buttons on the right</p>
-
-			<p>With the release of the original iPhone, a new variant of the checkbox became very popular: the <strong class="bold">toggle switch</strong>. It is <a id="_idIndexMarker839"></a>not
- provided natively by the HTML standard, but it is easily styled through
- CSS to “disguise” a checkbox. A toggle switch has two states, enabled <a id="_idIndexMarker840"></a>and<a id="_idIndexMarker841"></a> disabled, and<a id="_idIndexMarker842"></a>
- it is often used to activate or deactivate a function or feature. This 
-is an important distinction as the checkbox should focus on options or 
-alternatives. Here is <span class="No-Break">an example:</span></p>
-
-			<div>
-
-				<div id="_idContainer086" class="IMG---Figure">
-
-					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.06_B18602.jpg" alt="Figure 11.6 – Toggle switches in each state" width="606" height="103">
-
-				</div>
-
-			</div>
-
-			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.6 – Toggle switches in each state</p>
-
-			<p>The toggle switch is in an “off” state (or false) when the toggle 
-is to the left, and “on” when to the right. Often, switching also 
-affects the color, showing it in a mute scale of gray when off or in 
-vibrant colors when activated. Internally, these two states are often 
-represented by <strong class="source-inline">true</strong> (on) and <strong class="source-inline">false</strong> (off), and they should be used to activate or deactivate settings, features, and so on. You can find the <strong class="source-inline">Toggle</strong> component that implements the styling and the <strong class="source-inline">v-model</strong> code in the repository for <span class="No-Break">this chapter.</span></p>
-
-			<h2 id="_idParaDest-211"><a id="_idTextAnchor251"></a>Chips, pills, or tags</h2>
-
-			<p>This pattern<a id="_idIndexMarker843"></a> encompasses<a id="_idIndexMarker844"></a> short<a id="_idIndexMarker845"></a> text (or “copy” in UI lingo) inside<a id="_idIndexMarker846"></a> a<a id="_idIndexMarker847"></a> round box. The copy can be <a id="_idIndexMarker848"></a>accompanied by an icon to emphasize the state when selected, or an action such as an “<strong class="bold">X</strong>”
- symbol to remove it. Usually, pills are used in lists to display 
-attributes, tags, categories, or other types of qualificatives for a 
-given item. In some cases, they can be used also to select (toggle) 
-items from the list. In this case, they rival or behave just like a 
-checkbox but in a more visually pleasing manner. The implementation of 
-chips is rather trivial and can be done with plain CSS in a single HTML 
-element (for example, a <span class="No-Break"><strong class="source-inline">span</strong></span><span class="No-Break"> element).</span></p>
-
-			<div>
-
-				<div id="_idContainer087" class="IMG---Figure">
-
-					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.07_B18602.jpg" alt="Figure 11.7 – A list of items with pills" width="530" height="98">
-
-				</div>
-
-			</div>
-
-			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.7 – A list of items with pills</p>
-
-			<p>This is a short list of UI patterns to capture user input, but it does cover the most common types: the HTML inputs and <span class="No-Break">styling variations.</span></p>
-
-			<h1 id="_idParaDest-212"><a id="_idTextAnchor252"></a>Common patterns for data visualization</h1>
-
-			<p>These patterns<a id="_idIndexMarker849"></a> display information 
-back to the user, either in response to a user action or an application 
-event. What follows is a non-exclusive list <span class="No-Break">of patterns.</span></p>
-
-			<h2 id="_idParaDest-213"><a id="_idTextAnchor253"></a>Tooltips</h2>
-
-			<p>This pattern<a id="_idIndexMarker850"></a> shows<a id="_idIndexMarker851"></a>
- the user some floating small text with information regarding the target
- element, usually when the user activates the element using some action 
-(a hover, click, selection, etc.). The information is displayed above, 
-below, or to the side of the element in the form of a “speech bubble” 
-(like in comic books). Here is <span class="No-Break">an example:</span></p>
-
-			<div>
-
-				<div id="_idContainer088" class="IMG---Figure">
-
-					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.08_B18602.jpg" alt="Figure 11.8 – A tooltip displaying the name/action of the icon and a shortcut" width="289" height="70">
-
-				</div>
-
-			</div>
-
-			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.8 – A tooltip displaying the name/action of the icon and a shortcut</p>
-
-			<p>This pattern is mostly used to display help regarding the target 
-object, but it can be used also to display contextual menus. For 
-example, selecting a word from this paragraph in a text editor online 
-will display a popup with <span class="No-Break">a menu:</span></p>
-
-			<div>
-
-				<div id="_idContainer089" class="IMG---Figure">
-
-					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.09_B18602.jpg" alt="Figure 11.9 – A tooltip pattern used to display a contextual menu" width="546" height="117">
-
-				</div>
-
-			</div>
-
-			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.9 – A tooltip pattern used to display a contextual menu</p>
-
-			<p>There may be some discussion regarding whether this last use is a 
-tooltip or a contextual menu, but the fact that it opens on selection 
-would indicate the first. Traditionally, contextual menus <a id="_idIndexMarker852"></a>are opened with a secondary<a id="_idIndexMarker853"></a>
- action, such as the right mouse button (in Windows and Linux). In 
-either case, the concept to remember for this pattern is to show 
-information to the user on selection or pre-activation to help them 
-decide what to <span class="No-Break">do next.</span></p>
-
-			<h2 id="_idParaDest-214"><a id="_idTextAnchor254"></a>Notification dots, bubbles, marks, or badges</h2>
-
-			<p>This <a id="_idIndexMarker854"></a>pattern <a id="_idIndexMarker855"></a>consists<a id="_idIndexMarker856"></a> of <a id="_idIndexMarker857"></a>displaying a <a id="_idIndexMarker858"></a>small <a id="_idIndexMarker859"></a>icon<a id="_idIndexMarker860"></a> on <a id="_idIndexMarker861"></a>top
- of a larger icon to indicate that an event has happened and requires 
-the attention of the user, yet it is not urgent. This small icon can be a
- dot, a bubble, and so on. If the notification has a number in it, it is
- also called a <strong class="bold">badge.</strong> Some examples of this pattern are <span class="No-Break">as follows:</span></p>
-
-			<ul>
-
-				<li>The small circle with a number for new emails received in the <span class="No-Break">email icon</span></li>
-
-				<li>The double checkmark in a chat application indicating that the other party has received and read <span class="No-Break">the message</span></li>
-
-				<li>A small mark in a taskbar showing that an application has <span class="No-Break">been opened</span></li>
-
-			</ul>
-
-			<p>The key <a id="_idIndexMarker862"></a>concept<a id="_idIndexMarker863"></a> is to<a id="_idIndexMarker864"></a> use<a id="_idIndexMarker865"></a> some sort <a id="_idIndexMarker866"></a>of <a id="_idIndexMarker867"></a>small <a id="_idIndexMarker868"></a>variance to the icon to<a id="_idIndexMarker869"></a> indicate the need for future attention, but it is not urgent and won’t affect the current activity for <span class="No-Break">the user.</span></p>
-
-			<h2 id="_idParaDest-215"><a id="_idTextAnchor255"></a>Toast notifications</h2>
-
-			<p>This pattern is <a id="_idIndexMarker870"></a>used in multiple applications <a id="_idIndexMarker871"></a>and
- OSes. It consists of displaying, for a short amount of time, an 
-overlayed floating window with quick information for the user. Often, it
- includes a short text fragment paired with a sensible icon. Depending 
-on the OS, this can be displayed natively at the top center, right of 
-the screen, or at the bottom right above the system tray. Web 
-applications can either implement their own toast notification within 
-the browser window or require permission from the user and display a 
-“native toast notification” using the local OS. Here is an example of a <span class="No-Break">toast notification:</span></p>
-
-			<div>
-
-				<div id="_idContainer090" class="IMG---Figure">
-
-					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.10_B18602.jpg" alt="Figure 11.10 – A native toast notification on the desktop" width="524" height="121">
-
-				</div>
-
-			</div>
-
-			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.10 – A native toast notification on the desktop</p>
-
-			<p>These notifications are useful to inform the user of changes in 
-the environment that require their attention, to report back the result 
-of an asynchronous operation (success, error, etc.), and so on. These 
-calls to attention are ephemeral, so they should not be a critical part 
-of an important workflow, except for the conditions <span class="No-Break">just mentioned.</span></p>
-
-			<h2 id="_idParaDest-216"><a id="_idTextAnchor256"></a>Carousel or image sliders</h2>
-
-			<p>Carousel or image<a id="_idIndexMarker872"></a> sliders are a pattern<a id="_idIndexMarker873"></a>
- for displaying, in the same space, different sections with images and 
-content in sequential order. Usually, using a timer, these sections are 
-presented to the user a few seconds apart, also offering the option to 
-skip to any of them through dotted navigation. While they were very 
-popular some years ago, there are counterpoints to the use of these, as 
-“impatient” users may never see the entire content of a carousel. In 
-practice, the recommendation is to keep the list of sections as short as
- possible, somewhere between three to <span class="No-Break">five elements.</span></p>
-
-			<p>Examples of this implementation abound on the internet, as they 
-are implemented primarily on the landing page of a site. Practically all
- shopping and news websites make use of this pattern – for example, the 
-Amazon landing <span class="No-Break">page (</span><a href="http://www.amazon.de/"><span class="No-Break">www.amazon.de</span></a><span class="No-Break">):</span></p>
-
-			<div>
-
-				<div id="_idContainer091" class="IMG---Figure">
-
-					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.11_B18602.jpg" alt="Figure 11.11 – Amazon’s carousel displays offers from the store" width="481" height="150">
-
-				</div>
-
-			</div>
-
-			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.11 – Amazon’s carousel displays offers from the store</p>
-
-			<p>Image sliders can be as big as a carousel but can also be much smaller and used to display thumbnails. Here is again an example <span class="No-Break">from Amazon:</span></p>
-
-			<div>
-
-				<div id="_idContainer092" class="IMG---Figure">
-
-					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.12_B18602.jpg" alt="Figure 11.12 – Amazon makes good use of image sliders to display items to the user" width="481" height="97">
-
-				</div>
-
-			</div>
-
-			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.12 – Amazon makes good use of image sliders to display items to the user</p>
-
-			<p>While trivial to implement, the use of carousels and image sliders
- is a good way to display information to the user. There is a warning, 
-though, that abusing this pattern could lead to an overwhelming and 
-saturated experience, create confusion, and even trigger undesirable 
-side<a id="_idIndexMarker874"></a> effects, such as sensory <a id="_idIndexMarker875"></a>overwhelming and <span class="No-Break">content avoidance.</span></p>
-
-			<h2 id="_idParaDest-217"><a id="_idTextAnchor257"></a>Progress bars and spinners</h2>
-
-			<p>A progress<a id="_idIndexMarker876"></a> bar is <a id="_idIndexMarker877"></a>any element that gives the <a id="_idIndexMarker878"></a>user <a id="_idIndexMarker879"></a>an
- idea of how far down the workflow the current state of a process is. 
-While the name seems to indicate a “bar,” in practice, any element that 
-displays progress through a limited number of actions falls into this 
-category. The basic objective is to notify the user of the progress of 
-tasks that take a long time and show that the system is “busy” working 
-on them, thus providing visibility and a sense of control to the user. 
-Progress bars are very important to prevent involuntary negative actions
- from the user. If a long-running task is being executed in the 
-background (let’s say in a web worker) without any feedback on the 
-progress, the user may believe that the task has not started, has 
-failed, or the computer has “hung up.” It is a negative user experience 
-to leave the user wondering what is going on. Here are some examples of 
-progress <span class="No-Break">bar elements:</span></p>
-
-			<div>
-
-				<div id="_idContainer093" class="IMG---Figure">
-
-					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.13_B18602.jpg" alt="Figure 11.13 – Example of progress bars" width="524" height="210">
-
-				</div>
-
-			</div>
-
-			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.13 – Example of progress bars</p>
-
-			<p>In addition to styling, progress bars can also be used in an 
-“undetermined state,” meaning that it is not possible for the 
-application to calculate how much time or how many steps a process may 
-take; however, it still wants to inform the user that the system is busy
- and shouldn’t be interrupted. The HTML standard does provide an element
- specifically for progress bars that can manage these situations (the 
-progress element; see <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress</a>), but there are other patterns to use in these cases, such <span class="No-Break">as </span><span class="No-Break"><strong class="bold">spinners</strong></span><span class="No-Break">.</span></p>
-
-			<p>As the name “spinner” indicates, this is an icon that “spins” on 
-itself, giving the notion that the application is busy and working. Here
- is an example of a spinner with a <span class="No-Break">text indicator:</span></p>
-
-			<div>
-
-				<div id="_idContainer094" class="IMG---Figure">
-
-					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.14_B18602.jpg" alt="Figure 11.14 – Spinner circle, indicating the application is busy" width="497" height="102">
-
-				</div>
-
-			</div>
-
-			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.14 – Spinner circle, indicating the application is busy</p>
-
-			<p>This approach has been used in OSes and applications for some time
- now, so users understand its meaning. There is one caveat when using 
-this pattern and that is that after a long period of time, it can create
- anxiety, so it is recommended to accompany it with some sort <a id="_idIndexMarker880"></a>of<a id="_idIndexMarker881"></a> indicator <a id="_idIndexMarker882"></a>of action. Implementing<a id="_idIndexMarker883"></a> a <strong class="source-inline">spinner</strong> component in Vue is rather trivial, and <span class="No-Break">mostly CSS:</span></p>
-
-			<p class="SC---Heading" lang="en-US" xml:lang="en-US">./components/Spinner.vue</p>
-
-			<div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="source-code">
-
-&lt;script setup&gt;
-
-const $props=defineProps(['caption'])
-
-&lt;/script&gt;
-
-&lt;template&gt;
-
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span class="<strong class="bold">spinner</strong>"&gt;&lt;/span&gt; {{ <strong class="bold">$props.caption</strong> }}
-
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
-
-&lt;/template&gt;
-
-&lt;style scoped&gt;
-
-.spinner{
-
-&nbsp;&nbsp;&nbsp;&nbsp;display: inline-block;
-
-&nbsp;&nbsp;&nbsp;&nbsp;height: 1rem; width: 1rem;
-
-&nbsp;&nbsp;&nbsp;&nbsp;border: 2px solid;
-
-&nbsp;&nbsp;&nbsp;&nbsp;vertical-align: middle;
-
-&nbsp;&nbsp;&nbsp;&nbsp;border-radius: 50%;
-
-&nbsp;&nbsp;&nbsp;&nbsp;border-top-color: #06c9c9;
-
-&nbsp;&nbsp;&nbsp;&nbsp;animation: rotate 1s linear infinite;
-
-}
-
-@keyframes rotate {
-
-&nbsp;&nbsp;&nbsp;&nbsp;0%{ transform: rotate(0deg);}
-
-&nbsp;&nbsp;&nbsp;&nbsp;100%{transform: rotate(360deg);}
-
-}
-
-&lt;/style&gt;</pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div>
-
-			<p>In this <a id="_idIndexMarker884"></a>simple <a id="_idIndexMarker885"></a>component, we only need to define a prop for the text, and a class for our<a id="_idIndexMarker886"></a> spinning<a id="_idIndexMarker887"></a> elements. The circle is made here by setting the border radius and defining a color for one border, so the spinning action <span class="No-Break">is noticeable.</span></p>
-
-			<h2 id="_idParaDest-218"><a id="_idTextAnchor258"></a>Pagination and infinite scroller</h2>
-
-			<p>When we need<a id="_idIndexMarker888"></a> to display a long list of items to the <a id="_idIndexMarker889"></a>user, there are two patterns that <a id="_idIndexMarker890"></a>come to<a id="_idIndexMarker891"></a> mind as a well-understood solution: pagination and <span class="No-Break">infinite scrollers.</span></p>
-
-			<p>In <strong class="bold">pagination</strong>, the dataset is divided into smaller parts of fixed size in sequential order. Each subset is called a <strong class="bold">page</strong> and is <a id="_idIndexMarker892"></a>referenced
- by an ordinal (usually a number). This allows for easy navigation 
-between pages, such as random and sequential access by the page number. 
-Also, giving the same order function in the data allows a quick and easy
- way to “come back” to the data in different sessions. The element that 
-allows the user to navigate in the paged data is usually referred<a id="_idIndexMarker893"></a> to as a <strong class="bold">pager</strong>, and it is common practice to place it at the top and bottom of the item list. A typical pager might look <span class="No-Break">like this:</span></p>
-
-			<div>
-
-				<div id="_idContainer095" class="IMG---Figure">
-
-					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.15_B18602.jpg" alt="Figure 11.15 – The elements of a typical pager" width="713" height="188">
-
-				</div>
-
-			</div>
-
-			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.15 – The elements of a typical pager</p>
-
-			<p>In the preceding figure, you can see the different elements of a 
-typical pager, usually used for tables or lists of content. However, 
-this is not the only shape that a pager may take. It could, for example,
- use a drop-down menu for the page numbers, display ranges of pages, and
- <a id="_idIndexMarker894"></a>so<a id="_idIndexMarker895"></a> on. The <a id="_idIndexMarker896"></a>important concept of this pattern is the division of the set<a id="_idIndexMarker897"></a> and the quick navigation to each <span class="No-Break">individual subgroup.</span></p>
-
-			<p>An alternative to pagination is to use an <strong class="bold">infinite scroller</strong>.
- In this pattern, the exact location of each item in the dataset may or 
-may not be needed, and the items are presented to the user as they 
-scroll the web page. When the user reaches the end of the list, new 
-items are loaded on the page, chunk by chunk, until the user stops 
-scrolling or the entire dataset has been loaded. Here is a graphical 
-representation of <span class="No-Break">this pattern:</span></p>
-
-			<div>
-
-				<div id="_idContainer096" class="IMG---Figure">
-
-					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.16_B18602.jpg" alt="Figure 11.16 – The implementation of an infinite scroller" width="711" height="417">
-
-				</div>
-
-			</div>
-
-			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.16 – The implementation of an infinite scroller</p>
-
-			<p>A number of <a id="_idIndexMarker898"></a>techniques<a id="_idIndexMarker899"></a> are <a id="_idIndexMarker900"></a>used to detect user behavior and load or pre-load<a id="_idIndexMarker901"></a> data. One of the easiest implementations is through the use<a id="_idIndexMarker902"></a> of an <strong class="bold">intersection observer</strong>,
- a native element provided by browsers in JavaScript that triggers an 
-event when such an observer intersects with other elements and, in this 
-case, with the viewport. Since this is a new concept, we will implement a
- minimal infinite scroller that will look <span class="No-Break">like this:</span></p>
-
-			<div>
-
-				<div id="_idContainer097" class="IMG---Figure">
-
-					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.17_B18602.jpg" alt="Figure 11.17 – The example infinite scroller limited to a div element" width="681" height="175">
-
-				</div>
-
-			</div>
-
-			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.17 – The example infinite scroller limited to a <strong class="source-inline">div</strong> element</p>
-
-			<p>If you scroll down on the <strong class="source-inline">div</strong>
- boundary, by any available means (mouse, keyboard, etc.), the list will
- generate new items and will never stop, giving the impression that the 
-scrolling <a id="_idIndexMarker903"></a>is <a id="_idIndexMarker904"></a>infinite. Here<a id="_idIndexMarker905"></a> is the<a id="_idIndexMarker906"></a> source code for <span class="No-Break">that component:</span></p>
-
-			<p class="SC---Heading" lang="en-US" xml:lang="en-US">./src/components/InfiniteScroller.vue</p>
-
-			<div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="source-code">
-
-&lt;script setup&gt;
-
-import { ref, onMounted } from "vue"
-
-const _max_value = ref(30),&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#1
-
-<strong class="bold">&nbsp;&nbsp;&nbsp;&nbsp;_scroll_watcher = ref(null),</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong class="bold">#2</strong>
-
-<strong class="bold">&nbsp;&nbsp;&nbsp;&nbsp;observer = new IntersectionObserver(triggerEvent)</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong class="bold">#3</strong>
-
-onMounted(() =&gt; {
-
-<strong class="bold">&nbsp;&nbsp;&nbsp;&nbsp;observer.observe(_scroll_watcher.value)</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong class="bold">#4</strong>
-
-})
-
-function <strong class="bold">triggerEvent</strong>() {_max_value.value += 20;}
-
-&lt;/script&gt;
-
-&lt;template&gt;
-
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;div v-for="elem in _max_value" :key="elem"&gt;
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;item {{ elem }}
-
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
-
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong class="bold">ref="_scroll_watcher"</strong>&gt;&lt;/div&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#5
-
-&lt;/template&gt;</pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div>
-
-			<p>The preceding component is minimal, but it does illustrate the 
-technique. We will have a list of numbers with an initial limit that 
-will trigger an overflow in the container (<strong class="source-inline">#1</strong>). This is important as, on the first load, the user will know that there is a scrollbar and more content below (as in <span class="No-Break"><em class="italic">Figure 11</em></span><em class="italic">.17</em>). Now, the technique here is to define a reactive variable, <strong class="source-inline">_scroll_watcher</strong>, pointing to <strong class="source-inline">null</strong>. This variable will later have the value of an element at the bottom of the list, which we mark as a reference (<strong class="source-inline">#5</strong>). We use <strong class="source-inline">null</strong> so Vue does not run any optimization at this point. In line <strong class="source-inline">#3</strong>, we create a new <strong class="source-inline">IntersectionObserver</strong>, and pass as value the reference to our <strong class="source-inline">triggerEvent</strong> function, where we will simply increment the boundary of our list. In our template, we use a <strong class="source-inline">v-for</strong>
- directive to generate the elements for each integer in the list, which 
-should appear before our scroll watcher element. The magic happens in 
-line <strong class="source-inline">#4</strong>, once our component has been created and mounted into the page. At this moment, Vue has already assigned to <strong class="source-inline">_scroll_watcher</strong> the reference for the HTML element, so we can pass it to our instance of <strong class="source-inline">IntersectionObserver</strong>. As we are using it with defaults, it will run the <strong class="source-inline">triggerEvent</strong>
- function each time the div in question appears in the viewport, which 
-will happen when we reach the end of the list. In that function, we 
-increment again the number of items, making Vue inject more elements 
-into the web page and pushing the scroll watcher div again out of the 
-viewport. This process repeats <em class="italic">ad infinitum</em>, giving us a simple but effective <span class="No-Break">infinite scroller.</span></p>
-
-			<p>Beyond the<a id="_idIndexMarker907"></a> implementation<a id="_idIndexMarker908"></a> of the UX pattern, this technique is the correct approach <a id="_idIndexMarker909"></a>to<a id="_idIndexMarker910"></a> binding a reactive variable to an element in the DOM, and it saves us from writing direct JavaScript DOM manipulation, such as <strong class="source-inline">document.getElementById("#someId")</strong> and dealing with issues such as ID collisions. Vue resolves this <span class="No-Break">for us.</span></p>
-
-			<h1 id="_idParaDest-219"><a id="_idTextAnchor259"></a>Common patterns for interaction and navigation</h1>
-
-			<p>These patterns <a id="_idIndexMarker911"></a>control the 
-interaction or offer the user options to control the process and 
-navigation of the application. As usually happens, some of these 
-patterns could also fit into <span class="No-Break">other categories.</span></p>
-
-			<h2 id="_idParaDest-220"><a id="_idTextAnchor260"></a>Placement of menus</h2>
-
-			<p>The placement<a id="_idIndexMarker912"></a> of menus is also a pattern that <a id="_idIndexMarker913"></a>has been standardized in three <span class="No-Break">basic layouts:</span></p>
-
-			<ul>
-
-				<li><strong class="bold">Menu bars</strong> (horizontal) are often placed in a “sticky” position at the top of the screen (meaning they will not scroll with <span class="No-Break">the page).</span></li>
-
-				<li><strong class="bold">Navigation bars</strong> (horizontal), 
-mostly popular for mobile devices, are an iconography menu placed at the
- bottom of the screen to navigate to different sections of <span class="No-Break">the application.</span></li>
-
-				<li><strong class="bold">Sidebars</strong> cover the full height of 
-the screen, and with variable widths. These show menus with icons and/or
- text. In mobile and desktop applications where the screen’s real state 
-is important, there is usually an option to toggle it in or out of the 
-viewport. The standard icon to trigger this feature has become the 
-“hamburger” icon (see later in <span class="No-Break">this chapter).</span></li>
-
-			</ul>
-
-			<p>Following these standard placements for desktop and mobile will 
-ensure that the user knows how to navigate the site easily. Often, some 
-applications such as video games break these standards, but unless there
- is a powerful reason to do so, it should <span class="No-Break">be avoided.</span></p>
-
-			<h2 id="_idParaDest-221"><a id="_idTextAnchor261"></a>Breadcrumbs</h2>
-
-			<p>Breadcrumbs<a id="_idIndexMarker914"></a> are a hierarchical list of<a id="_idIndexMarker915"></a>
- links that show the current position of the web page in the overall 
-website organization. Each link allows the user to go back to a level, 
-without having to use the browser’s <strong class="bold">Back</strong> 
-button or dig deep into the main menu. The current approach is to place 
-breadcrumbs at the top of the page, before the main content. Here is an 
-example of a <span class="No-Break">breadcrumb path:</span></p>
-
-			<div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="source-code">
-
-Home &gt; Level 1 &gt; Level 2 &gt; Level 3 &gt; Current page</pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div>
-
-			<p>The convention is to use the more-than symbol (<strong class="source-inline">&gt;</strong>)
- to separate each navigation page, but there are many artistic licenses 
-taken on this matter. Another representation for this navigation is to 
-use a tree structure, such <span class="No-Break">as this:</span></p>
-
-			<div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="source-code">
-
-Home
-
-&nbsp;&nbsp;└── Level 1
-
-&nbsp;&nbsp;&nbsp;└── Level 2
-
-&nbsp;&nbsp;&nbsp;&nbsp;└── Level 3
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── Current Page</pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div>
-
-			<p>This “folder-like” structure is not so common for main navigations but is mostly used for nested content<a id="_idIndexMarker916"></a> such as comments <a id="_idIndexMarker917"></a>and replies <span class="No-Break">in forums.</span></p>
-
-			<h2 id="_idParaDest-222"><a id="_idTextAnchor262"></a>Modal dialogs</h2>
-
-			<p>A modal dialog is a<a id="_idIndexMarker918"></a> small window<a id="_idIndexMarker919"></a>
- that opens in front of the application, taking full control of the 
-focus. It prevents the user from interacting with the rest of the 
-application until the activity presented in the dialog is resolved. 
-Modal dialogs should focus on one action only and provide sufficient 
-information for the user to take action by giving clear options. Here is
- <span class="No-Break">an example:</span></p>
-
-			<div>
-
-				<div id="_idContainer098" class="IMG---Figure">
-
-					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.18_B18602.jpg" alt="Figure 11.18 – A confirmation dialog" width="942" height="233">
-
-				</div>
-
-			</div>
-
-			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.18 – A confirmation dialog</p>
-
-			<p>We have previously implemented a system to display modal dialogs in Vue 3, so you can review the code from <a href="https://learning.oreilly.com/library/view/vue-js-3-design/9781803238074/B18602_05.xhtml#_idTextAnchor130"><span class="No-Break"><em class="italic">Chapter 5</em></span></a>, <em class="italic">Single-Page Applications</em>, to see an <span class="No-Break">implemented approach.</span></p>
-
-			<h2 id="_idParaDest-223"><a id="_idTextAnchor263"></a>Menu icons</h2>
-
-			<p>Other than the<a id="_idIndexMarker920"></a> plain copy (text) naming <a id="_idIndexMarker921"></a>convention
- for menu items, there are a number of icons used today to show the user
- at first glance what kind of interaction to expect when presenting a 
-menu. Here are some of the standard icons you can find and <span class="No-Break">use today:</span></p>
-
-			<div>
-
-				<div id="_idContainer099" class="IMG---Figure">
-
-					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.19_B18602.jpg" alt="Figure 11.19 – Menu icons" width="533" height="110">
-
-				</div>
-
-			</div>
-
-			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.19 – Menu icons</p>
-
-			<p>And here are <span class="No-Break">their descriptions:</span></p>
-
-			<ul>
-
-				<li><strong class="bold">Hamburger icon</strong> (three horizontal lines): Reserved for <em class="italic">main menus</em> and navigation, this <a id="_idIndexMarker922"></a>toggles the display of a wide site menu in a sidebar. These types of sidebars that show and hide on convenience <a id="_idIndexMarker923"></a>are called <strong class="bold">drawers</strong> and are very popular in mobile sites <span class="No-Break">and applications.</span></li>
-
-				<li><strong class="bold">Kebab icon</strong> (three vertical dots): Made<a id="_idIndexMarker924"></a> popular by Google’s Material Design, this indicates that there are more <em class="italic">options</em> for the current element or activity and that they will be displayed in a <span class="No-Break">modal dialog.</span></li>
-
-				<li><strong class="bold">Meatball icon</strong> (three horizontal dots): This is<a id="_idIndexMarker925"></a> displayed next to an item on a list and indicates that there is a pop-up menu with additional <em class="italic">actions</em> for <span class="No-Break">the element.</span></li>
-
-				<li><strong class="bold">Bento icon</strong> (9 squares in a 3x3 grid): This is <a id="_idIndexMarker926"></a>used to indicate a pop-up menu to navigate between different <em class="italic">applications</em> inside the same solution <span class="No-Break">or environment.</span></li>
-
-				<li><strong class="bold">Döner icon</strong> (three stack lines <a id="_idIndexMarker927"></a>with different sizes): This indicates options to <em class="italic">sort</em> the entries of a list using a selectable order option (usually in a popup). This icon, however, has <a id="_idIndexMarker928"></a>not become as popular as <span class="No-Break">the others.</span></li>
-
-			</ul>
-
-			<h2 id="_idParaDest-224"><a id="_idTextAnchor264"></a>Accordion menus</h2>
-
-			<p>This<a id="_idIndexMarker929"></a> pattern’s basic use is to group <a id="_idIndexMarker930"></a>content
- under a title and to display it only when the user selects it, allowing
- only one group to be displayed at a time. Nowadays, it is used commonly
- for <em class="italic">Frequently Asked Questions</em> pages, and in sidebar menus. Here is an example from the Packt <span class="No-Break">website (</span><a href="https://www.packtpub.com/"><span class="No-Break">https://www.packtpub.com/</span></a><span class="No-Break">):</span></p>
-
-			<div>
-
-				<div id="_idContainer100" class="IMG---Figure">
-
-					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.20_B18602.jpg" alt="Figure 11.20 – Accordion menu used for FAQ" width="855" height="383">
-
-				</div>
-
-			</div>
-
-			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.20 – Accordion menu used for FAQ</p>
-
-			<p>The accordion menu is a pattern well understood by users, and one rather simple <span class="No-Break">to implement.</span>
-
-It helps keep the design clean and allows the user to focus only on what matters <span class="No-Break">to them.</span></p>
-
-			<h2 id="_idParaDest-225"><a id="_idTextAnchor265"></a>Mega menus</h2>
-
-			<p>Thus far, most <a id="_idIndexMarker931"></a>of the patterns we<a id="_idIndexMarker932"></a>
- have seen have the objective of hiding complexity from the user to 
-avoid overwhelming them. However, this pattern seems to break this rule 
-at first sight. When the complexity of navigation would make the 
-features hard to find (for example, more than three levels of depth: 
-group -&gt; subgroup -&gt; sub-subgroup), an alternative is to use a <strong class="bold">mega menu</strong>.
- This pattern is commonly used in government websites and other complex 
-organizations with heavy unavoidable content. The basic concept is to 
-present a large menu containing all (or most) of the options to choose 
-from. This doesn’t mean that there will not be a “drilling down” after 
-reaching these sections, but it does make access faster. For example, 
-let’s see the official website for the city of Hyvinkää, <span class="No-Break">Finland (</span><a href="http://www.hyvinkaa.fi/"><span class="No-Break">www.hyvinkaa.fi</span></a><span class="No-Break">):</span></p>
-
-			<div>
-
-				<div id="_idContainer101" class="IMG---Figure">
-
-					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.21_B18602.jpg" alt="" width="1216" height="565">
-
-				</div>
-
-			</div>
-
-			<p class="IMG---Figure">Figure11.21: Hyvinkää city home page mega menu</p>
-
-			<p>As you can see, it is a compelling number of options with just one
- click in the top menu. However, notice how well organized they are and 
-visually separated from each other. The mega <a id="_idIndexMarker933"></a>menu <a id="_idIndexMarker934"></a>pattern breaks the <em class="italic">simplicity</em>
- rule but does not forget other rules and principles of UI design, 
-making it still pleasing to the eye. In other cases, it is also possible
- to consider the mega menu as a placeholder for other patterns, such as a
- sidebar or accordion menu. The official Packt website (<a href="https://www.packtpub.com/">https://www.packtpub.com/</a>) uses this pattern in the main menu <strong class="bold">BOOKS &amp; </strong><span class="No-Break"><strong class="bold">VIDEOS</strong></span><span class="No-Break"> option:</span></p>
-
-			<div>
-
-				<div id="_idContainer102" class="IMG---Figure">
-
-					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.22_B18602.jpg" alt="Figure 11.22 – Packt mega menu with a sidebar to categorize and filter options" width="1428" height="567">
-
-				</div>
-
-			</div>
-
-			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.22 – Packt mega menu with a sidebar to categorize and filter options</p>
-
-			<p>A mega menu could be a place for innovation as it is easier for the user to understand and use. It is <a id="_idIndexMarker935"></a>not a viable option for every <a id="_idIndexMarker936"></a>web
- application but can be very powerful when properly used. When there is 
-no other option than to show a large number of shortcuts or options, 
-this is a good pattern to keep <span class="No-Break">in mind.</span></p>
-
-			<h2 id="_idParaDest-226"><a id="_idTextAnchor266"></a>Drop-down menus</h2>
-
-			<p>Drop-down<a id="_idIndexMarker937"></a> menus and selection <a id="_idIndexMarker938"></a>boxes
- display a list of options to the user when they are activated (by a 
-click or touch, for example) through a trigger area (icon, text, or 
-button). Here, the concept of hiding the options and showing them upon 
-“request” by the user is more important than a specific implementation. 
-The accordion and mega menus make use of this concept, for example. The 
-accordion menu could be considered a list of drop-down menus and is not 
-that far off. HTML provides a native solution for selection lists (the <strong class="source-inline">select</strong> element), but the same concept can be applied in many circumstances and, with some creativity, can birth <span class="No-Break">new implementations.</span></p>
-
-			<h1 id="_idParaDest-227"><a id="_idTextAnchor267"></a>Common patterns for content organization</h1>
-
-			<p>The patterns we <a id="_idIndexMarker939"></a>will see next have to do with the overall organization and layout of the website <span class="No-Break">or application.</span></p>
-
-			<h2 id="_idParaDest-228"><a id="_idTextAnchor268"></a>Responsive applications</h2>
-
-			<p>The term <em class="italic">responsive</em> relates <a id="_idIndexMarker940"></a>to the <a id="_idIndexMarker941"></a>way
- the layout of an application adapts to the size of the screen. Perhaps 
-you have heard of the “mobile-first approach,” which is a philosophy to 
-design first for smaller screens, and then move upward to the possible 
-resolutions to reach the desktop, which is considered the largest. While
- there are ways to accomplish this with JavaScript, the most sensible 
-direct approach is to use well-thought-out designs with CSS <span class="No-Break">media queries.</span></p>
-
-			<p>Depending on the application, there are certain formulas to create
- a responsive site, but analyzing the many alternatives goes beyond the 
-objectives of this book. Instead, we will see only one as an example, 
-using the “switch columns” method. This method basically sets for mobile
- (or narrow portrait screens) the main content inside a single vertical 
-column, section by section. A main navigation bar or menu is placed at 
-the top or bottom of the screen, always visible. Then, for the desktop, 
-the navigation bar totally or partially moves to the top menu or to a 
-sidebar, and the content from the main column moves to horizontal 
-sections, stacked one after the other. This method is illustrated and 
-better understood with <span class="No-Break">this figure:</span></p>
-
-			<div>
-
-				<div id="_idContainer103" class="IMG---Figure">
-
-					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.23_B18602.jpg" alt="Figure 11.23 – Transformation from mobile first to desktop" width="529" height="291">
-
-				</div>
-
-			</div>
-
-			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.23 – Transformation from mobile first to desktop</p>
-
-			<p>As you can see from the preceding figure, the sections are always 
-in the same order, but the content inside adapts from a vertical to 
-horizontal layout direction. This concept is so simple and clean to 
-design that it has become the standard for most landing pages. Once you 
-understand this pattern, you begin to see it everywhere it <span class="No-Break">is implemented.</span></p>
-
-			<p>A simple coding approach to do this change is by using the CSS 
-flexbox model and changing the orientation from column to horizontal at 
-the section level. Here is <span class="No-Break">an example:</span></p>
-
-			<div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="source-code">
-
-// For mobile
-
-&nbsp;&nbsp;&nbsp;&nbsp;@media only screen and (<strong class="bold">max-width: 600px</strong>) {
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;section{
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;display: flex;
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;flex-direction: column;
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
-
-&nbsp;&nbsp;&nbsp;&nbsp;}
-
-// For desktop
-
-section{
-
-&nbsp;&nbsp;&nbsp;&nbsp;display: flex;
-
-&nbsp;&nbsp;&nbsp;&nbsp;flex-direction: row;
-
-}</pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div>
-
-			<p>Notice how the <a id="_idIndexMarker942"></a>code has included a<a id="_idIndexMarker943"></a> breakpoint at 600-px wide. You can control different screen sizes by applying multiple media queries <span class="No-Break">with breakpoints.</span></p>
-
-			<h2 id="_idParaDest-229"><a id="_idTextAnchor269"></a>Home link</h2>
-
-			<p>This pattern is so <a id="_idIndexMarker944"></a>ubiquitous that we do not even<a id="_idIndexMarker945"></a>
- think about it. The main corporate logo is placed at the top left of 
-the page, as a link to the home screen. The position is not random, and 
-it has its origins in the way users “scan” a page. Different users will 
-take a quick look when a page loads, guiding the eyes in a <em class="italic">Z</em>, <em class="italic">L</em>,or <em class="italic">T</em>
- movement through the page. Placing the logo as a link at the top left 
-ensures that it is the first item the user will register. In this 
-chapter, <em class="italic">Figures 11.21</em> and <em class="italic">11</em><em class="italic">.22</em> are good examples of this pattern. But there are exceptions to the placement, such as Google’s <span class="No-Break">home page:</span></p>
-
-			<div>
-
-				<div id="_idContainer104" class="IMG---Figure">
-
-					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.24_B18602.jpg" alt="Figure 11.24 – Google’s home page is an exception to this pattern as the logo is not a link" width="614" height="178">
-
-				</div>
-
-			</div>
-
-			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.24 – Google’s home page is an exception to this pattern as the logo is not a link</p>
-
-			<p>However, the exception shown in the preceding figure is only temporal, as Google goes back to this pattern once it presents the <span class="No-Break">search results:</span></p>
-
-			<div>
-
-				<div id="_idContainer105" class="IMG---Figure">
-
-					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.25_B18602.jpg" alt="Figure 11.25 – Google’s search result applies the pattern" width="588" height="155">
-
-				</div>
-
-			</div>
-
-			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.25 – Google’s search result applies the pattern</p>
-
-			<p>The home link<a id="_idIndexMarker946"></a> pattern should bring you back to either <a id="_idIndexMarker947"></a>the
- home page or the first step of the process. This pattern is so 
-widespread and understood by users, that any exception should be made 
-very carefully with a good understanding of the behavior and interaction
- of the <span class="No-Break">user base.</span></p>
-
-			<h2 id="_idParaDest-230"><a id="_idTextAnchor270"></a>Hero section, call to action, and social media icons</h2>
-
-			<p>The <strong class="bold">hero section</strong> is <a id="_idIndexMarker948"></a>the <a id="_idIndexMarker949"></a>first <a id="_idIndexMarker950"></a>part that <a id="_idIndexMarker951"></a>displays
- when the page loads in the browser and goes from the very top (where 
-the home link and main menu reside) to, at most, the visible bottom of 
-the screen. All content below this section is referred to as “below the 
-fold,” meaning that to see it, the user needs to scroll down the page. 
-The hero section is considered the most important part of the home page,
- and the place where the<a id="_idIndexMarker952"></a> initial <strong class="bold">call to action</strong> is placed. We<a id="_idIndexMarker953"></a>
- visited this concept previously in this chapter when talking about UI 
-design principles and contrast. Nowadays, most websites will adhere to 
-this pattern and display the hero section in contrast, with large images
- or a carousel, and a predominant call <span class="No-Break">to action.</span></p>
-
-			<div>
-
-				<div id="_idContainer106" class="IMG---Figure">
-
-					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.26_B18602.jpg" alt="Figure 11.26 – Kobold Press home page’s hero section – colorful and direct" width="480" height="184">
-
-				</div>
-
-			</div>
-
-			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.26 – Kobold Press home page’s hero section – colorful and direct</p>
-
-			<p>In the preceding example from Kobold Press (<a href="https://koboldpress.com/">https://koboldpress.com/</a>),
- we can see how they have applied several patterns seen here, from the 
-home link and main menu to the hero section and the call to action. 
-Notice also, on the left side, the display of social <a id="_idIndexMarker954"></a>media <a id="_idIndexMarker955"></a>icons <a id="_idIndexMarker956"></a>as
- a floating sidebar. It is becoming a pattern to place such icons with 
-links to the social media address for each institution, or in the case 
-of posts or articles, a link to “share” the content. Common places to 
-locate the social icon’s bar are <span class="No-Break">as follows:</span></p>
-
-			<ul>
-
-				<li>In the footer of <span class="No-Break">the website</span></li>
-
-				<li>At the beginning and/or end of <span class="No-Break">an article</span></li>
-
-				<li>In the description of <span class="No-Break">a product</span></li>
-
-			</ul>
-
-			<p>When including links to share direct content from a Vue 
-application (for example, a product from an online store), it is 
-important that the link and the Vue application point directly to such 
-an item. Careful attention needs to be placed on the way the navigation 
-URL is formed and interpreted on the first load by the Vue application, 
-to avoid sharing links that will<a id="_idIndexMarker957"></a> open <a id="_idIndexMarker958"></a>the<a id="_idIndexMarker959"></a> home screen instead of the desired section of <span class="No-Break">the application.</span></p>
-
-			<h2 id="_idParaDest-231"><a id="_idTextAnchor271"></a>Other patterns</h2>
-
-			<p>There are other patterns, hundreds<a id="_idIndexMarker960"></a> 
-if not thousands, that have a direct influence on the user experience. I
- encourage you to continue investigating these, such as <span class="No-Break">the following:</span></p>
-
-			<ul>
-
-				<li>Shopping <span class="No-Break">cart patterns</span></li>
-
-				<li><span class="No-Break">User onboarding</span></li>
-
-				<li><span class="No-Break">Gamification patterns</span></li>
-
-				<li>Registration and <span class="No-Break">de-registration patterns</span></li>
-
-			</ul>
-
-			<p>There is, however, a dark side to user experience, and it has to 
-do with the use of manipulative and deceitful practices. As an ethical 
-developer, you should avoid using any of these <span class="No-Break">dark patterns.</span></p>
-
-			<h1 id="_idParaDest-232"><a id="_idTextAnchor272"></a>Dark patterns</h1>
-
-			<p>Dark patterns are<a id="_idIndexMarker961"></a> carefully designed
- interfaces and interactions with the sole purpose of manipulating or 
-tricking the user into performing unintended actions or even entangling 
-them into malicious results. After such a definition, you may think that
- such actions belong to the deepest shady corners of the internet. 
-Sadly, even mainstream companies often follow these unethical practices.
- As a matter of fact, the reproduced examples in these sections all 
-belong to such a category, and as often happens with design patterns, 
-many of these overlaps or can be found nested within each other. Let’s 
-see them one <span class="No-Break">by one.</span></p>
-
-			<h2 id="_idParaDest-233"><a id="_idTextAnchor273"></a>Trick questions</h2>
-
-			<p>This pattern is<a id="_idIndexMarker962"></a> a simple or complex play on words to trick the user to do the opposite of what their intention is. Here is <span class="No-Break">an example:</span></p>
-
-			<div>
-
-				<div id="_idContainer107" class="IMG---Figure">
-
-					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.27_B18602.jpg" alt="Figure 11.27 – A trick question for a newsletter subscription" width="663" height="100">
-
-				</div>
-
-			</div>
-
-			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.27 – A trick question for a newsletter subscription</p>
-
-			<p>As you can see in this example, a user filling in a form would be 
-tempted to leave this checkbox unchecked if they don’t want to receive a
- newsletter from the company. The common tendency is to pay attention to
- the marked text in bold, which is a sort of title. The real action for 
-the checkbox can be found at the end of the paragraph, which the 
-majority of users would not read: <strong class="bold">Check this option if you do not want to receive </strong><span class="No-Break"><strong class="bold">our newsletter</strong></span><span class="No-Break">.</span></p>
-
-			<h2 id="_idParaDest-234"><a id="_idTextAnchor274"></a>Sneak into the basket</h2>
-
-			<p>This dark<a id="_idIndexMarker963"></a> pattern appears in many 
-shopping applications, quite commonly in services such as hosting and 
-airline tickets. It consists of placing items into the shopping cart at 
-checkout, but that the user has not selected, usually presented as an 
-offer or a “necessary” item of a small amount. Here is <span class="No-Break">an example:</span></p>
-
-			<div>
-
-				<div id="_idContainer108" class="IMG---Figure">
-
-					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.28_B18602.jpg" alt="Figure 11.28 – An additional item has been added to the shopping cart" width="682" height="104">
-
-				</div>
-
-			</div>
-
-			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.28 – An additional item has been added to the shopping cart</p>
-
-			<p>In this example, after ordering for a new domain, a new item, <strong class="bold">First time setup</strong>,
- has been automatically added to the shopping cart. This item does not 
-have any other explanation, and the amount appears to be “small” in 
-comparison to the main purpose of the purchase. Often, these types of 
-items are “scammish” and have no other intent than to add penny by penny
- to the final amount. In some cases, there may be options to remove such
- items<a id="_idIndexMarker964"></a> before confirming the purchase, but quite often there <span class="No-Break">are none.</span></p>
-
-			<h2 id="_idParaDest-235"><a id="_idTextAnchor275"></a>Roach motels</h2>
-
-			<p>This pattern <a id="_idIndexMarker965"></a>appears quite often for
- services and subscriptions. It consists of making a very easy purchase,
- often after a free trial period, with the condition that charges will 
-continue until explicitly canceled by the user. Here is where the dark 
-pattern appears: by making this “unsubscribe” process complicated or 
-impossible to complete. For example, some companies require that the 
-user contact the support team with a signed letter accompanied by a 
-legal ID. The basic concept is to “trap” the user so rescinding the 
-contracted service becomes <span class="No-Break">near impossible.</span></p>
-
-			<h2 id="_idParaDest-236"><a id="_idTextAnchor276"></a>Privacy Zuckering</h2>
-
-			<p>This dark pattern<a id="_idIndexMarker966"></a> is named after the
- founder of a recognizable social media company. It consists of offering
- to the user a large number of services, for free, while the use of the 
-applications monitors the user’s activity and behavior. This data is 
-then collected and sold behind the scenes to third-party companies 
-without the knowledge of the user. Often, this practice is somehow named
- in a rather lengthy contract of terms of service, which the user needs 
-to accept before using the services. This way, the company alleges that 
-the user has given their consent and is aware, while very few users ever
- read or interpret properly such <span class="No-Break">an agreement.</span></p>
-
-			<h2 id="_idParaDest-237"><a id="_idTextAnchor277"></a>Preventing price comparison</h2>
-
-			<p>In this pattern, the <a id="_idIndexMarker967"></a>website 
-presents to the user a number of plans for services, but purposely hides
- or disguises either features or individual prices, so the user is 
-unable to make a direct comparison to select the most <span class="No-Break">suitable option.</span></p>
-
-			<p>The price is hidden or disguised in such a way that the user 
-cannot make an informed decision and must select an option based on 
-features or <span class="No-Break">other attributes.</span></p>
-
-			<h2 id="_idParaDest-238"><a id="_idTextAnchor278"></a>Misdirection</h2>
-
-			<p>This is another <a id="_idIndexMarker968"></a>pattern often used 
-in shopping cart workflows. It consists of using names and options that 
-are confusing to the user, with pre-selected options that hide 
-alternatives and better price deals. If the system has a floating price 
-value (for example, for hotels or airplane tickets), this pattern is 
-often used to manipulate the user into selecting the option that is in 
-the best interest of <span class="No-Break">the company.</span></p>
-
-			<h2 id="_idParaDest-239"><a id="_idTextAnchor279"></a>Hidden costs</h2>
-
-			<p>In this pattern, the <a id="_idIndexMarker969"></a>user’s 
-selection of products or services does not disclose a total or 
-comprehensive description of the associated costs involved (beyond 
-taxes). Either in the initial purchase or subsequent purchases, the 
-total amount paid results in a higher price than what the user estimated
- in the <span class="No-Break">first instance.</span></p>
-
-			<h2 id="_idParaDest-240"><a id="_idTextAnchor280"></a>Bait and switch</h2>
-
-			<p>This pattern is<a id="_idIndexMarker970"></a> widely used by 
-online advertisers and is one that causes the most hate in captive 
-users. It simply disguises one option to perform another or the exact 
-opposite the user intended. A classic example is when a pop-up window 
-displays a <strong class="bold">Close</strong> button (usually a simple <strong class="bold">X</strong>), but when the user clicks it intending to close the dialog window, it opens a new tab with the <span class="No-Break">advertised website.</span></p>
-
-			<h2 id="_idParaDest-241"><a id="_idTextAnchor281"></a>Confirm shaming</h2>
-
-			<p>A highly <a id="_idIndexMarker971"></a>manipulative pattern, it 
-involves deliberately using wording or actions to shame and ridicule the
- user into doing something they didn’t want at the beginning of the 
-transaction. It can go from mildly annoying to outspoken insulting. It 
-is often used together with other dark patterns. Here is <span class="No-Break">an example:</span></p>
-
-			<div>
-
-				<div id="_idContainer109" class="IMG---Figure">
-
-					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.29_B18602.jpg" alt="Figure 11.29 – A confirmation dialog when removing a service from the cart" width="706" height="130">
-
-				</div>
-
-			</div>
-
-			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.29 – A confirmation dialog when removing a service from the cart</p>
-
-			<p>Notice in the example how the wording in the action buttons is 
-highly manipulative, even though the original question is not so. This 
-pattern is a double-edged sword, as users may feel the<a id="_idIndexMarker972"></a> rejection of the entire service and cancel the <span class="No-Break">entire operation.</span></p>
-
-			<h2 id="_idParaDest-242"><a id="_idTextAnchor282"></a>Disguised ads</h2>
-
-			<p>When an <a id="_idIndexMarker973"></a>advertisement is injected 
-into a page, it can disguise itself as proper content, imitating styles 
-and action buttons with the intent of tricking the user to trigger a 
-redirection or download a file. In some cases, the camouflage is such 
-that it is not possible to distinguish the site’s call to action and the
- advertisements. This pattern is popular on free sites that offer to 
-host files for download, where it is common to find multiple <strong class="bold">Download</strong>
- buttons on the page, yet only one does actually download the desired 
-file and the others redirect the user to a third-party site. Here is <span class="No-Break">one example:</span></p>
-
-			<div>
-
-				<div id="_idContainer110" class="IMG---Figure">
-
-					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.30_B18602.jpg" alt="Figure 11.30 – FileHippo.com hosts free software. Some ads disguise as Download buttons" width="1176" height="356">
-
-				</div>
-
-			</div>
-
-			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.30 – FileHippo.com hosts free software. Some ads disguise as Download buttons</p>
-
-			<p>In this screenshot from <a href="http://filehippo.com/">FileHippo.com</a>, if you access the download page for VLC Media Player, the site presents multiple <strong class="bold">Download</strong> buttons. If a user does not pay attention, it may trigger a different action than the intended <span class="No-Break">software download.</span></p>
-
-			<h2 id="_idParaDest-243"><a id="_idTextAnchor283"></a>Friendly spam</h2>
-
-			<p>In this dark <a id="_idIndexMarker974"></a>pattern, the 
-application requests access to the user’s contacts, with the idea of 
-expanding their network or social circle. If the user accepts, their 
-entire contact list will be “spammed” with emails as if coming from the 
-user, offering the service. Often, once this information has been 
-shared, it is also shared with third-party entities <span class="No-Break">and advertisers.</span></p>
-
-			<p>The list of dark patterns may not be directly associated with a single media or framework, but it is the <a id="_idIndexMarker975"></a>ethical responsibility of people in this industry to avoid or <span class="No-Break">prevent them.</span></p>
-
-			<h1 id="_idParaDest-244"><a id="_idTextAnchor284"></a>Summary</h1>
-
-			<p>In this chapter, we saw important patterns to present the user with a satisfactory <span class="No-Break">user experience.</span>
-
-We also learned important terms to speak with designers in equal terms 
-and with mutual understanding – a necessary point for collaboration and 
-presenting the user base with the best possible positive experience. We 
-also reviewed some of the most common dark patterns, which are 
-techniques and workflow implementations to manipulate users and often 
-deprive them of privacy and resources. While mostly informative, this 
-chapter should give you a better understanding of the environment where 
-web applications are built, and what standards to follow for easy use. 
-This is all knowledge that a good engineer and developer should be <span class="No-Break">aware of.</span></p>
-
-			<h1 id="_idParaDest-245"><a id="_idTextAnchor285"></a>Review questions</h1>
-
-			<p>Here are some simple questions to help you summarize what you learned in <span class="No-Break">this chapter:</span></p>
-
-			<ul>
-
-				<li>What are UI and <span class="No-Break">UX patterns?</span></li>
-
-				<li>Can you name the benefits of using <span class="No-Break">UX patterns?</span></li>
-
-				<li>How can you benefit of using standard patterns in your Vue <span class="No-Break">3 components?</span></li>
-
-				<li>What are dark patterns and why should they <span class="No-Break">be avoided?</span></li>
-
-			</ul>
+			<h1>Bonus Chapter - UX Patterns</h1> 
+			<p>A long time ago, computer software was sold with heavy, printed  manuals and in many cases, also with specialized training. While some of  this still applies to corporate applications and specialized hardware,  such a concept has almost completely disappeared from the consumer  market. Imagine that, for each website, you had to read a manual and  attend three months of training classes before even using it. How come,  today, a user can be presented with a new application and somehow manage  to accomplish basic tasks at first sight? No doubt, a great contributor  to this current situation is the years of study and progress in the  areas of human-computer interactions, a discipline almost as old as computers themselves.</p> 
+			<p>In this chapter, we will take a step back from the intricacies of  inner-working software patterns and architecture and look at some of the  well-established patterns for designing a <strong class="bold">user interface</strong> (<strong class="bold">UI</strong>) and <strong class="bold">user experience</strong> (<strong class="bold">UX</strong>). We will do the following:</p> 
+			<ul> 
+				<li>Understand the differences between UI and UX</li> 
+				<li>Become familiar with common UX patterns in web applications</li> 
+				<li>Learn about the evil side of UX with dark patterns.</li> 
+			</ul> 
+			<p>By the end of this chapter, you will have a broad understanding of  what UX patterns are, the principles they are based on, what the most  common approaches are today, and the effects they produce for the user,  be they positive or negative. You will also learn and develop a common  language to interact with UI and UX designers and other developers.</p> 
+			<h1>Technical requirements</h1> 
+			<p>This chapter is mostly informative; however, small examples are  discussed and implemented in Vue 3, as they demonstrate the use of a  technique not seen this far in the book. For the complete source code,  please refer to the project folder for the chapter in the book’s  repository at <a href="https://github.com/PacktPublishing/Vue.js-3-Design-Patterns-and-Best-Practices/tree/main/Chapter11">https://github.com/PacktPublishing/Vue.js-3-Design-Patterns-and-Best-Practices/tree/main/Chapter11</a>.</p> 
+			<p>Check out the following video to see the Code in Action: <a href="https://packt.link/5ymkr">https://packt.link/5ymkr</a></p> 
+			<h1>UI design versus UX design</h1> 
+			<p>It is common to hear these two terms associated or used indistinctively, and  in some cases, both responsibilities are merged into the same role in a  team, which adds to the confusion. While there is some overlapping, as  often happens in computer science disciplines, we will focus on the  differences for learning purposes:</p> 
+			<ul> 
+				<li><strong class="bold">UI design</strong> is in charge of defining  the visual language to represent information and capture user input to  interact with the application. It covers the design of visual styles,  typography, interactions, colors, sizes, animations, sounds, and so on  that make up the interface between humans and computers (software and  hardware). This applies to visual mediums (web, mobile, etc.) as well as  other types such as natural language interfaces (think of AI assistants  such as Siri, Alexa, etc.).</li> 
+				<li><strong class="bold">UX design</strong> includes the conditions  that affect and guide the UI design but encompasses a broader view  focused on the user’s perception of the system, company, or feature they  come to interact with. It involves elements beyond software or  hardware, with aspects such as support, promotion, post-services, and so  on. The aim is to create a wide and, hopefully, successful positive  experience from the user’s perspective. Under this definition, it also  collaborates with other disciplines, such as marketing, customer  support, distribution, product management, brand recognition, and so on.  It has the primary objective to alter or create the user’s perception  that the product, service, or system is easy to use, efficient, and  above all, useful for their purposes.</li> 
+			</ul> 
+			<p>Understanding the principles and objectives of each discipline  will help us develop better software and have a common ground for  understanding when collaborating with those in these assignments.  Without UI and UX, even the best-produced software may fall into  oblivion. Software history is full of examples of companies that went  the way of the dodo bird, even with superior products to their  competitors, for neglecting the user experience or having a bad visual  design. Sometimes, the cover of the book is as important as the  content...</p> 
+			<h1>The principles of UI design</h1> 
+			<p>At its core, UI design has the  objective of creating an interface that the user finds easy to use,  efficient, informative, and enjoyable. Marketing concepts such as user  retention and satisfaction rely heavily on product design. For our  purposes, we will limit the introduction of UIs to on-display  application interfaces (presented through a visual medium, such as a  screen or touch device).</p> 
+			<p>There is ample documentation studying UI design in detail, with  engineering precision and well-defined industry standards. Each aspect  has its own set of rules that a good UI designer needs to keep in mind. A  web designer will see things differently from an industrial designer,  for example. In our case, most of the patterns for UI design have been  included since the beginning in the HTML standard, so most, if not all,  of what we will see as patterns are already familiar to you and the end  user. How they work, or the principles they follow, however, is not  something that is commonly discussed or self-evident. For example, why  is the “X” to close a window in the top-right corner? What does each  different menu icon mean? Why does the <strong class="bold">Start</strong>  button appear on the top or bottom-left corner of the screen? Why are  some features hard to find, while others are accessible at first sight?  All these questions have a solution rooted in UI design and UX patterns.  With that in mind, let’s review some of the UI principles, and then  move on to the UX patterns.</p> 
+			<h2>Sufficient contrast or distinction between elements</h2> 
+			<p>This principle states that the  elements of a page should be clearly distinguishable from each other and  representative of their function. It reflects the need to organize the  visual elements in a hierarchy using size, colors, typography, margins,  and white space in such a way that each function is clearly represented  and distinct from others. The main objective is to direct the user’s  attention to the focal point of the interface. Let’s see the Packt home  page (<a href="https://www.packtpub.com/">https://www.packtpub.com/</a>) as an example:</p> 
+			<div> 
+				<div class="IMG---Figure"> 
+					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.01_B18602.jpg" alt="Figure 11.1 – Packt’s home page and color contrast" width="519" height="174"> 
+				</div> 
+			</div> 
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.1 – Packt’s home page and color contrast</p> 
+			<p>In this example, most of the content uses a limited number of  colors (a “palette”), and the two buttons have high contrast, which  draws the attention of the user: the <strong class="bold">TRY FOR FREE</strong> and <strong class="bold">START LEARNING NOW</strong> buttons. Clearly, the designer has set the focus point for these two actions.</p> 
+			<p>Related to this principle, there is a design “rule” applied in this screenshot that is handy to keep in mind: the <em class="italic">60-30-10 color rule</em>.  This means that 60% of the section must have a base color (here, it is  dark brown), 30% is a primary color (used for regular text, menus, and  the image, which, here, is white), and 10% is reserved for the secondary  color or high contrast (used for the  focal point, or the “call to action” buttons in orange). Let’s continue  analyzing this page to see the other principles of UI design.</p> 
+			<h2>Stimulating repetition and being consistent</h2> 
+			<p>This principle is based on the concept that people learn through  repetition. It indicates that the same task, even done through different  interfaces, should emulate more or less the same repetitive behavior  from the user. For example, if you ask a user to open a word processor,  and you ask them to open a file, where will they try to click? Most  “seasoned” users will take their mouse to the upper-left part of the  window and look for either an icon that represents “<strong class="bold">Open</strong>,” or the <strong class="bold">File</strong>  menu. Why is this? It is because this placement has become standard,  and we have learned through repetition where to find it. If you placed  the <strong class="bold">File</strong> menu at the bottom right of the screen, most, if not all, of your users would have trouble finding it without direction.</p> 
+			<p>Another example of repetition and consistency appears when  displaying visual elements – more importantly, when they are part of a  list or common set. Let’s follow with an example from the Packt Publishing website:</p> 
+			<div> 
+				<div class="IMG---Figure"> 
+					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.02_B18602.jpg" alt="Figure 11.2 – Cards with books" width="1124" height="557"> 
+				</div> 
+			</div> 
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.2 – Cards with books</p> 
+			<p>In the preceding example, the designer used repetition to display  the books in prime time, by using vertical “cards” for each item. Each  card repeats a similar layout, colors, and format. Once you understand  what one displays, the same applies to all the others: this is a  repetition of visual design and is important, so the user doesn’t have  to “re-learn” the interface for each book.</p> 
+			<p>In short, it is the repetition of placements, actions, and visual styles. Let’s move to the next one.</p> 
+			<h2>Be mindful of alignment and direction</h2> 
+			<p>The alignment of elements (graphics, fonts, etc.) creates a sense  of order and organization, showing that such elements belong to the same  group or have the same weight or importance. We are mostly familiar  with alignment (and spacing) when working with fonts, but the same  concept applies to graphical elements such as icons, sections, images,  and so on. From the previous figure, notice how the tabs are aligned, as  well as the cards and the content therein. Just by alignment and style  alone, we can distinguish what belongs to which natural group.</p> 
+			<p>Another example of alignment is clearly seen when only using  typography for menus and features. For example, in the footer of this  page, even without the use of icons or visual boundaries, it is easy to  see what option belongs to each natural group just by using space and alignment:</p> 
+			<div> 
+				<div class="IMG---Figure"> 
+					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.03_B18602.jpg" alt="Figure 11.3 – Packt’s website footer, using alignment to display natural groups" width="480" height="116"> 
+				</div> 
+			</div> 
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.3 – Packt’s website footer, using alignment to display natural groups</p> 
+			<p>This example, though simple, already shows the use of contrast  (bold versus normal font-weight), consistency through repetition,  alignment, and also the next principle we will see here: proximity.</p> 
+			<h2>Use proximity and distance to show natural groups</h2> 
+			<p>This principle is simple to follow:  place the elements that are naturally related close to each other. This  makes it easier for the user to find and understand. Typography and  iconography can also be used to show proximity and similar  functionality. The famous “ribbon bar” introduced by Microsoft in its  Office applications uses this concept heavily and soon became a  standard. For example, here is a segment of the <strong class="bold">Home</strong> tab that deals with alignment, lists, spacing, and indentation:</p> 
+			<div> 
+				<div class="IMG---Figure"> 
+					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.04_B18602.jpg" alt="Figure 11.4 – Paragraph icons" width="380" height="98"> 
+				</div> 
+			</div> 
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.4 – Paragraph icons</p> 
+			<p>Notice how the icons that modify the type of paragraph, spacing, and alignment are close to each other, without being “mixed.”</p> 
+			<p>These are not the only principles of UI design but are the most  basic ones that we should keep in mind when developing our components.  If you work with a team that includes a UI designer, you may receive  templates or mockups, even storyboards, to implement into Vue  components, as we saw in <a href="https://learning.oreilly.com/library/view/vue-js-3-design/9781803238074/B18602_04.xhtml#_idTextAnchor102"><em class="italic">Chapter 4</em></a>, <em class="italic">User Interface Composition with Components</em>. If instead, you are on a <em class="italic">“one-man band team”</em> and the design of the interfaces falls in your lap, these principles will help you greatly to create a professional and useful UI. But there is more...</p> 
+			<h2>Laws for UI design</h2> 
+			<p>Just like we have principles,  several studies have issued or identified “laws” of design, which are  measurable functions to predict certain software attributes, such as  usability and friendliness. 
+In particular, the following stand out.</p> 
+			<h3>Fitt’s law</h3> 
+			<p>This law specifies that the time taken for a user to acquire a target is a function of  the distance from the pointer and the size of the target. The important  concepts here are the distance and size of the target: the longer the  distance between targets, the larger these should be.</p> 
+			<p>The application of this law is what places the window close button (<strong class="bold">X</strong>) in one of the corners of the screen (when the window is maximized), the <strong class="bold">Start</strong> button at the lower left of the screen, <em class="italic">Show desktop</em>  at the bottom right of the screen, and so on. If a user moves the mouse  in any of these directions, it will sooner or later arrive at these  targets, and continuing in the same direction will not affect the  result. In the language of UI design, these buttons are “infinite” as  once the cursor has reached a corner by the edge of the screen,  continuing scrolling in the same direction with the mouse will still hit  the target.</p> 
+			<p>Another implication of this law is that functions that are similar  should also be placed in proximity to each other (such as the examples  in <em class="italic">Figure 11</em><em class="italic">.4</em>). You can find more information about this law on Wikipedia, at <a href="https://en.wikipedia.org/wiki/Fitts%E2%80%99s_law">https://en.wikipedia.org/wiki/Fitts’s_law</a>.</p> 
+			<h3>Hick’s law</h3> 
+			<p>This law says that the time it takes a user to make a choice is a logarithmic  function based on the number of available options and their complexity.  In simpler terms, too many options are confusing and will make the user  take more time to decide. Some implications of this law are as follows:</p> 
+			<ul> 
+				<li>Break complex tasks into smaller groups, manageable by the user to speed up their decision time</li> 
+				<li>Avoid creating interfaces overloaded with options, as they will overwhelm the user</li> 
+				<li>If a function is time-sensitive, minimize the options to the bare minimum for the situation</li> 
+			</ul> 
+			<p>In everyday software, we can see the application of this law in  multiple places – for example, in “installers” for a particular  software, where successive windows with options are presented to the  user during or before starting the installation in a sequential manner,  as opposed to a form to fill in. More information about this law can be  found on Wikipedia: <a href="https://en.wikipedia.org/wiki/Hick%27s_law">https://en.wikipedia.org/wiki/Hick%27s_law</a>.</p> 
+			<h3>Ben Schneiderman’s eight rules</h3> 
+			<p>In 1986, Professor Ben Schneiderman published his book titled <em class="italic">Designing the User Interface: Strategies for Effective Human-Computer Interaction</em>,  where he stipulated eight rules for interface design. These rules are  as relevant today as on the day they were created, so they are worth mentioning here:</p> 
+			<ol> 
+				<li>Strive for consistency (in actions, steps, placements, etc.).</li> 
+				<li>Enable the use of shortcuts for common tasks (be it using a keyboard or icons).</li> 
+				<li>Offer informative feedback (especially when an error occurs).</li> 
+				<li>Design dialogs with an end.</li> 
+				<li>Offer simple error handling, so the user can take action quickly  and avoid serious errors by the user. The classical implementation of  rules <em class="italic">#4</em> and<em class="italic"> #5 </em>are “confirmation dialogs” before performing permanent actions, such as deleting content.</li> 
+				<li>Permit easy reversal of actions (thanks to this, we have <em class="italic">Ctrl</em> + <em class="italic">Z</em>!).</li> 
+				<li>Support the sense of control in the user. Nothing is worse for a  user than to feel that the machine is “doing its own thing, out of  control.” If you ever sent an 800-page file to print by mistake, and it  took you a dozen pages before you could actually cancel the operation...  this is what this is about.</li> 
+				<li>Reduce short-term memory. The user can only keep in their  short-term memory a handful of items and tasks at a time, and too many  elements on a screen (menu, and so on) create rejection. This principle  also relates to Hick’s law.</li> 
+			</ol> 
+			<p>For practical applications and an introduction to the topic, these principles, rules, and laws should give us a sure footing.</p> 
+			<p>More information about these rules and Ben Schneiderman can be found on Wikipedia (<a href="https://en.wikipedia.org/wiki/Ben_Shneiderman">https://en.wikipedia.org/wiki/Ben_Shneiderman</a>).</p> 
+			<h3>UX design principles</h3> 
+			<p>UX design also has its own  objectives and principles that apply to patterns. Above all, the main  objective of UX is to provide a good perception to the user, to create a  bond with the brand or product, by carefully tailoring a flow of  interactions. In this case, the solutions must be as follows:</p> 
+			<ul> 
+				<li><em class="italic">Useful and usable:</em> First and foremost, the application must do what it intended to do, do it well, and be easy for the user to use</li> 
+				<li><em class="italic">Learnable and memorable</em>: The user must be able to learn and understand what information is presented and internalize it for future use as well</li> 
+				<li><em class="italic">Credible and give control to the user</em>:  When the user interacts with the application, it must feel that it is  doing what the user intends and that the result is “safe” for the user</li> 
+			</ul> 
+			<p>This last principle is very important. If the user feels that the  application somewhere during the interaction has “lost control” of what  is going on, it is a recipe for disaster. Sadly, this occurs all too  often with the dark patterns that we will see later in this chapter, but  now, let’s see some good patterns that result in a good experience for the user.</p> 
+			<h1>Common patterns for data manipulation</h1> 
+			<p>These patterns are often matched by  pure HTML elements, while others have emerged in recent years through  the clever use of styling of such elements. These have become standard  in the industry and are well understood by users at first sight. What  follows here is a non-exclusive list with a short description of when to  use each one.</p> 
+			<h2>HTML input elements</h2> 
+			<p>The standard input fields provided  by HTML are a clear pattern for receiving input from the user. Nowadays,  the input element has many variants due to the <strong class="source-inline">type</strong>  attribute, allowing for input other than plain text. Used in forms and  validation libraries, these elements are as good as they come, ready to  read and format from text and numbers to URL, date, time, images, and  colors. The full list of available types supported by today’s browsers  can be found here: <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input#input_types">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input#input_types</a>.</p> 
+			<p>For the most part, these elements are used with basic functionality and some heavy CSS styling. Use <strong class="source-inline">inputs</strong> (and <strong class="source-inline">textareas</strong>)  any time that you need the user to enter text information. Browsers  today offer native-looking widgets for the more complex types, such as  date and color pickers.</p> 
+			<h2>Checkboxes, radios, and toggle switches</h2> 
+			<p>Checkboxes and radio buttons are provided natively by HTML and are presented to the user following the format of the local OS or environment. <strong class="bold">Checkboxes</strong> represent multiple options to the user, which they can select freely from the group. In contrast, <strong class="bold">radio</strong> buttons only allow the selection of one option from the list:</p> 
+			<div> 
+				<div class="IMG---Figure"> 
+					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.05_B18602.jpg" alt="Figure 11.5 – Checkboxes on the left, and radio buttons on the right" width="820" height="187"> 
+				</div> 
+			</div> 
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.5 – Checkboxes on the left, and radio buttons on the right</p> 
+			<p>With the release of the original iPhone, a new variant of the checkbox became very popular: the <strong class="bold">toggle switch</strong>. It is not  provided natively by the HTML standard, but it is easily styled through  CSS to “disguise” a checkbox. A toggle switch has two states, enabled and disabled, and  it is often used to activate or deactivate a function or feature. This  is an important distinction as the checkbox should focus on options or  alternatives. Here is an example:</p> 
+			<div> 
+				<div class="IMG---Figure"> 
+					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.06_B18602.jpg" alt="Figure 11.6 – Toggle switches in each state" width="606" height="103"> 
+				</div> 
+			</div> 
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.6 – Toggle switches in each state</p> 
+			<p>The toggle switch is in an “off” state (or false) when the toggle  is to the left, and “on” when to the right. Often, switching also  affects the color, showing it in a mute scale of gray when off or in  vibrant colors when activated. Internally, these two states are often  represented by <strong class="source-inline">true</strong> (on) and <strong class="source-inline">false</strong> (off), and they should be used to activate or deactivate settings, features, and so on. You can find the <strong class="source-inline">Toggle</strong> component that implements the styling and the <strong class="source-inline">v-model</strong> code in the repository for this chapter.</p> 
+			<h2>Chips, pills, or tags</h2> 
+			<p>This pattern encompasses short text (or “copy” in UI lingo) inside a round box. The copy can be accompanied by an icon to emphasize the state when selected, or an action such as an “<strong class="bold">X</strong>”  symbol to remove it. Usually, pills are used in lists to display  attributes, tags, categories, or other types of qualificatives for a  given item. In some cases, they can be used also to select (toggle)  items from the list. In this case, they rival or behave just like a  checkbox but in a more visually pleasing manner. The implementation of  chips is rather trivial and can be done with plain CSS in a single HTML  element (for example, a <strong class="source-inline">span</strong> element).</p> 
+			<div> 
+				<div class="IMG---Figure"> 
+					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.07_B18602.jpg" alt="Figure 11.7 – A list of items with pills" width="530" height="98"> 
+				</div> 
+			</div> 
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.7 – A list of items with pills</p> 
+			<p>This is a short list of UI patterns to capture user input, but it does cover the most common types: the HTML inputs and styling variations.</p> 
+			<h1>Common patterns for data visualization</h1> 
+			<p>These patterns display information  back to the user, either in response to a user action or an application  event. What follows is a non-exclusive list of patterns.</p> 
+			<h2>Tooltips</h2> 
+			<p>This pattern shows  the user some floating small text with information regarding the target  element, usually when the user activates the element using some action  (a hover, click, selection, etc.). The information is displayed above,  below, or to the side of the element in the form of a “speech bubble”  (like in comic books). Here is an example:</p> 
+			<div> 
+				<div class="IMG---Figure"> 
+					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.08_B18602.jpg" alt="Figure 11.8 – A tooltip displaying the name/action of the icon and a shortcut" width="289" height="70"> 
+				</div> 
+			</div> 
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.8 – A tooltip displaying the name/action of the icon and a shortcut</p> 
+			<p>This pattern is mostly used to display help regarding the target  object, but it can be used also to display contextual menus. For  example, selecting a word from this paragraph in a text editor online  will display a popup with a menu:</p> 
+			<div> 
+				<div class="IMG---Figure"> 
+					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.09_B18602.jpg" alt="Figure 11.9 – A tooltip pattern used to display a contextual menu" width="546" height="117"> 
+				</div> 
+			</div> 
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.9 – A tooltip pattern used to display a contextual menu</p> 
+			<p>There may be some discussion regarding whether this last use is a  tooltip or a contextual menu, but the fact that it opens on selection  would indicate the first. Traditionally, contextual menus are opened with a secondary  action, such as the right mouse button (in Windows and Linux). In  either case, the concept to remember for this pattern is to show  information to the user on selection or pre-activation to help them  decide what to do next.</p> 
+			<h2>Notification dots, bubbles, marks, or badges</h2> 
+			<p>This pattern consists of displaying a small icon on top  of a larger icon to indicate that an event has happened and requires  the attention of the user, yet it is not urgent. This small icon can be a  dot, a bubble, and so on. If the notification has a number in it, it is  also called a <strong class="bold">badge.</strong> Some examples of this pattern are as follows:</p> 
+			<ul> 
+				<li>The small circle with a number for new emails received in the email icon</li> 
+				<li>The double checkmark in a chat application indicating that the other party has received and read the message</li> 
+				<li>A small mark in a taskbar showing that an application has been opened</li> 
+			</ul> 
+			<p>The key concept is to use some sort of small variance to the icon to indicate the need for future attention, but it is not urgent and won’t affect the current activity for the user.</p> 
+			<h2>Toast notifications</h2> 
+			<p>This pattern is used in multiple applications and  OSes. It consists of displaying, for a short amount of time, an  overlayed floating window with quick information for the user. Often, it  includes a short text fragment paired with a sensible icon. Depending  on the OS, this can be displayed natively at the top center, right of  the screen, or at the bottom right above the system tray. Web  applications can either implement their own toast notification within  the browser window or require permission from the user and display a  “native toast notification” using the local OS. Here is an example of a toast notification:</p> 
+			<div> 
+				<div class="IMG---Figure"> 
+					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.10_B18602.jpg" alt="Figure 11.10 – A native toast notification on the desktop" width="524" height="121"> 
+				</div> 
+			</div> 
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.10 – A native toast notification on the desktop</p> 
+			<p>These notifications are useful to inform the user of changes in  the environment that require their attention, to report back the result  of an asynchronous operation (success, error, etc.), and so on. These  calls to attention are ephemeral, so they should not be a critical part  of an important workflow, except for the conditions just mentioned.</p> 
+			<h2>Carousel or image sliders</h2> 
+			<p>Carousel or image sliders are a pattern  for displaying, in the same space, different sections with images and  content in sequential order. Usually, using a timer, these sections are  presented to the user a few seconds apart, also offering the option to  skip to any of them through dotted navigation. While they were very  popular some years ago, there are counterpoints to the use of these, as  “impatient” users may never see the entire content of a carousel. In  practice, the recommendation is to keep the list of sections as short as  possible, somewhere between three to five elements.</p> 
+			<p>Examples of this implementation abound on the internet, as they  are implemented primarily on the landing page of a site. Practically all  shopping and news websites make use of this pattern – for example, the  Amazon landing page (<a href="http://www.amazon.de/">www.amazon.de</a>):</p> 
+			<div> 
+				<div class="IMG---Figure"> 
+					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.11_B18602.jpg" alt="Figure 11.11 – Amazon’s carousel displays offers from the store" width="481" height="150"> 
+				</div> 
+			</div> 
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.11 – Amazon’s carousel displays offers from the store</p> 
+			<p>Image sliders can be as big as a carousel but can also be much smaller and used to display thumbnails. Here is again an example from Amazon:</p> 
+			<div> 
+				<div class="IMG---Figure"> 
+					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.12_B18602.jpg" alt="Figure 11.12 – Amazon makes good use of image sliders to display items to the user" width="481" height="97"> 
+				</div> 
+			</div> 
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.12 – Amazon makes good use of image sliders to display items to the user</p> 
+			<p>While trivial to implement, the use of carousels and image sliders  is a good way to display information to the user. There is a warning,  though, that abusing this pattern could lead to an overwhelming and  saturated experience, create confusion, and even trigger undesirable  side effects, such as sensory overwhelming and content avoidance.</p> 
+			<h2>Progress bars and spinners</h2> 
+			<p>A progress bar is any element that gives the user an  idea of how far down the workflow the current state of a process is.  While the name seems to indicate a “bar,” in practice, any element that  displays progress through a limited number of actions falls into this  category. The basic objective is to notify the user of the progress of  tasks that take a long time and show that the system is “busy” working  on them, thus providing visibility and a sense of control to the user.  Progress bars are very important to prevent involuntary negative actions  from the user. If a long-running task is being executed in the  background (let’s say in a web worker) without any feedback on the  progress, the user may believe that the task has not started, has  failed, or the computer has “hung up.” It is a negative user experience  to leave the user wondering what is going on. Here are some examples of  progress bar elements:</p> 
+			<div> 
+				<div class="IMG---Figure"> 
+					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.13_B18602.jpg" alt="Figure 11.13 – Example of progress bars" width="524" height="210"> 
+				</div> 
+			</div> 
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.13 – Example of progress bars</p> 
+			<p>In addition to styling, progress bars can also be used in an  “undetermined state,” meaning that it is not possible for the  application to calculate how much time or how many steps a process may  take; however, it still wants to inform the user that the system is busy  and shouldn’t be interrupted. The HTML standard does provide an element  specifically for progress bars that can manage these situations (the  progress element; see <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress</a>), but there are other patterns to use in these cases, such as <strong class="bold">spinners</strong>.</p> 
+			<p>As the name “spinner” indicates, this is an icon that “spins” on  itself, giving the notion that the application is busy and working. Here  is an example of a spinner with a text indicator:</p> 
+			<div> 
+				<div class="IMG---Figure"> 
+					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.14_B18602.jpg" alt="Figure 11.14 – Spinner circle, indicating the application is busy" width="497" height="102"> 
+				</div> 
+			</div> 
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.14 – Spinner circle, indicating the application is busy</p> 
+			<p>This approach has been used in OSes and applications for some time  now, so users understand its meaning. There is one caveat when using  this pattern and that is that after a long period of time, it can create  anxiety, so it is recommended to accompany it with some sort of indicator of action. Implementing a <strong class="source-inline">spinner</strong> component in Vue is rather trivial, and mostly CSS:</p> 
+			<p class="SC---Heading" lang="en-US" xml:lang="en-US">./components/Spinner.vue</p> 
+			<div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="source-code"> 
+&lt;script setup&gt; 
+const $props=defineProps(['caption']) 
+&lt;/script&gt; 
+&lt;template&gt; 
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span class="<strong class="bold">spinner</strong>"&gt;&lt;/span&gt; {{ <strong class="bold">$props.caption</strong> }} 
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt; 
+&lt;/template&gt; 
+&lt;style scoped&gt; 
+.spinner{ 
+&nbsp;&nbsp;&nbsp;&nbsp;display: inline-block; 
+&nbsp;&nbsp;&nbsp;&nbsp;height: 1rem; width: 1rem; 
+&nbsp;&nbsp;&nbsp;&nbsp;border: 2px solid; 
+&nbsp;&nbsp;&nbsp;&nbsp;vertical-align: middle; 
+&nbsp;&nbsp;&nbsp;&nbsp;border-radius: 50%; 
+&nbsp;&nbsp;&nbsp;&nbsp;border-top-color: #06c9c9; 
+&nbsp;&nbsp;&nbsp;&nbsp;animation: rotate 1s linear infinite; 
+} 
+@keyframes rotate { 
+&nbsp;&nbsp;&nbsp;&nbsp;0%{ transform: rotate(0deg);} 
+&nbsp;&nbsp;&nbsp;&nbsp;100%{transform: rotate(360deg);} 
+} 
+&lt;/style&gt;</pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div> 
+			<p>In this simple component, we only need to define a prop for the text, and a class for our spinning elements. The circle is made here by setting the border radius and defining a color for one border, so the spinning action is noticeable.</p> 
+			<h2>Pagination and infinite scroller</h2> 
+			<p>When we need to display a long list of items to the user, there are two patterns that come to mind as a well-understood solution: pagination and infinite scrollers.</p> 
+			<p>In <strong class="bold">pagination</strong>, the dataset is divided into smaller parts of fixed size in sequential order. Each subset is called a <strong class="bold">page</strong> and is referenced  by an ordinal (usually a number). This allows for easy navigation  between pages, such as random and sequential access by the page number.  Also, giving the same order function in the data allows a quick and easy  way to “come back” to the data in different sessions. The element that  allows the user to navigate in the paged data is usually referred to as a <strong class="bold">pager</strong>, and it is common practice to place it at the top and bottom of the item list. A typical pager might look like this:</p> 
+			<div> 
+				<div class="IMG---Figure"> 
+					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.15_B18602.jpg" alt="Figure 11.15 – The elements of a typical pager" width="713" height="188"> 
+				</div> 
+			</div> 
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.15 – The elements of a typical pager</p> 
+			<p>In the preceding figure, you can see the different elements of a  typical pager, usually used for tables or lists of content. However,  this is not the only shape that a pager may take. It could, for example,  use a drop-down menu for the page numbers, display ranges of pages, and  so on. The important concept of this pattern is the division of the set and the quick navigation to each individual subgroup.</p> 
+			<p>An alternative to pagination is to use an <strong class="bold">infinite scroller</strong>.  In this pattern, the exact location of each item in the dataset may or  may not be needed, and the items are presented to the user as they  scroll the web page. When the user reaches the end of the list, new  items are loaded on the page, chunk by chunk, until the user stops  scrolling or the entire dataset has been loaded. Here is a graphical  representation of this pattern:</p> 
+			<div> 
+				<div class="IMG---Figure"> 
+					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.16_B18602.jpg" alt="Figure 11.16 – The implementation of an infinite scroller" width="711" height="417"> 
+				</div> 
+			</div> 
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.16 – The implementation of an infinite scroller</p> 
+			<p>A number of techniques are used to detect user behavior and load or pre-load data. One of the easiest implementations is through the use of an <strong class="bold">intersection observer</strong>,  a native element provided by browsers in JavaScript that triggers an  event when such an observer intersects with other elements and, in this  case, with the viewport. Since this is a new concept, we will implement a  minimal infinite scroller that will look like this:</p> 
+			<div> 
+				<div class="IMG---Figure"> 
+					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.17_B18602.jpg" alt="Figure 11.17 – The example infinite scroller limited to a div element" width="681" height="175"> 
+				</div> 
+			</div> 
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.17 – The example infinite scroller limited to a <strong class="source-inline">div</strong> element</p> 
+			<p>If you scroll down on the <strong class="source-inline">div</strong>  boundary, by any available means (mouse, keyboard, etc.), the list will  generate new items and will never stop, giving the impression that the  scrolling is infinite. Here is the source code for that component:</p> 
+			<p class="SC---Heading" lang="en-US" xml:lang="en-US">./src/components/InfiniteScroller.vue</p> 
+			<div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="source-code"> 
+&lt;script setup&gt; 
+import { ref, onMounted } from "vue" 
+const _max_value = ref(30),&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#1 
+<strong class="bold">&nbsp;&nbsp;&nbsp;&nbsp;_scroll_watcher = ref(null),</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong class="bold">#2</strong> 
+<strong class="bold">&nbsp;&nbsp;&nbsp;&nbsp;observer = new IntersectionObserver(triggerEvent)</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong class="bold">#3</strong> 
+onMounted(() =&gt; { 
+<strong class="bold">&nbsp;&nbsp;&nbsp;&nbsp;observer.observe(_scroll_watcher.value)</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong class="bold">#4</strong> 
+}) 
+function <strong class="bold">triggerEvent</strong>() {_max_value.value += 20;} 
+&lt;/script&gt; 
+&lt;template&gt; 
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div v-for="elem in _max_value" :key="elem"&gt; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;item {{ elem }} 
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt; 
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong class="bold">ref="_scroll_watcher"</strong>&gt;&lt;/div&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#5 
+&lt;/template&gt;</pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div> 
+			<p>The preceding component is minimal, but it does illustrate the  technique. We will have a list of numbers with an initial limit that  will trigger an overflow in the container (<strong class="source-inline">#1</strong>). This is important as, on the first load, the user will know that there is a scrollbar and more content below (as in <em class="italic">Figure 11</em><em class="italic">.17</em>). Now, the technique here is to define a reactive variable, <strong class="source-inline">_scroll_watcher</strong>, pointing to <strong class="source-inline">null</strong>. This variable will later have the value of an element at the bottom of the list, which we mark as a reference (<strong class="source-inline">#5</strong>). We use <strong class="source-inline">null</strong> so Vue does not run any optimization at this point. In line <strong class="source-inline">#3</strong>, we create a new <strong class="source-inline">IntersectionObserver</strong>, and pass as value the reference to our <strong class="source-inline">triggerEvent</strong> function, where we will simply increment the boundary of our list. In our template, we use a <strong class="source-inline">v-for</strong>  directive to generate the elements for each integer in the list, which  should appear before our scroll watcher element. The magic happens in  line <strong class="source-inline">#4</strong>, once our component has been created and mounted into the page. At this moment, Vue has already assigned to <strong class="source-inline">_scroll_watcher</strong> the reference for the HTML element, so we can pass it to our instance of <strong class="source-inline">IntersectionObserver</strong>. As we are using it with defaults, it will run the <strong class="source-inline">triggerEvent</strong>  function each time the div in question appears in the viewport, which  will happen when we reach the end of the list. In that function, we  increment again the number of items, making Vue inject more elements  into the web page and pushing the scroll watcher div again out of the  viewport. This process repeats <em class="italic">ad infinitum</em>, giving us a simple but effective infinite scroller.</p> 
+			<p>Beyond the implementation of the UX pattern, this technique is the correct approach to binding a reactive variable to an element in the DOM, and it saves us from writing direct JavaScript DOM manipulation, such as <strong class="source-inline">document.getElementById("#someId")</strong> and dealing with issues such as ID collisions. Vue resolves this for us.</p> 
+			<h1>Common patterns for interaction and navigation</h1> 
+			<p>These patterns control the  interaction or offer the user options to control the process and  navigation of the application. As usually happens, some of these  patterns could also fit into other categories.</p> 
+			<h2>Placement of menus</h2> 
+			<p>The placement of menus is also a pattern that has been standardized in three basic layouts:</p> 
+			<ul> 
+				<li><strong class="bold">Menu bars</strong> (horizontal) are often placed in a “sticky” position at the top of the screen (meaning they will not scroll with the page).</li> 
+				<li><strong class="bold">Navigation bars</strong> (horizontal),  mostly popular for mobile devices, are an iconography menu placed at the  bottom of the screen to navigate to different sections of the application.</li> 
+				<li><strong class="bold">Sidebars</strong> cover the full height of  the screen, and with variable widths. These show menus with icons and/or  text. In mobile and desktop applications where the screen’s real state  is important, there is usually an option to toggle it in or out of the  viewport. The standard icon to trigger this feature has become the  “hamburger” icon (see later in this chapter).</li> 
+			</ul> 
+			<p>Following these standard placements for desktop and mobile will  ensure that the user knows how to navigate the site easily. Often, some  applications such as video games break these standards, but unless there  is a powerful reason to do so, it should be avoided.</p> 
+			<h2>Breadcrumbs</h2> 
+			<p>Breadcrumbs are a hierarchical list of  links that show the current position of the web page in the overall  website organization. Each link allows the user to go back to a level,  without having to use the browser’s <strong class="bold">Back</strong>  button or dig deep into the main menu. The current approach is to place  breadcrumbs at the top of the page, before the main content. Here is an  example of a breadcrumb path:</p> 
+			<div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="source-code"> 
+Home &gt; Level 1 &gt; Level 2 &gt; Level 3 &gt; Current page</pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div> 
+			<p>The convention is to use the more-than symbol (<strong class="source-inline">&gt;</strong>)  to separate each navigation page, but there are many artistic licenses  taken on this matter. Another representation for this navigation is to  use a tree structure, such as this:</p> 
+			<div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="source-code"> 
+Home 
+&nbsp;&nbsp;└── Level 1 
+&nbsp;&nbsp;&nbsp;└── Level 2 
+&nbsp;&nbsp;&nbsp;&nbsp;└── Level 3 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── Current Page</pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div> 
+			<p>This “folder-like” structure is not so common for main navigations but is mostly used for nested content such as comments and replies in forums.</p> 
+			<h2>Modal dialogs</h2> 
+			<p>A modal dialog is a small window  that opens in front of the application, taking full control of the  focus. It prevents the user from interacting with the rest of the  application until the activity presented in the dialog is resolved.  Modal dialogs should focus on one action only and provide sufficient  information for the user to take action by giving clear options. Here is  an example:</p> 
+			<div> 
+				<div class="IMG---Figure"> 
+					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.18_B18602.jpg" alt="Figure 11.18 – A confirmation dialog" width="942" height="233"> 
+				</div> 
+			</div> 
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.18 – A confirmation dialog</p> 
+			<p>We have previously implemented a system to display modal dialogs in Vue 3, so you can review the code from <a href="https://learning.oreilly.com/library/view/vue-js-3-design/9781803238074/B18602_05.xhtml#_idTextAnchor130"><em class="italic">Chapter 5</em></a>, <em class="italic">Single-Page Applications</em>, to see an implemented approach.</p> 
+			<h2>Menu icons</h2> 
+			<p>Other than the plain copy (text) naming convention  for menu items, there are a number of icons used today to show the user  at first glance what kind of interaction to expect when presenting a  menu. Here are some of the standard icons you can find and use today:</p> 
+			<div> 
+				<div class="IMG---Figure"> 
+					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.19_B18602.jpg" alt="Figure 11.19 – Menu icons" width="533" height="110"> 
+				</div> 
+			</div> 
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.19 – Menu icons</p> 
+			<p>And here are their descriptions:</p> 
+			<ul> 
+				<li><strong class="bold">Hamburger icon</strong> (three horizontal lines): Reserved for <em class="italic">main menus</em> and navigation, this toggles the display of a wide site menu in a sidebar. These types of sidebars that show and hide on convenience are called <strong class="bold">drawers</strong> and are very popular in mobile sites and applications.</li> 
+				<li><strong class="bold">Kebab icon</strong> (three vertical dots): Made popular by Google’s Material Design, this indicates that there are more <em class="italic">options</em> for the current element or activity and that they will be displayed in a modal dialog.</li> 
+				<li><strong class="bold">Meatball icon</strong> (three horizontal dots): This is displayed next to an item on a list and indicates that there is a pop-up menu with additional <em class="italic">actions</em> for the element.</li> 
+				<li><strong class="bold">Bento icon</strong> (9 squares in a 3x3 grid): This is used to indicate a pop-up menu to navigate between different <em class="italic">applications</em> inside the same solution or environment.</li> 
+				<li><strong class="bold">Döner icon</strong> (three stack lines with different sizes): This indicates options to <em class="italic">sort</em> the entries of a list using a selectable order option (usually in a popup). This icon, however, has not become as popular as the others.</li> 
+			</ul> 
+			<h2>Accordion menus</h2> 
+			<p>This pattern’s basic use is to group content  under a title and to display it only when the user selects it, allowing  only one group to be displayed at a time. Nowadays, it is used commonly  for <em class="italic">Frequently Asked Questions</em> pages, and in sidebar menus. Here is an example from the Packt website (<a href="https://www.packtpub.com/">https://www.packtpub.com/</a>):</p> 
+			<div> 
+				<div class="IMG---Figure"> 
+					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.20_B18602.jpg" alt="Figure 11.20 – Accordion menu used for FAQ" width="855" height="383"> 
+				</div> 
+			</div> 
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.20 – Accordion menu used for FAQ</p> 
+			<p>The accordion menu is a pattern well understood by users, and one rather simple to implement. 
+It helps keep the design clean and allows the user to focus only on what matters to them.</p> 
+			<h2>Mega menus</h2> 
+			<p>Thus far, most of the patterns we  have seen have the objective of hiding complexity from the user to  avoid overwhelming them. However, this pattern seems to break this rule  at first sight. When the complexity of navigation would make the  features hard to find (for example, more than three levels of depth:  group -&gt; subgroup -&gt; sub-subgroup), an alternative is to use a <strong class="bold">mega menu</strong>.  This pattern is commonly used in government websites and other complex  organizations with heavy unavoidable content. The basic concept is to  present a large menu containing all (or most) of the options to choose  from. This doesn’t mean that there will not be a “drilling down” after  reaching these sections, but it does make access faster. For example,  let’s see the official website for the city of Hyvinkää, Finland (<a href="http://www.hyvinkaa.fi/">www.hyvinkaa.fi</a>):</p> 
+			<div> 
+				<div class="IMG---Figure"> 
+					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.21_B18602.jpg" alt="" width="1216" height="565"> 
+				</div> 
+			</div> 
+			<p class="IMG---Figure">Figure11.21: Hyvinkää city home page mega menu</p> 
+			<p>As you can see, it is a compelling number of options with just one  click in the top menu. However, notice how well organized they are and  visually separated from each other. The mega menu pattern breaks the <em class="italic">simplicity</em>  rule but does not forget other rules and principles of UI design,  making it still pleasing to the eye. In other cases, it is also possible  to consider the mega menu as a placeholder for other patterns, such as a  sidebar or accordion menu. The official Packt website (<a href="https://www.packtpub.com/">https://www.packtpub.com/</a>) uses this pattern in the main menu <strong class="bold">BOOKS &amp; </strong><strong class="bold">VIDEOS</strong> option:</p> 
+			<div> 
+				<div class="IMG---Figure"> 
+					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.22_B18602.jpg" alt="Figure 11.22 – Packt mega menu with a sidebar to categorize and filter options" width="1428" height="567"> 
+				</div> 
+			</div> 
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.22 – Packt mega menu with a sidebar to categorize and filter options</p> 
+			<p>A mega menu could be a place for innovation as it is easier for the user to understand and use. It is not a viable option for every web  application but can be very powerful when properly used. When there is  no other option than to show a large number of shortcuts or options,  this is a good pattern to keep in mind.</p> 
+			<h2>Drop-down menus</h2> 
+			<p>Drop-down menus and selection boxes  display a list of options to the user when they are activated (by a  click or touch, for example) through a trigger area (icon, text, or  button). Here, the concept of hiding the options and showing them upon  “request” by the user is more important than a specific implementation.  The accordion and mega menus make use of this concept, for example. The  accordion menu could be considered a list of drop-down menus and is not  that far off. HTML provides a native solution for selection lists (the <strong class="source-inline">select</strong> element), but the same concept can be applied in many circumstances and, with some creativity, can birth new implementations.</p> 
+			<h1>Common patterns for content organization</h1> 
+			<p>The patterns we will see next have to do with the overall organization and layout of the website or application.</p> 
+			<h2>Responsive applications</h2> 
+			<p>The term <em class="italic">responsive</em> relates to the way  the layout of an application adapts to the size of the screen. Perhaps  you have heard of the “mobile-first approach,” which is a philosophy to  design first for smaller screens, and then move upward to the possible  resolutions to reach the desktop, which is considered the largest. While  there are ways to accomplish this with JavaScript, the most sensible  direct approach is to use well-thought-out designs with CSS media queries.</p> 
+			<p>Depending on the application, there are certain formulas to create  a responsive site, but analyzing the many alternatives goes beyond the  objectives of this book. Instead, we will see only one as an example,  using the “switch columns” method. This method basically sets for mobile  (or narrow portrait screens) the main content inside a single vertical  column, section by section. A main navigation bar or menu is placed at  the top or bottom of the screen, always visible. Then, for the desktop,  the navigation bar totally or partially moves to the top menu or to a  sidebar, and the content from the main column moves to horizontal  sections, stacked one after the other. This method is illustrated and  better understood with this figure:</p> 
+			<div> 
+				<div class="IMG---Figure"> 
+					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.23_B18602.jpg" alt="Figure 11.23 – Transformation from mobile first to desktop" width="529" height="291"> 
+				</div> 
+			</div> 
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.23 – Transformation from mobile first to desktop</p> 
+			<p>As you can see from the preceding figure, the sections are always  in the same order, but the content inside adapts from a vertical to  horizontal layout direction. This concept is so simple and clean to  design that it has become the standard for most landing pages. Once you  understand this pattern, you begin to see it everywhere it is implemented.</p> 
+			<p>A simple coding approach to do this change is by using the CSS  flexbox model and changing the orientation from column to horizontal at  the section level. Here is an example:</p> 
+			<div data-testid="custom pre block" class="orm-ChapterReader-codeSnippetContainer"><pre class="source-code"> 
+// For mobile 
+&nbsp;&nbsp;&nbsp;&nbsp;@media only screen and (<strong class="bold">max-width: 600px</strong>) { 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;section{ 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;display: flex; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;flex-direction: column; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} 
+&nbsp;&nbsp;&nbsp;&nbsp;} 
+// For desktop 
+section{ 
+&nbsp;&nbsp;&nbsp;&nbsp;display: flex; 
+&nbsp;&nbsp;&nbsp;&nbsp;flex-direction: row; 
+}</pre><div class="orm-ChapterReader-snippetButtonContainer"></div></div> 
+			<p>Notice how the code has included a breakpoint at 600-px wide. You can control different screen sizes by applying multiple media queries with breakpoints.</p> 
+			<h2>Home link</h2> 
+			<p>This pattern is so ubiquitous that we do not even  think about it. The main corporate logo is placed at the top left of  the page, as a link to the home screen. The position is not random, and  it has its origins in the way users “scan” a page. Different users will  take a quick look when a page loads, guiding the eyes in a <em class="italic">Z</em>, <em class="italic">L</em>,or <em class="italic">T</em>  movement through the page. Placing the logo as a link at the top left  ensures that it is the first item the user will register. In this  chapter, <em class="italic">Figures 11.21</em> and <em class="italic">11</em><em class="italic">.22</em> are good examples of this pattern. But there are exceptions to the placement, such as Google’s home page:</p> 
+			<div> 
+				<div class="IMG---Figure"> 
+					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.24_B18602.jpg" alt="Figure 11.24 – Google’s home page is an exception to this pattern as the logo is not a link" width="614" height="178"> 
+				</div> 
+			</div> 
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.24 – Google’s home page is an exception to this pattern as the logo is not a link</p> 
+			<p>However, the exception shown in the preceding figure is only temporal, as Google goes back to this pattern once it presents the search results:</p> 
+			<div> 
+				<div class="IMG---Figure"> 
+					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.25_B18602.jpg" alt="Figure 11.25 – Google’s search result applies the pattern" width="588" height="155"> 
+				</div> 
+			</div> 
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.25 – Google’s search result applies the pattern</p> 
+			<p>The home link pattern should bring you back to either the  home page or the first step of the process. This pattern is so  widespread and understood by users, that any exception should be made  very carefully with a good understanding of the behavior and interaction  of the user base.</p> 
+			<h2>Hero section, call to action, and social media icons</h2> 
+			<p>The <strong class="bold">hero section</strong> is the first part that displays  when the page loads in the browser and goes from the very top (where  the home link and main menu reside) to, at most, the visible bottom of  the screen. All content below this section is referred to as “below the  fold,” meaning that to see it, the user needs to scroll down the page.  The hero section is considered the most important part of the home page,  and the place where the initial <strong class="bold">call to action</strong> is placed. We  visited this concept previously in this chapter when talking about UI  design principles and contrast. Nowadays, most websites will adhere to  this pattern and display the hero section in contrast, with large images  or a carousel, and a predominant call to action.</p> 
+			<div> 
+				<div class="IMG---Figure"> 
+					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.26_B18602.jpg" alt="Figure 11.26 – Kobold Press home page’s hero section – colorful and direct" width="480" height="184"> 
+				</div> 
+			</div> 
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.26 – Kobold Press home page’s hero section – colorful and direct</p> 
+			<p>In the preceding example from Kobold Press (<a href="https://koboldpress.com/">https://koboldpress.com/</a>),  we can see how they have applied several patterns seen here, from the  home link and main menu to the hero section and the call to action.  Notice also, on the left side, the display of social media icons as  a floating sidebar. It is becoming a pattern to place such icons with  links to the social media address for each institution, or in the case  of posts or articles, a link to “share” the content. Common places to  locate the social icon’s bar are as follows:</p> 
+			<ul> 
+				<li>In the footer of the website</li> 
+				<li>At the beginning and/or end of an article</li> 
+				<li>In the description of a product</li> 
+			</ul> 
+			<p>When including links to share direct content from a Vue  application (for example, a product from an online store), it is  important that the link and the Vue application point directly to such  an item. Careful attention needs to be placed on the way the navigation  URL is formed and interpreted on the first load by the Vue application,  to avoid sharing links that will open the home screen instead of the desired section of the application.</p> 
+			<h2>Other patterns</h2> 
+			<p>There are other patterns, hundreds  if not thousands, that have a direct influence on the user experience. I  encourage you to continue investigating these, such as the following:</p> 
+			<ul> 
+				<li>Shopping cart patterns</li> 
+				<li>User onboarding</li> 
+				<li>Gamification patterns</li> 
+				<li>Registration and de-registration patterns</li> 
+			</ul> 
+			<p>There is, however, a dark side to user experience, and it has to  do with the use of manipulative and deceitful practices. As an ethical  developer, you should avoid using any of these dark patterns.</p> 
+			<h1>Dark patterns</h1> 
+			<p>Dark patterns are carefully designed  interfaces and interactions with the sole purpose of manipulating or  tricking the user into performing unintended actions or even entangling  them into malicious results. After such a definition, you may think that  such actions belong to the deepest shady corners of the internet.  Sadly, even mainstream companies often follow these unethical practices.  As a matter of fact, the reproduced examples in these sections all  belong to such a category, and as often happens with design patterns,  many of these overlaps or can be found nested within each other. Let’s  see them one by one.</p> 
+			<h2>Trick questions</h2> 
+			<p>This pattern is a simple or complex play on words to trick the user to do the opposite of what their intention is. Here is an example:</p> 
+			<div> 
+				<div class="IMG---Figure"> 
+					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.27_B18602.jpg" alt="Figure 11.27 – A trick question for a newsletter subscription" width="663" height="100"> 
+				</div> 
+			</div> 
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.27 – A trick question for a newsletter subscription</p> 
+			<p>As you can see in this example, a user filling in a form would be  tempted to leave this checkbox unchecked if they don’t want to receive a  newsletter from the company. The common tendency is to pay attention to  the marked text in bold, which is a sort of title. The real action for  the checkbox can be found at the end of the paragraph, which the  majority of users would not read: <strong class="bold">Check this option if you do not want to receive </strong><strong class="bold">our newsletter</strong>.</p> 
+			<h2>Sneak into the basket</h2> 
+			<p>This dark pattern appears in many  shopping applications, quite commonly in services such as hosting and  airline tickets. It consists of placing items into the shopping cart at  checkout, but that the user has not selected, usually presented as an  offer or a “necessary” item of a small amount. Here is an example:</p> 
+			<div> 
+				<div class="IMG---Figure"> 
+					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.28_B18602.jpg" alt="Figure 11.28 – An additional item has been added to the shopping cart" width="682" height="104"> 
+				</div> 
+			</div> 
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.28 – An additional item has been added to the shopping cart</p> 
+			<p>In this example, after ordering for a new domain, a new item, <strong class="bold">First time setup</strong>,  has been automatically added to the shopping cart. This item does not  have any other explanation, and the amount appears to be “small” in  comparison to the main purpose of the purchase. Often, these types of  items are “scammish” and have no other intent than to add penny by penny  to the final amount. In some cases, there may be options to remove such  items before confirming the purchase, but quite often there are none.</p> 
+			<h2>Roach motels</h2> 
+			<p>This pattern appears quite often for  services and subscriptions. It consists of making a very easy purchase,  often after a free trial period, with the condition that charges will  continue until explicitly canceled by the user. Here is where the dark  pattern appears: by making this “unsubscribe” process complicated or  impossible to complete. For example, some companies require that the  user contact the support team with a signed letter accompanied by a  legal ID. The basic concept is to “trap” the user so rescinding the  contracted service becomes near impossible.</p> 
+			<h2>Privacy Zuckering</h2> 
+			<p>This dark pattern is named after the  founder of a recognizable social media company. It consists of offering  to the user a large number of services, for free, while the use of the  applications monitors the user’s activity and behavior. This data is  then collected and sold behind the scenes to third-party companies  without the knowledge of the user. Often, this practice is somehow named  in a rather lengthy contract of terms of service, which the user needs  to accept before using the services. This way, the company alleges that  the user has given their consent and is aware, while very few users ever  read or interpret properly such an agreement.</p> 
+			<h2>Preventing price comparison</h2> 
+			<p>In this pattern, the website  presents to the user a number of plans for services, but purposely hides  or disguises either features or individual prices, so the user is  unable to make a direct comparison to select the most suitable option.</p> 
+			<p>The price is hidden or disguised in such a way that the user  cannot make an informed decision and must select an option based on  features or other attributes.</p> 
+			<h2>Misdirection</h2> 
+			<p>This is another pattern often used  in shopping cart workflows. It consists of using names and options that  are confusing to the user, with pre-selected options that hide  alternatives and better price deals. If the system has a floating price  value (for example, for hotels or airplane tickets), this pattern is  often used to manipulate the user into selecting the option that is in  the best interest of the company.</p> 
+			<h2>Hidden costs</h2> 
+			<p>In this pattern, the user’s  selection of products or services does not disclose a total or  comprehensive description of the associated costs involved (beyond  taxes). Either in the initial purchase or subsequent purchases, the  total amount paid results in a higher price than what the user estimated  in the first instance.</p> 
+			<h2>Bait and switch</h2> 
+			<p>This pattern is widely used by  online advertisers and is one that causes the most hate in captive  users. It simply disguises one option to perform another or the exact  opposite the user intended. A classic example is when a pop-up window  displays a <strong class="bold">Close</strong> button (usually a simple <strong class="bold">X</strong>), but when the user clicks it intending to close the dialog window, it opens a new tab with the advertised website.</p> 
+			<h2>Confirm shaming</h2> 
+			<p>A highly manipulative pattern, it  involves deliberately using wording or actions to shame and ridicule the  user into doing something they didn’t want at the beginning of the  transaction. It can go from mildly annoying to outspoken insulting. It  is often used together with other dark patterns. Here is an example:</p> 
+			<div> 
+				<div class="IMG---Figure"> 
+					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.29_B18602.jpg" alt="Figure 11.29 – A confirmation dialog when removing a service from the cart" width="706" height="130"> 
+				</div> 
+			</div> 
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.29 – A confirmation dialog when removing a service from the cart</p> 
+			<p>Notice in the example how the wording in the action buttons is  highly manipulative, even though the original question is not so. This  pattern is a double-edged sword, as users may feel the rejection of the entire service and cancel the entire operation.</p> 
+			<h2>Disguised ads</h2> 
+			<p>When an advertisement is injected  into a page, it can disguise itself as proper content, imitating styles  and action buttons with the intent of tricking the user to trigger a  redirection or download a file. In some cases, the camouflage is such  that it is not possible to distinguish the site’s call to action and the  advertisements. This pattern is popular on free sites that offer to  host files for download, where it is common to find multiple <strong class="bold">Download</strong>  buttons on the page, yet only one does actually download the desired  file and the others redirect the user to a third-party site. Here is one example:</p> 
+			<div> 
+				<div class="IMG---Figure"> 
+					<img src="Chapter%2011%20Bonus%20Chapter%20-%20UX%20Patterns%20Vue.js%203%20Design%20Patterns%20and%20Best%20Practices_files/Figure_11.30_B18602.jpg" alt="Figure 11.30 – FileHippo.com hosts free software. Some ads disguise as Download buttons" width="1176" height="356"> 
+				</div> 
+			</div> 
+			<p class="IMG---Caption" lang="en-US" xml:lang="en-US">Figure 11.30 – FileHippo.com hosts free software. Some ads disguise as Download buttons</p> 
+			<p>In this screenshot from <a href="http://filehippo.com/">FileHippo.com</a>, if you access the download page for VLC Media Player, the site presents multiple <strong class="bold">Download</strong> buttons. If a user does not pay attention, it may trigger a different action than the intended software download.</p> 
+			<h2>Friendly spam</h2> 
+			<p>In this dark pattern, the  application requests access to the user’s contacts, with the idea of  expanding their network or social circle. If the user accepts, their  entire contact list will be “spammed” with emails as if coming from the  user, offering the service. Often, once this information has been  shared, it is also shared with third-party entities and advertisers.</p> 
+			<p>The list of dark patterns may not be directly associated with a single media or framework, but it is the ethical responsibility of people in this industry to avoid or prevent them.</p> 
+			<h1>Summary</h1> 
+			<p>In this chapter, we saw important patterns to present the user with a satisfactory user experience. 
+We also learned important terms to speak with designers in equal terms  and with mutual understanding – a necessary point for collaboration and  presenting the user base with the best possible positive experience. We  also reviewed some of the most common dark patterns, which are  techniques and workflow implementations to manipulate users and often  deprive them of privacy and resources. While mostly informative, this  chapter should give you a better understanding of the environment where  web applications are built, and what standards to follow for easy use.  This is all knowledge that a good engineer and developer should be aware of.</p> 
+			<h1>Review questions</h1> 
+			<p>Here are some simple questions to help you summarize what you learned in this chapter:</p> 
+			<ul> 
+				<li>What are UI and UX patterns?</li> 
+				<li>Can you name the benefits of using UX patterns?</li> 
+				<li>How can you benefit of using standard patterns in your Vue 3 components?</li> 
+				<li>What are dark patterns and why should they be avoided?</li> 
+			</ul> 
