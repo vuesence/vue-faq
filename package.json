@@ -7,16 +7,15 @@
     "dev": "vitepress dev docs",
     "build": "vitepress build docs",
     "preview": "vitepress preview docs",
-    "translate": "node translate.js"
   },
   "dependencies": {
-    "vue": "^3.3.4"
+    "vue": "^3.3.8"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^4.3.4",
-    "sass": "^1.67.0",
-    "typescript": "^5.0.2",
-    "vite": "^4.4.9",
-    "vitepress": "1.0.0-rc.14"
+    "@vitejs/plugin-vue": "^4.4.1",
+    "sass": "^1.69.5",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.0",
+    "vitepress": "1.0.0-rc.25"
   }
 }
