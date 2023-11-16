@@ -13,9 +13,9 @@ head:
 
 # Scaffolding vue webapp
 
-## Краткое описание
+## Summary
 
-Vue 3 вебсайт билдер (scaffolding) для разработчиков, с возможностью выбора бизнес-шаблона (портфолио, блог, магазин и .т.д.), лэйаут-шаблона, дизайна и функциональности (API модуль, i18n, PWA, Splash screen, auth модуль, темы и т.д.), для дальнейшей удобной кастомизации и наполнения контентом.
+Vue 3 website scaffolder for developers, with a choice of business template (portfolio, blog, store, etc.), layout template, design and functionality (API module, i18n, PWA, Splash screen, auth module, themes, etc.), for further convenient customization and content filling.
 
 ```sh
 $ pnpm create vue-webapp
