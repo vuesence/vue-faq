@@ -45,7 +45,7 @@ export default [
     link: "/book/ru/Chapter_10__Deploying_Your_Application",
   },
   {
-    text: "Глава 11: UX Patterns",
+    text: "Глава 11: Бонусная глава - Шаблоны UX",
     link: "/book/ru/Chapter_11__Bonus_Chapter_-_UX_Patterns",
   },
   {
