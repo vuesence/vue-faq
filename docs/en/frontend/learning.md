@@ -14,6 +14,17 @@ An excellent Vue tutorial in English is the May 2023 [Vue.js 3 Design Patterns a
 
 [Code examples from the book](https://github.com/PacktPublishing/Vue.js-3-Design-Patterns-and-Best-Practices) are in the public repository and well worth studying.
 
+::: tip Note
+We can draw an analogy between a good developer and a driver:
+
+1. learning the basics of driving, traffic rules and the internal combustion engine - Vue documentation and JavaScript specification
+2. Practical driving training at a driving school - good textbooks like "Vue.js 3 Design Patterns and Best Practices"
+3. Real driving experience - commercial development experience
+4. Extreme driving courses, put a glass of water on the hood and drive a twenty year old car with a manual transmission through broken streets - quality open source projects and certifications
+
+It is impossible to become a good developer/driver both without 1. and only with 1.
+Training videos from the internet (both paid and free) can both be part of 4. and be completely useless and even harmful (very often), depending on their quality and the motivation of the student.
+
 :::
 
 ::: details Vue 2 or Vue 3?
