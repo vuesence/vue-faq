@@ -29,6 +29,8 @@ $ pnpm create vue-webapp
 ...
 ```
 
+![](/images/vue-webapp/use-case.png)
+
 ### Description
 
 There are quite a few (mostly specific and quickly becoming obsolete) boilerplate code examples for creating a Vue application. Usually it means creating an empty project with certain libraries. In other words, it's just setting up an environment to start development without, actually, code.

@@ -1,18 +1,26 @@
 export default [
   { text: "О приложении", link: "/vue-webapp/" },
+  { text: "Установка", link: "/vue-webapp/getting-started" },  
   { text: "Цели", link: "/vue-webapp/objectives" },
   { text: "Принципы", link: "/vue-webapp/guidelines" }, 
-  { text: "Установка", link: "/vue-webapp/getting-started" },  
+  { text: "Участие в проекте", link: "/vue-webapp/contribution" }, 
   {
     text: "Опции",
     link: "/options/index",
     items: [
+      { 
+        text: "Макеты приложения", 
+        collapsed: true,
+        items: [
+          { text: "MainLayout", link: "/vue-webapp/options/layout" },      
+        ],
+      },
       {
       text: "Части приложения",
       collapsed: true,
       items: [
         { text: "Footer", link: "/vue-webapp/options/footer" },
-        { text: "Drawer", link: "/vue-webapp/options/drawer" },      
+        { text: "Navigation drawer", link: "/vue-webapp/options/drawer" },      
       ],
       },
       {

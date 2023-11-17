@@ -25,6 +25,7 @@ $ pnpm create vue-webapp
 ✔ Select navigation drawer › TouchSlideoutDrawer
 ✔ Select webapp footer › RichFooter
 ✔ Add 'BaseIcon' component? … yes
+...
 
 Scaffolding project in /home/ubuntu/my-vue-project... 
 ```
@@ -34,21 +35,15 @@ Scaffolding project in /home/ubuntu/my-vue-project...
 $ cd my-vue-project
 $ pnpm i
 $ pnpm dev
-
-> my-vue-project@1.0.0 dev \home\ubuntu\my-vue-project
-> vite
-
-  VITE v4.5.0  ready in 1067 ms
-
-  ➜  Local:   http://localhost:5173/vue-webapp/
-  ➜  Network: use --host to expose
-  ➜  press h to show help
-
 ```
+
+Результат в браузере:
+
+![](/images/vue-webapp/webapp-start.png)
 
 ## Установка из репозитория
 
-При данном способе будет установлено всё, однако непосредственно в webapp будет подключен минимум функциональности. Удобно для тестирования всех доступных компонент и функционала.
+При данном способе будет установлено всё, однако непосредственно в webapp будет подключен минимум функциональности. Удобно для ознакомления и тестирования всех доступных компонент и функционала.
 
 ```sh
 $ git clone https://github.com/vuesence/vue-webapp.git
