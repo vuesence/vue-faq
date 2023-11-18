@@ -8,6 +8,6 @@
 
 Повышение сложности не идет сверху вниз. И в первых вопросах-ответах описываются неочевидные моменты, могущие быть интересными для опытных программистов.
 
-Основные источники информации - официальная документация Vue 3 и Vite, [r/vuejs/](https://www.reddit.com/r/vuejs/), [@vuejs_ru](https://t.me/vuejs_ru)
+Основные источники информации - официальная документация Vue 3 и Vite, книга [Vue.js 3 Design Patterns and Best Practices](https://www.oreilly.com/library/view/vuejs-3-design/9781803238074/), [r/vuejs/](https://www.reddit.com/r/vuejs/), [@vuejs_ru](https://t.me/vuejs_ru)
 
 Актуальность информации - 2022-2023 года.

@@ -8,7 +8,7 @@ As answers are used both generally recognized, verified and objective informatio
 
 The increase in complexity does not come from the top down. The first questions and answers describe non-obvious points that may be interesting for experienced programmers.
 
-The main sources of information - official documentation of Vue 3 and Vite, [r/vuejs/](https://www.reddit.com/r/vuejs/), [@vuejs_ru](https://t.me/vuejs_ru).
+The main sources of information - official documentation of Vue 3 and Vite, the book [Vue.js 3 Design Patterns and Best Practices](https://www.oreilly.com/library/view/vuejs-3-design/9781803238074/), [r/vuejs/](https://www.reddit.com/r/vuejs/), [@vuejs_ru](https://t.me/vuejs_ru).
 
 Relevance of the information - 2022-2023 years.
 
