@@ -13,7 +13,7 @@ hero:
     - theme: alt
       text: Why Vue?
       link: /en/frontend/about-frameworks
-    - theme: alt
+    - theme: alt alt-border
       text: Версия на русском языке
       link: /ru/
   image:
@@ -39,3 +39,12 @@ features:
   });
   
 </script>
+
+<style lang="scss">
+.VPButton.alt.alt-border {
+  border-color: #fce728;
+  &:hover {
+    border-color: #f4dc02;
+  }
+}
+</style>
