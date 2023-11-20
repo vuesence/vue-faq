@@ -15,7 +15,7 @@ head:
 
 Автор: Pablo Garaguso
 
-![](/book/images/book-face.jpg)
+![](/ru/book/images/book-face.jpg)
 
 
 ## Предисловие

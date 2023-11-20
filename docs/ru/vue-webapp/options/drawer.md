@@ -5,10 +5,10 @@ head:
       content: Vue webapp
   - - meta
     - name: og:image
-      content: /images/vue-webapp-logo.jpg
+      content: /images/vue-webapp-logo.png
   - - meta
     - name: twitter:image
-      content: /images/vue-webapp-logo.jpg
+      content: /images/vue-webapp-logo.png
 ---
 
 # Navigation drawers
@@ -30,8 +30,8 @@ head:
 Функциональность реализована с помощью [useTouchSwipe](https://github.com/vuesence/vue-webapp/blob/main/src/composables/useTouchSwipe.ts) composable функции и [TouchSlideoutDrawer](https://github.com/vuesence/vue-webapp/blob/main/src/components/drawers/TouchSlideoutDrawer.vue) компонента.
 
 
-<style>
-    img {
-        border: 1px solid #ddd;
-    }
+<style scoped>
+img {
+    border: 1px solid #ddd;
+}
 </style>

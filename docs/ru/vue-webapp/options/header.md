@@ -5,10 +5,10 @@ head:
       content: Vue webapp
   - - meta
     - name: og:image
-      content: /images/vue-webapp-logo.jpg
+      content: /images/vue-webapp-logo.png
   - - meta
     - name: twitter:image
-      content: /images/vue-webapp-logo.jpg
+      content: /images/vue-webapp-logo.png
 ---
 
 # Headers
@@ -40,8 +40,8 @@ head:
 ```
 
 
-<style>
-    img {
-        border: 1px solid #ddd;
-    }
+<style scoped>
+img {
+    border: 1px solid #ddd;
+}
 </style>

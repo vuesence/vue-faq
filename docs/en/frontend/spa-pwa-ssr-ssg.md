@@ -14,7 +14,7 @@ SPA (Single Page Application) works like a regular desktop/mobile application - 
 
 For the user UX increases significantly.
 
-![spa-vs-mpa](../assets/images/spa-vs-mpa.png)
+![spa-vs-mpa](../../assets/images/spa-vs-mpa.png)
 
 :::
 
@@ -71,7 +71,7 @@ Google allows you to [see](https://search.google.com/test/mobile-friendly) how y
 
 If you find problems, you can use [dynamic rendering](https://developers.google.com/search/docs/crawling-indexing/javascript/dynamic-rendering)
 
-![dynamic-rendering](../assets/images/dynamic-rendering.png)
+![dynamic-rendering](../../assets/images/dynamic-rendering.png)
 
 The point is to handle requests from normal users and search bots differently and give them different pages. For users - SPA, for search bots - pages generated on the fly or in advance. Distribution can be handled by a webserver or an entry point to your site (`index.php` instead of `index.html`).
 
