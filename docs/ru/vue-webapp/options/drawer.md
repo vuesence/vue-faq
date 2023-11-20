@@ -30,7 +30,7 @@ head:
 Функциональность реализована с помощью [useTouchSwipe](https://github.com/vuesence/vue-webapp/blob/main/src/composables/useTouchSwipe.ts) composable функции и [TouchSlideoutDrawer](https://github.com/vuesence/vue-webapp/blob/main/src/components/drawers/TouchSlideoutDrawer.vue) компонента.
 
 
-<style>
+<style scoped>
     img {
         border: 1px solid #ddd;
     }

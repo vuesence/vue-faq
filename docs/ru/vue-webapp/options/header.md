@@ -40,7 +40,7 @@ head:
 ```
 
 
-<style>
+<style scoped>
     img {
         border: 1px solid #ddd;
     }
