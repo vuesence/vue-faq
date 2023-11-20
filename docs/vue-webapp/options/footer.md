@@ -1,3 +1,16 @@
+---
+head:
+  - - meta
+    - name: og:site_name
+      content: Vue webapp
+  - - meta
+    - name: og:image
+      content: /images/vue-webapp-logo.jpg
+  - - meta
+    - name: twitter:image
+      content: /images/vue-webapp-logo.jpg
+---
+
 # Footers
 
 На данный момент можно выбрать из трех видов футеров:

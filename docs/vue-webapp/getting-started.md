@@ -2,19 +2,20 @@
 head:
   - - meta
     - name: og:site_name
-      content: vue-webapp
+      content: Vue webapp
   - - meta
     - name: og:image
-      content: /images/vue-webapp.jpg
+      content: /images/vue-webapp-logo.jpg
   - - meta
     - name: twitter:image
-      content: /images/vue-webapp.jpg
+      content: /images/vue-webapp-logo.jpg
 ---
+
 # Установка
 
 ## Установка через `create vue-webapp`
 
-При данном способе будут установленны только выбранные компоненты
+При данном способе можно выбрать, какие опции будут установлены:
 
 ```sh
 $ pnpm create vue-webapp
@@ -23,6 +24,7 @@ $ pnpm create vue-webapp
 ✔ Make it PWA ( adds service worker and manifest )? … yes
 ✔ Add Github Action Workflow for publishing it on GitHub Pages? … no
 ✔ Select navigation drawer › TouchSlideoutDrawer
+✔ Select webapp header › SimpleHeader
 ✔ Select webapp footer › RichFooter
 ✔ Add 'BaseIcon' component? … yes
 ...

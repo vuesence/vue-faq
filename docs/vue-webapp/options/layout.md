@@ -1,3 +1,16 @@
+---
+head:
+  - - meta
+    - name: og:site_name
+      content: Vue webapp
+  - - meta
+    - name: og:image
+      content: /images/vue-webapp-logo.jpg
+  - - meta
+    - name: twitter:image
+      content: /images/vue-webapp-logo.jpg
+---
+
 # Макет приложения
 
 ## MainLayout
@@ -6,7 +19,7 @@
 
 ![](/images/vue-webapp/layout-main.png)
 
-AppSidebar виден в режимах `notebook` и `desktop`, и убирается в `tablet` и `mobile`
+AppSidebar виден в режимах `notebook` и `desktop`, и скрывается в `tablet` и `mobile`
 
 ## Routing
 
@@ -15,7 +28,7 @@ AppSidebar виден в режимах `notebook` и `desktop`, и убирае
 
 ## Адаптивность
 
-Адаптивность реализована с помощью [useScreenWidth](https://github.com/vuesence/vue-webapp/blob/main/src/composables/useScreenWidth.ts) composable функции через четыре класса, динамично устанавливающихся на тэг `body`.
+Адаптивность реализована с помощью [useScreenWidth](https://github.com/vuesence/vue-webapp/blob/main/src/composables/useScreenWidth.ts) composable функции через четыре класса (`mobile`, `tablet`, `notebook` и `desktop`), динамично устанавливающихся на тэг `body`.
 
 Конфигурационные параметры (верхний брейкпойнт для каждого режима) для `useScreenWidth` устанавливаются в `App.vue`:
 
@@ -35,7 +48,7 @@ useScreenWidth({
 В дальнейшем адаптивность можно использовать как в JavaScript коде:
 
 ```js
-// can be 'mobile', 'tablet' 'notebook' and 'desktop'
+// can be 'mobile', 'tablet' 'notebook' or 'desktop'
 const { screenWidthFactor } = new useScreenWidth();
 ```
 

@@ -6,7 +6,7 @@ export default [
   { text: "Участие в проекте", link: "/vue-webapp/contribution" }, 
   {
     text: "Опции",
-    link: "/options/index",
+    link: "/vue-webapp/options/index",
     items: [
       { 
         text: "Макеты приложения", 
@@ -16,11 +16,13 @@ export default [
         ],
       },
       {
-      text: "Части приложения",
+      text: "Компоненты приложения",
       collapsed: true,
       items: [
+        { text: "Header", link: "/vue-webapp/options/header" },
         { text: "Footer", link: "/vue-webapp/options/footer" },
         { text: "Navigation drawer", link: "/vue-webapp/options/drawer" },      
+        { text: "BaseIcon", link: "/vue-webapp/options/baseIcon" },      
       ],
       },
       {
@@ -32,13 +34,5 @@ export default [
       ],
       },
   ]
-  },
-  {
-    text: "Шаблоны",
-    collapsed: true,
-    items: [
-      { text: "Configuring the IDE", link: "/vue-webapp/development/ide" },
-      { text: "Creating and building web application", link: "/vue-webapp/development/building" },      
-    ],
   },
 ];

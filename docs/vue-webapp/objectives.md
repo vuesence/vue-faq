@@ -2,13 +2,13 @@
 head:
   - - meta
     - name: og:site_name
-      content: vue-webapp
+      content: Vue webapp
   - - meta
     - name: og:image
-      content: /images/vue-webapp.jpg
+      content: /images/vue-webapp-logo.jpg
   - - meta
     - name: twitter:image
-      content: /images/vue-webapp.jpg
+      content: /images/vue-webapp-logo.jpg
 ---
 
 # Цели 
@@ -22,7 +22,7 @@ head:
 Данное приложение должно выполнять роль конструктора каркаса вебсайта, с возможностью выбора при создании:
 - Глобального бизнес-шаблона сайта (портфолио, блог, онлайн-магазин и.т.д)
 - Варианта общего лэйаута вебприложения
-- Вариантов конкретных компонент (header, footer, sidebar и т.д.)
+- Вариантов конкретных компонент (header, footer, navigation drawer и т.д.)
 - Варианта общего стиля/дизайна
 - Отдельного функционала, инжектируемого как функциональные фрагменты (API модуль, i18n, PWA, splash screen, auth модуль, themes и т.д. )
 - Возможности подключения/интеграции при желании распространенных библиотек (в том числе UI)
