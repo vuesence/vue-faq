@@ -28,7 +28,7 @@ head:
 ![](/images/vue-webapp/footer-distributed.png)
 
 <style scoped>
-    img {
-        border: 1px solid #ddd;
-    }
+img {
+    border: 1px solid #ddd;
+}
 </style>
