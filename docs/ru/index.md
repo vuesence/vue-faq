@@ -9,13 +9,16 @@ hero:
   actions:
     - theme: brand
       text: Начать
-      link: /misc/introduction
-    - theme: alt
-      text: Почему Vue?
-      link: /frontend/about-frameworks
+      link: /ru/misc/introduction
+    # - theme: alt
+    #   text: Почему Vue?
+    #   link: /frontend/about-frameworks
     - theme: alt
       text: Учебник
       link: /ru/book/
+    - theme: alt
+      text: vue-webapp
+      link: /ru/vue-webapp/
   image:
     src: /images/vue-faq-logo.webp
     alt: Vue FAQ

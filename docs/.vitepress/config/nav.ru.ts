@@ -1,5 +1,5 @@
 export default [
-  { text: "Главная", link: "/" },
+  { text: "Главная", link: "/ru/" },
   { text: "FAQ", link: "/ru/misc/introduction" },
   { text: "Учебник", link: "/ru/book/" },
   { text: "vue-webapp", link: "/ru/vue-webapp/" },
