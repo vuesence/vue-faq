@@ -26,3 +26,4 @@ dist-ssr
 .history
 docs/.vitepress/dist/
 docs/.vitepress/cache/
+my-vue-project

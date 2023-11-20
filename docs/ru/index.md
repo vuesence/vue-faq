@@ -16,8 +16,8 @@ hero:
     - theme: alt
       text: Учебник
       link: /ru/book/
-    - theme: alt
-      text: vue-webapp
+    - theme: alt alt-border
+      text: vue-webapp билдер
       link: /ru/vue-webapp/
   image:
     src: /images/vue-faq-logo.webp
@@ -35,3 +35,12 @@ features:
   # - title: Feature C
   #   details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
 ---
+
+<style lang="scss">
+.VPButton.alt.alt-border {
+  border-color: #fce728;
+  &:hover {
+    border-color: #f4dc02;
+  }
+}
+</style>
