@@ -11,15 +11,15 @@ import sidebar_vue_webapp_en from "./sidebar.vue-webapp.en";
 export default defineConfig({
   // base: "/ru/",
   locales: {
-    root: {
+    ru: {
       lang: "ru",
       label: "Русский",
       themeConfig: {
         nav: nav_ru,
         sidebar: {
-          "/": sidebar_ru,
-          "/book/": sidebar_book_ru,
-          "/vue-webapp/": sidebar_vue_webapp_ru,
+          "/ru/": sidebar_ru,
+          "/ru/book/": sidebar_book_ru,
+          "/ru/vue-webapp/": sidebar_vue_webapp_ru,
         },
       },
       head: [
