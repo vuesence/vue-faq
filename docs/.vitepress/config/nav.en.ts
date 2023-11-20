@@ -1,7 +1,7 @@
 export default [
   { text: "Home", link: "/en/" },
   { text: "FAQ", link: "/en/misc/introduction" },
-  { text: "vue-webapp", link: "/en/vue-webapp/" },
+  // { text: "vue-webapp", link: "/en/vue-webapp/" },
   {
     text: "v 1.3",
     items: [
