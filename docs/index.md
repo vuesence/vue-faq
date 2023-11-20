@@ -5,30 +5,37 @@ layout: home
 hero:
   name: "Vue FAQ"
   text: "Vue JavaScript framework FAQ"
-  tagline: Наиболее часто задаваемые вопросы по Vue.js
+  tagline: Most frequently asked questions about Vue.js
   actions:
     - theme: brand
-      text: Начать
-      link: /ru/misc/introduction
+      text: Get Started
+      link: /en/misc/introduction
     - theme: alt
-      text: Почему Vue?
-      link: /ru/frontend/about-frameworks
+      text: Why Vue?
+      link: /en/frontend/about-frameworks
     - theme: alt
-      text: Учебник
-      link: /ru/book/
+      text: Версия на русском языке
+      link: /ru/
   image:
     src: /images/vue-faq-logo.webp
     alt: Vue FAQ
 
 features:
   - title: Frontend
-    details: Рассматриваются общие вопросы фронтенд разработки - архитектура, шаблоны, лучшие практики
+    details: General issues of frontend development - architecture, design patterns, best practices are discussed
   - title: Vue 3
-    details: Основное внимание уделено Vue 3, Composition API и экосистеме Vue последних лет
+    details: Focuses on Vue 3, Composition API and the Vue ecosystem of recent years.
   - title: Nuxt-free
-    details: Nuxt - отдельный самостоятельный фреймворк, заслуживающий свой собственный FAQ
-  - title: Vue.js 3 Design Patterns and Best Practices
-    details: Перевод на русский язык прекрасного учебника по Vue 3 автора Pablo Garaguso
-  # - title: Feature C
-  #   details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+    details: Nuxt is a separate standalone framework that deserves its own FAQ
 ---
+
+<script setup>
+  import { onMounted} from "vue";
+
+  onMounted(() => {
+    if (navigator.language != "ru-RU") {
+      document.querySelector(".actions .action:nth-child(3)").style.display = "none";
+    };
+  });
+  
+</script>
