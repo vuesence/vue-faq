@@ -31,6 +31,7 @@ export default [
       items: [
         { text: "API модуль", link: "/ru/vue-webapp/options/api" },
         { text: "i18n", link: "/ru/vue-webapp/options/i18n" },      
+        { text: "Github Pages deploy", link: "/ru/vue-webapp/options/ga-gp" },      
       ],
       },
   ]
