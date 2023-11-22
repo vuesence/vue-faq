@@ -21,6 +21,13 @@ export default defineConfig({
           "/ru/book/": sidebar_book_ru,
           "/ru/vue-webapp/": sidebar_vue_webapp_ru,
         },
+        lastUpdated: {
+          text: 'Последнее обновление',
+        },
+        outline: {
+          label: "Содержание"
+        },
+        returnToTopLabel: "Наверх"
       },
       head: [
         [
@@ -81,7 +88,7 @@ export default defineConfig({
     ["link", { rel: "icon", type: "image/png", sizes: "32x32", href: "/images/favicon-32x32.png" }],
     ["link", { rel: "shortcut icon", href: "/favicon.ico" }],
   ],
-  themeConfig: {
+  themeConfig: {    
     logo: "/images/vue-faq-logo.webp",
     search: {
       provider: "local",
@@ -92,6 +99,7 @@ export default defineConfig({
       { icon: {svg: '<svg xmlns="http://www.w3.org/2000/svg"><g><text font-weight="bold" xml:space="preserve" font-size="18" id="svg_1" y="16" x="8" fill="currentColor">Star it!</text></g></svg>'}, link: "https://github.com/vuesence/vue-faq" }
     ],
   },
+  lastUpdated: true,
   sitemap: {
     hostname: "https://vue-faq.org"
   }
