@@ -6,7 +6,7 @@ export default [
   { text: "Участие в проекте", link: "/ru/vue-webapp/contribution" }, 
   {
     text: "Опции",
-    link: "/vue-webapp/options/index",
+    link: "/ru/vue-webapp/options/index",
     items: [
       { 
         text: "Макеты приложения", 
