@@ -3,7 +3,7 @@ export default [
   { text: "FAQ", link: "/en/misc/introduction" },
   // { text: "vue-webapp", link: "/en/vue-webapp/" },
   {
-    text: "v 1.3",
+    text: "v 1.4",
     items: [
       {
         text: "Changelog",

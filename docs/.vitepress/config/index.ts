@@ -29,18 +29,7 @@ export default defineConfig({
         },
         returnToTopLabel: "Наверх"
       },
-      head: [
-        [
-          "script",
-          {},
-          `
-          // const init = localStorage.getItem("vue-faq-init") ?? false;
-          // localStorage.setItem("vue-faq-init", true);
-          // const isGoogleBot = window.navigator.userAgent.includes('googlebot');
-          // /* if (navigator.language != "ru-RU" && !init && !isGoogleBot) document.location="/en" + window.location.pathname; */
-          // if (navigator.language != "ru-RU" && !init && !isGoogleBot) document.location="/en/";
-          `,
-        ],
+      head: [        
         ["script", { async: "", src: "https://www.googletagmanager.com/gtag/js?id=G-JL65GWRNZZ" }],
         [
           "script",

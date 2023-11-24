@@ -522,7 +522,7 @@ $service.runLog()
 **DocumentScroll.js**
 
 ```js
-import {ref, onMounted, onUnmounted} из "vue"                       //1
+import {ref, onMounted, onUnmounted} from "vue"                     //1
 function useDocumentScroll() {
      const y=ref(window.scrollY)                                    //2
      function update(){y.value=window.scrollY}

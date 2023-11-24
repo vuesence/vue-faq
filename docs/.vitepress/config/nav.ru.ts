@@ -4,7 +4,7 @@ export default [
   { text: "Учебник", link: "/ru/book/" },
   { text: "vue-webapp", link: "/ru/vue-webapp/" },
   {
-    text: "v 1.3",
+    text: "v 1.4",
     items: [
       {
         text: "Changelog",
