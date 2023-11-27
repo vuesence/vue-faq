@@ -20,7 +20,7 @@ Cons: as any dependency can become obsolete (Vuetify 2 tragedy), adds weight to 
 
 ::: details How to reduce dependency on foreign libraries?
 
-Wrap UI library components in your own.
+Wrap up UI library components in your own custom components.
 
 ```vue
 <!-- BaseButton.vue -->
