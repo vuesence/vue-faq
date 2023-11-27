@@ -1,16 +1,3 @@
----
-head:
-  - - meta
-    - name: og:site_name
-      content: Vue webapp
-  - - meta
-    - name: og:image
-      content: /images/vue-webapp-logo.png
-  - - meta
-    - name: twitter:image
-      content: /images/vue-webapp-logo.png
----
-
 # Vue 3 webapp билдер
 
 ## Краткое описание
