@@ -7,29 +7,30 @@ import { useData } from 'vitepress'
 
 const { site } = useData()
 const data = useData()
-// let config = JSON.parse(localStorage.getItem("vue-faq-config"));
+
 
 onMounted(() => { 
+    let config = JSON.parse(localStorage.getItem("vue-faq-config"));
     // console.log(data);    
-    // if (!config) {
-    //     config = {
-    //         version: 1.4,
-    //         visits: 0,
-    //         notifications: {
-    //             telegram: false,
-    //         }
-    //     };
-    //     // localStorage.setItem("vue-faq-config", config);
-    // }
-    // config.visits++;
+    if (!config) {
+        config = {
+            version: 1.4,
+            visits: 0,
+            notifications: {
+                telegram: false,
+            }
+        };
+        // localStorage.setItem("vue-faq-config", config);
+    }
+    config.visits++;
 
-    // if (!config.notifications.telegram && (site.value.lang === "ru" || navigator.language === "ru-RU")) {
-    //     showTelegramNotification();
-    // }    
-    // localStorage.setItem("vue-faq-config", JSON.stringify(config));
+    if (!config.notifications.telegram && (site.value.lang === "ru" || navigator.language === "ru-RU")) {
+        showTelegramNotification(localStorage);
+    }    
+    localStorage.setItem("vue-faq-config", JSON.stringify(config));
 });
 
-function showTelegramNotification() {
+function showTelegramNotification(localStorage) {
     const str =`
     <h3>У нас есть Телеграм канал</h3>
     В нем публикуются анонсы о новых материалах на данном ресурсе и другая интересная относящаяся к Vue.js информация.
