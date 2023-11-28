@@ -2,6 +2,18 @@
 
 <br />
 
+## v1.4 (24-11-2023)
+
+#### Changed
+
+- `Frontend / How to learn Vue?`
+- `vue-webapp`
+
+<!-- --- -->
+
+<br />
+<br />
+
 ## v1.3 (10-10-2023)
 
 #### Changed

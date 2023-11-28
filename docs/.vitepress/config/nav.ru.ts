@@ -1,18 +1,18 @@
 export default [
-  { text: "Главная", link: "/" },
-  { text: "FAQ", link: "/misc/introduction" },
-  { text: "Учебник", link: "/book/ru/" },
-  // { text: "vue-webapp", link: "/vue-webapp/" },
+  { text: "Главная", link: "/ru/" },
+  { text: "FAQ", link: "/ru/misc/introduction" },
+  { text: "Учебник", link: "/ru/book/" },
+  { text: "vue-webapp", link: "/ru/vue-webapp/" },
   {
-    text: "v 1.3",
+    text: "v 1.4",
     items: [
       {
         text: "Changelog",
-        link: "/misc/CHANGELOG.md",
+        link: "/ru/misc/CHANGELOG.md",
       },
       {
-        text: "Помочь с FAQ",
-        link: "/misc/contribute.md",
+        text: "Внести вклад",
+        link: "/ru/misc/contribute.md",
       },
     ],
   },

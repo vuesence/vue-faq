@@ -1,44 +1,39 @@
 export default [
-  { text: "О приложении", link: "/vue-webapp/" },
-  { text: "Установка", link: "/vue-webapp/getting-started" },  
-  { text: "Цели", link: "/vue-webapp/objectives" },
-  { text: "Принципы", link: "/vue-webapp/guidelines" }, 
-  { text: "Участие в проекте", link: "/vue-webapp/contribution" }, 
+  { text: "О приложении", link: "/ru/vue-webapp/" },
+  { text: "Установка", link: "/ru/vue-webapp/getting-started" },  
+  { text: "Цели", link: "/ru/vue-webapp/objectives" },
+  { text: "Принципы", link: "/ru/vue-webapp/guidelines" }, 
+  { text: "Участие в проекте", link: "/ru/vue-webapp/contribution" }, 
   {
     text: "Опции",
-    link: "/options/index",
+    link: "/ru/vue-webapp/options/index",
     items: [
       { 
         text: "Макеты приложения", 
         collapsed: true,
         items: [
-          { text: "MainLayout", link: "/vue-webapp/options/layout" },      
+          { text: "MainLayout", link: "/ru/vue-webapp/options/layout" },      
         ],
       },
       {
-      text: "Части приложения",
+      text: "Компоненты приложения",
       collapsed: true,
       items: [
-        { text: "Footer", link: "/vue-webapp/options/footer" },
-        { text: "Navigation drawer", link: "/vue-webapp/options/drawer" },      
+        { text: "Header", link: "/ru/vue-webapp/options/header" },
+        { text: "Footer", link: "/ru/vue-webapp/options/footer" },
+        { text: "Navigation drawer", link: "/ru/vue-webapp/options/drawer" },      
+        { text: "BaseIcon", link: "/ru/vue-webapp/options/baseIcon" },      
       ],
       },
       {
       text: "Функциональность",
       collapsed: true,
       items: [
-        { text: "API модуль", link: "/vue-webapp/options/api" },
-        { text: "i18n", link: "/vue-webapp/options/i18n" },      
+        { text: "API модуль", link: "/ru/vue-webapp/options/api" },
+        { text: "i18n", link: "/ru/vue-webapp/options/i18n" },      
+        { text: "Github Pages deploy", link: "/ru/vue-webapp/options/ga-gp" },      
       ],
       },
   ]
-  },
-  {
-    text: "Шаблоны",
-    collapsed: true,
-    items: [
-      { text: "Configuring the IDE", link: "/vue-webapp/development/ide" },
-      { text: "Creating and building web application", link: "/vue-webapp/development/building" },      
-    ],
   },
 ];

@@ -8,6 +8,9 @@ dependencies:
   vue:
     specifier: ^3.3.8
     version: 3.3.8(typescript@5.2.2)
+  vue3-toastify:
+    specifier: ^0.1.14
+    version: 0.1.14(vue@3.3.8)
 
 devDependencies:
   '@vitejs/plugin-vue':
@@ -1373,6 +1376,18 @@ packages:
     dependencies:
       vue: 3.3.8(typescript@5.2.2)
     dev: true
+
+  /vue3-toastify@0.1.14(vue@3.3.8):
+    resolution: {integrity: sha512-2wyzMhWq8IjTclL25tqKWknDFdFI1vPueMGZpHNlPWf6TBfxBycBANS+2n4W1xD7tHhX4G6HhCe31sle6OpwYQ==}
+    engines: {node: '>=16', npm: '>=7'}
+    peerDependencies:
+      vue: '>=3.2.0'
+    peerDependenciesMeta:
+      vue:
+        optional: true
+    dependencies:
+      vue: 3.3.8(typescript@5.2.2)
+    dev: false
 
   /vue@3.3.8(typescript@5.2.2):
     resolution: {integrity: sha512-5VSX/3DabBikOXMsxzlW8JyfeLKlG9mzqnWgLQLty88vdZL7ZJgrdgBOmrArwxiLtmS+lNNpPcBYqrhE6TQW5w==}
