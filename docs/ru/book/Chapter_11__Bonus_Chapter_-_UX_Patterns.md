@@ -1,3 +1,19 @@
+---
+head:
+  - - meta
+    - name: og:site_name
+      content: Vue.js 3 - Шаблоны проектирования и лучшие практики
+  - - meta
+    - name: description
+      content: Учебник по Vue.js 3
+  - - meta
+    - name: og:image
+      content: /images/book-face.jpg
+  - - meta
+    - name: twitter:image
+      content: /images/book-face.jpg
+---
+
 # Бонусная глава - Шаблоны UX
 
 Давным-давно компьютерное программное обеспечение продавалось вместе с

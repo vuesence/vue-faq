@@ -4,6 +4,9 @@ head:
     - name: og:site_name
       content: Vue.js 3 - Шаблоны проектирования и лучшие практики
   - - meta
+    - name: description
+      content: Учебник по Vue.js 3
+  - - meta
     - name: og:image
       content: /images/book-face.jpg
   - - meta
