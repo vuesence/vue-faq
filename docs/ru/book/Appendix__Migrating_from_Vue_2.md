@@ -2,7 +2,7 @@
 head:
   - - meta
     - name: og:site_name
-      content: Vue.js 3 Design Patterns and Best Practices
+      content: Vue.js 3 - Шаблоны проектирования и лучшие практики
   - - meta
     - name: og:image
       content: /images/book-face.jpg
