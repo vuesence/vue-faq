@@ -113,8 +113,8 @@ function incrementCounter() {                             //2
 </script> 
 <template> 
 <div> 
-   <strong>Counter </strong> 
-   <>{{ _counter }} 
+   <strong>Counter</strong>
+   <span>{{ _counter }}</span>
    <button @click="incrementCounter()">                   //3 
        Increment 
    </button> 
@@ -147,7 +147,7 @@ function incrementCounter() {                             //2
 ###### /basic/Child.vue
 
 ```vue
- <script setup> 
+<script setup> 
 const 
     $props=defineProps(['counter', 'title']),           //1 
     $emit=defineEmits(['increment']) 
@@ -345,9 +345,9 @@ const
 ##### /service/SimpleState.js
 
 ```js
-import {reactive} from "vue"                       //1
-const _state = reactive({counter: 0})                //2
-function useState() {return _state;}                //3
+import {reactive} from "vue"                                   //1
+const _state = reactive({counter: 0})                          //2
+function useState() {return _state;}                           //3
 export default useState;
 ```
 
@@ -374,8 +374,8 @@ JavaScript-файл и импортируем конструктор **reactive*
     <strong>State: </strong><br>
     <pre>{{$state}}</pre>                                      //2
     <div>
-    <button @click="$state.counter++">Increment</button>       //3
-    <button @click="$state.counter--">Decrement</button>
+        <button @click="$state.counter++">Increment</button>   //3
+        <button @click="$state.counter--">Decrement</button>
     </div>
 </template>
 ```
@@ -468,10 +468,10 @@ const useCounterStore = defineStore('counter', {        //2
       }else{
        return 0
       }
-  }, inRange: (state)=>return state.count>=0},
+  }, inRange: (state)=> state.count>=0},
   actions: {                                            //5
     increment(){this.count++},
-    decrement(){this.count--;}
+    decrement(){this.count--}
   },
 })
 export {useCounterStore}
@@ -560,7 +560,7 @@ app.mount('#app')
 ##### /pinia/ChildPinia.vue
 
 ```vue
- <script setup>
+<script setup>
 import { useCounterStore } from '../../stores/counter';   //1
 const $store=useCounterStore()                            //2
 </script>
@@ -761,7 +761,7 @@ cookies).
 ##### /services/sessionStorage.js
 
 ```js
- import { reactive } from 'vue';
+import { reactive } from 'vue';
 let handler = {                                                  //1
     props: reactive({}),                                         //2
     get(target, prop, receiver) {                                //3
@@ -841,7 +841,7 @@ JavaScript-реализацию объекта **Proxy** для перехват
 ##### /session_storage/ChildSession.vue
 
 ```vue
- <script setup>
+<script setup>
     import {useSessionStorage} from "../../services/SessionStorage"
     const $sessionStorage = useSessionStorage()
 </script>
