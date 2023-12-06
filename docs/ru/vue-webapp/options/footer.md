@@ -23,6 +23,14 @@ head:
 
 ![](/images/vue-webapp/footer-rich.png)
 
+## MantineSimpleFooter
+
+![](/images/vue-webapp/footer-simple-mantine.png)
+
+## MantineRichFooter
+
+![](/images/vue-webapp/footer-rich-mantine.png)
+
 ## DistributedFooter
 
 ![](/images/vue-webapp/footer-distributed.png)

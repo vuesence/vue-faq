@@ -182,6 +182,10 @@ The component will first try to look for the `svg` named `account`, then `png`.
 
 :::
 
+::: details Where to find icons?
+Huge icon set with images from many libraries available in different formats - [iconify.design](https://iconify.design/)
+:::
+
 ::: details What is the best format for pictures - jpg or png?
 
 Try modern `webp`. Really strong compression with no apparent loss of quality. There is a transparent background.
