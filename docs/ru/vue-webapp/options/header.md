@@ -13,13 +13,25 @@ head:
 
 # Headers
 
-На данный момент можно выбрать из двух видов хедера:
+Все хедеры адаптивны.
 
 ## SimpleHeader
 
 ![](/images/vue-webapp/header-simple.png)
 
 Простой `sticky` header
+
+## MantineSimpleHeader
+
+![](/images/vue-webapp/header-simple-mantine.png)
+
+Простой `sticky` header в стиле Mantine UI
+
+## MantineLayeredHeader
+
+![](/images/vue-webapp/header-layered-mantine.png)
+
+`sticky` header с уровнями в стиле Mantine UI
 
 ## SlidingHeader
 
