@@ -25,12 +25,12 @@ onMounted(() => {
     config.visits++;
 
     if (!config.notifications.telegram && (site.value.lang === "ru" || navigator.language === "ru-RU")) {
-        showTelegramNotification(localStorage);
+        showTelegramNotification(localStorage, config);
     }    
     localStorage.setItem("vue-faq-config", JSON.stringify(config));
 });
 
-function showTelegramNotification(localStorage) {
+function showTelegramNotification(localStorage, config) {
     const str =`
     <h3>У нас есть Телеграм канал</h3>
     В нем публикуются анонсы о новых материалах на данном ресурсе и другая интересная относящаяся к Vue.js информация.
