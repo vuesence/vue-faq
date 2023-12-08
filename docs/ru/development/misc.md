@@ -89,3 +89,25 @@ Ref на объекте использует напрямую Reactive для о
 ::: details Pug и Stylus
 Во Vue экосистеме (включая средства разработки и расширения) данные техноологии плохо поддерживаются и не рекомендуются к использованию.
 :::
+
+::: details Chrome DevTools custom formatters
+
+Google Chrome  и некоторые основанные на Chromium браузеры имеют настройку в DevTools в разделе настроек Console - "Enable custom formatters". После её включения реактивные объекты будут показываться в консоли и в попап-ах при дебаге в более читаемом виде:
+
+![](/images/faq/chrome-formatter-1.jpg)
+
+вместо стандартного:
+
+![](/images/faq/chrome-formatter-2.jpg)
+
+Временно отключить программно настройку можно так:
+
+```js
+const old = window.devtoolsFormatters;
+delete window.devtoolsFormatters; 
+// will print out data without custom formatting
+console.log(obj); 
+window.devtoolsFormatters = old;
+```
+
+:::

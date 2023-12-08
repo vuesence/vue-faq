@@ -89,3 +89,24 @@ We should forget about them like a bad dream. Mixins as a pattern of multiple in
 ::: details Pug and Stylus
 In the Vue ecosystem (including development tools), these technologies are poorly supported and not recommended for use.
 :::
+
+::: details Chrome DevTools custom formatters
+
+Google Chrome and some Chromium-based browsers have a setting in DevTools in the Console section - "Enable custom formatters". Once enabled, reactive objects will be shown in the console and in popups during debugging in a more readable form:
+
+![](/images/faq/chrome-formatter-1.jpg)
+
+instead of the standard one:
+
+![](/images/faq/chrome-formatter-2.jpg)
+
+It is possible to temporarily disable the setting programmatically:
+
+```js
+const old = window.devtoolsFormatters;
+delete window.devtoolsFormatters; 
+// will print out data without custom formatting
+console.log(obj); 
+window.devtoolsFormatters = old;
+```
+:::
