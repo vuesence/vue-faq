@@ -85,3 +85,7 @@ It works like `Ref` but does not track changes inside array elements, which give
 We should forget about them like a bad dream. Mixins as a pattern of multiple inheritance is a very bad architectural practice and should be avoided. In Vue 2, the framework itself did not have a way to make the component part of the steit and methods common, so mixins were used. In Vue 3, the Composition API has been introduced and mixins are no longer needed.
 
 :::
+
+::: details Pug and Stylus
+In the Vue ecosystem (including development tools), these technologies are poorly supported and not recommended for use.
+:::
