@@ -22,6 +22,7 @@ export default [
         { text: "Header", link: "/ru/vue-webapp/options/header" },
         { text: "Footer", link: "/ru/vue-webapp/options/footer" },
         { text: "Navigation drawer", link: "/ru/vue-webapp/options/drawer" },      
+        { text: "Navbar", link: "/ru/vue-webapp/options/navbar" },
         { text: "BaseIcon", link: "/ru/vue-webapp/options/baseIcon" },      
       ],
       },
