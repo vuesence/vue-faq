@@ -10,14 +10,14 @@ export default [
     items: [
       { 
         text: "Макеты приложения", 
-        collapsed: true,
+        collapsed: false,
         items: [
           { text: "MainLayout", link: "/ru/vue-webapp/options/layout" },      
         ],
       },
       {
       text: "Компоненты приложения",
-      collapsed: true,
+      collapsed: false,
       items: [
         { text: "Header", link: "/ru/vue-webapp/options/header" },
         { text: "Footer", link: "/ru/vue-webapp/options/footer" },
@@ -28,7 +28,7 @@ export default [
       },
       {
       text: "Функциональность",
-      collapsed: true,
+      collapsed: false,
       items: [
         { text: "API модуль", link: "/ru/vue-webapp/options/api" },
         { text: "i18n", link: "/ru/vue-webapp/options/i18n" },      
