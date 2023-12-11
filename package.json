@@ -9,14 +9,14 @@
     "preview": "vitepress preview docs"
   },
   "dependencies": {
-    "vue": "^3.3.8",
+    "vue": "^3.3.11",
     "vue3-toastify": "^0.1.14"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^4.4.1",
+    "@vitejs/plugin-vue": "^4.5.2",
     "sass": "^1.69.5",
-    "typescript": "^5.2.2",
-    "vite": "^5.0.0",
-    "vitepress": "1.0.0-rc.25"
+    "typescript": "^5.3.3",
+    "vite": "^5.0.7",
+    "vitepress": "1.0.0-rc.31"
   }
 }

@@ -72,9 +72,14 @@ Also, from a functional point of view, composable functions have full access to 
 
 Composable functions with global states do not work in SSR mode.
 
-As for performance, [according to tests](https://github.com/vuesence/pinia-vs-reactive) Pinia is about 1.5 times slower on Reactive changes than Vue 3, and 20 times slower on Ref. This is because Ref (primitive types) in Pinia becomes part of Reactive.
+As for performance, [according to tests](https://github.com/vuesence/pinia-vs-reactive) Pinia is about 1.5 times slower on Reactive changes than Vue 3, and 20 times slower on Ref. This is because Ref (primitive types) in Pinia becomes a part of Reactive. Setup stores does not solve this problem.
 
 You should also keep in mind that any dependency (in this case the Pinia library) can bring problems similar to the "RIP Vuex" situation when the library dies, becomes obsolete, is no longer supported, or vulnerabilities are found in it. Composable features, on the other hand, look like a thorough innovation to the Vue framework.
+
+This is an [interesting discussion](https://www.reddit.com/r/vuejs/comments/18fnilj/why_to_use_pinia_instead_of_global_refs/) about it on */r/vuejs*. [Code example](https://github.com/jellyfin/jellyfin-vue/blob/master/frontend/src/store/clientSettings.ts#L98) from Reddit user **@ferferga** shows how to use TypeScript classes with private modifiers, getters, setters (no *.value*) and first class type support as composable stores (which would be impossible with Pinia). Using TS classes here might not be a good practice but demonstrates flexibility and power of the Composition API.
+
+Also here is a lifehack for Devtools from user **@coolcosmos**: *I just use refs. The cons is you lose the Devtools but in dev mode I import all my refs and pass them to pinia so I have all the pros and no cons.*
+
 
 :::
 
