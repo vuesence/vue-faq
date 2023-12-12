@@ -11,22 +11,7 @@ head:
       content: /images/vue-webapp-logo.png
 ---
 
-# Макет приложения
-
-## MainLayout
-
-На данный момент поддерживается один макет
-
-![](/images/vue-webapp/layout-main.png)
-
-AppSidebar виден в режимах `notebook` и `desktop`, и скрывается в `tablet` и `mobile`
-
-## Routing
-
-Смена содержимого центральной панели обеспечивается через [маршруты](https://github.com/vuesence/vue-webapp/blob/main/src/router/routes.ts) `vue-router`
-
-
-## Адаптивность
+# Адаптивность
 
 Адаптивность реализована с помощью [useScreenWidth](https://github.com/vuesence/vue-webapp/blob/main/src/composables/useScreenWidth.ts) composable функции через четыре класса (`mobile`, `tablet`, `notebook` и `desktop`), динамично устанавливающихся на тэг `body`.
 

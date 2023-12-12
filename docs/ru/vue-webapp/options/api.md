@@ -11,7 +11,7 @@ head:
       content: /images/vue-webapp-logo.png
 ---
 
-# API
+# API модуль
 
 ## API (REST)
 
