@@ -13,6 +13,6 @@ head:
 
 # Участие в проекте
 
-`create-vue-webapp` и `vue-webapp` являются open source проектами под лицензией MIT.
+[create-vue-webapp](https://github.com/vuesence/create-vue-webapp) и [vue-webapp](https://github.com/vuesence/vue-webapp) являются open source проектами под лицензией MIT.
 
 Приглашаем к участию всех желающих.

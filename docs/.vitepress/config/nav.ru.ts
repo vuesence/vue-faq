@@ -11,6 +11,15 @@ export default [
         link: "/ru/misc/CHANGELOG.md",
       },
       {
+        text: "@vuejs_ru",
+        title: "Телеграм сообщество",
+        link: "https://t.me/vuejs_ru",
+      },
+      {
+        text: "@/r/vuejs/",
+        link: "https://www.reddit.com/r/vuejs/",
+      },
+      {
         text: "Внести вклад",
         link: "/ru/misc/contribute.md",
       },

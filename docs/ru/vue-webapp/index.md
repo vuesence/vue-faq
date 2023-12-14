@@ -20,12 +20,11 @@ Vue 3 вебсайт билдер позволяет создать каркас
 ```sh
 $ pnpm create vue-webapp
 
-✔ Project name: … my-vue-project
-✔ Make it PWA ( adds service worker and manifest )? … yes
-✔ Add Github Action Workflow for publishing it on GitHub Pages? … no
-✔ Select navigation drawer › TouchSlideoutDrawer
-✔ Select webapp footer › RichFooter
-✔ Add 'BaseIcon' component? … yes
+√ Project name: ... my-vue-project
+√ Add a Splash screen? ... no / yes
+√ Make it PWA (adds service worker and manifest)? ... no / yes
+√ Add Open Graph meta tags? ... no / yes
+√ Add Google Analytics code? ... no / yes
 ...
 ```
 
