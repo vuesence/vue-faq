@@ -13,7 +13,7 @@ head:
 
 # Splash screen
 
-A splash screen during application startup instead of a blank screen can enhance your app's user experience (UX) and strengthen your brand recognition.
+A splash screen during application startup instead of a blank screen can enhance application user experience and strengthen brand recognition.
 
 ![](/images/vue-webapp/splash-screen.gif)
 

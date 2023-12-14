@@ -13,7 +13,7 @@ head:
 
 # Implementation details
 
-## Code injection in index.html
+## Code injections in the index.html
 
 To avoid bloating `index.html` injections of code fragments into it (Open graph, Google analytics, Splash screen, Service worker etc.) are done via [vite-plugin-html-injection](https://github.com/altrusl/vite-plugin-html-injection/) Vite plugin.
 

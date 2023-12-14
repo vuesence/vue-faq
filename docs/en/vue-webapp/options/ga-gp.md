@@ -11,11 +11,11 @@ head:
       content: /images/vue-webapp-logo.png
 ---
 
-# Github Actions script to deploy to Github Pages
+# GitHub Actions script to deploy to GitHub Pages
 
 ## Deployment
 
-Uses [JamesIves/github-pages-deploy-action](https://github.com/JamesIves/github-pages-deploy-action) Github Action to deploy a site to the `gh-pages` branch of the same GitHub repository, which automatically makes the website available at `https://youGitHubUsername.github.io/my-vue-webapp` (if your project and repository is called `my-vue-webapp`).
+Uses [JamesIves/github-pages-deploy-action](https://github.com/JamesIves/github-pages-deploy-action) GitHub Action to deploy a site to the `gh-pages` branch of the same GitHub repository, which automatically makes the website available at `https://youGitHubUsername.github.io/my-vue-webapp` (if your project and repository is called `my-vue-webapp`).
 
 - Create a branch in the repository called `gh-pages`
 - Go to the "Settings" section of your repository

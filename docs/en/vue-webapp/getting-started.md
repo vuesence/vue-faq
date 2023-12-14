@@ -15,18 +15,66 @@ head:
 ## Installation via `create vue-webapp`
 
 ```sh
-ubuntu@localhost:~$ pnpm create vue-webapp
+$ pnpm create vue-webapp
 
-✔ Project name: … my-vue-project
-✔ Make it PWA ( adds service worker and manifest )? … yes
-✔ Add Github Action Workflow for publishing it on GitHub Pages? … no
-✔ Select navigation drawer › TouchSlideoutDrawer
-✔ Select webapp footer › RichFooter
-✔ Add 'BaseIcon' component? … yes
+√ Project name: ... my-vue-project
+√ Add a Splash screen? ... no / yes
+√ Make it PWA (adds service worker and manifest)? ... no / yes
+√ Add Open Graph meta tags? ... no / yes
+√ Add Google Analytics code? ... no / yes
+√ Add Github Action Workflow for publishing it on GitHub Pages? ... no / yes
+√ Select application layout » MainLayout
+√ Select navigation drawer » SimpleDrawer
+√ Select webapp navbar » MantineSimpleNavbar
+√ Select webapp header » MantineSimpleHeader
+√ Select webapp footer » MantineRichFooter
+√ Add API layer (REST)? ... no / yes
+√ Add JSON-RPC adapter? ... no / yes
 
 Scaffolding project in /home/ubuntu/my-vue-project... 
-Done.
 ```
+
+:::details "Silent" installation 
+
+It is possible to scaffold the app without manually entering parameters by specifying a configuration file with options:
+
+```bash
+pnpm create vue-webapp -c config.json
+// or 
+pnpm create vue-webapp --config config.json
+``` 
+
+The format of the `config.json` file is:
+
+```json
+{
+    "projectName": "my-vue-project",
+    "splashScreen": false,
+    "pwa": true,
+    "openGraph": false,
+    "googleAnalytics": false,
+    "githubActionsGithubPagesWorkflow": true,
+    "layout": { "mainLayout",
+    "navigationDrawer": "SimpleDrawer",
+    "navbar": "MantineSimpleNavbar",
+    "header": "MantineSimpleHeader",
+    "footer": "MantineRichFooter",
+    "api": true,
+    "jsonRpc": false,
+    "overwrite": true
+}
+```
+The `overwrite` parameter tells whether to overwrite the contents in case of existing directory. It can take the values "yes", "no" and "ignore".
+
+Also, the command
+
+```bash
+$ pnpm create vue-webapp .
+```
+will create the project in the current directory
+:::
+
+This method will only install the selected components and functionality
 
 ### Initializing and launching a web application
 
@@ -34,20 +82,17 @@ Done.
 $ cd my-vue-project
 $ pnpm i
 $ pnpm dev
-
-> my-vue-project@1.0.0 dev \home\ubuntu\my-vue-project
-> vite
-
-  VITE v4.5.0  ready in 1067 ms
-
-  ➜  Local:   http://localhost:5173/vue-webapp/
-  ➜  Network: use --host to expose
-  ➜  press h to show help
-
 ```
-This method will only install the selected components
+
+Result in a browser:
+
+![](/images/vue-webapp/webapp-start.png)
+
 
 ## Installation from the repository
+
+
+With this method everything will be installed, but a minimum of functionality will be enabled. It is useful for testing all available components and functionality.
 
 ```sh
 $ git clone https://github.com/vuesence/vue-webapp.git
@@ -56,4 +101,8 @@ $ pnpm i
 $ pnpm dev
 ```
 
-With this method everything will be installed, but a minimum of functionality will be enabled. It is usefull for testing all available components and functionality.
+<style scoped>
+img {
+    border: 1px solid #ddd;
+}
+</style>
