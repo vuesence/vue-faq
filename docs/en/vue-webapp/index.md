@@ -15,7 +15,7 @@ head:
 
 ## Summary
 
-Vue 3 website builder for developers, with a choice of business template (portfolio, blog, store, etc.), layout template, design and functionality (API module, i18n, PWA, splash screen, auth module, themes, etc.), for further convenient customization and content filling.
+Vue 3 website builder/scaffolder for developers, with a choice of business template (portfolio, blog, store, etc.), layout template, design and functionality (API module, i18n, PWA, splash screen, auth module, themes, etc.), for further convenient customization and content filling.
 
 ```sh
 $ pnpm create vue-webapp
@@ -28,9 +28,9 @@ $ pnpm create vue-webapp
 ...
 ```
 
-### Description
+### Justification
 
-There are quite a few (mostly specific and quickly becoming obsolete) boilerplate codes for creating a Vue application. Usually it means creating an empty project with certain libraries. In other words, it's just setting up an environment to start development without, actually, code.
+There are quite a few (mostly specific and quickly becoming obsolete) boilerplate templates for creating a Vue application. Usually it means creating an empty project with certain libraries. In other words, it's just setting up an environment to start development without, actually, code.
 
 At the same time, many other frontend and backend frameworks have starter-kits that allow you to quickly create a ready-made blog, online store, business card site, portfolio, documentation, etc., which greatly helps in learning the framework itself, relevant technologies and best practices, as well as for solving business tasks.
 
