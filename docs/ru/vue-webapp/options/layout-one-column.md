@@ -17,4 +17,4 @@ head:
 
 ![](/images/vue-webapp/layout-one-column.png)
 
-В обоих случаях максимальная ширина лэйаута устанавливается CSS переменной `--vp-layout-max-width`.
+В обоих случаях максимальная ширина лэйаута устанавливается CSS переменной `--vwa-layout-max-width`.

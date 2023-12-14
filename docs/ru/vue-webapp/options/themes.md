@@ -21,21 +21,21 @@ head:
 
 ```css
 :root {
-  --vp-font-family-base: 'Roboto', sans-serif;
-  --vp-layout-max-width: 1280px;  
+  --vwa-font-family-base: 'Roboto', sans-serif;
+  --vwa-layout-max-width: 1280px;  
 
-  --vp-c-border: #c2c2c4;
-  --vp-c-divider: #e2e2e3;
-  --vp-c-gutter: #e2e2e3;
+  --vwa-c-border: #c2c2c4;
+  --vwa-c-divider: #e2e2e3;
+  --vwa-c-gutter: #e2e2e3;
 
-  --vp-c-text-1: rgba(60, 60, 67);
-  --vp-c-text-2: rgba(60, 60, 67, 0.78);
-  --vp-c-text-3: rgba(60, 60, 67, 0.56);
+  --vwa-c-text-1: rgba(60, 60, 67);
+  --vwa-c-text-2: rgba(60, 60, 67, 0.78);
+  --vwa-c-text-3: rgba(60, 60, 67, 0.56);
 }
 .dark {
-  --vp-c-text-1: rgba(255, 255, 245, 0.86);
-  --vp-c-text-2: rgba(235, 235, 245, 0.6);
-  --vp-c-text-3: rgba(235, 235, 245, 0.38);
+  --vwa-c-text-1: rgba(255, 255, 245, 0.86);
+  --vwa-c-text-2: rgba(235, 235, 245, 0.6);
+  --vwa-c-text-3: rgba(235, 235, 245, 0.38);
 }
 
 /*  ... etc  */ 
