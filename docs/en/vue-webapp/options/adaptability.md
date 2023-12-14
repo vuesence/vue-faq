@@ -13,7 +13,7 @@ head:
 
 # Adaptability
 
-Adaptability is implemented with [useScreenWidth](https://github.com/vuesence/vue-webapp/blob/main/src/composables/useScreenWidth.ts) composable function via four classes (`mobile`, `tablet`, `notebook` and `desktop`) dynamically set on the `body` tag.
+Adaptability is implemented with [useScreenWidth](https://github.com/vuesence/vue-webapp/blob/main/src/composables/useScreenWidth.ts) composable function via four CSS classes (`mobile`, `tablet`, `notebook` and `desktop`) dynamically set on the `body` element.
 
 The configuration parameters (upper breakpoint for each mode) for `useScreenWidth` are set in `App.vue`:
 
@@ -30,14 +30,14 @@ useScreenWidth({
 </script>
 ```
 
-In the future, adaptability can be used as in JavaScript code:
+That composable function can be used in JavaScript code:
 
 ```js
 // can be 'mobile', 'tablet' 'notebook' or 'desktop'
 const { screenWidthFactor } = new useScreenWidth();
 ```
 
-and in SCSS:
+and CSS classes in SCSS:
 
 ```scss
 .container {

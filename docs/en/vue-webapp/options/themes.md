@@ -13,9 +13,9 @@ head:
 
 # Themes
 
-The application implements light and dark theme switching. All components support switching themes.
+The application implements light and dark themes. All components support switching themes.
 
-Themes are controlled via CSS variables, which are defined in the [vars.css](https://github.com/vuesence/vue-webapp/blob/main/src/assets/styles/vars.css) file. The theme selected by the user is stored in localStorage. The [ThemeToggle](https://github.com/vuesence/vue-webapp/blob/main/src/components/ui/ThemeToggle.vue) component is responsible for theme switching.
+Themes are controlled via CSS variables, which are defined in the [vars.css](https://github.com/vuesence/vue-webapp/blob/main/src/assets/styles/vars.css) file. The theme selected by the user is stored in `localStorage`. The [ThemeToggle](https://github.com/vuesence/vue-webapp/blob/main/src/components/ui/ThemeToggle.vue) component is responsible for theme switching.
 
 It is possible to customize themes and create new ones by overriding CSS variables, which is recommended to do in the [custom.scss](https://github.com/vuesence/vue-webapp/blob/main/src/assets/styles/custom.scss) file:
 

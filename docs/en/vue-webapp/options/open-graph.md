@@ -32,4 +32,4 @@ Adds **Open graph** meta tags for `index.html`.
 <meta name="twitter:image" content="images" />
 ```
 
-It is necessary to set the necessary values.
+You should set your meta tags values.

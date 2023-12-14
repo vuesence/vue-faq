@@ -25,4 +25,4 @@ Adds **Google Tag** initialization code for `index.html`.
 </script>
 ```
 
-You need to replace the `id` value with yours.
+You should replace the `id` value with your own.

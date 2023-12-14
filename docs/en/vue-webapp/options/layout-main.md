@@ -13,14 +13,11 @@ head:
 
 # MainLayout
 
-Standard layout with header, footer and sidebar in `notebook` and `desktop` modes. In `tablet` and `mobile` modes, the sidebar moves out to the left when you click on the "hamburger" icon.
+Standard layout with header, footer and sidebar in `notebook` and `desktop` modes. In `tablet` and `mobile` modes the sidebar is hidden and moves in from the left when user clicks on the "hamburger" icon.
 
 ![](/images/vue-webapp/layout-main.png)
-
-The `AppSidebar` is visible in `notebook` and `desktop` modes, and hides in `tablet` and `mobile` modes
-
 
 
 ## Routing
 
-Changing the content of the center panel is provided via [routes](https://github.com/vuesence/vue-webapp/blob/main/src/router/routes.ts) `vue-router`
+Changing the content of the main panel is provided via `vue-router` [routes](https://github.com/vuesence/vue-webapp/blob/main/src/router/routes.ts).

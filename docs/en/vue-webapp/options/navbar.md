@@ -15,7 +15,7 @@ head:
 
 The `Navbar` is located inside the `NavigationDrawer`
 
-At the moment you can choose from two views:
+At the moment it is possible to choose from two variants:
 
 ## SimpleNavbar
 

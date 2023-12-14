@@ -32,7 +32,7 @@ export default [
       collapsed: false,
       items: [
         { text: "Описание", link: "/ru/vue-webapp/options/description" },
-        { text: "Адаптивность", link: "/ru/vue-webapp/options/responsiveness" },
+        { text: "Адаптивность", link: "/ru/vue-webapp/options/adaptability" },
         { text: "Themes", link: "/ru/vue-webapp/options/themes" },
         { text: "Splash screen", link: "/ru/vue-webapp/options/splash-screen" },      
         { text: "Google analytics", link: "/ru/vue-webapp/options/google-analytics" },      

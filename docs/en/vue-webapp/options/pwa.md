@@ -17,7 +17,7 @@ Simple Manifest and Service worker are integrated into the application and work 
 
 ## Manifest.json
 
-Allows you to install the application on your home screen and run it in native mode (without a browser window).
+Allows to install the application on user home screen and run it in native mode (without a browser window).
 
 `manifest.json` must be edited to match your application data. For more information about the manifest file, see [web.dev](https://web.dev/learn/pwa/web-app-manifest).
 
@@ -41,10 +41,10 @@ Allows you to install the application on your home screen and run it in native m
 
 ## Service worker
 
-Allows to make client-side caching manageable and greatly improve user experience.
+Allows to make client-side caching manageable and greatly improve UX.
 
 This implementation of `service-worker.js` does not use third-party libraries like `Workbox`.
 
 The `Cache first` strategy is used for caching. Three separate caches are created for different types of resources: `assets` (js and css), `images` and `fonts`. Versioning is supported for each.
 
-When a new version of the application is released, you can change the value of `VERSION` in [service-worker.js](https://github.com/vuesence/create-vue-webapp/blob/main/src/template/public/service-worker.js). This will clear all cache in the client browser.
+With the release of a new version of the application you can change the value of `VERSION` in [service-worker.js](https://github.com/vuesence/create-vue-webapp/blob/main/src/template/public/service-worker.js). This will clear all cache in the client browser.

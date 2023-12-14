@@ -50,11 +50,28 @@ const utils = {
 
 Устанавливает JSON-RPC адаптер для связи с бэкендом. Вызовы к бэкенд API в прикладном коде остаются такими же, но вместо REST запросов используется JSON-RPC
 
+```js
+// utils.ts
+import { jsonRpc } from "./jsonrpc";
+
+const utils = {
+  async testJsonRpc() {
+    return jsonRpc({
+      method: "getBestBlockHash",
+      params: {},
+    }, { uri: "https://seed-1.testnet.networks.dash.org:1443/" });
+  },
+}
+```
+
+JSON-RPC адаптер максимально полно реализует [спецификацию JSON-RPC 2.0](https://www.jsonrpc.org/)
+
 ------
 
-Инициализация сервиса:
+Инициализация API модуля:
 
 ```js
+// api/index.ts
 import utils from "./utils";
 import { notificationInterceptor } from "./interceptors";
 import jsonrpc from "./jsonrpc";

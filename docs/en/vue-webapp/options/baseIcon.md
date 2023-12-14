@@ -15,7 +15,7 @@ head:
 
 Consists of the [BaseIcon](https://github.com/vuesence/vue-webapp/blob/main/src/components/ui/BaseIcon.vue) component and the [utils.ts](https://github.com/vuesence/vue-webapp/blob/main/src/utils/icons.ts) utility.
 
-Allows to use icons in the application with dynamic addressing to them by name:
+Allows to use icons in the application with dynamic name:
 
 ```vue
 <script setup lang="ts">
@@ -32,4 +32,4 @@ const { isDrawerOpen } = useAppConfig();
 </template>
 ```
 
-`utils.ts` when initialized with `import.meta.glob` reads all files with extensions `.svg` and `.png` from the `@/assets/images/` directory and uses their names as icon identifiers for `BaseIcon`.
+`utils.ts` when initialized uses `import.meta.glob` to read all files with extensions `.svg` and `.png` from the `@/assets/images/` directory and uses their names as icon identifiers for `BaseIcon`.

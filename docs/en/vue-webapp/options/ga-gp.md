@@ -15,12 +15,12 @@ head:
 
 ## Deployment
 
-Uses [JamesIves/github-pages-deploy-action](https://github.com/JamesIves/github-pages-deploy-action) Github Action to deploy a site to the `gh-pages` branch of the same repository, which automatically makes the site available at `https://youGitHubUsername.github.io/my-vue-webapp` (if your project and repository is called `my-vue-webapp`).
+Uses [JamesIves/github-pages-deploy-action](https://github.com/JamesIves/github-pages-deploy-action) Github Action to deploy a site to the `gh-pages` branch of the same GitHub repository, which automatically makes the website available at `https://youGitHubUsername.github.io/my-vue-webapp` (if your project and repository is called `my-vue-webapp`).
 
 - Create a branch in the repository called `gh-pages`
 - Go to the "Settings" section of your repository
 - Under "Code and automation" in the sidebar, click Pages.
-- Under "Build and deployment" under "Source", select "Deploy from a branch".
+- Under "Build and deployment" under the "Source", select "Deploy from a branch".
 - Under "Build and deployment" under the "Branch" heading, use the branch drop-down menu and select the branch you want - `gh-pages`.
 
 More details:

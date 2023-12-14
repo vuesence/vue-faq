@@ -31,7 +31,7 @@ Simple `sticky` header in Mantine UI style
 
 ![](/images/vue-webapp/header-layered-mantine.png)
 
-`sticky` header with Mantine UI style levels
+Layered `sticky` header in Mantine UI style
 
 ## SlidingHeader
 
