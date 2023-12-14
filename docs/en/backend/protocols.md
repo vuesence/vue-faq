@@ -16,7 +16,9 @@ After an experience with JSON-RPC, communication with back end is usually never 
 
 It gives order, clarity, rigor and at the same time flexibility. It greatly simplifies and makes code understandable both on the frontend and backend.
 
-A variant of TypeScript implementation of frontend api service on JSON-RPC - [here](https://github.com/vuesence/utilities/blob/main/src/services/json-rpc/jsonrpc.ts).
+In addition, JSON-RPC is the de facto standard for Web 3.0 communications.
+
+A variant of TypeScript implementation of frontend api service on JSON-RPC - [here](https://github.com/vuesence/vue-webapp/blob/main/src/services/api/jsonrpc.ts).
 
 When using `JSON-RPC`, switching to `WebSockets` or other transport protocols will not cause any difficulties due to the unification of the message format.
 

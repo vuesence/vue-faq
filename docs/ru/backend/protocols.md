@@ -16,9 +16,11 @@
 
 Он дает порядок, четкость, строгость и вместе с тем гибкость. Сильно упрощает и делает понятным код как на фронте, так и на бэке.
 
+Кроме того, JSON-RPC - де-факто стандарт для Web 3.0 коммуникаций.
+
 Вот две мои статьи на эту тему - [Популяризация JSON-RPC (часть 1)](https://habr.com/ru/articles/709362/) и [Популяризация JSON-RPC (часть 2)](https://habr.com/ru/articles/710652/)
 
-Вариант TypeScript реализации фронтэнд api сервиса на JSON-RPC - [здесь](https://github.com/vuesence/utilities/blob/main/src/services/json-rpc/jsonrpc.ts)
+Вариант TypeScript реализации фронтэнд api сервиса на JSON-RPC - [здесь](https://github.com/vuesence/vue-webapp/blob/main/src/services/api/jsonrpc.ts)
 
 При использовании `JSON-RPC` переход на `WebSockets` или другие транспортные протоколы не вызовет никаких трудностей из-за унификации формата сообщений.
 
