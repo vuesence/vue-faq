@@ -34,7 +34,7 @@ $ pnpm create vue-webapp
 Scaffolding project in /home/ubuntu/my-vue-project... 
 ```
 
-:::details "Silent" installation 
+:::details Silent installation 
 
 It is possible to scaffold the app without manually entering parameters by specifying a configuration file with options:
 
@@ -44,7 +44,7 @@ pnpm create vue-webapp -c config.json
 pnpm create vue-webapp --config config.json
 ``` 
 
-The format of the `config.json` file is:
+The format of the `config.json` file should be like this:
 
 ```json
 {
@@ -64,7 +64,7 @@ The format of the `config.json` file is:
     "overwrite": true
 }
 ```
-The `overwrite` parameter tells whether to overwrite the contents in case of existing directory. It can take the values "yes", "no" and "ignore".
+The `overwrite` parameter tells whether to overwrite the content in case of existing directory. It accepts values: "yes", "no" and "ignore".
 
 Also, the command
 
