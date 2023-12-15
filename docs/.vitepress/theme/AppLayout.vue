@@ -17,14 +17,15 @@ onMounted(() => {
             version: 1.4,
             visits: 0,
             notifications: {
-                telegram: false,
+                telegram: true,
+                githubStars: false,
             }
         };
         // localStorage.setItem("vue-faq-config", config);
     }
     config.visits++;
 
-    if (!config.notifications.telegram && (site.value.lang === "ru" || navigator.language === "ru-RU")) {
+    if (!config.notifications.githubStars && (site.value.lang === "ru" || navigator.language === "ru-RU") && config.visits > 2) {
         showTelegramNotification(localStorage, config);
     }    
     localStorage.setItem("vue-faq-config", JSON.stringify(config));
@@ -32,13 +33,15 @@ onMounted(() => {
 
 function showTelegramNotification(localStorage, config) {
     const str =`
-    <h3>У нас есть Телеграм канал</h3>
-    В нем публикуются анонсы о новых материалах на данном ресурсе и другая интересная относящаяся к Vue.js информация.
+    <h3>Уважаемые читатели</h3>
+    За последние 30 дней согласно Google Analytics у нас было более 1000 регулярно заходящих пользователей сайта, и на данный момент всего 27 GitHub звезд. Данный показатель очень важен для open source проектов как обратная связь.
 
-    Перейти на канал: <b><a target="_blank" href="https://t.me/vuefaq">https://t.me/vuefaq</a></b>
+    У нас есть планы по развитию ресурса, и он никогда не будет платным, но если данный показатель останется на низком уровне, мы будем вынуждены пересмотреть планы и частично ограничить доступ.
+
+    <h3 style="text-align: end;"><u><a target="_blank" href="https://github.com/vuesence/vue-faq">Поставить GitHub звезду</a></u></h3>
     `;
     toast(str, {
-        autoClose: 10000,
+        autoClose: 20000,
         type: "info",
         delay: 500,
         dangerouslyHTMLString: true,
@@ -47,11 +50,11 @@ function showTelegramNotification(localStorage, config) {
         position: toast.POSITION.BOTTOM_RIGHT,
         theme: "auto",
         onClose: () => {
-            config.notifications.telegram = true;
+            config.notifications.githubStars = true;
             localStorage.setItem("vue-faq-config", JSON.stringify(config));
         },
         onClick: () => {
-            config.notifications.telegram = true;
+            config.notifications.githubStars = true;
             localStorage.setItem("vue-faq-config", JSON.stringify(config));
         },
     });
