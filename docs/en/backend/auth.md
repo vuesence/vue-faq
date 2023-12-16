@@ -33,7 +33,7 @@ Scenario:
 
 ::: details Where to store access token on the frontend?
 
-In 95% of cases in LocalStorage
+In 95% of cases in LocalStorage. You should also duplicate it in a regular JS variable because, for example, some iPhones have a power-saving policy enabled when the battery is low, which can result in localStorage being constantly cleared by the browser.
 
 :::
 
