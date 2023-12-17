@@ -12,7 +12,7 @@ const data = useData()
 onMounted(() => { 
     const searchParams = new URLSearchParams(window.location.search);
     if (searchParams.has("t")) {
-        const tt = searchParams.has("t") + 1;
+        const tt = +searchParams.get("t") - 1;
         document.querySelectorAll("main details")[tt].open = true;    
     }    
 
