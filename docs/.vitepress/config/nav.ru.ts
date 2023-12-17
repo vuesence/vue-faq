@@ -3,6 +3,7 @@ export default [
   { text: "FAQ", link: "/ru/misc/introduction" },
   { text: "Учебник", link: "/ru/book/" },
   { text: "vue-webapp", link: "/ru/vue-webapp/" },
+  { text: "Статьи", link: "/ru/articles/" },
   {
     text: "v 1.4",
     items: [
