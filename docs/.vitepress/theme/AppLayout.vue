@@ -10,6 +10,12 @@ const data = useData()
 
 
 onMounted(() => { 
+    const searchParams = new URLSearchParams(window.location.search);
+    if (searchParams.has("t")) {
+        const tt = searchParams.has("t") + 1;
+        document.querySelectorAll("main details")[tt].open = true;    
+    }    
+
     let config = JSON.parse(localStorage.getItem("vue-faq-config"));
     // console.log(data);    
     if (!config) {
