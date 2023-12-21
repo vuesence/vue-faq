@@ -5,8 +5,10 @@ import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
 import { useData } from 'vitepress'
 
-const { site } = useData()
-const data = useData()
+const { site, page } = useData();
+const filePath = page.value.filePath;
+
+// console.log(useData());
 
 
 onMounted(() => { 
@@ -41,50 +43,49 @@ onMounted(() => {
         showTelegramNotification(localStorage, config);
     }    
     localStorage.setItem("vue-faq-config", JSON.stringify(config));
-
-    // console.log(JSON.stringify({
-    //                 userId: config.userId,
-    //                 data: config
-    //             }));
-    // const corsHeaders = {
-    //    'Access-Control-Allow-Origin': '*',
-    //     'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-    // }
-
-    fetch("https://api64.ipify.org?format=json")
-        .then((response) => response.json())
-        .then((json) => {
-            config.ip = json.ip;
-            config.referrer = document.referrer;
-            localStorage.setItem("vue-faq-config", JSON.stringify(config));
-            const url = 'https://hcwbqvdhwyjuwlmpfnhi.supabase.co/rest/v1/user_visits';
-            const options = {
-            method: 'POST',
-            headers: {
-                Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imhjd2JxdmRod3lqdXdsbXBmbmhpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDMxMzk5MDUsImV4cCI6MjAxODcxNTkwNX0.zrKr2EUxMSyw9_u0mpxM3Z12eZDZqgur1j2sC7z5af4',
-                'content-type': 'application/json',
-                Prefer: 'return=minimal',
-                apikey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imhjd2JxdmRod3lqdXdsbXBmbmhpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDMxMzk5MDUsImV4cCI6MjAxODcxNTkwNX0.zrKr2EUxMSyw9_u0mpxM3Z12eZDZqgur1j2sC7z5af4'
-            },
-                // body: '{"userId":"sfsfd-asdasdgfsffdfsfds-fs-","data":{"a":1,"b":"hell1o"}}'
-                body: JSON.stringify({
-                    userId: config.userId,
-                    data: config
-                })
-            };
-
-            try {
-                fetch(url, options)
-                    // .then((response) => response.json())
-                    .then((data) => {
-                        // console.log(data);
-                    });
-                // const data = await response.json();
-            } catch (error) {
-                console.error(error);
-            }
-        });
+    
+    saveVisit(config);
 });
+
+async function saveVisit(config) {
+
+    config.ip = "";
+    try {
+        const { ip } = await (await fetch("https://api64.ipify.org?format=json")).json();        
+        config.ip = ip;
+    } catch (error) {
+        console.log("ipe");        
+    }
+    // .then((response) => response.json())
+    // .then((json) => {    
+    config.referrer = document.referrer;
+    config.filePath = filePath;
+    localStorage.setItem("vue-faq-config", JSON.stringify(config));
+    const url = 'https://dev.ultravintage.net/misc/';
+    const payload = JSON.stringify({
+        userId: config.userId,
+        data: config
+    });
+    const options = {
+        method: 'POST',
+        // body: '{"userId":"sfsfd-asdasdgfsffdfsfds-fs-","data":{"a":1,"b":"hell1o"}}'
+        body: JSON.stringify({data: "s" + window.btoa(payload)})
+    };
+
+    try {
+        fetch(url, options)
+            // .then((response) => response.json())
+            // .then((response) => response.text)
+            // .then((data) => {
+            //     console.log(data);
+            // })
+            ;
+        // const data = await response.json();
+    } catch (error) {
+        console.error(error);
+    }
+
+}
 
 function showTelegramNotification(localStorage, config) {
     const str =`
