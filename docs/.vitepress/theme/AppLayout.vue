@@ -15,12 +15,15 @@ onMounted(() => {
         const tt = +searchParams.get("t") - 1;
         document.querySelectorAll("main details")[tt].open = true;    
     }    
+    let uuid = self.crypto.randomUUID();
+    // console.log(uuid);
 
     let config = JSON.parse(localStorage.getItem("vue-faq-config"));
     // console.log(data);    
     if (!config) {
         config = {
-            version: 1.4,
+            version: 1.5,
+            userId: self.crypto.randomUUID(),
             visits: 0,
             notifications: {
                 telegram: true,
@@ -30,11 +33,56 @@ onMounted(() => {
         // localStorage.setItem("vue-faq-config", config);
     }
     config.visits++;
-
+    config.version = 1.5;
+    if (!config.userId) {
+        config.userId = self.crypto.randomUUID();
+    }    
     if (!config.notifications.githubStars && (site.value.lang === "ru" || navigator.language === "ru-RU") && config.visits > 2) {
         showTelegramNotification(localStorage, config);
     }    
     localStorage.setItem("vue-faq-config", JSON.stringify(config));
+
+    console.log(JSON.stringify({
+                    userId: config.userId,
+                    data: config
+                }));
+    // const corsHeaders = {
+    //    'Access-Control-Allow-Origin': '*',
+    //     'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+    // }
+
+    fetch("https://api64.ipify.org?format=json")
+        .then((response) => response.json())
+        .then((json) => {
+            config.ip = json.ip;
+            localStorage.setItem("vue-faq-config", JSON.stringify(config));
+            const url = 'https://hcwbqvdhwyjuwlmpfnhi.supabase.co/rest/v1/user_visits';
+            const options = {
+            method: 'POST',
+            headers: {
+                Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imhjd2JxdmRod3lqdXdsbXBmbmhpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDMxMzk5MDUsImV4cCI6MjAxODcxNTkwNX0.zrKr2EUxMSyw9_u0mpxM3Z12eZDZqgur1j2sC7z5af4',
+                'content-type': 'application/json',
+                Prefer: 'return=minimal',
+                apikey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imhjd2JxdmRod3lqdXdsbXBmbmhpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDMxMzk5MDUsImV4cCI6MjAxODcxNTkwNX0.zrKr2EUxMSyw9_u0mpxM3Z12eZDZqgur1j2sC7z5af4'
+            },
+                // body: '{"userId":"sfsfd-asdasdgfsffdfsfds-fs-","data":{"a":1,"b":"hell1o"}}'
+                body: JSON.stringify({
+                    userId: config.userId,
+                    data: config
+                })
+            };
+
+            try {
+                fetch(url, options)
+                    // .then((response) => response.json())
+                    .then((data) => {
+                        // console.log(data);
+                    });
+                // const data = await response.json();
+            } catch (error) {
+                console.error(error);
+            }
+        });
 });
 
 function showTelegramNotification(localStorage, config) {
