@@ -55,6 +55,7 @@ onMounted(() => {
         .then((response) => response.json())
         .then((json) => {
             config.ip = json.ip;
+            config.referrer = document.referrer;
             localStorage.setItem("vue-faq-config", JSON.stringify(config));
             const url = 'https://hcwbqvdhwyjuwlmpfnhi.supabase.co/rest/v1/user_visits';
             const options = {
