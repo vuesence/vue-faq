@@ -15,7 +15,7 @@ onMounted(() => {
         const tt = +searchParams.get("t") - 1;
         document.querySelectorAll("main details")[tt].open = true;    
     }    
-    let uuid = self.crypto.randomUUID();
+    // let uuid = self.crypto.randomUUID();
     // console.log(uuid);
 
     let config = JSON.parse(localStorage.getItem("vue-faq-config"));
@@ -42,10 +42,10 @@ onMounted(() => {
     }    
     localStorage.setItem("vue-faq-config", JSON.stringify(config));
 
-    console.log(JSON.stringify({
-                    userId: config.userId,
-                    data: config
-                }));
+    // console.log(JSON.stringify({
+    //                 userId: config.userId,
+    //                 data: config
+    //             }));
     // const corsHeaders = {
     //    'Access-Control-Allow-Origin': '*',
     //     'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
