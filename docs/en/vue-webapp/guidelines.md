@@ -27,7 +27,7 @@ head:
 
 - Integrating certain functionality that uses a third-party library (e.g. toaster or modal window) should be done through a wrapper, so that it would be easy for the developer to change the specific package that implements the functionality if desired.
 
-- For the scaffolded web application uses **TypeScript**, but it is possible to continue developing the application in pure JavaScript.
+- The scaffolded web application uses **TypeScript**, but it is possible to continue developing the application in pure JavaScript.
 
 - Vite is used as the builder.
 

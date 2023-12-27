@@ -14,11 +14,9 @@ head:
 
 ## API (REST)
 
-
 Creates a transport client agnostic service layer for REST calls to the backend over HTTP(S).
 
-
-The HTTP transport client can be `fetch`, `axios` or a promise version of `XHR`, at the developer's choice. API calls in the code will look as follows:
+The HTTP transport client can be `fetch`, `axios` or a promise version of `XHR`, at the developer's choice. API calls in the application code will look as follows:
 
 ```js
 import { api } from "@/services/api";
@@ -90,3 +88,7 @@ const api = {
 export { api }
 export default api;
 ```
+
+::: tip
+The JSON-RPC protocol is very convenient and is the de facto standard for web 3.0. Recommended for use instead of REST
+:::

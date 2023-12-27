@@ -13,11 +13,11 @@ head:
 
 # Objectives 
 
-1. Scaffold a simple out-of-the-box SPA application for a specific task in a few minutes, with the possibility of further customization and filling it with content.
+1. Create a scaffolder of simple out-of-the-box SPA applications for a specific task in a few minutes, with the possibility of further customization and filling it with content.
 2. Fine-tune the application using effective functional code blocks.
 3. Collect and generalize the best techniques and practices for creating a modern reactive Vue application.
 4. Enable novice developers to familiarize themselves with the Vue.js ecosystem with ready-made examples, learn front-end and Vue 3 best practices, from building application architecture to naming CSS classes.
-5. Enable experienced developers to quickly and efficiently build the framework of a finished web application and leverage reusable code blocks (boilerplate), especially those that cannot be distributed as NPM packages.
+5. Enable experienced developers to quickly and efficiently scaffold a ready to use web application and leverage reusable code blocks (boilerplates), especially those that cannot be distributed as NPM packages.
 
 This application should act as a website wireframe builder, with the ability to choose when scaffolding:
 - A global business website template (portfolio, blog, online store, etc.)

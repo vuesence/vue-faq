@@ -39,7 +39,7 @@ Layered `sticky` header in Mantine UI style
 
 Can contain two different headers, the second one appears after the user scrolls down the page
 
-```html
+```vue-html
 <AppHeader :threshold-hide="200" :threshold-open="400">
     <template #first-header>
         <AppHeaderFirst />

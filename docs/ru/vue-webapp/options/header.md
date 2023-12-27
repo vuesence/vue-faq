@@ -39,7 +39,7 @@ head:
 
 Может содержать два разных header-а, второй появляется после того, как пользователь проскроллит страницу вниз
 
-```html
+```vue-html
 <AppHeader :threshold-hide="200" :threshold-open="400">
     <template #first-header>
         <AppHeaderFirst />

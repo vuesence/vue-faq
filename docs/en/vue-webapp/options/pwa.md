@@ -13,7 +13,7 @@ head:
 
 # PWA
 
-Simple Manifest and Service worker are integrated into the application and work immediately without customization.
+Simple Manifest and Service worker are integrated into the application and work right away, without customization.
 
 ## Manifest.json
 
@@ -23,16 +23,16 @@ Allows to install the application on user home screen and run it in native mode 
 
 ```json
 {
-  { "description": "Acme Corporation webapp",
+  "description": "Acme Corporation webapp",
   "dir": "auto",
   "display": "standalone",
-  "name": "Acme Inc."
+  "name": "Acme Inc.",
   "orientation": "any",
-  "scope": "/"
+  "scope": "/",
   "short_name": "Acme",
   "start_url": "/",
   "categories": [
-    { "it",
+    "it",
     "development",
     "education"
   ],

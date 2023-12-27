@@ -15,7 +15,7 @@ head:
 
 ## Deployment
 
-Uses [JamesIves/github-pages-deploy-action](https://github.com/JamesIves/github-pages-deploy-action) GitHub Action to deploy a site to the `gh-pages` branch of the same GitHub repository, which automatically makes the website available at `https://youGitHubUsername.github.io/my-vue-webapp` (if your project and repository is called `my-vue-webapp`).
+Uses [JamesIves/github-pages-deploy-action](https://github.com/JamesIves/github-pages-deploy-action) GitHub Action to deploy a site to the `gh-pages` branch of the same GitHub repository, which automatically makes the website available at `https://youGitHubUsername.github.io/my-vue-webapp` (if your project and repository has name `my-vue-webapp`).
 
 - Create a branch in the repository called `gh-pages`
 - Go to the "Settings" section of your repository

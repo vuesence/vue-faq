@@ -15,7 +15,7 @@ head:
 
 Consists of the [BaseIcon](https://github.com/vuesence/vue-webapp/blob/main/src/components/ui/BaseIcon.vue) component and the [utils.ts](https://github.com/vuesence/vue-webapp/blob/main/src/utils/icons.ts) utility.
 
-Allows to use icons in the application with dynamic name:
+Allows to use an icon component in the application with dynamic name attribute:
 
 ```vue
 <script setup lang="ts">

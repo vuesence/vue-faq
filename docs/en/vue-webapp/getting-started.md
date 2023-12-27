@@ -14,6 +14,8 @@ head:
 
 ## Installation via `create vue-webapp`
 
+With this method, you can select which options will be installed:
+
 ```sh
 $ pnpm create vue-webapp
 
@@ -54,7 +56,7 @@ The format of the `config.json` file should be like this:
     "openGraph": false,
     "googleAnalytics": false,
     "githubActionsGithubPagesWorkflow": true,
-    "layout": { "mainLayout",
+    "layout": "mainLayout",
     "navigationDrawer": "SimpleDrawer",
     "navbar": "MantineSimpleNavbar",
     "header": "MantineSimpleHeader",
@@ -71,7 +73,7 @@ Also, the command
 ```bash
 $ pnpm create vue-webapp .
 ```
-will create the project in the current directory
+will create the project in the current directory.
 :::
 
 This method will only install the selected components and functionality
