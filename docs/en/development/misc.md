@@ -72,6 +72,24 @@ If you want pretentious efficiency, use Reactive on objects and Ref on primitive
 
 :::
 
+::: details Use cases for using Provide/Inject
+
+#### Use cases
+
+- Theme or Configuration Settings: You can provide global settings, themes, or configuration options at the root level of your Vue.js application and inject them into any component that needs them.
+- Authentication Data: Share user authentication information, such as user details or authentication tokens, with components that require them without passing them down through props.
+- Internationalization (i18n): Store translation data at the root level and inject it into components that need to display text in different languages.
+- Tightly coupled components: Like i.e. `AccordianPanel` that only ever appears inside of an `Accordian` component slot. You can inject shared data that you always want to have access to it without the need to pass it in as a prop.
+
+
+#### Best Practices and Considerations
+
+- Avoid Overuse: While provide and inject can be powerful, don't overuse them. Reserve them for cases where you genuinely need to share data across components without creating tight coupling between them.
+- Clear Documentation: Document the data you are providing and injecting to make it easy for developers to understand how components communicate. You can also type them with TypeScript see the [official documentation](https://vuejs.org/guide/typescript/composition-api.html#typing-provide-inject) for details.
+- Consider Prop Drilling: Prop drilling is usually an anti-pattern, but in some cases, passing data through props might still be a more straightforward and more transparent approach. Evaluate whether provide and inject are the best solution for your specific scenario.
+
+:::
+
 ::: details ShallowRef
 
 When you have an array with a large number of elements, but the data inside the array elements does not change, but only the array itself can change (adding elements, deleting, replacing the array) - use `ShallowRef`.
