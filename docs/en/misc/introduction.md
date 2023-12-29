@@ -16,5 +16,6 @@ Relevance of the information - 2022-2023 years.
 
 ### About the author:
 
-[Ruslan Makarov](mailto:ruslan.makarov@gmail.com) - independent consultant, full-stack engineer with 20+ years of experience in SD, AWS Certified Solutions Architect, Sun Certified Java Developer.
-[@vuefaq](https://twitter.com/vuefaq)
+Ruslan Makarov - independent consultant, full-stack engineer with 20+ years of experience in SD, AWS Certified Solutions Architect, Sun Certified Java Developer.
+- Email: [ruslan.makarov@gmail.com](mailto:ruslan.makarov@gmail.com)
+- Twitter: [@vuefaq](https://twitter.com/vuefaq)
