@@ -15,7 +15,7 @@ head:
 
 ## Summary
 
-Vue 3 website builder/scaffolder for developers, with a choice of business template (portfolio, blog, store, etc.), layout template, design and functionality (API module, i18n, PWA, splash screen, auth module, themes, etc.), for further convenient customization and content filling.
+Vue 3 website builder/scaffolder ([GitHub](https://github.com/vuesence/vue-webapp)) for developers, with a choice of business template (portfolio, blog, store, etc.), layout template, design and functionality (API module, i18n, PWA, splash screen, auth module, themes, etc.), for further convenient customization and content filling.
 
 ```sh
 $ pnpm create vue-webapp
