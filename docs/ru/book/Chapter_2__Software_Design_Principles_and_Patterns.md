@@ -149,14 +149,14 @@ head:
 
 ```vue
 <script setup>
-   import {onMounted, onBeforeUnmount} from "vue"
-   onMounted(()=>{
-       window.addEventListener("resize", myFunction)
-    })
-   onBeforeUnmount(()=>{
-       window.removeEventListener("resize", myFunction)
-    })
-   function myFunction(){
+   import {onMounted, onBeforeUnmount} from "vue";
+   onMounted(() => {
+       window.addEventListener("resize", myFunction);
+    });
+   onBeforeUnmount(() => {
+       window.removeEventListener("resize", myFunction);
+    });
+   function myFunction() {
           // Делаем что-то с событием здесь
     }
 </script>
@@ -275,7 +275,7 @@ head:
 ```js
 const my_singleton = {
      // Код реализации здесь...
-}
+};
 export default my_singleton;
 ```
 
@@ -286,17 +286,17 @@ export default my_singleton;
 Этот метод создает класс, а затем, при первом инстанцировании, сохраняет ссылку на него для последующих обращений. Для того чтобы это работало, мы используем переменную (традиционно называемую **_instance**) из класса и сохраняем ссылку на экземпляр в конструкторе. В последующих вызовах мы проверяем, существует ли значение **_instance**, и если да, то возвращаем его. Вот код:
 
 ```js
-class myClass{
-    constructor(){
+class myClass {
+    constructor() {
          if(myClass._instance) {
              return myClass._instance;
-         } else {
-             myClass._instance=this;
          }
+
+         myClass._instance = this;
          return this;
      }
 }
-export default new myClass()
+export default new myClass();
 ```
 
 Второй метод может быть более привычным для разработчиков других языков. Обратите внимание, что мы также экспортируем новый экземпляр класса, а не непосредственно сам класс. Таким образом, инвокеру не придется каждый раз вспоминать об инстанцировании класса, а код будет таким же, как и в *методе 1*. Этот вариант использования необходимо согласовать с вашей командой, чтобы избежать различных реализаций.
@@ -306,9 +306,9 @@ export default new myClass()
 ```js
 import my_method1_singleton from "./singleton-json";
 import my_method2_singleton from "./singleton-class";
-console.log("В обоих случаях инстанцирования нет!")
-my_method1_singleton.myFunction()
-my_method2_singleton.myFunction()
+console.log("В обоих случаях инстанцирования нет!");
+my_method1_singleton.myFunction();
+my_method2_singleton.myFunction();
 ```
 
 Шаблон синглтон чрезвычайно полезен, хотя он редко существует *в изоляции*. Часто мы используем синглтоны, чтобы обернуть реализацию других шаблонов и обеспечить единую точку доступа. В наших примерах мы будем использовать этот шаблон довольно часто.
@@ -322,10 +322,10 @@ my_method2_singleton.myFunction()
 #### ./chapter 2/dependency-injection-1.js
 
 ```js
-import dbManager from "dbManager"
-const projects={
-    getAllProjects(){
-         return dbManager.getAll("projects")
+import dbManager from "dbManager";
+const projects = {
+    getAllProjects() {
+         return dbManager.getAll("projects");
     }
 }
 export default projects;
@@ -337,9 +337,9 @@ export default projects;
 #### ./chapter 2/dependency-injection-2.js
 
 ```js
-const projects={
-    getAllProjects(dbManager){
-         return dbManager.getAll("projects")
+const projects = {
+    getAllProjects(dbManager) {
+         return dbManager.getAll("projects");
     }
 }
 export default projects;
@@ -354,8 +354,8 @@ export default projects;
 ```js
 const projects = {
     dbManager,
-    getAllProjects(){
-        return this.dbManager.getAll("projects")
+    getAllProjects() {
+        return this.dbManager.getAll("projects");
     }
 }
 export default projects;
@@ -366,8 +366,8 @@ export default projects;
 #### ./chapter 2/dependency-injection-4.js
 
 ```js
-import projects from "projects.js"
-import dbManager from "dbManager.js"
+import projects from "projects.js";
+import dbManager from "dbManager.js";
 projects.dbManager = dbManager;
 projects.getAllProjects();
 ```
@@ -387,9 +387,9 @@ projects.getAllProjects();
 
 ```js
 class Projects {
-    constructor(dbManager = null){
+    constructor(dbManager = null) {
          if (!dbManager) {
-             throw "Dependency missing"
+             throw "Dependency missing";
          } else {
              this.dbManager = dbManager;
          }
@@ -401,8 +401,8 @@ class Projects {
 
 ```js
 // Projects - это класс
-import Projects from "projects.js"
-import dbManager from "dbManager.js"
+import Projects from "projects.js";
+import dbManager from "dbManager.js";
 try {
     const projects = new Projects(dbManager);
 } catch {
@@ -413,8 +413,8 @@ try {
 В альтернативной реализации мы могли бы иметь функцию, которая, по сути, делает то же самое, получая зависимость и присваивая ее приватному атрибуту:
 
 ```js
-import projects from "projects.js"
-import dbManager from "dbManager.js"
+import projects from "projects.js";
+import dbManager from "dbManager.js";
 projects.setDBManager(dbManager);
 ```
 
@@ -439,11 +439,11 @@ projects.setDBManager(dbManager);
 ```js
 const dependencyService = {                         //1
     dependencies: {},                               //2
-    provide(name, dependency){                      //3
-        this.dependencies[name] = dependency        //4
+    provide(name, dependency) {                     //3
+        this.dependencies[name] = dependency;       //4
         return this;                                //5
-    }
-    inject(name){                                   //6
+    },
+    inject(name) {                                  //6
         return this.dependencies[name] ?? null;     //7
     }
 }
@@ -465,21 +465,21 @@ export default dependencyService;
 #### ./chapter 2/dependency-injection-7.js
 
 ```js
-import dependencyService from "./dependency-injection-6"
-import myDependency1 from "myFile1"
-import myDependency2 from "myFile2"
-import dbManager from "dbManager".
+import dependencyService from "./dependency-injection-6";
+import myDependency1 from "myFile1";
+import myDependency2 from "myFile2";
+import dbManager from "dbManager";
 dependencyService
-     .provide("dependency1", myDependency1)
-     .provide("dependency2", myDependency2)
-     .provide("dbManager", dbManager)
+     .provide("dependency1", myDependency1);
+     .provide("dependency2", myDependency2);
+     .provide("dbManager", dbManager);
 ```
 
 Как видно, модуль имеет жестко закодированные зависимости, и его работа заключается в загрузке их в объект **dependencyService**. Затем зависимой функции или объекту достаточно импортировать сервис и получить нужную зависимость по имени регистрации следующим образом:
 
 ```js
-import dependencyService from "./dependency-injection-6"
-const dbManager = dependencyService.inject("dbManager")
+import dependencyService from "./dependency-injection-6";
+const dbManager = dependencyService.inject("dbManager");
 ```
 
 Этот подход действительно создает тесную связь между компонентами, но он приведен здесь в качестве справочного материала. Его преимущество заключается в том, что мы можем контролировать все зависимости в одном месте, так что преимущества в обслуживании могут быть значительными. 
@@ -495,7 +495,7 @@ const dbManager = dependencyService.inject("dbManager")
 Например, рассмотрим два класса: **Circle** и **Square**. Оба реализуют один и тот же метод **draw()**, который рисует фигуру на холсте. Тогда функция **фабрики** будет работать примерно так:
 
 ```js
-function createShape(type){
+function createShape(type) {
     switch(type) {
         case "circle": return new Circle();
         case "square": return new Square();
@@ -531,30 +531,32 @@ shape2.draw();
 #### ./chapter 2/Observer-1.js
 
 ```js
-class ObserverPattern{
-constructor() {
-    this.events = {}                                        //1
-}
-on(event_name, fn = () => {}) {                             //2
-    if(!this.events[event_name]) {
-        this.events[event_name] = []
-    }
-    this.events[event_name].push(fn)                        //3
-}
-emit(event_name, data){                                     //4
-    if(!this.events[event_name]){
-        return
-    }
-    for(let i=0, l=this.events[event_name].length; i<l; i++) {
-        this.events[event_name][i](data)
+class ObserverPattern {
+    constructor() {
+        this.events = {};                                       //1
     }
-}
-off(event_name, fn){                                        //5
-    let i=this.events[event_name].indexOf(fn);
-    if(i>-1) {
-        this.events[event_name].splice(i, 1);
-    }
-}
+    on(event_name, fn = () => {}) {                             //2
+        if(!this.events[event_name]) {
+            this.events[event_name] = [];
+        }
+
+        this.events[event_name].push(fn);                       //3
+    }
+    emit(event_name, data) {                                    //4
+        if(!this.events[event_name]) {
+            return;
+        }
+        for(let i = 0, l = this.events[event_name].length; i < l; i++) {
+            this.events[event_name][i](data);
+        }
+    }
+    off(event_name, fn) {                                       //5
+        let i = this.events[event_name].indexOf(fn);
+
+        if(i > -1) {
+            this.events[event_name].splice(i, 1);
+        }
+    }
 }
 ```
 
@@ -570,21 +572,21 @@ off(event_name, fn){                              
 Для того чтобы данная реализация работала, каждый наблюдатель и субъект должны ссылаться на одну и ту же реализацию **ObserverClass**. Самый простой способ обеспечить это - реализовать его через шаблон *синглтон*. После импорта каждый наблюдатель регистрируется в диспетчере с помощью следующей строки:
 
 ```js
-import dispatcher from "ObserverClass.js"    //a singleton
-dispatcher.on("event_name", myFunction)
+import dispatcher from "ObserverClass.js";   //a singleton
+dispatcher.on("event_name", myFunction);
 ```
 
 После этого субъект испускает событие и передает данные следующими строками:
 
 ```js
-import dispatcher from "ObserverClass.js"    //a singleton
-dispatcher.emit("event_name", data)
+import dispatcher from "ObserverClass.js";   //a singleton
+dispatcher.emit("event_name", data);
 ```
 
 И наконец, когда наблюдателю больше не нужно следить за объектом, необходимо очистить ссылку с помощью метода **off**:
 
 ```js
-dispatcher.off("имя_события", myFunction)
+dispatcher.off("имя_события", myFunction);
 ```
 
 
@@ -608,7 +610,7 @@ dispatcher.off("имя_события", myFunction)
 #### ./chapter 2/Command-1.js
 
 ```js
-class CommandInvoker{
+class CommandInvoker {
     addCommand(command_data) {                              //1
           // ... реализация очереди здесь
     }
@@ -672,35 +674,36 @@ class CommandInvoker{
 #### ./chapter 2/proxy-1.js
 
 ```js
-let temperature = { celsius:0, fahrenheit: 32 },                    //1
+let temperature = {celsius: 0, fahrenheit: 32},                     //1
     handler = {                                                     //2
-        set(target, key, value){                                    //3
+        set(target, key, value) {                                   //3
             target[key] = value;                                    //4
             switch(key) {
                 case "celsius":
                     target.fahrenheit = calculateFahrenheit(value); //5
                     break;
                 case "fahrenheit":
-                    target.celsius = calculateCelsius(value);.
+                    target.celsius = calculateCelsius(value);
+                    break;
             }
         }
         get(target, key) {
             return target[key];                                     //6
         }
     }
-    degrees = new Proxy(temperature, handler)                       //7
+    degrees = new Proxy(temperature, handler);                      //7
 
 // Вспомогательные функции
-function calculateCelsius(fahrenheit){
-     return (fahrenheit - 32) / 1.8
+function calculateCelsius(fahrenheit) {
+     return (fahrenheit - 32) / 1.8;
 }
-function calculateFahrenheit(celsius){
-     return (celsius * 1.8) + 32
+function calculateFahrenheit(celsius) {
+     return (celsius * 1.8) + 32;
 }
-degrees.celsius = 25                                                //8
-console.log(degrees)
+degrees.celsius = 25;                                               //8
+console.log(degrees);
 // Выводится в консоль:
-// {celsius:25, fahrenheit:77}                                      //9
+// {celsius: 25, fahrenheit: 77}                                    //9
 ```
 
 Давайте рассмотрим код построчно, чтобы увидеть, как это работает:
@@ -753,16 +756,16 @@ console.log(getTimeStamp());
 
 ```vue
 <script setup>
-    const $props = defineProps(['label'])           //1
+    const $props = defineProps(['label']);          //1
 </script>
 <template>
-    <h1>{{$props.label}}</h1>                       //2
+    <h1>{{ $props.label }}</h1>                     //2
 </template>
 <style scoped></style>
 ```
 
-В этом простом компоненте в строке **//1** мы объявляем один входной элемент с именем **label**. Не стоит пока беспокоиться о синтаксисе, поскольку мы подробно рассмотрим это в главе 4, *Композиция пользовательского интерфейса с компонентами*. В строке
-**//2** мы интерполируем значение непосредственно внутри тегов **h1**, как и ожидалось.
+В этом простом компоненте в строке `//1` мы объявляем один входной элемент с именем **label**. Не стоит пока беспокоиться о синтаксисе, поскольку мы подробно рассмотрим это в главе 4, *Композиция пользовательского интерфейса с компонентами*. В строке
+`//2` мы интерполируем значение непосредственно внутри тегов **h1**, как и ожидалось.
 
 Таким образом, чтобы создать декоратор для этого компонента, нам необходимо применить следующие простые правила:
 
@@ -776,18 +779,17 @@ console.log(getTimeStamp());
 
 ```vue
 <script setup>
-    import HeaderH1 from "./decorator-1.vue"
-    const $props = defineProps(['label'])                //1
+    import HeaderH1 from "./decorator-1.vue";
+    const $props = defineProps(['label']);               //1
 </script>
 <template>
     <div style="color: purple !important;">              //2
-         <HeaderH1 :title="$props.label+'!!!'">          //3
-         </HeaderH1>
+         <HeaderH1 :title="$props.label+'!!!'" />        //3
     </div>
 </template>
 ```
 
-В этом коде в строке **//1** видно, что мы сохраняем тот же интерфейс, что и у целевого компонента (который мы импортировали в предыдущей строке), затем в строке **//2** мы изменяем (дополняем) атрибут **color** , а в строке **//3** мы также изменяем данные, передаваемые целевому компоненту, добавляя три восклицательных знака. Выполнив эти простые задачи, мы сохранили условия для построения шаблона декоратора, экстраполированного на компоненты Vue 3. Совсем неплохо.
+В этом коде в строке `//1` видно, что мы сохраняем тот же интерфейс, что и у целевого компонента (который мы импортировали в предыдущей строке), затем в строке `//2` мы изменяем (дополняем) атрибут **color** , а в строке `//3` мы также изменяем данные, передаваемые целевому компоненту, добавляя три восклицательных знака. Выполнив эти простые задачи, мы сохранили условия для построения шаблона декоратора, экстраполированного на компоненты Vue 3. Совсем неплохо.
 
 Декораторы очень полезны, но есть еще один прокси-подобный шаблон, который также очень распространен и удобен: шаблон фасада.
 
@@ -840,17 +842,17 @@ F(n) = F(n-1)+F(n-2), причем n>=2
 #### ./chapter 2/callback-1.js - Синхронный Фибоначчи
 
 ```js
-function FibonacciSync(n, callback){
+function FibonacciSync(n, callback) {
      if (n < 2) {
-        callback(n)
+        callback(n);
      } else {
          let pre_1 = 0, pre_2 = 1, value;
-         for(let i=1; i<n; i++){
+         for(let i = 1; i < n; i++) {
             value = pre_1 + pre_2;
             pre_1 = pre_2;
             pre_2 = value;
          }
-         callback(value).
+         callback(value);
      }
 }
 ```
@@ -860,7 +862,8 @@ function FibonacciSync(n, callback){
 ```js
 FibonacciSync(8, console.log);
 // В консоль будет выведено 21
-FibonacciSync(8, alert)
+
+FibonacciSync(8, alert);
 // Будет показано окошко с числом 21
 ```
 
@@ -868,26 +871,29 @@ FibonacciSync(8, alert)
 фундаментальный недостаток, влияющий на пользовательский опыт. Будучи синхронной, время вычисления пропорционально переданному параметру: чем больше **n**, тем больше времени это займет. При достаточно большом числе мы легко можем "подвесить" браузер, но также, гораздо раньше, можем "заморозить" интерфейс. Проверить синхронность выполнения можно с помощью следующего фрагмента:
 
 ```js
-console.log("Before")
-FibonacciSync(9, console.log)
-console.log("After")
-// Будет выведено
-// Before
-// 34
-// After
+console.log("Before");
+FibonacciSync(9, console.log);
+console.log("After");
+
+// Будет выведено:
+/*
+    Before
+    34
+    After
+*/
 ```
 
 Чтобы превратить эту простую функцию в асинхронную, можно просто обернуть логику внутри вызова в **setImmediate**. Это выведет выполнение из обычного рабочего процесса. Теперь новая функция выглядит следующим образом:
 
 ```js
-function FibonacciAsync(n, callback){
-     setImmediate(()=>{
-         if (n<2){
-              callback(n)
+function FibonacciAsync(n, callback) {
+     setImmediate(() => {
+         if (n < 2) {
+              callback(n);
          } else {
-              let pre_1 = 0, pre_2 = 1,value;
-              for(let i=1; i<n; i++) {
-                  value = pre_1+pre_2;
+              let pre_1 = 0, pre_2 = 1, value;
+              for(let i = 1; i < n; i++) {
+                  value = pre_1 + pre_2;
                   pre_1 = pre_2;
                   pre_2 = value;
               }
@@ -900,13 +906,16 @@ function FibonacciAsync(n, callback){
 Как видите, мы используем стрелочную функцию, чтобы завернуть код без каких-либо модификаций. Теперь посмотрите на разницу, когда мы выполним тот же сниппет, что и раньше, с этой функцией:
 
 ```js
-console.log("Before")
-FibonacciAsync(9, console.log)
-console.log("After")
-// Будет выведено
-// Before
-// After
-// 34
+console.log("Before");
+FibonacciAsync(9, console.log);
+console.log("After");
+
+// Будет выведено:
+/*
+    Before
+    After
+    34
+*/
 ```
 
 Как видно из вывода, сниппет выводит **After** раньше, чем **34**. Это происходит потому, что наша асинхронная операция, как и ожидалось, была выведена из обычного потока. При вызове асинхронной функции выполнение *не ожидает* результата и продолжает выполнять следующую инструкцию. Это может иногда сбивать с толку, но является очень мощным и полезным. 
@@ -934,11 +943,11 @@ function FibonacciPromise(n) {
                reject();                                 //2
           } else {
                if (n < 2) {
-               resolve(n)                                //3
+                   resolve(n);                           //3
                } else {
                     let pre_1 = 1, pre_2 = 1, value;
                     for (let i = 2; i < n; i++) {
-                         значение = pre_1 + pre_2;
+                         value = pre_1 + pre_2;
                          pre_1 = pre_2;
                          pre_2 = value;
                     }
@@ -949,35 +958,37 @@ function FibonacciPromise(n) {
 }
 ```
 
-На первый взгляд легко заметить, что реализация немного изменилась. В строке **//1** мы начинаем с того, что сразу возвращаем объект **new Promise()**. Этот конструктор получает функцию обратного вызова, которая, в свою очередь, получит два обратных вызова с именами **resolve()** и **reject()**. Их мы должны использовать в нашей логике для возврата значения в случае успеха (**resolve**) или неудачи (**reject**). 
+На первый взгляд легко заметить, что реализация немного изменилась. В строке `//1` мы начинаем с того, что сразу возвращаем объект **new Promise()**. Этот конструктор получает функцию обратного вызова, которая, в свою очередь, получит два обратных вызова с именами **resolve()** и **reject()**. Их мы должны использовать в нашей логике для возврата значения в случае успеха (**resolve**) или неудачи (**reject**).
 
-Также обратите внимание, что нам не нужно оборачивать наш код в функцию **setImmediate**, поскольку обещание по своей природе
-является асинхронным. Теперь мы проверяем наличие отрицательных чисел и в этом случае отклоняем операцию (строка **//2**). Другое изменение, которое мы делаем, - это замена **callback()** на **resolve()** (**//4**).
+Также обратите внимание, что нам не нужно оборачивать наш код в функцию **setImmediate**, поскольку обещание по своей природе является асинхронным. Теперь мы проверяем наличие отрицательных чисел и в этом случае отклоняем операцию (строка `//2`). Другое изменение, которое мы делаем - это замена **callback()** на **resolve()** (`//3`).
 
 Вызов теперь также изменяется:
 
 ```js
-console.log("Before")
+console.log("Before");
 FibonacciPromise(9).then(
      value => console.log(value),
      () => { console.log("Неопределено для отрицательных чисел!") }
 );
-console.log("After")
+console.log("After");
+
 // Будет выведено:
-// Before
-// After
-// 34
+/*
+    Before
+    After
+    34
+*/
 ```
 
 Как видите, мы выстраиваем цепочку к вызову, методу **then**, и передаем ему две функции для успеха и неудачи (**resolve** и **reject** в нашем коде). Как и раньше, мы получаем тот же самый результат. Теперь это может показаться более многословным (так оно и есть), но преимущества значительно перевешивают дополнительный набор текста. Обещания можно передавать по цепочке, то есть, при успешном выполнении операции можно вернуть новое обещание и таким образом получить последовательную операцию. Вот пример:
 
 ```js
 MyFunction()
-    .then(()=>{ return new Promise(...)}, ()=>{...})
-    .then(()=>{ return new Promise(...)}, ()=>{...})
-    .then(()=>{ return new Promise(...)}, ()=>{...})
-    .then(()=>{ return new Promise(...)}, ()=>{...})
-    .catch(err=>{...})
+    .then(() => { return new Promise(...)}, () => {...} )
+    .then(() => { return new Promise(...)}, () => {...} )
+    .then(() => { return new Promise(...)}, () => {...} )
+    .then(() => { return new Promise(...)}, () => {...} )
+    .catch(err => {...});
 ```
 
 У конструктора **Promise** есть и другие методы, например **.all**, но для более глубокого изучения возможностей и синтаксиса я отсылаю вас к [документации](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
@@ -988,26 +999,28 @@ MyFunction()
 Для примера представим, что у нас есть три функции, возвращающие обещания, с именами **MyFuncA**, **MyFuncB** и **MyFuncC** (да, я знаю, не самые удачные имена). Каждая из них в случае успеха возвращает *одно единственное значение* (это условие). Затем они используются внутри **MyProcessFunction** с новым синтаксисом. Вот объявление:
 
 ```js
-async function myProcessFunction() {                    //1
-    try {                  ;                            //2
-        let     a = await MyFuncA(),                    //3
-                b = await MyFuncB(),
-                c = await MyFuncC()
-        console.log(a + b + c)                          //4
+async function myProcessFunction() {                //1
+    try {                                           //2
+        let
+            a = await MyFuncA(),                    //3
+            b = await MyFuncB(),
+            c = await MyFuncC();
+
+        console.log(a + b + c);                     //4
     } catch {
-        console.log("Ошибка")
+        console.log("Ошибка");
     }
 }
 // Вызов функции в обычном режиме
-MyProcessFunction()                                      //5
+MyProcessFunction();                                //5
 ```
 
-Начнем с объявления нашей функции с ключевым словом **async** (строка **//1**). Это сигнализирует интерпретатору, что мы будем использовать синтаксис **await** внутри нашей функции. Одно из условий - обернуть код в блок **try...catch**. Тогда мы сможем использовать ключевое слово **await** перед вызовом каждой обещанной функции, как в строке **//3**. К строке **//4** мы уверены, что каждая переменная получила свое значение. Безусловно, такой подход более удобен для восприятия.
+Начнем с объявления нашей функции с ключевым словом **async** (строка `//1`). Это сигнализирует интерпретатору, что мы будем использовать синтаксис **await** внутри нашей функции. Одно из условий - обернуть код в блок **try...catch** (начиная со строки `//2`). Тогда мы сможем использовать ключевое слово **await** перед вызовом каждой обещанной функции, как в строке `//3`. К строке `//4` мы уверены, что каждая переменная получила свое значение. Безусловно, такой подход более удобен для восприятия.
 
 Исследуем эквивалентности для строки:
 
 ```js
-let a = await MyFuncA()
+let a = await MyFuncA();
 ```
 
 Это будет соответствовать синтаксису *thenable* (с использованием **.then**):
@@ -1015,17 +1028,17 @@ let a = await MyFuncA()
 ```js
 let a;
 MyFuncA()
-    .then(result => { a = result; })
+    .then(result => { a = result; });
 ```
 
-Однако проблема с последним синтаксисом заключается в том, что нам необходимо убедиться, что все переменные **a**, **b** и **c** имеют значения, прежде чем мы сможет выполнить строку **//4**, **console.log(a+b+c)**, что позволяет выстроить цепочку вызовов следующим образом:
+Однако проблема с последним синтаксисом заключается в том, что нам необходимо убедиться, что все переменные **a**, **b** и **c** имеют значения, прежде чем мы сможет выполнить строку `//4`, **console.log(a + b + c)**, что позволяет выстроить цепочку вызовов следующим образом:
 
 ```js
 let a,b,c;
 MyFuncA()
-    .then(result=>{ a=result; return MyFuncB()})
-    .then(result=>{ b=result; return MyFuncC()})
-    .then(result=>{ c=result; console.log(a+b+c)})
+    .then(result => { a = result; return MyFuncB(); })
+    .then(result => { b = result; return MyFuncC(); })
+    .then(result => { c = result; console.log(a + b + c); });
 ```
 
 Этот формат сложнее для понимания и, конечно, более многословен. Для таких случаев предпочтительнее использовать синтаксис **async/await**.
