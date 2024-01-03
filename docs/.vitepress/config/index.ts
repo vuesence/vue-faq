@@ -1,12 +1,12 @@
 import { defineConfig } from "vitepress";
 import nav_en from "./nav.en";
 import nav_ru from "./nav.ru";
-import sidebar_en from "./sidebar.en";
-import sidebar_ru from "./sidebar.ru";
+import sidebar_faq_en from "./sidebar.faq.en";
+import sidebar_faq_ru from "./sidebar.faq.ru";
 import sidebar_book_ru from "./sidebar.book.ru";
 import sidebar_vue_webapp_ru from "./sidebar.vue-webapp.ru";
 import sidebar_vue_webapp_en from "./sidebar.vue-webapp.en";
-import sidebar_arty_crafty_ru from "./arty-crafty.sidebar.ru";
+import sidebar_arty_crafty_ru from "./sidebar.arty-crafty.ru";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -18,7 +18,7 @@ export default defineConfig({
       themeConfig: {
         nav: nav_ru,
         sidebar: {
-          "/ru/": sidebar_ru,
+          "/ru/": sidebar_faq_ru,
           "/ru/book/": sidebar_book_ru,
           "/ru/vue-webapp/": sidebar_vue_webapp_ru,
           "/ru/arty-crafty/": sidebar_arty_crafty_ru,
@@ -54,7 +54,7 @@ export default defineConfig({
       themeConfig: {
         nav: nav_en,
         sidebar: {
-          "/en/": sidebar_en,
+          "/en/": sidebar_faq_en,
           "/en/vue-webapp/": sidebar_vue_webapp_en,
         },
         socialLinks: [      
