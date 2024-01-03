@@ -22,6 +22,8 @@ features:
     details: General issues of frontend development - architecture, design patterns, best practices are discussed
   - title: Vue 3
     details: Focuses on Vue 3, Composition API and the Vue ecosystem of recent years.
+  - title: vue-webapp
+    details: Scaffold your Vue 3 project with many prebuilt options
   - title: Nuxt-free
     details: Nuxt is a separate standalone framework that deserves its own FAQ
 ---
