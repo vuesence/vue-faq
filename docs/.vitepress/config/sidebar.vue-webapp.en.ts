@@ -40,7 +40,7 @@ export default [
         { text: "API layer", link: "/en/vue-webapp/options/api" },
         { text: "PWA", link: "/en/vue-webapp/options/pwa" },
         { text: "Github Pages deploy", link: "/en/vue-webapp/options/ga-gp" },      
-        // { text: "i18n", link: "/en/vue-webapp/options/i18n" },      
+        { text: "i18n", link: "/en/vue-webapp/options/i18n" },      
       ],
       },
   ]
