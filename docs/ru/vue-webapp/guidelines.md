@@ -2,7 +2,7 @@
 head:
   - - meta
     - name: og:site_name
-      content: Vue webapp
+      content: Vue webapp builder
   - - meta
     - name: og:image
       content: /images/vue-webapp-logo.png
