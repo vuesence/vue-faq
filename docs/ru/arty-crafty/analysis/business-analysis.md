@@ -1,5 +1,15 @@
 ---
 pageClass: arty-crafty
+head:
+  - - meta
+    - name: og:site_name
+      content: Arty-Crafty project
+  - - meta
+    - name: og:image
+      content: /images/arty-crafty-logo.png
+  - - meta
+    - name: twitter:image
+      content: /images/arty-crafty-logo.png
 ---
 
 # Бизнес-анализ
@@ -39,7 +49,6 @@ pageClass: arty-crafty
 ## Маркетплейс
 
 На фронтенде факторизация по продавцам - это, по сути, выборка по специальному аттрибуту, который есть у каждого продукта. Однако в админке этот функционал намного более обширен. В том числе и поэтому мы ориентируемся на стороннее решение для бэкенда.
-
 
 ## Use case диаграмма
 

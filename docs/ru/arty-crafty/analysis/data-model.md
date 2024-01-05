@@ -1,6 +1,17 @@
 ---
 pageClass: arty-crafty
+head:
+  - - meta
+    - name: og:site_name
+      content: Arty-Crafty project
+  - - meta
+    - name: og:image
+      content: /images/arty-crafty-logo.png
+  - - meta
+    - name: twitter:image
+      content: /images/arty-crafty-logo.png
 ---
+
 # Модель данных
 
 ## Категория и товар
@@ -35,17 +46,17 @@ pageClass: arty-crafty
 
 ```json
 {
-    "id": 1,
-    "title": "Garfield",
-    "subtitle": "Мягкая игрушка кот Garfield",
-    "categoryId": 1,
-    "data": {
-        "description": "...",
-        "images": [],
-        "material": ["...", "..."],
-        "weight": "...",
-        "height": "...",
-    }    
+  "id": 1,
+  "title": "Garfield",
+  "subtitle": "Мягкая игрушка кот Garfield",
+  "categoryId": 1,
+  "data": {
+    "description": "...",
+    "images": [],
+    "material": ["...", "..."],
+    "weight": "...",
+    "height": "..."
+  }
 }
 ```
 
@@ -57,11 +68,11 @@ pageClass: arty-crafty
 
 ```json
 {
-    "id": 1,
-    "title": "Мягкие игрушки",
-    "data": {
-        "description": "...",
-        "icon": "...",
-    }    
+  "id": 1,
+  "title": "Мягкие игрушки",
+  "data": {
+    "description": "...",
+    "icon": "..."
+  }
 }
 ```

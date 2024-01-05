@@ -1,6 +1,17 @@
 ---
 pageClass: arty-crafty
+head:
+  - - meta
+    - name: og:site_name
+      content: Arty-Crafty project
+  - - meta
+    - name: og:image
+      content: /images/arty-crafty-logo.png
+  - - meta
+    - name: twitter:image
+      content: /images/arty-crafty-logo.png
 ---
+
 # Онлайн маркетплейс
 
 ## Цели данного проекта:
@@ -19,13 +30,11 @@ pageClass: arty-crafty
 5. Расширяемость
 6. Понятный задокументированный чистый код, использование лучших практик
 
-
 ## Общие функциональные требования
 
 1. PWA
 2. Глубоко настраиваемые темы. Как общие, так и для каждого магазина маркетплейса.
 3. i18n (интернационализация)
-
 
 ## Этапы развития приложения (приблизительно)
 

@@ -8,6 +8,6 @@ import AppLayout from "./AppLayout.vue";
 // }
 // export default DefaultTheme;
 export default {
-    extends: DefaultTheme,
-    Layout: AppLayout
-  }
+  extends: DefaultTheme,
+  Layout: AppLayout,
+};
