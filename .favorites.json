@@ -1,0 +1,20 @@
+[
+    {
+        "type": "File",
+        "name": "s:\\src\\vue-faq\\docs\\.vitepress\\config\\sidebar.arty-crafty.ru.ts",
+        "parent_id": null,
+        "fsPath": "s:\\src\\vue-faq\\docs\\.vitepress\\config\\sidebar.arty-crafty.ru.ts",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "VnMFHsjTDWOrmad6"
+    },
+    {
+        "type": "Directory",
+        "name": "s:\\src\\vue-faq\\docs\\ru\\arty-crafty\\showcase",
+        "parent_id": null,
+        "fsPath": "s:\\src\\vue-faq\\docs\\ru\\arty-crafty\\showcase",
+        "workspaceRoot": null,
+        "workspacePath": null,
+        "id": "FjsV2dvw3tmup0n8"
+    }
+]

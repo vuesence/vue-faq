@@ -1,20 +1,22 @@
 {
   "name": "vue-faq",
-  "private": true,
-  "version": "1.1.0",
   "type": "module",
+  "version": "1.1.0",
+  "private": true,
   "scripts": {
     "dev": "vitepress dev docs",
     "build": "vitepress build docs",
     "preview": "vitepress preview docs"
   },
   "dependencies": {
-    "vue": "^3.3.13",
+    "vue": "^3.4.4",
     "vue3-toastify": "^0.1.14"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^4.5.2",
-    "sass": "^1.69.5",
+    "@antfu/eslint-config": "^2.6.1",
+    "@vitejs/plugin-vue": "^5.0.2",
+    "eslint": "^8.56.0",
+    "sass": "^1.69.7",
     "typescript": "^5.3.3",
     "vite": "^5.0.10",
     "vitepress": "1.0.0-rc.32"
