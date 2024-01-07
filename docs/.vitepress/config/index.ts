@@ -100,6 +100,7 @@ export default defineConfig({
   ],
   themeConfig: {
     logo: "/images/vue-faq-logo.webp",
+    nav: nav_en,
     search: {
       provider: "local",
     },

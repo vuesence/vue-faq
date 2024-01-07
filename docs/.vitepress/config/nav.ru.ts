@@ -1,8 +1,9 @@
 export default [
-  { text: "Главная", link: "/ru/" },
+  // { text: "Главная", link: "/ru/" },
   { text: "FAQ", link: "/ru/misc/introduction" },
   { text: "Учебник", link: "/ru/book/" },
   { text: "vue-webapp", link: "/ru/vue-webapp/" },
+  // { text: "Arty-Crafty", link: "/ru/arty-crafty/" },
   { text: "Статьи", link: "/ru/articles/" },
   {
     text: "v 1.4",

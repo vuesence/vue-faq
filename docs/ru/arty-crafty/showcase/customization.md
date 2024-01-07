@@ -30,13 +30,13 @@ head:
 
 - HomeView (остается)
 - ProductCategoryView
-- ProductInfoView
+- ProductView
 
 ::: info Замечание
 Я предпочитаю использовать термин View, а не Page потому, что View может быть частью другого View, а Page - нет (семантически).
 :::
 
-`ProductCategoryView` и `ProductInfoView` убираем в директорию `views` модуля `products`.
+`ProductCategoryView` и `ProductView` убираем в директорию `views` модуля `products`.
 
 ## Routes
 
@@ -48,7 +48,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: "/product/:productId",
     name: "product",
-    component: ProductInfoView,
+    component: ProductView,
   },
   {
     path: "/category/:categoryId",
