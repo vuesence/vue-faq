@@ -9,7 +9,7 @@
     "preview": "vitepress preview docs"
   },
   "dependencies": {
-    "vue": "^3.4.4",
+    "vue": "^3.4.5",
     "vue3-toastify": "^0.1.14"
   },
   "devDependencies": {
@@ -18,7 +18,7 @@
     "eslint": "^8.56.0",
     "sass": "^1.69.7",
     "typescript": "^5.3.3",
-    "vite": "^5.0.10",
+    "vite": "^5.0.11",
     "vitepress": "1.0.0-rc.35"
   }
 }
