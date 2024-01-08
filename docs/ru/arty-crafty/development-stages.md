@@ -12,7 +12,9 @@ head:
       content: /images/arty-crafty-logo.png
 ---
 
-# Стадии разработки ПО
+# План работы
+
+## Стадии разработки ПО
 
 Классически разработка программного обеспечения состоит из следующих шагов (software development lifecycle - SDLC):
 
