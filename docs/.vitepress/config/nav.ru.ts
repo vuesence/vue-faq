@@ -3,7 +3,7 @@ export default [
   { text: "FAQ", link: "/ru/misc/introduction" },
   { text: "Учебник", link: "/ru/book/" },
   { text: "vue-webapp", link: "/ru/vue-webapp/" },
-  // { text: "Arty-Crafty", link: "/ru/arty-crafty/" },
+  { text: "Arty-Crafty", link: "/ru/arty-crafty/" },
   { text: "Статьи", link: "/ru/articles/" },
   {
     text: "v 1.4",
@@ -13,6 +13,10 @@ export default [
         link: "/ru/misc/CHANGELOG.md",
       },
       {
+        text: "Внести вклад",
+        link: "/ru/misc/contribute.md",
+      },
+      {
         text: "@vuejs_ru",
         title: "Телеграм сообщество",
         link: "https://t.me/vuejs_ru",
@@ -20,10 +24,6 @@ export default [
       {
         text: "@/r/vuejs/",
         link: "https://www.reddit.com/r/vuejs/",
-      },
-      {
-        text: "Внести вклад",
-        link: "/ru/misc/contribute.md",
       },
     ],
   },

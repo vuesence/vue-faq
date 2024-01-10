@@ -35,7 +35,7 @@ export default [
         items: [
           { text: "Создание проекта", link: "/ru/arty-crafty/showcase/project-setup" },
           { text: "Кастомизация", link: "/ru/arty-crafty/showcase/customization" },
-          { text: "Категория товаров", link: "/ru/arty-crafty/showcase/product-category" },
+          // { text: "Категория товаров", link: "/ru/arty-crafty/showcase/product-category" },
         ],
       },
     ],
