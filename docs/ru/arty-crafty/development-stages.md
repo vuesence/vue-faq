@@ -3,7 +3,7 @@ pageClass: arty-crafty
 head:
   - - meta
     - name: og:site_name
-      content: Arty-Crafty project
+      content: Arty-Crafty - проект онлайн магазина
   - - meta
     - name: og:image
       content: /images/arty-crafty-logo.png

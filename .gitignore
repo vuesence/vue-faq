@@ -27,3 +27,4 @@ dist-ssr
 docs/.vitepress/dist/
 docs/.vitepress/cache/
 my-vue-project
+.favorites.json
