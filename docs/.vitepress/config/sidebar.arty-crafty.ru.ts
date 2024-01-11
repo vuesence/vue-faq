@@ -36,6 +36,8 @@ export default [
           { text: "Создание проекта", link: "/ru/arty-crafty/showcase/project-setup" },
           { text: "Кастомизация", link: "/ru/arty-crafty/showcase/customization" },
           // { text: "Категория товаров", link: "/ru/arty-crafty/showcase/product-category" },
+          // { text: "'Избранное'", link: "/ru/arty-crafty/showcase/favourites" },
+          // { text: "Codeium", link: "/ru/arty-crafty/showcase/codeium" },
         ],
       },
     ],
