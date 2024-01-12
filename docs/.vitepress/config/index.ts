@@ -15,6 +15,7 @@ export default defineConfig({
     ru: {
       lang: "ru",
       label: "Русский",
+      description: "Vue FAQ - информация о фреймворке Vue.js и фронтенд разработке в целом",
       themeConfig: {
         nav: nav_ru,
         sidebar: {
@@ -37,6 +38,7 @@ export default defineConfig({
         ],
       },
       head: [
+        ["meta", { property: "og:description", content: "Vue FAQ - информация о фреймворке Vue.js и фронтенд разработке в целом" }],
         ["script", { async: "", src: "https://www.googletagmanager.com/gtag/js?id=G-JL65GWRNZZ" }],
         [
           "script",
@@ -86,12 +88,12 @@ export default defineConfig({
     ["meta", { property: "og:description", content: "Vue FAQ - information about Vue.js and frontend development in general" }],
     ["meta", { property: "og:type", content: "website" }],
     ["meta", { property: "og:site_name", content: "Vue FAQ" }],
-    ["meta", { property: "og:image", content: "/images/vue-faq-logo.webp" }],
+    ["meta", { property: "og:image", content: "/images/vue-faq-logo.png" }],
     ["meta", { property: "twitter:card", content: "summary" }],
     ["meta", { property: "twitter:title", content: "Vue FAQ" }],
     ["meta", { property: "twitter:description", content: "Vue FAQ - information about Vue.js and frontend development in general" }],
     ["meta", { property: "twitter:site", content: "@vuefaq" }],
-    ["meta", { name: "twitter:image", content: "/images/vue-faq-logo.webp" }],
+    ["meta", { name: "twitter:image", content: "/images/vue-faq-logo.png" }],
     ["link", { rel: "apple-touch-icon", sizes: "180x180", href: "/images/apple-touch-icon.png" }],
     ["link", { rel: "icon", type: "image/png", sizes: "32x32", href: "/images/favicon-32x32.png" }],
     ["link", { rel: "shortcut icon", href: "/favicon.ico" }],

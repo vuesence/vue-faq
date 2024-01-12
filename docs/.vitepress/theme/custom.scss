@@ -33,3 +33,9 @@ body {
     }
   }
 }
+
+.arty-crafty, .textbook {
+  .VPNavBarTranslations, .VPMenu .group.translations {
+    display: none;
+  }
+}

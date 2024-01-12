@@ -1,4 +1,5 @@
 ---
+pageClass: textbook
 head:
   - - meta
     - name: og:site_name
