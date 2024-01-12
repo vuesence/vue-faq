@@ -5,10 +5,10 @@ head:
       content: vue-webapp
   - - meta
     - name: og:image
-      content: /images/vue-webapp.jpg
+      content: /images/vue-webapp-logo.png
   - - meta
     - name: twitter:image
-      content: /images/vue-webapp.jpg
+      content: /images/vue-webapp-logo.png
 ---
 # Getting started
 
@@ -33,37 +33,37 @@ $ pnpm create vue-webapp
 √ Add API layer (REST)? ... no / yes
 √ Add JSON-RPC adapter? ... no / yes
 
-Scaffolding project in /home/ubuntu/my-vue-project... 
+Scaffolding project in /home/ubuntu/my-vue-project...
 ```
 
-:::details Silent installation 
+:::details Silent installation
 
 It is possible to scaffold the app without manually entering parameters by specifying a configuration file with options:
 
 ```bash
 pnpm create vue-webapp -c config.json
-// or 
+// or
 pnpm create vue-webapp --config config.json
-``` 
+```
 
 The format of the `config.json` file should be like this:
 
 ```json
 {
-    "projectName": "my-vue-project",
-    "splashScreen": false,
-    "pwa": true,
-    "openGraph": false,
-    "googleAnalytics": false,
-    "githubActionsGithubPagesWorkflow": true,
-    "layout": "mainLayout",
-    "navigationDrawer": "SimpleDrawer",
-    "navbar": "MantineSimpleNavbar",
-    "header": "MantineSimpleHeader",
-    "footer": "MantineRichFooter",
-    "api": true,
-    "jsonRpc": false,
-    "overwrite": true
+  "projectName": "my-vue-project",
+  "splashScreen": false,
+  "pwa": true,
+  "openGraph": false,
+  "googleAnalytics": false,
+  "githubActionsGithubPagesWorkflow": true,
+  "layout": "mainLayout",
+  "navigationDrawer": "SimpleDrawer",
+  "navbar": "MantineSimpleNavbar",
+  "header": "MantineSimpleHeader",
+  "footer": "MantineRichFooter",
+  "api": true,
+  "jsonRpc": false,
+  "overwrite": true
 }
 ```
 The `overwrite` parameter tells whether to overwrite the content in case of existing directory. It accepts values: "yes", "no" and "ignore".
@@ -90,9 +90,7 @@ Result in a browser:
 
 ![](/images/vue-webapp/webapp-start.png)
 
-
 ## Installation from the repository
-
 
 With this method everything will be installed, but a minimum of functionality will be enabled. It is useful for testing all available components and functionality.
 

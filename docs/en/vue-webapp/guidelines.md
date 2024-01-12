@@ -5,10 +5,10 @@ head:
       content: vue-webapp
   - - meta
     - name: og:image
-      content: /images/vue-webapp.jpg
+      content: /images/vue-webapp-logo.png
   - - meta
     - name: twitter:image
-      content: /images/vue-webapp.jpg
+      content: /images/vue-webapp-logo.png
 ---
 
 # Guidelines 
