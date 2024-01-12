@@ -1,1 +1,0 @@
-import{_ as e,c as t,o}from"./chunks/framework.lBFuN894.js";const m=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"en/book/index.md","filePath":"en/book/index.md","lastUpdated":1705050017000}'),a={name:"en/book/index.md"};function n(r,s,d,c,i,p){return o(),t("div")}const f=e(a,[["render",n]]);export{m as __pageData,f as default};
