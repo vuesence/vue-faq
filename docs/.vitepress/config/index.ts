@@ -113,5 +113,7 @@ export default defineConfig({
   lastUpdated: true,
   sitemap: {
     hostname: "https://vue-faq.org",
+    lastmodDateOnly: true,
+    xslUrl: "https://raw.githubusercontent.com/pedroborges/xml-sitemap-stylesheet/master/sitemap.xsl",
   },
 });
