@@ -1,0 +1,1 @@
+import{_ as e,c as t,o as a}from"./chunks/framework.lBFuN894.js";const i=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"en/book/summary.md","filePath":"en/book/summary.md","lastUpdated":1705062307000}'),o={name:"en/book/summary.md"};function r(s,n,m,c,d,p){return a(),t("div")}const f=e(o,[["render",r]]);export{i as __pageData,f as default};
