@@ -15,8 +15,7 @@ head:
 
 Standard layout with header, footer and sidebar in `notebook` and `desktop` modes. In `tablet` and `mobile` modes the sidebar is hidden and moves in from the left when user clicks on the "hamburger" icon.
 
-![](/images/vue-webapp/layout-main.png)
-
+![image](/images/vue-webapp/layout-main.png)
 
 ## Routing
 

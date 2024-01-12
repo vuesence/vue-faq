@@ -21,7 +21,7 @@ head:
 
 Для того, чтобы управлять сложными системами, издревле люди стали разбивать их на более простые. Принцип: "Разделяй и властвуй", относится именно к этому.
 
-![](/ru/arty-crafty/assets/images/divide-et-impera.webp)
+![image](/ru/arty-crafty/assets/images/divide-et-impera.webp)
 
 Любое современное государство управляется через иерархичное разбиение и подчинение, давая возможность любому управляющему быть ответственным за небольшую часть системы, которую он может контролировать.
 
@@ -70,7 +70,7 @@ head:
 
 Примерный вид диаграммы пакетов:
 
-![](/ru/arty-crafty/assets/images/package-diagram.jpg)
+![image](/ru/arty-crafty/assets/images/package-diagram.jpg)
 
 Пакеты здесь аналоги будущих модулей в нашем приложении.
 
@@ -80,7 +80,7 @@ head:
 
 В связи с тем, что мы разрабатываем SPA, часть бизнес логики будет на фронтенде.
 
-![](/ru/arty-crafty/assets/images/three-tier-architecture.png)
+![image](/ru/arty-crafty/assets/images/three-tier-architecture.png)
 
 ## Routing
 

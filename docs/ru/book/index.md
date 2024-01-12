@@ -18,7 +18,7 @@ head:
 
 Автор: Pablo Garaguso
 
-![](/ru/book/images/book-face.jpg)
+![image](/ru/book/images/book-face.jpg)
 
 <br />
 <br />

@@ -15,11 +15,9 @@ head:
 
 Стандартный макет с хедером, футером и сайдбаром в `notebook` и `desktop` режимах. В `tablet` и `mobile` режимах сайдбар выезжает слева при нажатии на "гамбургер" иконку.
 
-![](/images/vue-webapp/layout-main.png)
+![image](/images/vue-webapp/layout-main.png)
 
 `AppSidebar` виден в режимах `notebook` и `desktop`, и скрывается в `tablet` и `mobile`
-
-
 
 ## Routing
 

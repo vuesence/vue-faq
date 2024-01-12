@@ -40,7 +40,7 @@ There is a need for a tool similar to `create-vue`, for scaffolding a ready-to-g
 
 It is clear that defining one or another "best practice" (fetch or axios?) can be quite controversial, but nevertheless.
 
-![](/images/vue-webapp/use-case.png)
+![image](/images/vue-webapp/use-case.png)
 
 <style scoped>
 img {

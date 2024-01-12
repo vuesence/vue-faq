@@ -88,7 +88,7 @@ $ pnpm dev
 
 Result in a browser:
 
-![](/images/vue-webapp/webapp-start.png)
+![image](/images/vue-webapp/webapp-start.png)
 
 ## Installation from the repository
 

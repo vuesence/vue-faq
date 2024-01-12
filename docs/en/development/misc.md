@@ -8,7 +8,6 @@
 
 Well known [Swiper](https://swiperjs.com/) is not so good for the Vue.js
 
-
 ### Date and time
 
 [day.js](https://day.js.org/), [day-fnc.js](https://date-fns.org/)
@@ -81,7 +80,6 @@ If you want pretentious efficiency, use Reactive on objects and Ref on primitive
 - Internationalization (i18n): Store translation data at the root level and inject it into components that need to display text in different languages.
 - Tightly coupled components: Like i.e. `AccordianPanel` that only ever appears inside of an `Accordian` component slot. You can inject shared data that you always want to have access to it without the need to pass it in as a prop.
 
-
 #### Best Practices and Considerations
 
 - Avoid Overuse: While provide and inject can be powerful, don't overuse them. Reserve them for cases where you genuinely need to share data across components without creating tight coupling between them.
@@ -112,19 +110,19 @@ In the Vue ecosystem (including development tools), these technologies are poorl
 
 Google Chrome and some Chromium-based browsers have a setting in DevTools in the Console section - "Enable custom formatters". Once enabled, reactive objects will be shown in the console and in popups during debugging in a more readable form:
 
-![](/images/faq/chrome-formatter-1.jpg)
+![image](/images/faq/chrome-formatter-1.jpg)
 
 instead of the standard one:
 
-![](/images/faq/chrome-formatter-2.jpg)
+![image](/images/faq/chrome-formatter-2.jpg)
 
 It is possible to temporarily disable the setting programmatically:
 
 ```js
 const old = window.devtoolsFormatters;
-delete window.devtoolsFormatters; 
+delete window.devtoolsFormatters;
 // will print out data without custom formatting
-console.log(obj); 
+console.log(obj);
 window.devtoolsFormatters = old;
 ```
 :::

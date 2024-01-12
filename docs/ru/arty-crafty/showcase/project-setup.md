@@ -58,7 +58,7 @@ $ pnpm dev
 
 Работает:
 
-![](/ru/arty-crafty/assets/images/project-setup.png)
+![image](/ru/arty-crafty/assets/images/project-setup.png)
 
 Теперь ставим `base: "/arty-crafty/"` в `vite.config.ts`. Также надо поставить этот префикс перед путями в инъекциях `sw.js` и `splash-screen.html`, и в путях к иконкам в `manifest.json`. При хостинге со своим доменом нужно будет этот префикс убрать.
 

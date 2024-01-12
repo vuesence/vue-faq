@@ -22,7 +22,7 @@ head:
 
 Вот, например, какие поля есть в таблице `product` в OpenCart:
 
-![](/ru/arty-crafty/assets/images/oc-product-table.png)
+![image](/ru/arty-crafty/assets/images/oc-product-table.png)
 
 Дополнительно к этому в OpenCart у товара есть изображения, его варианты, опции, типы.
 
@@ -36,7 +36,7 @@ head:
 
 В примере с `product` у нас в первом приближении будет примерно следующая таблица:
 
-![](/ru/arty-crafty/assets/images/product-table-1.png)
+![image](/ru/arty-crafty/assets/images/product-table-1.png)
 
 Мы создали два индекса - у `title` и `subtitle`, потому что по ним будет происходить поиск. Остальные данные могут находиться в `data`.
 

@@ -15,7 +15,7 @@ head:
 
 A splash screen during application startup instead of a blank screen can enhance application user experience and strengthen brand recognition.
 
-![](/images/vue-webapp/splash-screen.gif)
+![image](/images/vue-webapp/splash-screen.gif)
 
 The splash screen code is located entirely in the `index.html`. It is controlled by the CSS class `splash` on the `body` tag.
 
@@ -26,4 +26,3 @@ img {
     border: 1px solid #ddd;
 }
 </style>
-

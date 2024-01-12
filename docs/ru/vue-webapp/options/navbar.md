@@ -19,12 +19,11 @@ head:
 
 ## SimpleNavbar
 
-![](/images/vue-webapp/navbar-simple.png)
+![image](/images/vue-webapp/navbar-simple.png)
 
 ## MantineSimpleNavbar
 
-![](/images/vue-webapp/navbar-simple-mantine.png)
-
+![image](/images/vue-webapp/navbar-simple-mantine.png)
 
 <style scoped>
 img {

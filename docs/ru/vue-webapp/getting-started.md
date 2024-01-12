@@ -34,37 +34,37 @@ $ pnpm create vue-webapp
 √ Add API layer (REST)? ... no / yes
 √ Add JSON-RPC adapter? ... no / yes
 
-Scaffolding project in /home/ubuntu/my-vue-project... 
+Scaffolding project in /home/ubuntu/my-vue-project...
 ```
 
-:::details "Молчаливая" установка 
+:::details "Молчаливая" установка
 
 Возможно установка без ручного ввода параметров с указанием конфигурационного файла с опциями:
 
 ```bash
 pnpm create vue-webapp -c config.json
-// or 
+// or
 pnpm create vue-webapp --config config.json
-``` 
+```
 
 Формат файла `config.json`:
 
 ```json
 {
-    "projectName": "my-vue-project",
-    "splashScreen": false,
-    "pwa": true,
-    "openGraph": false,
-    "googleAnalytics": false,
-    "githubActionsGithubPagesWorkflow": true,
-    "layout": "MainLayout",
-    "navigationDrawer": "SimpleDrawer",
-    "navbar": "MantineSimpleNavbar",
-    "header": "MantineSimpleHeader",
-    "footer": "MantineRichFooter",
-    "api": true,
-    "jsonRpc": false,
-    "overwrite": true
+  "projectName": "my-vue-project",
+  "splashScreen": false,
+  "pwa": true,
+  "openGraph": false,
+  "googleAnalytics": false,
+  "githubActionsGithubPagesWorkflow": true,
+  "layout": "MainLayout",
+  "navigationDrawer": "SimpleDrawer",
+  "navbar": "MantineSimpleNavbar",
+  "header": "MantineSimpleHeader",
+  "footer": "MantineRichFooter",
+  "api": true,
+  "jsonRpc": false,
+  "overwrite": true
 }
 ```
 Параметр `overwrite` означает перезаписывание содержимого уже существующей директории. Может принимать значения "yes", "no" и "ignore".
@@ -89,7 +89,7 @@ $ pnpm dev
 
 Результат в браузере:
 
-![](/images/vue-webapp/webapp-start.png)
+![image](/images/vue-webapp/webapp-start.png)
 
 ## Установка из репозитория
 

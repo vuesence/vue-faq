@@ -20,7 +20,7 @@ head:
 
 У магазинов обычно лэйаут состоит из четырех частей - header, footer, sidebar слева и центральная панель
 
-![](/images/vue-webapp/layout-main.png)
+![image](/images/vue-webapp/layout-main.png)
 
 ### Header
 

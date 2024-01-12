@@ -8,7 +8,6 @@
 
 Хорошо известный [Swiper](https://swiperjs.com/) не очень подходит для Vue.js
 
-
 ### Дата и время
 
 [day.js](https://day.js.org/), [day-fnc.js](https://date-fns.org/)
@@ -84,7 +83,6 @@ Ref на объекте использует напрямую Reactive для о
 
 - Тесно связанные компоненты: Например, компонент AccordianPanel, который всегда появляется только внутри слота компонента Accordian. Вы можете инжектировать общие данные, к которым вы всегда хотите иметь доступ, без необходимости передавать их в качестве пропсов.
 
-
 ### Лучшие практики и соображения
 
 При использовании provide и inject необходимо помнить о нескольких лучших практиках:
@@ -94,7 +92,6 @@ Ref на объекте использует напрямую Reactive для о
 - Четкая документация: Документируйте данные, которые вы провайдите и инжектируете, чтобы разработчикам было легко понять, как взаимодействуют компоненты. Их также можно типизировать, - подробности в [официальной документации](https://vuejs.org/guide/typescript/composition-api.html#typing-provide-inject).
 
 - Рассмотрите возможность Prop Drilling: Prop drilling обычно является антипаттерном, но в некоторых случаях передача данных через пропсы может быть более простым и прозрачным подходом. Оцените, являются ли provide и inject лучшим решением для вашего конкретного сценария.
-
 
 :::
 ::: details ShallowRef
@@ -119,19 +116,19 @@ Ref на объекте использует напрямую Reactive для о
 
 Google Chrome  и некоторые основанные на Chromium браузеры имеют настройку в DevTools в разделе настроек Console - "Enable custom formatters". После её включения реактивные объекты будут показываться в консоли и в попап-ах при дебаге в более читаемом виде:
 
-![](/images/faq/chrome-formatter-1.jpg)
+![image](/images/faq/chrome-formatter-1.jpg)
 
 вместо стандартного:
 
-![](/images/faq/chrome-formatter-2.jpg)
+![image](/images/faq/chrome-formatter-2.jpg)
 
 Временно отключить программно настройку можно так:
 
 ```js
 const old = window.devtoolsFormatters;
-delete window.devtoolsFormatters; 
+delete window.devtoolsFormatters;
 // will print out data without custom formatting
-console.log(obj); 
+console.log(obj);
 window.devtoolsFormatters = old;
 ```
 

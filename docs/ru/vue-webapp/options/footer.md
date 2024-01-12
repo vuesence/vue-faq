@@ -17,23 +17,23 @@ head:
 
 ## SimpleFooter
 
-![](/images/vue-webapp/footer-simple.png)
+![image](/images/vue-webapp/footer-simple.png)
 
 ## RichFooter
 
-![](/images/vue-webapp/footer-rich.png)
+![image](/images/vue-webapp/footer-rich.png)
 
 ## MantineSimpleFooter
 
-![](/images/vue-webapp/footer-simple-mantine.png)
+![image](/images/vue-webapp/footer-simple-mantine.png)
 
 ## MantineRichFooter
 
-![](/images/vue-webapp/footer-rich-mantine.png)
+![image](/images/vue-webapp/footer-rich-mantine.png)
 
 ## DistributedFooter
 
-![](/images/vue-webapp/footer-distributed.png)
+![image](/images/vue-webapp/footer-distributed.png)
 
 <style scoped>
 img {

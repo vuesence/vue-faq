@@ -17,25 +17,25 @@ All headers are adaptive.
 
 ## SimpleHeader
 
-![](/images/vue-webapp/header-simple.png)
+![image](/images/vue-webapp/header-simple.png)
 
 Simple `sticky` header
 
 ## MantineSimpleHeader
 
-![](/images/vue-webapp/header-simple-mantine.png)
+![image](/images/vue-webapp/header-simple-mantine.png)
 
 Simple `sticky` header in Mantine UI style
 
 ## MantineLayeredHeader
 
-![](/images/vue-webapp/header-layered-mantine.png)
+![image](/images/vue-webapp/header-layered-mantine.png)
 
 Layered `sticky` header in Mantine UI style
 
 ## SlidingHeader
 
-![](/images/vue-webapp/header-sliding.gif)
+![image](/images/vue-webapp/header-sliding.gif)
 
 Can contain two different headers, the second one appears after the user scrolls down the page
 
@@ -50,7 +50,6 @@ Can contain two different headers, the second one appears after the user scrolls
     </template>
 <AppHeader>
 ```
-
 
 <style scoped>
 img {

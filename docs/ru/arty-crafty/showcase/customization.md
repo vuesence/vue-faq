@@ -78,7 +78,7 @@ const routes: RouteRecordRaw[] = [
 
 Добавляем немного эффектов, адаптивности, и получаем:
 
-![](/ru/arty-crafty/assets/images/header-1.gif)
+![image](/ru/arty-crafty/assets/images/header-1.gif)
 
 ## Sidebar
 
@@ -86,7 +86,7 @@ const routes: RouteRecordRaw[] = [
 
 В итоге:
 
-![](/ru/arty-crafty/assets/images/website-1.gif)
+![image](/ru/arty-crafty/assets/images/website-1.gif)
 
 ## Небольшой рефакторинг
 

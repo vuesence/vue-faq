@@ -56,12 +56,12 @@ head:
 
 Use case диаграмма нашего проекта может выглядеть примерно так:
 
-![](/ru/arty-crafty/assets/images/use-case.png)
+![image](/ru/arty-crafty/assets/images/use-case.png)
 
 Разбивка по этапам очень условна.
 
 Вот более детальный пример Use case диаграммы онлайн магазина:
 
 ::: details Use case online store example
-![](/ru/arty-crafty/assets/images/use-case-online-shopping-example.jpg)
+![image](/ru/arty-crafty/assets/images/use-case-online-shopping-example.jpg)
 :::
