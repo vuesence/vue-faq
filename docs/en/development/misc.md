@@ -18,6 +18,74 @@ Well known [moment.js](https://momentjs.com/) is irretrievably obsolete.
 Modern JavaScript is much more than it was 10 years ago. In 95% of cases the capabilities of the standard JavaScript `Intl` package are sufficient for date-time operations
 :::
 
+::: details What is the best way to organise work with app layouts?
+
+An application can have several layouts - one with a side menu, for example, and one without. Some pages are shown with side menu, others - without.
+
+It is convenient to regulate this by routes. Just create two nested `router-views` - the outer one is responsible for the app layout, and the inner one (there can be several) is responsible for the components in that layout.
+
+An example:
+
+```vue
+// MainLayout
+<template>
+  <div>
+    <AppHeader />
+    <router-view />
+    <AppFooter />
+  </div>
+</template>
+
+// SidebarLayout
+<template>
+  <div>
+    <AppHeader />
+    <div>
+        <AppSidebar />
+        <router-view />
+    </div>
+    <AppFooter />
+  </div>
+</template>
+
+// App.vue
+<template>
+  <router-view />
+</template>
+```
+
+`routes = generalRoutes U accountRoutes`
+
+```js
+export const generalRoutes = {
+  path: "/",
+  component: MainLayout,
+  children: [
+    {
+      path: "/maintenance",
+      name: "maintenance",
+      component: MaintenanceView,
+    },
+  ]
+};
+// ...
+
+export const accountRoutes = {
+  path: "/account",
+  component: SidebarLayout,
+  children: [
+    {
+      path: "",
+      name: "account",
+      component: UserAccountView,
+      meta: { requiresAuth: true, backRoute: "/" },
+    }
+  ]
+};
+```
+
+:::
+
 ::: details How to catch the moment when the user scrolls to a certain place?
 
 Intersection Observer
