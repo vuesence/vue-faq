@@ -12,7 +12,7 @@ head:
       content: /images/arty-crafty-logo.png
 ---
 
-# Репозиторий и сайты проекта
+# Репозиторий и сайт проекта
 
 Репозиторий - [https://github.com/vuesence/arty-crafty](https://github.com/vuesence/arty-crafty)
 

@@ -2,7 +2,7 @@ export default [
   { text: "Предисловие", link: "/ru/arty-crafty/index" },
   { text: "О проекте", link: "/ru/arty-crafty/about-project" },
   { text: "План работы", link: "/ru/arty-crafty/development-stages" },
-  { text: "Репозиторий", link: "/ru/arty-crafty/repository" },
+  { text: "Репозиторий и сайт", link: "/ru/arty-crafty/repository" },
   {
     text: "Анализ",
     items: [
@@ -45,11 +45,11 @@ export default [
       //   text: "Бэкенд и база данных",
       //   collapsed: false,
       //   items: [
-      //     { text: "Выбор CMS", link: "/ru/arty-crafty/database/cms-choosing" },
-      //     { text: "Supabase", link: "/ru/arty-crafty/database/supabase" },
-      //     { text: "Модель данных", link: "/ru/arty-crafty/database/data-model" },
-      //     { text: "Hoppscotch", link: "/ru/arty-crafty/database/hoppscotch" },
-      //     { text: "API", link: "/ru/arty-crafty/database/api" },
+      //     { text: "Выбор CMS", link: "/ru/arty-crafty/backend/cms-choosing" },
+      //     { text: "Supabase", link: "/ru/arty-crafty/backend/supabase" },
+      //     { text: "Модель данных", link: "/ru/arty-crafty/backend/data-model" },
+      //     { text: "Hoppscotch", link: "/ru/arty-crafty/backend/hoppscotch" },
+      //     { text: "API", link: "/ru/arty-crafty/backend/api" },
       //   ],
       // },
     ],
