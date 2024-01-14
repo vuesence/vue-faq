@@ -106,4 +106,4 @@ localStorage.setItem("ac-favourites", JSON.stringify(listFavourites()));
 
 Загружаем в репозиторий и ставим тэг - [`v0.3`](https://github.com/vuesence/arty-crafty/tree/v0.3)
 
-[Coding music video](https://photos.google.com/photo/AF1QipP0d3xP-KTPhlhoVbvR6A4tAMlHOllT962wX1eL)
+[Coding music video](https://photos.google.com/share/AF1QipPaGf2RnGHrHhRIq0r6X8uoojZr-8n0WlkTZmwIcKOBYJXm04F7P5jAvHgi1CtF7A/photo/AF1QipMPkN6CCMlOdwlg5H0TVkJYsswMq5JvuJGBvt67?key=R05CcnF4Y3BibXRiSHRKUVdZd0wzVWt4VFM1UUhB)
