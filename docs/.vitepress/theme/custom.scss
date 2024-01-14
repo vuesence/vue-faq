@@ -41,7 +41,7 @@ body {
 }
 
 .arty-crafty {
-  img {
+  img:not(.logo) {
     border: 1px solid #ddd;
 }
 }
