@@ -20,7 +20,7 @@ pageClass: articles
         </div>
     </div>
     <div class="footer">
-        <div class="source">            
+        <div class="source">
             <a :href="post.url" target="_blank" class="vp-external-link-icon">
                 {{ extractDomain(post.url) }}
             </a>
@@ -79,7 +79,7 @@ pageClass: articles
                     color: var(--vp-c-text-1);
                 }
             }
-        }        
+        }
         .content {
             display: flex;
             .image {
@@ -105,7 +105,7 @@ pageClass: articles
                 color: var(--vp-c-text-3);
             }
         }
-        
+
     }
 
 </style>

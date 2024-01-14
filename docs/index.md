@@ -33,11 +33,11 @@ features:
   import { onMounted} from "vue";
 
   onMounted(() => {
-    if (navigator.language != "ru-RU") {
+    if (!"ru-RU".includes(navigator.language)) {
       document.querySelector(".actions .action:nth-child(3)").style.display = "none";
     };
   });
-  
+
 </script>
 
 <style lang="scss">
