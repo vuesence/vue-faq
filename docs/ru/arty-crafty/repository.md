@@ -16,4 +16,4 @@ head:
 
 Репозиторий - [https://github.com/vuesence/arty-crafty](https://github.com/vuesence/arty-crafty)
 
-Сайт - [https://vuesence.github.io/arty-crafty/](https://vuesence.github.io/arty-crafty/)
+Сайт (текущая dev версия) - [https://vuesence.github.io/arty-crafty/](https://vuesence.github.io/arty-crafty/)
