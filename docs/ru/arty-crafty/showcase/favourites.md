@@ -102,6 +102,8 @@ localStorage.setItem("ac-favourites", JSON.stringify(listFavourites()));
 
 По сути, это и есть `IconWithBadge` если мы захотим позже его реализовать.
 
----
+## Tag и CMV
 
-Загружаем в репозиторий и ставим тэг - [`v0.3`](https://github.com/vuesence/arty-crafty/tree/v0.3).
+Загружаем в репозиторий и ставим тэг - [`v0.3`](https://github.com/vuesence/arty-crafty/tree/v0.3)
+
+[Coding music video](https://photos.google.com/photo/AF1QipP0d3xP-KTPhlhoVbvR6A4tAMlHOllT962wX1eL)
