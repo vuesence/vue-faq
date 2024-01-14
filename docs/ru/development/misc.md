@@ -18,6 +18,74 @@
 Современный JavaScript - это гораздо больше, чем было 10 лет назад. В 95% случаев для операций с датой достаточно возможностей стандартного пакета JavaScript `Intl`
 :::
 
+::: details Как лучше организовать работу с лэйаутами (макетами)?
+
+У приложения моет быть несколько лэйаутов - один с боковым меню, например, и другой - без. Какие-то страницы показываются с боковым меню, другие - без.
+
+Удобно это регулировать роутами. Делается два вложенных `router-view` - внешний отвечает за лэйаут, а внутренний (их может быть несколько) - за компоненты в этом лэйауте.
+
+Пример:
+
+```vue
+// MainLayout
+<template>
+  <div>
+    <AppHeader />
+    <router-view />
+    <AppFooter />
+  </div>
+</template>
+
+// SidebarLayout
+<template>
+  <div>
+    <AppHeader />
+    <div>
+        <AppSidebar />
+        <router-view />
+    </div>
+    <AppFooter />
+  </div>
+</template>
+
+// App.vue
+<template>
+  <router-view />
+</template>
+```
+
+`routes = generalRoutes U accountRoutes`
+
+```js
+export const generalRoutes = {
+  path: "/",
+  component: MainLayout,
+  children: [
+    {
+      path: "/maintenance",
+      name: "maintenance",
+      component: MaintenanceView,
+    },
+  ]
+};
+// ...
+
+export const accountRoutes = {
+  path: "/account",
+  component: SidebarLayout,
+  children: [
+    {
+      path: "",
+      name: "account",
+      component: UserAccountView,
+      meta: { requiresAuth: true, backRoute: "/" },
+    }
+  ]
+};
+```
+
+:::
+
 ::: details Как поймать момент когда пользователь доскролил до определенного места?
 
 Intersection Observer
