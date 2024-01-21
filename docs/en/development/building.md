@@ -71,7 +71,6 @@ export default defineConfig({
     },
   },
 
-
 // package.json
 "devDependencies": {
     "@types/node": "^20.3.1",
@@ -82,12 +81,12 @@ export default defineConfig({
 
 If the project supports TypeScript, then also in `tsconfig.json`:
 
-```js
+```json
 // tsconfig.json
 {
   "compilerOptions": {
-    "paths": { "@/*": ["./src/*"] },
-    ...
+    "paths": { "@/*": ["./src/*"] }
+    // ...
   }
 }
 ```
@@ -110,7 +109,3 @@ npx vite-bundle-visualizer -t raw-data
 ```
 
 :::
-
-```
-
-```

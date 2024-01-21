@@ -20,23 +20,9 @@ At the same time, a good analogy of an object with a global ("static") and local
 
 :::
 
-::: details Suitable architecture for Vue 3 web application
-
-The most suitable architecture for a Vue 3 application is modular.
-
-Initially, the application is divided into logical modules that are loosely related to each other. For example, for an online store, it can be a product catalog module, a module of a single product, a module of a personal cabinet / user account.
-
-In addition, there is a shell module - what is sometimes called an `app shell`. A template with a header, footer, side menu and main window. It is wise to put utilities and resources used throughout the application into this module - for example, `api`, `useI18n`, `BaseButton`and`stringHelpers`.
-
-Each module has its own `components`, `composables`, `assets`, `utils`; perhaps `api`, `routes`, `views`, `layouts`.
-
-Loose coupling allows each module to be developed fairly independently, which greatly increases the likelihood of project success.
-
-:::
-
 ::: details Useful tips
 
-###### Avoid addictions
+###### Avoid dependencies
 
 If there is a possibility not to introduce a new dependency (not to plug in a new npm package) - don't do it. It may save you a bit of time, but a third-party library will sooner or later become obsolete, no longer supported, and may have a vulnerability. Besides, it increases the size of your bundle, which directly affects the performance of your application. Tree shaking is good in advertising, but it doesn't always work in reality.
 

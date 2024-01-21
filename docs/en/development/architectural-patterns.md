@@ -1,5 +1,19 @@
 # Architectural patterns
 
+::: details Suitable architecture for Vue 3 web application
+
+The most suitable architecture for a Vue 3 application is modular.
+
+Initially, the application is divided into logical modules that are loosely related to each other. For example, for an online store, it can be a product catalog module, a module of a single product, a user account module etc.
+
+In addition, there is a shell module - what is sometimes referred to as `app shell`. A template with a header, footer, side menu and main window. It is wise to put utilities and resources used throughout the application into this module - for example, `api`, `useI18n`, `BaseButton`and`stringHelpers`.
+
+Each module has its own `components`, `composables`, `assets`, `utils`; probably `api`, `routes`, `views`, `layouts`.
+
+Loose coupling allows each module to be developed fairly independently, which greatly increases the likelihood of project success.
+
+:::
+
 ::: details How to reuse the same developed resources on several projects?
 
 Sometimes there are two or more projects (admin panel and website, for example) that need to use the same components, utilities, services, composite functions and other resources that are in the process of development.
