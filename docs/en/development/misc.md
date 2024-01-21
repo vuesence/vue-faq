@@ -18,75 +18,7 @@ Well known [moment.js](https://momentjs.com/) is irretrievably obsolete.
 Modern JavaScript is much more than it was 10 years ago. In 95% of cases the capabilities of the standard JavaScript `Intl` package are sufficient for date-time operations
 :::
 
-::: details What is the best way to organise work with app layouts?
-
-An application can have several layouts - one with a side menu, for example, and one without. Some pages are shown with side menu, others - without.
-
-It is convenient to regulate this by routes. Just create two nested `router-views` - the outer one is responsible for the app layout, and the inner one (there can be several) is responsible for the components in that layout.
-
-An example:
-
-```vue
-// MainLayout
-<template>
-  <div>
-    <AppHeader />
-    <router-view />
-    <AppFooter />
-  </div>
-</template>
-
-// SidebarLayout
-<template>
-  <div>
-    <AppHeader />
-    <div>
-        <AppSidebar />
-        <router-view />
-    </div>
-    <AppFooter />
-  </div>
-</template>
-
-// App.vue
-<template>
-  <router-view />
-</template>
-```
-
-`routes = generalRoutes U accountRoutes`
-
-```js
-export const generalRoutes = {
-  path: "/",
-  component: MainLayout,
-  children: [
-    {
-      path: "/maintenance",
-      name: "maintenance",
-      component: MaintenanceView,
-    },
-  ]
-};
-// ...
-
-export const accountRoutes = {
-  path: "/account",
-  component: SidebarLayout,
-  children: [
-    {
-      path: "",
-      name: "account",
-      component: UserAccountView,
-      meta: { requiresAuth: true, backRoute: "/" },
-    }
-  ]
-};
-```
-
-:::
-
-::: details How to catch the moment when the user scrolls to a certain place?
+::: details How to catch the moment when the user scrolls to a certain place or to make a virtual scroll?
 
 Intersection Observer
 
@@ -136,23 +68,6 @@ Reactive uses the Proxy object directly.
 Ref on an object uses Reactive directly to track changes within the object, and creates and uses an array of variable dependencies for primitives and objects in case they are replaced.
 
 If you want pretentious efficiency, use Reactive on objects and Ref on primitives. Otherwise, you can do everything via Ref.
-
-:::
-
-::: details Use cases for using Provide/Inject
-
-#### Use cases
-
-- Theme or Configuration Settings: You can provide global settings, themes, or configuration options at the root level of your Vue.js application and inject them into any component that needs them.
-- Authentication Data: Share user authentication information, such as user details or authentication tokens, with components that require them without passing them down through props.
-- Internationalization (i18n): Store translation data at the root level and inject it into components that need to display text in different languages.
-- Tightly coupled components: Like i.e. `AccordianPanel` that only ever appears inside of an `Accordian` component slot. You can inject shared data that you always want to have access to it without the need to pass it in as a prop.
-
-#### Best Practices and Considerations
-
-- Avoid Overuse: While provide and inject can be powerful, don't overuse them. Reserve them for cases where you genuinely need to share data across components without creating tight coupling between them.
-- Clear Documentation: Document the data you are providing and injecting to make it easy for developers to understand how components communicate. You can also type them with TypeScript see the [official documentation](https://vuejs.org/guide/typescript/composition-api.html#typing-provide-inject) for details.
-- Consider Prop Drilling: Prop drilling is usually an anti-pattern, but in some cases, passing data through props might still be a more straightforward and more transparent approach. Evaluate whether provide and inject are the best solution for your specific scenario.
 
 :::
 
