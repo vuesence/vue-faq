@@ -1,0 +1,19 @@
+```mermaid
+flowchart TD
+    subgraph Frontend
+    id1(Application code) --> id2(API layer)
+    id2(API layer) --> Adapter:Supabase
+    id2(API layer) --> Adapter:Firebase
+    id2(API layer) --> Adapter:CloudServer
+    end
+    subgraph BaaS
+    Adapter:Supabase --> id3(Supabase API) --> id10[("Supabase
+    SQL DB")]
+    Adapter:Firebase --> id4(Firebase API) --> id11[("Firebase
+    NoSQL DB")]
+    end
+    subgraph "Proprietary backend"
+
+    Adapter:CloudServer --> id5(Backend API) --> id12[(In-house DB)]
+    end
+```

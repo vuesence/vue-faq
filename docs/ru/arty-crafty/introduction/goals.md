@@ -12,7 +12,7 @@ head:
       content: /images/arty-crafty-logo.png
 ---
 
-# О проекте
+# Цели и задачи проекта
 
 ## Цели данного проекта:
 

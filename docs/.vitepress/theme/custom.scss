@@ -43,5 +43,11 @@ body {
 .arty-crafty {
   img:not(.logo) {
     border: 1px solid #ddd;
+  }
 }
+
+.VPSidebarItem.level-0 h2.text {
+  font-family: Office Code Pro,Source Code Pro,Menlo,monospace;
+  text-transform: uppercase;
+  letter-spacing: .07em;
 }
