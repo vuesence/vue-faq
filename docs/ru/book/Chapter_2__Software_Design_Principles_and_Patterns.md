@@ -687,7 +687,7 @@ let temperature = {celsius: 0, fahrenheit: 32},                �
                     target.celsius = calculateCelsius(value);
                     break;
             }
-        }
+        },
         get(target, key) {
             return target[key];                                     //6
         }
