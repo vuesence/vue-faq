@@ -1,8 +1,8 @@
 export default [
+  { text: "О проекте", link: "/ru/arty-crafty/index" },
   {
     text: "Предисловие",
     items: [
-      { text: "О проекте", link: "/ru/arty-crafty/index" },
       { text: "Цели и задачи", link: "/ru/arty-crafty/introduction/goals" },
       { text: "План работы", link: "/ru/arty-crafty/introduction/development-stages" },
       { text: "Репозиторий и сайт", link: "/ru/arty-crafty/introduction/repository" },
