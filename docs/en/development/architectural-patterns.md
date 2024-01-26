@@ -108,3 +108,57 @@ export const accountRoutes = {
 ```
 
 :::
+
+::: details How to make one global preloader (analog of Suspense)?
+
+If several asynchronous functions can be executed simultaneously in the application (loading data from the backend, for example), and the animation preloader should be only one, it is easy to implement it via a composable function:
+
+##### AppLoader.vue
+```vue
+<script setup>
+import { useAppLoader } from "@/app/composables/useAppLoader";
+const { loading } = useAppLoader();
+</script>
+
+<template>
+  <div class="loader" :class="{ active: loading }">
+    <div class="loaderBar" />
+  </div>
+</template>
+```
+
+##### useAppLoader.ts
+```ts
+import { computed, reactive, ref } from "vue";
+import { uuid } from "@/app/utils/uuid";
+
+const loaderSet = reactive(new Set<string>());
+const loading = computed(() => loaderSet.size > 0);
+
+export function useAppLoader() {
+  const _uuid: string = uuid();
+
+  function startLoading() {
+    loaderSet.add(_uuid);
+  }
+  function stopLoading() {
+    loaderSet.delete(_uuid);
+  }
+
+  return { loading, startLoading, stopLoading };
+}
+```
+
+##### Some component
+
+```js
+import { useAppLoader } from "@/app/composables/useAppLoader";
+const { startLoading, stopLoading } = useAppLoader();
+
+startLoading();
+product.value = await api.products.product(props.productId);
+stopLoading();
+```
+
+`uuid` - any function to generate a unique id.
+:::
