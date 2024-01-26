@@ -109,7 +109,7 @@ export const accountRoutes = {
 
 :::
 
-::: details How to make one global preloader (analog of Suspense)?
+::: details How to make one global preloader (alternative of Suspense)?
 
 If several asynchronous functions can be executed simultaneously in the application (loading data from the backend, for example), and the animation preloader should be only one, it is easy to implement it via a composable function:
 
