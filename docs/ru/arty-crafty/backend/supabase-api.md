@@ -31,18 +31,18 @@ import { createClient } from "@supabase/supabase-js";
 const supabase = createClient("https://client_id.supabase.co", "public-anon-key");
 
 const { data: product, error } = await supabase
-  .from("product")
+  .from("products")
   .select("*");
 
 const { data, error } = await supabase
-  .from("product")
+  .from("products")
   .insert([
     { some_column: "someValue", other_column: "otherValue" },
   ])
   .select();
 
 const { error } = await supabase
-  .from("product")
+  .from("products")
   .delete()
   .eq("some_column", "someValue");
 ```
@@ -52,20 +52,24 @@ const { error } = await supabase
 Либо напрямую через HTTP запросы:
 
 ```sh
-curl 'https://client_id.supabase.co/rest/v1/product?select=*' \
+curl 'https://client_id.supabase.co/rest/v1/products?select=*' \
 -H "apikey: SUPABASE_CLIENT_ANON_KEY" \
 -H "Authorization: Bearer SUPABASE_CLIENT_ANON_KEY"
 
-curl -X POST 'https://client_id.supabase.co/rest/v1/product' \
+curl -X POST 'https://client_id.supabase.co/rest/v1/products' \
 -H "apikey: SUPABASE_CLIENT_ANON_KEY" \
 -H "Authorization: Bearer SUPABASE_CLIENT_ANON_KEY" \
 -H "Content-Type: application/json" \
 -H "Prefer: return=minimal" \
 -d '{ "some_column": "someValue", "other_column": "otherValue" }'
 
-curl -X DELETE 'https://client_id.supabase.co/rest/v1/product?some_column=eq.someValue' \
+curl -X DELETE 'https://client_id.supabase.co/rest/v1/products?some_column=eq.someValue' \
 -H "apikey: SUPABASE_CLIENT_ANON_KEY" \
 -H "Authorization: Bearer SUPABASE_CLIENT_ANON_KEY"
 ```
 
 Мы будем использовать второй способ, - опять же, чтобы не внедрять необязательные зависимости. Плюс, дебажить явные HTTP запросы намного проще.
+
+Доступ через REST API использует библиотеку [PostgREST](https://postgrest.org), написанную на `Haskell`. На её сайте можно ознакомиться с богатым синтаксисом возможных запросов.
+
+Таким образом, на данный момент мы используем Postgres базу данных и PostgREST библиотеку/сервер. От самой Supabase пока что только удобная админка для управления БД.

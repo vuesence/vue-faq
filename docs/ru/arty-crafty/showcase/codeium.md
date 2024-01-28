@@ -59,6 +59,10 @@ function listFavourites(): Array<number> {
 
 > This code defines a function called listFavourites that returns a list of favorite product IDs. The function uses the Array.from method to convert the favourites.value array-like object into a proper array. The function has a return type annotation of Array\<number\>, indicating that it returns an array of numbers.
 
+## Explain problem
+
+При подчеркивании ошибки ESlint-ом Codeium часто предлагает опцию `Explain problem`, в которой будет не только объяснение ошибки, но и генерация "правильного" кода. С ошибками TypeScript работает очень неплохо.
+
 ## Вывод
 
 Codeium - не панацея, если не умеешь программировать, но экономит много времени, если что-то умеешь.

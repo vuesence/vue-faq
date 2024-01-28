@@ -21,3 +21,32 @@ head:
 Одной из удобных альтернатив является `Hopscotch`, в девичестве - `Postwoman`. Он работает из браузера или как PWA приложение, имеет весь необходимый нам функционал и написан на Vue.
 
 ![image](/ru/arty-crafty/assets/images/hoppscotch.webp)
+
+## Endpoints
+
+Нам нужны три эндпойнта на текущем этапе:
+
+- список всех категорий
+- список товаров в определенной категории
+- подробная информация о товаре
+
+Создадим соответствующие запросы в Hoppscotch:
+
+```sh
+curl --request GET \
+  --url 'https://client_id.supabase.co/rest/v1/categories?select=*' \
+  --header 'Authorization: Bearer $apiKey$' \
+  --header 'apikey: $apiKey$'
+
+curl --request GET \
+  --url 'https://client_id.supabase.co/rest/v1/categories?select=id,title,product(id,title,desc)&id=eq.2' \
+  --header 'Authorization: Bearer $apiKey$' \
+  --header 'apikey: $apiKey$'
+
+curl --request GET \
+  --url 'https://client_id.supabase.co/rest/v1/products?select=id,title,desc,data&id=eq.2' \
+  --header 'Authorization: Bearer $apiKey$' \
+  --header 'apikey: $apiKey$'
+```
+
+Второй запрос - это `LEFT JOIN` на таблицах `categories` и `products`. К сожалению документация Supabase не очень детально описывает join-ы, пришлось поэкспериментировать.

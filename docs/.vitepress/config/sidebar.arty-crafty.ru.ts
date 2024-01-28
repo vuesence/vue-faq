@@ -46,24 +46,25 @@ export default [
           { text: "Codeium", link: "/ru/arty-crafty/showcase/codeium" },
         ],
       },
-      // {
-      //   text: "Бэкенд и база данных",
-      //   collapsed: false,
-      //   items: [
-      //     { text: "Выбор BaaS", link: "/ru/arty-crafty/backend/baas-choosing" },
-      //     { text: "Supabase", link: "/ru/arty-crafty/backend/supabase" },
-      //     { text: "Модель данных", link: "/ru/arty-crafty/backend/db-data-model" },
-      //     { text: "Supabase API", link: "/ru/arty-crafty/backend/supabase-api" },
-      //     { text: "Hoppscotch", link: "/ru/arty-crafty/backend/hoppscotch" },
-      //   ],
-      // },
-      // {
-      //   text: "Витрина -  данные",
-      //   collapsed: false,
-      //   items: [
-      //     { text: "API сервис адаптер", link: "/ru/arty-crafty/showcase-data/api-service-adapter" },
-      //   ],
-      // },
+      {
+        text: "Бэкенд и база данных",
+        collapsed: false,
+        items: [
+          { text: "Выбор BaaS", link: "/ru/arty-crafty/backend/baas-choosing" },
+          { text: "Supabase", link: "/ru/arty-crafty/backend/supabase" },
+          { text: "Модель данных", link: "/ru/arty-crafty/backend/db-data-model" },
+          { text: "Supabase API", link: "/ru/arty-crafty/backend/supabase-api" },
+          { text: "Hoppscotch", link: "/ru/arty-crafty/backend/hoppscotch" },
+        ],
+      },
+      {
+        text: "Витрина -  данные",
+        collapsed: false,
+        items: [
+          { text: "API сервис адаптер", link: "/ru/arty-crafty/showcase-data/api-service-adapter" },
+          { text: "Мобильное меню, CSS", link: "/ru/arty-crafty/showcase-data/mobile-menu" },
+        ],
+      },
     ],
   },
 ];
