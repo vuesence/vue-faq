@@ -116,7 +116,7 @@ export const accountRoutes = {
 
 :::
 
-::: details Как сделать один глобальные прелоадер (аналог Suspense)?
+::: details Как сделать один глобальный прелоадер (аналог Suspense)?
 
 Если в приложении одновременно может выполняться несколько асинхронных функций (загрузка с бэкенда, например), а анимационный прелоадер надо показывать один, то можно несложно реализовать его через composable функцию:
 
@@ -156,7 +156,7 @@ export function useAppLoader() {
 }
 ```
 
-##### Some component
+##### SomeComponent
 
 ```js
 import { useAppLoader } from "@/app/composables/useAppLoader";
