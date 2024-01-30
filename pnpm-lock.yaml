@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  release-timeline:
+    specifier: ^0.3.0
+    version: 0.3.0(vue@3.4.13)
   vue:
     specifier: ^3.4.13
     version: 3.4.13(typescript@5.3.3)
@@ -2766,6 +2769,14 @@ packages:
     dependencies:
       jsesc: 0.5.0
     dev: true
+
+  /release-timeline@0.3.0(vue@3.4.13):
+    resolution: {integrity: sha512-s9guqtAp/0UZk+Fb4s6QiUU5pLHpolgCGjagR2d5lWHM2a4dv2w2AF6bLWQr12XC/JCjJ5fKVn7RfX03Vwt7GQ==}
+    peerDependencies:
+      vue: '>=3.0.0'
+    dependencies:
+      vue: 3.4.13(typescript@5.3.3)
+    dev: false
 
   /require-directory@2.1.1:
     resolution: {integrity: sha512-fGxEI7+wsG9xrvdjsrlmL22OMTTiHRwAMroiEeMgq8gzoLC/PQr7RsRDSTLUg/bZAZtF+TVIkHc6/4RIKrui+Q==}

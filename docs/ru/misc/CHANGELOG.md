@@ -1,75 +1,14 @@
-# История изменений
+<script setup>
+// import { ReleaseTimeline, DefaultOptions as options } from "release-timeline";
+import { DefaultOptions as options } from "release-timeline";
+import "release-timeline/dist/style.css";
+import "release-timeline/dist/animated-background.css";
+import ReleaseTimeline from '../../../../Vuesence/release-timeline/src/ReleaseTimeline.vue'
+// import { DefaultOptions as options } from "./utils";
 
-<br />
+options.github.owner = "vuesence";
+options.github.repo = "arty-crafty";
 
-## v1.4 (24-11-2023)
+</script>
 
-#### Новое
-
-- `Перевод книги 'Vue.js 3 Design Patterns and Best Practices'`
-- `vue-webapp`
-
-#### Изменено
-
-- `Фронтенд / Как изучать Vue?`
-
-<!-- --- -->
-
-<br />
-<br />
-
-## v1.3 (10-10-2023)
-
-<!-- #### Новое -->
-
-<!-- - `Деплой на сервере / Github Actions` -->
-
-#### Изменено
-
-- `Общение с бэкендом / CORS`
-- `Фронтенд / Как изучать Vue?`
-- `Разработка / Полезные советы`
-
-<!-- --- -->
-
-<br />
-<br />
-
-## v1.2 (27-09-2023)
-
-#### Новое
-
-- `Деплой на сервере / Github Actions`
-
-#### Изменено
-
-- `Деплой на сервере / CI/CD`
-- `Разработка / Сторы - Vuex, Pinia и Composition API`
-- `Фронтенд / О фронтенд фреймворках`
-- Несущественные изменения и исправление ошибок в разных разделах
-
-<!-- --- -->
-
-<br />
-<br />
-
-## v1.1 (15-09-2023)
-
-### Новое
-
-- `Разработка / Сторы`
-
-### Изменено
-
-- `Разработка / Полезные советы`
-
-<!-- --- -->
-
-<br />
-<br />
-
-## v1.0 (11-09-2023)
-
-### Новое
-
-- Начальный запуск
+<ReleaseTimeline :options="options" />

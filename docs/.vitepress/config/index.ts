@@ -7,6 +7,7 @@ import sidebar_book_ru from "./sidebar.book.ru";
 import sidebar_vue_webapp_ru from "./sidebar.vue-webapp.ru";
 import sidebar_vue_webapp_en from "./sidebar.vue-webapp.en";
 import sidebar_arty_crafty_ru from "./sidebar.arty-crafty.ru";
+import sidebar_release_timeline_ru from "./sidebar.release-timeline.ru";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -23,6 +24,7 @@ export default defineConfig({
           "/ru/book/": sidebar_book_ru,
           "/ru/vue-webapp/": sidebar_vue_webapp_ru,
           "/ru/arty-crafty/": sidebar_arty_crafty_ru,
+          "/ru/release-timeline/": sidebar_release_timeline_ru,
         },
         lastUpdated: {
           text: "Последнее обновление",
