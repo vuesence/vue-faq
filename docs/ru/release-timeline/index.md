@@ -25,3 +25,7 @@ Vue 3, без зависимостей, 9Кб в распакованном ви
 ## To Do
 
 Планируется добавить commits и pull requests к каждому релизу
+
+## GitHub
+
+[https://github.com/vuesence/release-timeline](https://github.com/vuesence/release-timeline)
