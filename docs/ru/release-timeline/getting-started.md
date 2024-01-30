@@ -22,7 +22,7 @@ pnpm add release-timeline
 
 ## Использованиe в коде
 
-<!-- In your code: -->
+Во Vue компоненте или в VitePress .md файле:
 
 ```vue
 <script setup>
