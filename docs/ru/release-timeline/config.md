@@ -20,6 +20,7 @@ head:
 export const DefaultOptions = {
   github: {
     owner: "vuejs",
+    // repo to get release information from
     repo: "vitepress",
     // number of releases to request
     size: 20,
