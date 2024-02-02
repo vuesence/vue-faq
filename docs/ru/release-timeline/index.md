@@ -14,18 +14,24 @@ head:
 
 # Release Timeline
 
-## Визуализация релизов ПО по временной шкале
+## Визуализация релизов
 
-![image](/ru/release-timeline/assets/images/rt-image.jpg)
+Визуализация релизов любого GitHub репозитория по временной шкале, с информацией о коммитах и пул риквестах.
 
-Vue 3, без зависимостей, 9Кб в распакованном виде. Адаптирована для работы в VitePress (переключение светлой и темной тем).
+Встраивается в VitePress, может быть хорошей заменой `changelog`-а в технической документации проекта, автоматизируя фиксацию изменений и делая слежение за ними удобным для пользователей.
 
-Библиотека обращается в GitHub REST API за данными по релизам определенного репозитория и визуализирует их.
+![image](/ru/release-timeline/assets/images/rt.jpg)
 
-## To Do
+Библиотека написана с использованием Vue 3, не имеет зависимостей, занимает 15Кб в распакованном виде. Адаптирована для работы в VitePress (переключение светлой и темной тем). Может подключаться как `web component` в не Vue проектах.
 
-Планируется добавить commits и pull requests к каждому релизу
+Данные по релизам определенного репозитория берутся через GitHub REST API.
 
-## GitHub
+Public репозитории доступны сразу, для private репозиториев требуется использовать GitHub API токен.
 
-[https://github.com/vuesence/release-timeline](https://github.com/vuesence/release-timeline)
+## Ссылки
+
+- [GitHub](https://github.com/vuesence/release-timeline)
+
+- [Demo](https://vuesence.github.io/release-timeline/) (можно задать любой репозиторий через выбор в верхнем левои углу)
+
+- [Web component demo](https://unpkg.com/release-timeline/dist/wc-demo.html)
