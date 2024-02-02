@@ -9,7 +9,7 @@
     "preview": "vitepress preview docs"
   },
   "dependencies": {
-    "release-timeline": "^0.5.7",
+    "release-timeline": "^0.5.9",
     "vue": "^3.4.13",
     "vue3-toastify": "^0.1.14"
   },
