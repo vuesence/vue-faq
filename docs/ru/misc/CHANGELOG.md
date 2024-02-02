@@ -9,7 +9,7 @@ import "release-timeline/dist/animated-background.css";
 // import { DefaultOptions as options } from "../../../../Vuesence/release-timeline/src/options";
 
 options.github.owner = "vuesence";
-options.github.repo = "release-timeline";
+options.github.repo = "vue-faq";
 
 </script>
 
