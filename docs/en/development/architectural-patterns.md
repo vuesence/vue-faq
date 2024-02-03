@@ -12,6 +12,8 @@ Each module has its own `components`, `composables`, `assets`, `utils`; probably
 
 Loose coupling allows each module to be developed fairly independently, which greatly increases the likelihood of project success.
 
+![image](/assets/images/modular-architecture.webp)
+
 :::
 
 ::: details How to reuse the same developed resources on several projects?
