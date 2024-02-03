@@ -94,6 +94,7 @@ export const DefaultOptions = {
   --rt-c-brand-1: #3451b2;
   --rt-c-brand-2: #3a5ccc;
   --rt-c-circle-bg: #888;
+  --rt-font-family-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .dark {

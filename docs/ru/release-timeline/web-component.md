@@ -73,6 +73,7 @@ body {
   --rt-c-brand-1: #5c73e7;
   --rt-c-brand-2: #a8b1ff;
   --rt-c-circle-bg: #888;
+  --rt-font-family-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #1b1b1f;
 }
 </style>

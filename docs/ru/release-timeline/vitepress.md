@@ -49,5 +49,6 @@ CSS переменные `release-timeline` подключаются к CSS пе
   --rt-c-brand-1: var(--vp-c-brand-1);
   --rt-c-brand-2: var(--vp-c-brand-2);
   --rt-c-circle-bg: #888;
+  --rt-font-family-base: var(--vp-font-family-base);
 }
 ```
