@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   release-timeline:
-    specifier: ^0.5.9
-    version: 0.5.9(vue@3.4.13)
+    specifier: ^0.5.14
+    version: 0.5.14(vue@3.4.13)
   vue:
     specifier: ^3.4.13
     version: 3.4.13(typescript@5.3.3)
@@ -2770,8 +2770,8 @@ packages:
       jsesc: 0.5.0
     dev: true
 
-  /release-timeline@0.5.9(vue@3.4.13):
-    resolution: {integrity: sha512-VX/lL46eF1cBPnNEfJUTPH3u6jxeYnWefHqx40yVtg0pIxSm12tFkBeEBipIdSIBmmOTztMRRuZIRkMstyhSkA==}
+  /release-timeline@0.5.14(vue@3.4.13):
+    resolution: {integrity: sha512-IViYgGRM9t0Z3+vb9xzJ7GccCJaRsqc54k2PZly63ccsjZQ02WS5Nw7DZh2XTcbpaelYqmgdOcxsZ6lrrRmjwg==}
     peerDependencies:
       vue: '>=3.0.0'
     dependencies:

@@ -63,6 +63,8 @@ export default [
         items: [
           { text: "API сервис адаптер", link: "/ru/arty-crafty/showcase-data/api-service-adapter" },
           { text: "Мобильное меню, CSS", link: "/ru/arty-crafty/showcase-data/mobile-menu" },
+          { text: "VueUse", link: "/ru/arty-crafty/showcase-data/vueuse" },
+          // { text: "Слайдер, ProductView", link: "/ru/arty-crafty/showcase-data/product-page" },
         ],
       },
     ],
