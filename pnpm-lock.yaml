@@ -6,7 +6,7 @@ settings:
 
 dependencies:
   release-timeline:
-    specifier: ^0.5.14
+    specifier: ^0.5.9
     version: 0.5.14(vue@3.4.13)
   vue:
     specifier: ^3.4.13
