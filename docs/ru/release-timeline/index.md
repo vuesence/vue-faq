@@ -32,6 +32,6 @@ Public репозитории доступны сразу, для private реп
 
 - [GitHub](https://github.com/vuesence/release-timeline)
 
-- [Demo](https://vuesence.github.io/release-timeline/) (можно задать любой репозиторий через выбор в верхнем левои углу)
+- [Demo](https://vuesence.github.io/release-timeline/) (можно задать любой репозиторий через выбор в верхнем левом углу)
 
 - [Web component demo](https://unpkg.com/release-timeline/dist/wc-demo.html)

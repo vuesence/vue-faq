@@ -73,13 +73,12 @@ body {
   --rt-c-brand-1: #5c73e7;
   --rt-c-brand-2: #a8b1ff;
   --rt-c-circle-bg: #888;
-  --rt-font-family-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #1b1b1f;
 }
 </style>
 
 <body>
-  <release-timeline options="" ></release-timeline>
+  <release-timeline options="" />
 </body>
 
 ```
@@ -87,3 +86,8 @@ body {
 В этом случае аттрибут `options` должен быть пустым.
 
 Для фона звездного неба необходимо установить `--rt-c-bg: transparent` и нужный фоновый `background-color` на `body` или нужный контейнер. Это нужно только для подключения в режиме `web-components`.
+
+## Demo
+
+Посмотреть работу `release-timeline` как веб компонента можно тут - <a target="_blank" href="https://unpkg.com/release-timeline/dist/wc-demo.html">wc-demo</a>
+Это просто html страница, можно посмотреть её код

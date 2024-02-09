@@ -14,7 +14,21 @@ head:
 
 # VitePress
 
-Пакет полностью поддерживает VitePress, включая смену светлой и темной тем и адаптацию к его стилям.
+`release-timeline` полностью поддерживает VitePress, включая смену светлой и темной тем и адаптацию к его стилям.
+
+## Установка пакета
+
+::: code-group
+```bash [pnpm]
+pnpm add release-timeline
+```
+```bash [yarn]
+pnpm add release-timeline
+```
+```bash [npm]
+npm install release-timeline
+```
+:::
 
 ## Подключение
 

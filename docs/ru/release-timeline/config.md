@@ -24,9 +24,9 @@ export const DefaultOptions = {
   title: "Releases",
   github: {
     // repository owner
-    owner: "vuejs",
+    owner: "vuesence",
     // repo to get release information from
-    repo: "vitepress",
+    repo: "release-timeline",
     // GitHub API token for accessing private repositories
     token: "",
     // feedType: github or url
@@ -58,18 +58,17 @@ export const DefaultOptions = {
   },
   // display or not specific parts of information
   display: {
-    animatedBackground: true,
-    animatedBackgroundForLightTheme: false,
     release: {
       name: true,
       username: true,
       desc: true,
       pulls: true,
       commits: true,
-      hidePullUsername: true,
-      hideCommitUsername: false,
+      hidePullUsername: false,
+      hideCommitUsername: true,
       hideMergeCommits: true,
-      // defaultOpenTab: "pulls",
+      // `desc`, `pulls`, `commits` or ``
+      defaultOpenTab: "pulls",
     },
   },
 };
