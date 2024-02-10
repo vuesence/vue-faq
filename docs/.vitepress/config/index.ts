@@ -8,6 +8,7 @@ import sidebar_vue_webapp_ru from "./sidebar.vue-webapp.ru";
 import sidebar_vue_webapp_en from "./sidebar.vue-webapp.en";
 import sidebar_arty_crafty_ru from "./sidebar.arty-crafty.ru";
 import sidebar_release_timeline_ru from "./sidebar.release-timeline.ru";
+import sidebar_release_timeline_en from "./sidebar.release-timeline.en";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -60,6 +61,7 @@ export default defineConfig({
         sidebar: {
           "/en/": sidebar_faq_en,
           "/en/vue-webapp/": sidebar_vue_webapp_en,
+          "/en/release-timeline/": sidebar_release_timeline_en,
         },
         socialLinks: [
           { icon: "twitter", link: "https://twitter.com/vuefaq" },

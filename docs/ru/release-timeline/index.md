@@ -20,6 +20,8 @@ head:
 
 Встраивается в VitePress, может быть хорошей заменой `changelog`-а в технической документации проекта, автоматизируя фиксацию изменений и делая слежение за ними удобным для пользователей.
 
+Также может быть подключено в любой HTML странице как Web component или микрофронтенд.
+
 ![image](/ru/release-timeline/assets/images/rt.jpg)
 
 Библиотека написана с использованием Vue 3, не имеет зависимостей, занимает 15Кб в распакованном виде. Адаптирована для работы в VitePress (переключение светлой и темной тем). Может подключаться как `web component` в не Vue проектах.
@@ -28,10 +30,10 @@ head:
 
 Public репозитории доступны сразу, для private репозиториев требуется использовать GitHub API токен.
 
-## Ссылки
+## Репозиторий
 
 - [GitHub](https://github.com/vuesence/release-timeline)
 
-- [Demo](https://vuesence.github.io/release-timeline/) (можно задать любой репозиторий через выбор в верхнем левом углу)
+## Demo
 
-- [Web component demo](https://unpkg.com/release-timeline/dist/wc-demo.html)
+- [Demo](https://vuesence.github.io/release-timeline/) (можно задать любой репозиторий через выбор в верхнем левом углу)

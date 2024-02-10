@@ -1,4 +1,19 @@
-# Changelog
+<script setup>
+import { ReleaseTimeline, DefaultOptions as options } from "release-timeline";
+import "release-timeline/dist/style.css";
+import "release-timeline/dist/vitepress.css";
+
+import "release-timeline/dist/animated-background.css";
+
+options.github.owner = "vuesence";
+options.github.repo = "vue-faq";
+
+</script>
+
+<ReleaseTimeline :options="options" />
+
+
+<!-- # Changelog
 
 <br />
 
@@ -9,7 +24,6 @@
 - `Frontend / How to learn Vue?`
 - `vue-webapp`
 
-<!-- --- -->
 
 <br />
 <br />
@@ -21,8 +35,6 @@
 - `Backend / CORS`
 - `Frontend / How to learn Vue?`
 - `Development / Useful tips`
-
-<!-- --- -->
 
 <br />
 <br />
@@ -39,8 +51,6 @@
 - `Deployment / Stores - Vuex, Pinia and Composition API`
 - `Frontend / About frontend frameworks`
 
-<!-- --- -->
-
 <br />
 <br />
 
@@ -54,7 +64,6 @@
 
 - `Development / Helpful hints`.
 
-<!-- --- -->
 
 <br />
 <br />
@@ -63,4 +72,4 @@
 
 ### New
 
-- Initial launch
+- Initial launch -->
