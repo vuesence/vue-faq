@@ -37,3 +37,7 @@ Public repositories are available immediately, private repositories require GitH
 ## Demo
 
 - [Demo](https://vuesence.github.io/release-timeline/) (you can specify any repository via the selection in the upper left corner)
+
+## Credits
+
+[Parallax Star background in CSS](https://codepen.io/sarazond/pen/LYGbwj)

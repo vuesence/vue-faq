@@ -37,3 +37,7 @@ Public репозитории доступны сразу, для private реп
 ## Demo
 
 - [Demo](https://vuesence.github.io/release-timeline/) (можно задать любой репозиторий через выбор в верхнем левом углу)
+
+## Credits
+
+[Parallax Star background in CSS](https://codepen.io/sarazond/pen/LYGbwj)
