@@ -14,12 +14,12 @@
     "vue3-toastify": "^0.1.14"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.8.0",
+    "@antfu/eslint-config": "^2.13.3",
     "@vitejs/plugin-vue": "^5.0.4",
     "eslint": "^8.57.0",
-    "sass": "^1.71.1",
-    "typescript": "^5.4.2",
-    "vite": "^5.1.5",
-    "vitepress": "1.0.0-rc.45"
+    "sass": "^1.74.1",
+    "typescript": "^5.4.5",
+    "vite": "^5.2.8",
+    "vitepress": "^1.1.0"
   }
 }

@@ -20,6 +20,24 @@ At the same time, a good analogy of an object with a global ("static") and local
 
 :::
 
+::: details Multithreading and asynchronicity
+
+**Multithreading** is when a programmer can create a separate thread and run his specific code in it. For example, you can create two threads, one in an infinite loop outputs "Thread A" to the console and the other "Thread B". These strings will alternate in the output. You can prioritize the threads, and then the thread with priority 3 will output messages 3 times more often than the thread with priority 1.
+
+These two threads should be executed simultaneously, but this is conditional. Because if there are 10 threads and the processor is dual-core with two threads per core, it is physically impossible to execute more than 4 simultaneous threads. That's why threads are divided into pieces of code and they are executed one by one - this is called concurrency.
+
+In the JavaScript world, threads can become queued at the JS runtime, OS, CPU level. Common desktop applications (for example, IDEs) can also have good support for parallelization on multi-core processors - and then they use CPUs as efficiently as possible, or load only one core. In the latter case, upgrading to a newer multi-core CPU will do almost nothing if the old and the new one have approximately the same frequency.
+
+**Asynchronicity** is when there is some non-blocking function whose exact execution time is unknown. And the programmer can specify the code to be executed after this function is executed (pass a callback). Promises and async/await are non-trivial but still just convenient wrappers over this logic.
+
+So, with asynchronicity, there is usually some border function that depends on external circumstances (`fetch, nextTick, fs.readdir, setTimeout`). Its "pseudo-parallel" execution in one thread together with the main code is provided by the `Event Loop` mechanism.
+
+Thus, these are completely different things both in purpose and usage. asynchronicity in JavaScript is realized through promises and async/await, multithreading or its similarity is realized by rantime (`Web workers`, `worker_threads`).
+
+Asynchronicity is needed to communicate with the "outside world", including browser rendering. Multithreading allows to separate resource-intensive computations (as well as network requests) into separate threads (`Web workers`), which reduces the load on the main thread, which is responsible for rendering. This has a favorable effect on the responsiveness of your UI.
+
+:::
+
 ::: details Useful tips
 
 ###### Avoid dependencies
