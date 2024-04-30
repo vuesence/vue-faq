@@ -28,7 +28,7 @@ export default [
     items: [
       { text: "Авторизация и аутентификация", link: "/ru/backend/auth" },
       { text: "Протоколы. To REST или не REST?", link: "/ru/backend/protocols" },
-      { text: "Выделение API сервиса", link: "/ru/backend/api" },
+      { text: "API сервис", link: "/ru/backend/api" },
       { text: "Варианты сделать бэкенд", link: "/ru/backend/backend" },
       { text: "CORS", link: "/ru/backend/cors" },
     ],

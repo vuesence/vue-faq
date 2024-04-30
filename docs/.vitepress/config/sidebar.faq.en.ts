@@ -27,7 +27,7 @@ export default [
     items: [
       { text: "Authorization and Authentication", link: "/en/backend/auth" },
       { text: "Protocols. To REST or not to REST?", link: "/en/backend/protocols" },
-      { text: "Service API allocation", link: "/en/backend/api" },
+      { text: "API service adapter", link: "/en/backend/api" },
       { text: "Options to set up a backend", link: "/en/backend/backend" },
       { text: "CORS", link: "/en/backend/cors" },
     ],
