@@ -44,7 +44,7 @@ onMounted(() => {
   }
   localStorage.setItem("vue-faq-config", JSON.stringify(config));
 
-  // saveVisit(config);
+  saveVisit(config);
 });
 
 async function saveVisit(config) {
