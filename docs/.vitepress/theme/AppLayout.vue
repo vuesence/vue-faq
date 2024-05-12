@@ -40,11 +40,11 @@ onMounted(() => {
     config.userId = self.crypto.randomUUID();
   }
   if (!config.notifications.githubStars && (site.value.lang === "ru" || navigator.language === "ru-RU") && config.visits > 2) {
-    showTelegramNotification(localStorage, config);
+    // showTelegramNotification(localStorage, config);
   }
   localStorage.setItem("vue-faq-config", JSON.stringify(config));
 
-  saveVisit(config);
+  // saveVisit(config);
 });
 
 async function saveVisit(config) {
