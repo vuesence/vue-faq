@@ -496,22 +496,22 @@ export {useCounterStore}
 
 ```js
 //Composition API
-import {ref,computed} from 'vue'                          //1
+import {ref,computed} from 'vue'                            //1
 import {defineStore} from 'pinia'
-const useCounterStore=defineStore('counter',()=>{         //2
+export const useCounterStore = defineStore('counter',()=>{  //2
     const
-        count = ref(0),                                   //3
+        count = ref(0),                                     //3
         in_range=ref(true),
-        doubleCount = computed(() => {                    //4
+        doubleCount = computed(() => {                      //4
              if(count.value>=0){
                  return count.value *2;
              }else{
                  return 0
         }}),
         inRange = computed(()=>return count.value>=0);
-    function increment() {count.value++}                  //5
+    function increment() {count.value++}                    //5
     function decrement(){count.value--;}
-    return {                                              //6
+    return {                                                //6
         count, doubleCount, inRange,
         increment, decrement
     }

@@ -10,16 +10,16 @@
   },
   "dependencies": {
     "release-timeline": "^0.6.0",
-    "vue": "^3.4.26",
+    "vue": "^3.4.27",
     "vue3-toastify": "^0.1.14"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.16.0",
+    "@antfu/eslint-config": "^2.18.0",
     "@vitejs/plugin-vue": "^5.0.4",
     "eslint": "^8.57.0",
-    "sass": "^1.75.0",
+    "sass": "^1.77.1",
     "typescript": "^5.4.5",
-    "vite": "^5.2.10",
+    "vite": "^5.2.11",
     "vitepress": "^1.1.4"
   }
 }
