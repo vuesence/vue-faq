@@ -15,6 +15,7 @@ export default [
     items: [
       { text: "Настройка IDE", link: "/ru/development/ide" },
       { text: "Создание и сборка приложения", link: "/ru/development/building" },
+      { text: "Структура проекта", link: "/ru/development/project-structure" },
       { text: "Архитектурные решения", link: "/ru/development/architectural-patterns" },
       { text: "Как вставлять картинки и другие ресурсы", link: "/ru/development/assets" },
       { text: "Сторы - Vuex, Pinia и Composition API", link: "/ru/development/stores" },

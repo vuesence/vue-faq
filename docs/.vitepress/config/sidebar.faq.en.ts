@@ -15,6 +15,7 @@ export default [
     items: [
       { text: "Configuring the IDE", link: "/en/development/ide" },
       { text: "Creating and building web application", link: "/en/development/building" },
+      { text: "Project structure", link: "/en/development/project-structure" },
       { text: "Architectural patterns", link: "/en/development/architectural-patterns" },
       { text: "How to use images and other resources", link: "/en/development/assets" },
       { text: "Stores - Vuex, Pinia and Composition API", link: "/en/development/stores" },
