@@ -8,6 +8,10 @@
 
 Хорошо известный [Swiper](https://swiperjs.com/) не очень подходит для Vue.js
 
+### Toaster
+
+[vue-sonner](https://vue-sonner.vercel.app/)
+
 ### Дата и время
 
 [day.js](https://day.js.org/), [day-fnc.js](https://date-fns.org/)
