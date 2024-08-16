@@ -64,7 +64,7 @@ my_worker<b>.onerror=</b>err=&gt;{
 my_worker<b>.postMessage</b>("Привет от родительского процесса");</pre>
 			<p>Для завершения этой работы нам необходимо реализовать скрипт <b>my_worker.js</b>. Для данного примера он может быть таким простым:</p>
 			<p class="SC---Heading" lang="en-US" xml:lang="en-US">./my_worker.js</p>
-			<pre class="source-code">self<b>.onmesssage=</b>event=&gt;{
+			<pre class="source-code">self<b>.onmessage=</b>event=&gt;{
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log(event.data)
 })
 setTimeout(()=&gt;{
