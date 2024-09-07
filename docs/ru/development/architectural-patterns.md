@@ -407,7 +407,8 @@ product.value = await api.products.product(props.productId);
 stopLoading();
 ```
 
-This example uses `useId`, which appeared in `Vue 3.5`
+Данный пример использует `useId`, который появился во `Vue 3.5`
 
-For earlier versions, you can use any function to generate a unique id.
+Для более ранних версий можно использовать любую функцию для генерации уникального id.
+
 :::

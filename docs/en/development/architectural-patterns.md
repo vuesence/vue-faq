@@ -145,5 +145,7 @@ product.value = await api.products.product(props.productId);
 stopLoading();
 ```
 
-`uuid` - any function to generate a unique id.
+This example uses `useId`, which appeared in `Vue 3.5`
+
+For earlier versions, you can use any function to generate a unique id.
 :::
