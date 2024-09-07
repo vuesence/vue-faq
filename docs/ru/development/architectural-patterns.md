@@ -378,19 +378,16 @@ const { loading } = useAppLoader();
 ##### useAppLoader.ts
 ```ts
 import { computed, reactive, ref } from "vue";
-import { uuid } from "@/app/utils/uuid";
 
 const loaderSet = reactive(new Set<string>());
 const loading = computed(() => loaderSet.size > 0);
 
-export function useAppLoader() {
-  const _uuid: string = uuid();
-
+export function useAppLoader(id) {
   function startLoading() {
-    loaderSet.add(_uuid);
+    loaderSet.add(id);
   }
   function stopLoading() {
-    loaderSet.delete(_uuid);
+    loaderSet.delete(id);
   }
 
   return { loading, startLoading, stopLoading };
@@ -400,13 +397,17 @@ export function useAppLoader() {
 ##### SomeComponent
 
 ```js
+import { useId } from "Vue";
 import { useAppLoader } from "@/app/composables/useAppLoader";
-const { startLoading, stopLoading } = useAppLoader();
+
+const { startLoading, stopLoading } = useAppLoader(useId());
 
 startLoading();
 product.value = await api.products.product(props.productId);
 stopLoading();
 ```
 
-`uuid` - любая функция для генерации уникального id.
+This example uses `useId`, which appeared in `Vue 3.5`
+
+For earlier versions, you can use any function to generate a unique id.
 :::
