@@ -85,7 +85,7 @@ Also here is a lifehack for Devtools from user **@coolcosmos**: *I just use refs
 
 ::: details How to split logic between component and composable functions?
 
-It is convenient to think of it as [MVC pattern](https://ru.wikipedia.org/wiki/Model-View-Controller), where the role of `View` (and partially `Controller`) is played by components, which are mainly responsible for visualization, and the logic and model (`Model` and partially `Controller`) fall on composable functions and their reactive state.
+It is convenient to think of it as [MVC pattern](https://en.wikipedia.org/wiki/Model-view-controller), where the role of `View` (and partially `Controller`) is played by components, which are mainly responsible for visualization, and the logic and model (`Model` and partially `Controller`) fall on composable functions and their reactive state.
 
 To understand what to put in a composable and what to put in a component (which may consist of several components), imagine that you change the component to another one - displaying your data in some other way. Ideally, the model (composite) should remain the same, you are only rewriting the component that has logic responsible for displaying it.
 
