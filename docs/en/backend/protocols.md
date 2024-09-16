@@ -32,7 +32,7 @@ You can use [mitt](https://github.com/developit/mitt).
 
 :::
 
-::: details What is GraphGL?
+::: details What is GraphQL?
 
 A complex thing, an attempt to translate SQL query language for client-server queries on the web.
 
