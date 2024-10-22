@@ -12,7 +12,7 @@ Resources refer to images, icons, audio, video, json, pdf and other files that y
 
 From the `public` folder, resources (e.g. images) are connected in your application via HTTP(S), downloaded as needed from the server - as they have always been.
 
-Resources in the `assets` folder (and in general from any subdirectory in `src/`) are renamed (a hash is added - like `social-banner-e88a22df.png`) and placed in the `dist/assets` folder, or, if they are small images, they can be Base64 encoded and placed in your js bandle. In the browser application they are available immediately, but the size of the js bandle is increased by the size of the resources, which increases the loading speed.
+Resources in the `assets` folder (and in general from any subdirectory in `src/`) are renamed (a hash is added - like `social-banner-e88a22df.png`) and placed in the `dist/assets` folder, or, if they are small images, they can be Base64 encoded and placed in your js bandle. In the browser application they are available immediately, but the size of the js bundle is increased by the size of the resources, which negatively impacts the loading time. The larger the bundle, the more time it takes to load and parse, potentially slowing down the initial load of the application.
 
 The resources are accessed via import:
 
