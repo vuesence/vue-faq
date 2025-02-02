@@ -1,0 +1,1 @@
+const e="/images/vue-webapp/footer-simple.png",p="/images/vue-webapp/footer-rich.png",s="/images/vue-webapp/footer-simple-mantine.png",o="/images/vue-webapp/footer-rich-mantine.png",t="/images/vue-webapp/footer-distributed.png";export{e as _,p as a,s as b,o as c,t as d};

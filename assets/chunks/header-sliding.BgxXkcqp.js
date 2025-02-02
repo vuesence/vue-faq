@@ -1,0 +1,1 @@
+const e="/images/vue-webapp/header-simple.png",a="/images/vue-webapp/header-simple-mantine.png",s="/images/vue-webapp/header-layered-mantine.png",p="/images/vue-webapp/header-sliding.gif";export{e as _,a,s as b,p as c};
