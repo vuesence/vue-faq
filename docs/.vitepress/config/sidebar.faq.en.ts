@@ -19,6 +19,7 @@ export default [
       { text: "Architectural patterns", link: "/en/development/architectural-patterns" },
       { text: "How to use images and other resources", link: "/en/development/assets" },
       { text: "Stores - Vuex, Pinia and Composition API", link: "/en/development/stores" },
+      { text: "Comparison of different reactive state management techniques", link: "/en/development/store-comparison" },
       { text: "Testing", link: "/en/development/testing" },
       { text: "Useful tips", link: "/en/development/misc" },
     ],
