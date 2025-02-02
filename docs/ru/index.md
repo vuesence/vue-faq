@@ -38,7 +38,7 @@ features:
   #   details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
 ---
 
-<style lang="scss">
+<style lang="css">
 .VPButton.alt.alt-border {
   border-color: #fce728;
   &:hover {

@@ -127,7 +127,7 @@ const height = computed(() => {
   />
 </template>
 
-<style lang="scss" scoped>
+<style lang="css" scoped>
 :deep(svg) {
   width: 100%;
   height: 100%;

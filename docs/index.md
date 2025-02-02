@@ -40,7 +40,7 @@ features:
 
 </script>
 
-<style lang="scss">
+<style lang="css">
 .VPButton.alt.alt-border {
   border-color: #fce728;
   &:hover {

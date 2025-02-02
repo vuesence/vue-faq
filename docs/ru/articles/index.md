@@ -61,7 +61,7 @@ pageClass: articles
 
 </script>
 
-<style lang="scss" scoped>
+<style lang="css" scoped>
     .post {
         border-bottom: 1px solid var(--vp-c-border);
         margin: 1rem 0 2rem;
