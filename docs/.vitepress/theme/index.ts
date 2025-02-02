@@ -1,5 +1,5 @@
 import DefaultTheme from "vitepress/theme";
-import "./custom.scss";
+import "./custom.css";
 import AppLayout from "./AppLayout.vue";
 
 // DefaultTheme.enhanceApp = ({ app, router, siteData }) => {

@@ -1,4 +1,4 @@
-@import "./custom-block.scss";
+@import "./custom-block.css";
 
 body {
   overflow-y: scroll;
